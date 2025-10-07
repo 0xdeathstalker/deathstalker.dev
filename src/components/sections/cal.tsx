@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
 import { getCalApi } from "@calcom/embed-react";
-import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
+import * as React from "react";
+import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 export const ScheduleCallButton = () => {

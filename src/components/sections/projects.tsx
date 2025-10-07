@@ -1,7 +1,7 @@
+import Link from "next/link";
 import LinkIcon from "@/components/link-icon";
 import { projects } from "@/lib/config/site-data";
 import type { Project } from "@/lib/types";
-import Link from "next/link";
 
 export default function Projects() {
   return (

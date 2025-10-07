@@ -1,5 +1,6 @@
 "use client";
 
+import { ReactLenis } from "lenis/react";
 import { ThemeProvider } from "next-themes";
 import * as React from "react";
 import PosthogPageView from "@/lib/posthog/posthog-page-vew";
@@ -13,7 +14,8 @@ export default function Provider({ children }: { children: React.ReactNode }) {
         defaultTheme="dark"
         disableTransitionOnChange
       >
-        {children}
+        {/* smooth scrolling */}
+        <ReactLenis root>{children}</ReactLenis>
         <React.Suspense>
           <PosthogPageView />
         </React.Suspense>

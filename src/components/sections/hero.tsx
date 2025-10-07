@@ -1,8 +1,8 @@
 "use client";
 
+import * as React from "react";
 import { portfolio } from "@/lib/config/site-data";
 import Socials from "./socials";
-import * as React from "react";
 
 export default function Hero() {
   React.useEffect(() => {

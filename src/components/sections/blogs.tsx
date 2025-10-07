@@ -1,5 +1,5 @@
-import { getBlogs } from "@/lib/actions/blog";
 import Link from "next/link";
+import { getBlogs } from "@/lib/actions/blog";
 
 // sorting by date - latest blogs
 const blogs = getBlogs().sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
@@ -10,7 +10,7 @@ export default function Blogs() {
       id="blogs"
       className="py-10"
     >
-      <h1 className="text-3xl font-medium mb-8 group w-fit">blogs</h1>
+      <h1 className="text-3xl font-medium mb-8 group w-fit">writings</h1>
       <div className="space-y-4">
         {blogs.map((blog) => (
           <BlogItem
