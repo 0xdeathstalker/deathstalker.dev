@@ -13,7 +13,7 @@ export default function Work() {
       className="mt-14"
     >
       <h1 className="text-3xl font-medium mb-8 group w-fit">places i've been </h1>
-      <div className="space-y-8">
+      <div className="space-y-6">
         {works.map((work, index) => (
           <WorkItemAccordion
             // biome-ignore lint/suspicious/noArrayIndexKey: no other variable to use as key

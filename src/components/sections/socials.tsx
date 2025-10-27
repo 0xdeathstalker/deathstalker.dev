@@ -1,14 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { portfolio } from "@/lib/config/site-data";
-import { useCopyToClipboard } from "@/lib/hooks/useCopyToClipboard";
 import type { SocialKeys } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { Mail } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
-import Link from "next/link";
-import * as React from "react";
 import { ScheduleCallButton } from "./cal";
 
 export default function Socials() {
@@ -23,14 +19,17 @@ export default function Socials() {
             key={key}
             href={link}
             target="_blank"
-            className={cn(buttonVariants({ variant: "outline", size: "icon" }), "size-7")}
+            className={cn(
+              buttonVariants({ variant: "outline", size: "icon" }),
+              "size-7"
+            )}
           >
             {IconMap[key]}
           </Link>
         );
       })}
 
-      <MailButton />
+      {/* <MailButton /> */}
       <ScheduleCallButton />
     </div>
   );
@@ -41,72 +40,13 @@ function ResumeButton() {
     <Link
       href={portfolio.resume}
       target="_blank"
-      className={cn(buttonVariants({ variant: "outline", size: "sm" }), "h-7 font-normal")}
+      className={cn(
+        buttonVariants({ variant: "outline", size: "sm" }),
+        "h-7 font-normal"
+      )}
     >
       resume
     </Link>
-  );
-}
-
-function MailButton() {
-  const [, copy] = useCopyToClipboard();
-  const [isCopied, setIsCopied] = React.useState(false);
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
-
-  async function handleCopyAndMail(textToCopy: string) {
-    if (isCopied) return;
-
-    const success = await copy(textToCopy);
-
-    if (success) {
-      setIsCopied(true);
-      buttonRef.current?.blur();
-      setTimeout(() => {
-        setIsCopied(false);
-        buttonRef.current?.blur();
-      }, 2000);
-
-      setTimeout(() => {
-        window.location.href = `mailto:${portfolio.mail}`;
-      }, 2200);
-    }
-  }
-
-  return (
-    <motion.button
-      ref={buttonRef}
-      layout
-      className={cn(buttonVariants({ variant: "outline", size: "icon" }), "size-7")}
-      style={isCopied ? { width: "78px", height: "28px" } : { width: "28px", height: "28px" }}
-      onClick={() => handleCopyAndMail(portfolio.mail)}
-    >
-      <AnimatePresence
-        initial={false}
-        mode="wait"
-      >
-        {isCopied ? (
-          <motion.span
-            key="check-icon"
-            initial={{ scale: 0.3, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.3, opacity: 0 }}
-            transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-          >
-            copied!
-          </motion.span>
-        ) : (
-          <motion.span
-            key="mail-icon"
-            initial={{ scale: 0.3, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.3, opacity: 0 }}
-            transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-          >
-            <Mail />
-          </motion.span>
-        )}
-      </AnimatePresence>
-    </motion.button>
   );
 }
 
@@ -160,3 +100,69 @@ const IconMap = {
     </svg>
   ),
 };
+
+// function MailButton() {
+//   const [, copy] = useCopyToClipboard();
+//   const [isCopied, setIsCopied] = React.useState(false);
+//   const buttonRef = React.useRef<HTMLButtonElement>(null);
+
+//   async function handleCopyAndMail(textToCopy: string) {
+//     if (isCopied) return;
+
+//     const success = await copy(textToCopy);
+
+//     if (success) {
+//       setIsCopied(true);
+//       buttonRef.current?.blur();
+//       setTimeout(() => {
+//         setIsCopied(false);
+//         buttonRef.current?.blur();
+//       }, 2000);
+
+//       setTimeout(() => {
+//         window.location.href = `mailto:${portfolio.mail}`;
+//       }, 2200);
+//     }
+//   }
+
+//   return (
+//     <motion.button
+//       ref={buttonRef}
+//       layout
+//       className={cn(
+//         buttonVariants({ variant: "outline", size: "icon" }),
+//         "size-7"
+//       )}
+//       style={
+//         isCopied
+//           ? { width: "78px", height: "28px" }
+//           : { width: "28px", height: "28px" }
+//       }
+//       onClick={() => handleCopyAndMail(portfolio.mail)}
+//     >
+//       <AnimatePresence initial={false} mode="wait">
+//         {isCopied ? (
+//           <motion.span
+//             key="check-icon"
+//             initial={{ scale: 0.3, opacity: 0 }}
+//             animate={{ scale: 1, opacity: 1 }}
+//             exit={{ scale: 0.3, opacity: 0 }}
+//             transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+//           >
+//             copied!
+//           </motion.span>
+//         ) : (
+//           <motion.span
+//             key="mail-icon"
+//             initial={{ scale: 0.3, opacity: 0 }}
+//             animate={{ scale: 1, opacity: 1 }}
+//             exit={{ scale: 0.3, opacity: 0 }}
+//             transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+//           >
+//             <Mail />
+//           </motion.span>
+//         )}
+//       </AnimatePresence>
+//     </motion.button>
+//   );
+// }

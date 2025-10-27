@@ -18,7 +18,7 @@ export default function Projects() {
 
 export function ProjectItem({ project }: { project: Project }) {
   return (
-    <div className="space-y-3 text-muted-foreground">
+    <div className="text-muted-foreground">
       <div className="w-fit relative inline-flex items-center gap-1 link">
         <Link
           href={project.href}
@@ -35,7 +35,7 @@ export function ProjectItem({ project }: { project: Project }) {
         {project.role} {project.period && `(${project.period})`}
       </h2>
 
-      <p className="leading-relaxed">{project.description}</p>
+      <p className="leading-relaxed my-6">{project.description}</p>
 
       <div className="inline-flex items-center gap-3 flex-wrap">
         {project.technologies.map((technology) => (
