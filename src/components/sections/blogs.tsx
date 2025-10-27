@@ -46,7 +46,7 @@ function BlogItem({
     <div className="flex items-center justify-between">
       <Link
         href={`/blog/${slug}`}
-        className="group text-foreground text-lg relative hover:text-background before:content-[''] before:-z-10 before:absolute before:bottom-1 before:w-0 before:h-[calc(theme(fontSize.lg)*theme(lineHeight.tight))] dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-[cubic-bezier(0.785,0.135,0.15,0.86)] hover:before:w-full"
+        className="group text-foreground text-lg relative before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-[1px] dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-[cubic-bezier(0.785,0.135,0.15,0.86)] hover:before:w-full"
       >
         {title.toLowerCase()}
       </Link>
