@@ -17,39 +17,44 @@ export const works: Array<Work> = [
   {
     company: "router-protocol",
     role: "frontend developer",
+    logo: "router.png",
     period: "sep 2023 - present",
     description: [
-      "built and scaled cross-chain products like",
-      <Link
-        href="https://explorer.routernitro.com"
-        target="_blank"
-        className="text-foreground"
-      >
-        nitro explorer
-      </Link>,
-      ",",
-      <Link
-        href="https://github.com/router-protocol/tangled"
-        target="_blank"
-        className="text-foreground"
-      >
-        wallet sdks
-      </Link>,
-      "and",
-      <Link
-        href="https://routernitro.com/swap"
-        target="_blank"
-        className="text-foreground"
-      >
-        nitro dapp
-      </Link>,
-      ". integrated evm, solana, bitcoin, tron, and near wallets, optimized transaction flows, and collaborated on api design.",
+      <span>
+        build and scaled cross-chain products like{" "}
+        <Link
+          href="https://explorer.routernitro.com"
+          target="_blank"
+          className="text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors ease-in-out"
+        >
+          nitro explorer
+        </Link>
+        ,{" "}
+        <Link
+          href="https://github.com/router-protocol/tangled"
+          target="_blank"
+          className="text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors ease-in-out"
+        >
+          wallet sdks
+        </Link>
+        , and{" "}
+        <Link
+          href="https://routernitro.com/swap"
+          target="_blank"
+          className="text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors ease-in-out"
+        >
+          nitro dapp
+        </Link>
+        . integrated evm, solana, bitcoin, tron, and near wallets, optimized transaction flows, and collaborated on api
+        design.
+      </span>,
     ],
     href: "https://www.routerprotocol.com",
   },
   {
     company: "router-protocol",
     role: "frontend developer intern",
+    logo: "router.png",
     period: "may 2023 - sep 2023",
     description: [
       "built a gamified nft app using router’s cross-chain infra—users minted and leveled up nfts by bridging across networks. integrated smart contracts for a cross-chain lottery system with reward payouts on polygon.",

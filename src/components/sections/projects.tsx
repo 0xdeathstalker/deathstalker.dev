@@ -5,11 +5,17 @@ import type { Project } from "@/lib/types";
 
 export default function Projects() {
   return (
-    <section id="builds" className="py-10">
+    <section
+      id="builds"
+      className="py-10"
+    >
       <h1 className="text-3xl font-medium mb-8 group w-fit">builds </h1>
       <div className="space-y-12">
         {projects.map((project) => (
-          <ProjectItem key={project.title} project={project} />
+          <ProjectItem
+            key={project.title}
+            project={project}
+          />
         ))}
       </div>
     </section>
