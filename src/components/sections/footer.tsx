@@ -42,7 +42,10 @@ export default function Footer() {
       // calculating how much of the text is visible
       const textTop = textRect.top;
       const textHeight = textRect.height;
-      const textVisibleHeight = Math.max(0, Math.min(textHeight, windowHeight - textTop));
+      const textVisibleHeight = Math.max(
+        0,
+        Math.min(textHeight, windowHeight - textTop)
+      );
       const textVisibilityRatio = textVisibleHeight / textHeight;
 
       // mapping visibility ratio to font weight
@@ -79,7 +82,7 @@ export default function Footer() {
         ref={textRef}
         style={{ fontWeight }}
         transition={{ duration: 0.1 }}
-        className="font-sans dark:text-neutral-600 cursor-pointer absolute bottom-0 left-0 right-0 text-6xl md:text-[140px] lg:text-[180px] xl:text-[210px] translate-y-[15%] tracking-tighter uppercase text-center mx-auto text-neutral-400"
+        className="text-shadow-lg font-sans dark:text-neutral-600 cursor-pointer absolute bottom-0 left-0 right-0 text-6xl md:text-[140px] lg:text-[180px] xl:text-[210px] translate-y-[15%] tracking-tighter uppercase text-center mx-auto text-neutral-400"
       >
         dthstlkr
       </motion.h1>

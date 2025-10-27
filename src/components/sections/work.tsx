@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 export default function Work() {
   return (
     <section id="work" className="mt-14">
-      <h1 className="text-3xl font-medium mb-8 group w-fit">
+      <h1 className="text-3xl text-shadow-sm dark:shadow-black/65 font-medium mb-8 group w-fit">
         places i've been{" "}
       </h1>
       <div className="space-y-6">
@@ -32,14 +32,14 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
     <div>
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="group w-full inline-flex items-start justify-between cursor-pointer"
+        className="group w-full inline-flex flex-col md:flex-row items-start justify-between gap-2 md:gap-0 cursor-pointer"
       >
         <div className="flex items-center gap-2">
           <img
             src={`/images/work/${work.logo}`}
             alt={`${work.company} logo`}
             className={cn(
-              "size-10 rounded-sm grayscale dark:invert-0 opacity-65 dark:opacity-100 group-hover:opacity-100 group-hover:grayscale-0 group-hover:invert-0 transition-[filter] ease-linear",
+              "size-10 rounded-sm grayscale dark:invert-0 opacity-75 dark:opacity-100 group-hover:opacity-100 group-hover:grayscale-0 group-hover:invert-0 transition-[filter] ease-linear",
               isOpen ? "grayscale-0 invert-0" : ""
             )}
           />
@@ -55,10 +55,9 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
               </h2>
               <ChevronRight
                 className={cn(
-                  "size-3.5 opacity-0 scale-40 -translate-x-1.5 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0 transition-all ease-in-out",
-                  isOpen
-                    ? "rotate-90 opacity-100 scale-100 translate-x-0"
-                    : "rotate-0 opacity-0 scale-40 -translate-x-1.5"
+                  "size-3.5 md:opacity-0 md:scale-40 md:-translate-x-1.5 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0 transition-all ease-in-out",
+                  isOpen &&
+                    "rotate-90 md:opacity-100 md:scale-100 md:translate-x-0"
                 )}
               />
             </div>

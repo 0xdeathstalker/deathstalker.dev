@@ -6,7 +6,9 @@ import type { Project } from "@/lib/types";
 export default function Projects() {
   return (
     <section id="builds" className="my-14">
-      <h1 className="text-3xl font-medium mb-8 group w-fit">builds </h1>
+      <h1 className="text-3xl text-shadow-sm dark:shadow-black/65 font-medium mb-8 group w-fit">
+        builds{" "}
+      </h1>
       <div className="space-y-12">
         {projects.map((project) => (
           <ProjectItem key={project.title} project={project} />
@@ -41,7 +43,7 @@ export function ProjectItem({ project }: { project: Project }) {
         {project.technologies.map((technology) => (
           <div
             key={technology}
-            className="py-1 px-1.5 bg-accent rounded-sm text-xs"
+            className="py-1 px-1.5 bg-accent rounded-sm text-xs shadow"
           >
             {technology}
           </div>

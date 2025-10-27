@@ -10,7 +10,9 @@ const blogs = getBlogs().sort(
 export default function Blogs() {
   return (
     <section id="blogs" className="mt-14">
-      <h1 className="text-3xl font-medium mb-8 group w-fit">writings</h1>
+      <h1 className="text-3xl text-shadow-sm dark:shadow-black/65 font-medium mb-8 group w-fit">
+        writings
+      </h1>
       <div className="space-y-4">
         {blogs.map((blog) => (
           <BlogItem
