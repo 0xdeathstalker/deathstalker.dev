@@ -5,17 +5,11 @@ import type { Project } from "@/lib/types";
 
 export default function Projects() {
   return (
-    <section
-      id="builds"
-      className="py-10"
-    >
+    <section id="builds" className="my-14">
       <h1 className="text-3xl font-medium mb-8 group w-fit">builds </h1>
       <div className="space-y-12">
         {projects.map((project) => (
-          <ProjectItem
-            key={project.title}
-            project={project}
-          />
+          <ProjectItem key={project.title} project={project} />
         ))}
       </div>
     </section>
@@ -37,11 +31,11 @@ export function ProjectItem({ project }: { project: Project }) {
         <LinkIcon />
       </div>
 
-      <h2 className="dark:text-neutral-300 text-neutral-700 text-xs">
+      <h2 className="dark:text-neutral-300 text-neutral-700 text-sm">
         {project.role} {project.period && `(${project.period})`}
       </h2>
 
-      <p className="text-sm">{project.description}</p>
+      <p className="leading-relaxed">{project.description}</p>
 
       <div className="inline-flex items-center gap-3 flex-wrap">
         {project.technologies.map((technology) => (

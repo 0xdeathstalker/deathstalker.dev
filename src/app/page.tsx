@@ -5,7 +5,7 @@ import Work from "@/components/sections/work";
 
 export default function Home() {
   return (
-    <main className="relative pt-20 min-h-screen w-full font-sans px-4 mx-auto max-w-[70ch]">
+    <main className="relative pt-20 min-h-screen w-full font-sans px-4 mx-auto max-w-[60ch]">
       <Hero />
 
       <Work />

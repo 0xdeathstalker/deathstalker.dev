@@ -10,7 +10,7 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="py-10"
+      className="mt-14"
     >
       <h1 className="text-3xl font-medium mb-8 group w-fit">places i've been </h1>
       <div className="space-y-8">
@@ -46,7 +46,7 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
           />
           <div className="flex flex-col items-start gap-0.5">
             <div className="flex items-center gap-1">
-              <h2>{work.company}</h2>
+              <h2 className="text-lg">{work.company}</h2>
               <ChevronRight
                 className={cn(
                   "size-3.5 opacity-0 scale-40 -translate-x-1.5 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0 transition-all ease-in-out",
@@ -74,7 +74,7 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
           <li
             // biome-ignore lint/suspicious/noArrayIndexKey: no other variable to use as key
             key={i}
-            className="flex items-center w-full text-sm"
+            className="flex items-center w-full leading-relaxed"
           >
             <div className="w-[2.5ch] self-start">•</div>
 

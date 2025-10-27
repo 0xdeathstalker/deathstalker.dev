@@ -8,7 +8,7 @@ export default function Blogs() {
   return (
     <section
       id="blogs"
-      className="py-10"
+      className="mt-14"
     >
       <h1 className="text-3xl font-medium mb-8 group w-fit">writings</h1>
       <div className="space-y-4">
