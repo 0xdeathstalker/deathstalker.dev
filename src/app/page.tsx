@@ -20,7 +20,7 @@ export default function Home() {
 
         <Projects />
 
-        {/* <div className="bg-gradient-to-t from-background to-background/50 absolute bottom-0 left-0 h-20 w-full z-50 pointer-events-none" /> */}
+        <div className="bg-gradient-to-t from-background to-background/50 absolute bottom-0 left-0 h-20 w-full z-50 pointer-events-none" />
       </div>
 
       <div className="bg-gradient-to-t from-background to-transparent fixed bottom-0 left-0 h-10 w-full z-50 pointer-events-none" />
