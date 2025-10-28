@@ -1,16 +1,25 @@
 import Link from "next/link";
 import { getBlogs } from "@/lib/actions/blog";
+import { Line } from "../ui/line";
 
 // sorting by date - latest blogs
-const blogs = getBlogs().sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
+const blogs = getBlogs().sort(
+  (a, b) =>
+    new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime()
+);
 
 export default function Blogs() {
   return (
-    <section
-      id="blogs"
-      className="mt-14"
-    >
-      <h1 className="text-3xl text-shadow-sm dark:shadow-black/65 font-medium mb-8 group w-fit">writings</h1>
+    <section id="blogs" className="relative py-10 px-4 max-[690px]:px-8">
+      <Line
+        orientation="horizontal"
+        variant="contained"
+        position="bottom"
+        className="max-w-[650px]"
+      />
+      <h1 className="text-3xl text-shadow-sm dark:shadow-black/65 font-medium mb-8 group w-fit">
+        writings
+      </h1>
       <div className="space-y-4">
         {blogs.map((blog) => (
           <BlogItem
@@ -25,7 +34,15 @@ export default function Blogs() {
   );
 }
 
-function BlogItem({ slug, title, date }: { slug: string; title: string; date: string }) {
+function BlogItem({
+  slug,
+  title,
+  date,
+}: {
+  slug: string;
+  title: string;
+  date: string;
+}) {
   const formattedDate = new Date(date)
     .toLocaleDateString("en-US", {
       month: "short",
@@ -42,7 +59,9 @@ function BlogItem({ slug, title, date }: { slug: string; title: string; date: st
       >
         {title.toLowerCase()}
       </Link>
-      <span className="hidden sm:inline text-muted-foreground">{formattedDate}</span>
+      <span className="hidden sm:inline text-muted-foreground">
+        {formattedDate}
+      </span>
     </div>
   );
 }

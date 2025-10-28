@@ -7,7 +7,8 @@ export const portfolio = {
     "hey, i'm soumya — a design engineer building at the intersection of craft and code.",
     "i care about the details — clean ui, smooth interactions, and interfaces that feel good to use. deep diving into web3 and motion design. i build things that are fast, functional, and just polished enough to make you smile.",
   ],
-  resume: "https://drive.google.com/file/d/1afreIcD7OfaimQ4HNHpHZsr3mxt18BS1/view?usp=drive_link",
+  resume:
+    "https://drive.google.com/file/d/1afreIcD7OfaimQ4HNHpHZsr3mxt18BS1/view?usp=drive_link",
   socials: {
     github: "https://github.com/0xdeathstalker",
     linkedin: "https://www.linkedin.com/in/soumya-mukherjee-88a551248/",
@@ -24,7 +25,7 @@ export const works: Array<Work> = [
     period: "sep 2023 - present",
     description: [
       <span>
-        build and scaled cross-chain products like{" "}
+        built{" "}
         <Link
           href="https://explorer.routernitro.com"
           target="_blank"
@@ -32,24 +33,31 @@ export const works: Array<Work> = [
         >
           nitro explorer
         </Link>
-        ,{" "}
+        , cross-chain blockchain explorer processing more than thousand daily
+        transactions
+      </span>,
+      <span>
+        integrated multiple blockchain ecosystems: (cosmos, bitcoin, tron, near,
+        ton) into{" "}
         <Link
           href="https://github.com/router-protocol/tangled"
           target="_blank"
           className="hover:text-foreground underline underline-offset-4 transition-colors ease-in-out"
         >
-          wallet sdks
+          tangled
         </Link>
-        , and{" "}
+        , a wallet sdk developed for handling multi-chain wallet flows.
+      </span>,
+      <span>
+        optimised transaction ux by reducing drop-offs, improving completion
+        rates on{" "}
         <Link
           href="https://routernitro.com/swap"
           target="_blank"
           className="hover:text-foreground underline underline-offset-4 transition-colors ease-in-out"
         >
-          nitro dapp
+          nitro app
         </Link>
-        . integrated evm, solana, bitcoin, tron, and near wallets, optimized transaction flows, and collaborated on api
-        design.
       </span>,
     ],
     href: "https://www.routerprotocol.com",
@@ -60,7 +68,9 @@ export const works: Array<Work> = [
     logo: "router.png",
     period: "may 2023 - sep 2023",
     description: [
-      "built a gamified nft app using router’s cross-chain infra—users minted and leveled up nfts by bridging across networks. integrated smart contracts for a cross-chain lottery system with reward payouts on polygon.",
+      "built a gamified nft application using the protocol's cross-chain architecture where users were able to mint an nft and then level it up by bridging across chains",
+      "implemented a lottery system with rewards distribution on polygon using ethers.js and custom wallet module for handling wallet connections",
+      "went from intern to full-time based on shipping speed and code quality",
     ],
     href: "https://www.routerprotocol.com",
   },
@@ -78,7 +88,14 @@ export const projects: Array<Project> = [
       "eliminated layout shift and loading jank with full non-blocking data flow",
       "designed keyboard-driven cmdk navigation for rapid search experience",
     ],
-    technologies: ["next.js", "tailwindcss", "shadcnui", "zod", "zustand", "typescript"],
+    technologies: [
+      "next.js",
+      "tailwindcss",
+      "shadcnui",
+      "zod",
+      "zustand",
+      "typescript",
+    ],
     href: "https://nitro-explorer.vercel.app",
   },
   {
@@ -106,7 +123,15 @@ export const projects: Array<Project> = [
       "added system messages for join/leave activity and contextual flow",
       "implemented graceful UX for handling expired or invalid rooms",
     ],
-    technologies: ["next.js", "tailwind css", "convex", "react query", "zod", "uploadthing", "posthog"],
+    technologies: [
+      "next.js",
+      "tailwind css",
+      "convex",
+      "react query",
+      "zod",
+      "uploadthing",
+      "posthog",
+    ],
     href: "https://whispr-room.vercel.app",
   },
 ] as const;

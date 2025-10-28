@@ -2,20 +2,17 @@ import Link from "next/link";
 import LinkIcon from "@/components/link-icon";
 import { projects } from "@/lib/config/site-data";
 import type { Project } from "@/lib/types";
+import { Line } from "../ui/line";
 
 export default function Projects() {
   return (
-    <section
-      id="builds"
-      className="my-14"
-    >
-      <h1 className="text-3xl text-shadow-sm dark:shadow-black/65 font-medium mb-8 group w-fit">builds </h1>
-      <div className="space-y-12">
+    <section id="builds" className="py-10 px-4 max-[690px]:px-8">
+      <h1 className="text-3xl text-shadow-sm dark:shadow-black/65 font-medium group w-fit">
+        builds{" "}
+      </h1>
+      <div>
         {projects.map((project) => (
-          <ProjectItem
-            key={project.title}
-            project={project}
-          />
+          <ProjectItem key={project.title} project={project} />
         ))}
       </div>
     </section>
@@ -24,7 +21,7 @@ export default function Projects() {
 
 export function ProjectItem({ project }: { project: Project }) {
   return (
-    <div className="text-muted-foreground">
+    <div className="relative text-muted-foreground py-10">
       <div className="w-fit relative inline-flex items-center gap-1 link">
         <Link
           href={project.href}
@@ -53,6 +50,13 @@ export function ProjectItem({ project }: { project: Project }) {
           </div>
         ))}
       </div>
+
+      <Line
+        orientation="horizontal"
+        variant="contained"
+        position="bottom"
+        className="max-w-[650px]"
+      />
     </div>
   );
 }
