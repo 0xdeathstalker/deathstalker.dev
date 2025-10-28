@@ -75,8 +75,8 @@ export function Line({
       ? "top-0"
       : "bottom-0"
     : finalPosition === "left" // Vertical line
-    ? "left-0"
-    : "right-0";
+      ? "left-0"
+      : "right-0";
 
   const baseClasses = "absolute pointer-events-none z-10";
   const dimensionClasses = isHorizontal ? "w-full" : "top-0 h-full";
@@ -87,13 +87,7 @@ export function Line({
         data-direction={finalPosition}
         data-variant={variant}
         data-orientation={orientation}
-        className={cn(
-          baseClasses,
-          dimensionClasses,
-          positionClass,
-          color,
-          className
-        )}
+        className={cn(baseClasses, dimensionClasses, positionClass, color, className)}
         width="100%"
         height="1"
         viewBox="0 0 100 1"
@@ -123,13 +117,7 @@ export function Line({
       data-direction={finalPosition}
       data-variant={variant}
       data-orientation={orientation}
-      className={cn(
-        baseClasses,
-        dimensionClasses,
-        positionClass,
-        color,
-        className
-      )}
+      className={cn(baseClasses, dimensionClasses, positionClass, color, className)}
       width="1"
       height="100%"
       viewBox="0 0 1 100"

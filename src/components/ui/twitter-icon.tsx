@@ -59,7 +59,7 @@ const TwitterIcon = React.forwardRef<TwitterIconHandle, TwitterIconProps>(
           onMouseEnter?.(e);
         }
       },
-      [controls, onMouseEnter]
+      [controls, onMouseEnter],
     );
 
     const handleMouseLeave = React.useCallback(
@@ -70,7 +70,7 @@ const TwitterIcon = React.forwardRef<TwitterIconHandle, TwitterIconProps>(
           onMouseLeave?.(e);
         }
       },
-      [controls, onMouseLeave]
+      [controls, onMouseLeave],
     );
 
     return (
@@ -100,7 +100,7 @@ const TwitterIcon = React.forwardRef<TwitterIconHandle, TwitterIconProps>(
         </svg>
       </div>
     );
-  }
+  },
 );
 
 TwitterIcon.displayName = "TwitterIcon";

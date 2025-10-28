@@ -1,14 +1,11 @@
 "use client";
 
 import { getCalApi } from "@calcom/embed-react";
+import { CalendarCheck2Icon } from "lucide-react";
 import * as React from "react";
 import { Button } from "@/components/ui/button";
-import { CalendarCheck2Icon } from "@/components/ui/calendar-icon";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+// import { CalendarCheck2Icon } from "@/components/ui/calendar-icon";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 export const ScheduleCallButton = () => {
   React.useEffect(() => {
@@ -19,7 +16,7 @@ export const ScheduleCallButton = () => {
   }, []);
 
   return (
-    <Tooltip>
+    <Tooltip delayDuration={300}>
       <TooltipTrigger asChild>
         <Button
           variant="outline"

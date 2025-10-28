@@ -6,13 +6,17 @@ import { Line } from "../ui/line";
 
 export default function Projects() {
   return (
-    <section id="builds" className="py-10 px-4 max-[690px]:px-8">
-      <h1 className="text-3xl text-shadow-sm dark:shadow-black/65 font-medium group w-fit">
-        builds{" "}
-      </h1>
+    <section
+      id="builds"
+      className="py-10 px-4 max-[690px]:px-8"
+    >
+      <h1 className="text-3xl text-shadow-sm dark:shadow-black/65 font-medium group w-fit">builds </h1>
       <div>
         {projects.map((project) => (
-          <ProjectItem key={project.title} project={project} />
+          <ProjectItem
+            key={project.title}
+            project={project}
+          />
         ))}
       </div>
     </section>

@@ -116,7 +116,7 @@ const LinkedinIcon = React.forwardRef<LinkedinIconHandle, LinkedinIconProps>(
           onMouseEnter?.(e);
         }
       },
-      [circleControls, onMouseEnter, pathControls, rectControls]
+      [circleControls, onMouseEnter, pathControls, rectControls],
     );
 
     const handleMouseLeave = React.useCallback(
@@ -129,7 +129,7 @@ const LinkedinIcon = React.forwardRef<LinkedinIconHandle, LinkedinIconProps>(
           onMouseLeave?.(e);
         }
       },
-      [pathControls, rectControls, circleControls, onMouseLeave]
+      [pathControls, rectControls, circleControls, onMouseLeave],
     );
 
     return (
@@ -145,7 +145,7 @@ const LinkedinIcon = React.forwardRef<LinkedinIconHandle, LinkedinIconProps>(
           height={size}
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
           viewBox="0 0 24 24"
@@ -176,7 +176,7 @@ const LinkedinIcon = React.forwardRef<LinkedinIconHandle, LinkedinIconProps>(
         </svg>
       </div>
     );
-  }
+  },
 );
 
 LinkedinIcon.displayName = "LinkedinIcon";
