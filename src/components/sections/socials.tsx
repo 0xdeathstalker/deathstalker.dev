@@ -19,10 +19,7 @@ export default function Socials() {
             key={key}
             href={link}
             target="_blank"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "icon" }),
-              "size-7"
-            )}
+            className={cn(buttonVariants({ variant: "outline", size: "icon" }), "size-7")}
           >
             {IconMap[key]}
           </Link>
@@ -40,10 +37,7 @@ function ResumeButton() {
     <Link
       href={portfolio.resume}
       target="_blank"
-      className={cn(
-        buttonVariants({ variant: "outline", size: "sm" }),
-        "h-7 font-normal"
-      )}
+      className={cn(buttonVariants({ variant: "outline", size: "sm" }), "h-7 font-normal")}
     >
       resume
     </Link>

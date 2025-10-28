@@ -28,7 +28,7 @@ export const works: Array<Work> = [
         <Link
           href="https://explorer.routernitro.com"
           target="_blank"
-          className="text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors ease-in-out"
+          className="hover:text-foreground underline underline-offset-4 transition-colors ease-in-out"
         >
           nitro explorer
         </Link>
@@ -36,7 +36,7 @@ export const works: Array<Work> = [
         <Link
           href="https://github.com/router-protocol/tangled"
           target="_blank"
-          className="text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors ease-in-out"
+          className="hover:text-foreground underline underline-offset-4 transition-colors ease-in-out"
         >
           wallet sdks
         </Link>
@@ -44,7 +44,7 @@ export const works: Array<Work> = [
         <Link
           href="https://routernitro.com/swap"
           target="_blank"
-          className="text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors ease-in-out"
+          className="hover:text-foreground underline underline-offset-4 transition-colors ease-in-out"
         >
           nitro dapp
         </Link>
