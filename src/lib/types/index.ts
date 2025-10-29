@@ -14,6 +14,7 @@ export type Project = {
 export type Work = {
   company: string;
   role: string;
+  logo: string;
   period: string;
   description: Array<ReactElement | string>;
   href: string;

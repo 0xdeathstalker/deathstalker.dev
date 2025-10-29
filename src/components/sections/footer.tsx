@@ -72,14 +72,14 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="h-24 md:h-48 lg:h-56 xl:h-72 w-full relative overflow-hidden"
+      className="relative h-24 md:h-48 lg:h-56 xl:h-72 w-full overflow-hidden"
     >
       <motion.h1
         onClick={toggleTheme}
         ref={textRef}
         style={{ fontWeight }}
         transition={{ duration: 0.1 }}
-        className="font-sans dark:text-neutral-600 cursor-pointer absolute bottom-0 left-0 right-0 text-6xl md:text-[140px] lg:text-[180px] xl:text-[210px] translate-y-[15%] tracking-tighter uppercase text-center mx-auto text-neutral-400"
+        className="text-shadow-md font-sans dark:text-neutral-600 cursor-pointer absolute bottom-0 left-0 right-0 text-6xl md:text-[140px] lg:text-[180px] xl:text-[210px] translate-y-[15%] tracking-tighter uppercase text-center mx-auto text-neutral-400"
       >
         dthstlkr
       </motion.h1>

@@ -1,9 +1,10 @@
 "use client";
 
 import { getCalApi } from "@calcom/embed-react";
-import { Calendar } from "lucide-react";
+import { CalendarCheck2Icon } from "lucide-react";
 import * as React from "react";
 import { Button } from "@/components/ui/button";
+// import { CalendarCheck2Icon } from "@/components/ui/calendar-icon";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 export const ScheduleCallButton = () => {
@@ -15,7 +16,7 @@ export const ScheduleCallButton = () => {
   }, []);
 
   return (
-    <Tooltip>
+    <Tooltip delayDuration={300}>
       <TooltipTrigger asChild>
         <Button
           variant="outline"
@@ -25,7 +26,7 @@ export const ScheduleCallButton = () => {
           data-cal-link="soumya-mukherjee/meeting"
           data-cal-config='{"layout":"month_view"}'
         >
-          <Calendar />
+          <CalendarCheck2Icon />
         </Button>
       </TooltipTrigger>
       <TooltipContent className="font-sans">Schedule a call</TooltipContent>

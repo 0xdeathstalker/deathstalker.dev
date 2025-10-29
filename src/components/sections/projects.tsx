@@ -2,15 +2,16 @@ import Link from "next/link";
 import LinkIcon from "@/components/link-icon";
 import { projects } from "@/lib/config/site-data";
 import type { Project } from "@/lib/types";
+import { Line } from "../ui/line";
 
 export default function Projects() {
   return (
     <section
       id="builds"
-      className="py-10"
+      className="py-10 px-4 max-[690px]:px-8"
     >
-      <h1 className="text-3xl font-medium mb-8 group w-fit">builds </h1>
-      <div className="space-y-12">
+      <h1 className="text-3xl text-shadow-sm dark:shadow-black/65 font-medium group w-fit">builds </h1>
+      <div>
         {projects.map((project) => (
           <ProjectItem
             key={project.title}
@@ -24,36 +25,43 @@ export default function Projects() {
 
 export function ProjectItem({ project }: { project: Project }) {
   return (
-    <div className="space-y-3 text-muted-foreground">
+    <div className="relative text-muted-foreground py-10">
       <div className="w-fit relative inline-flex items-center gap-1 link">
         <Link
           href={project.href}
           target="_blank"
-          className="group text-foreground text-lg relative hover:text-background"
+          className="group text-foreground text-lg relative before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-[1px] dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-[cubic-bezier(0.785,0.135,0.15,0.86)] hover:before:w-full"
         >
           {project.title}
-          <div className="-z-10 absolute bottom-1 w-0 h-[calc(theme(fontSize.lg)*theme(lineHeight.tight))] group-hover:w-full dark:bg-neutral-100 bg-neutral-900 transition-all ease-[cubic-bezier(0.785,0.135,0.15,0.86)]" />
         </Link>
 
         <LinkIcon />
       </div>
 
-      <h2 className="dark:text-neutral-300 text-neutral-700 text-xs">
+      <h2 className="dark:text-neutral-300 text-neutral-700 text-sm">
         {project.role} {project.period && `(${project.period})`}
       </h2>
 
-      <p className="text-sm">{project.description}</p>
+      <p className="leading-relaxed my-6">{project.description}</p>
 
       <div className="inline-flex items-center gap-3 flex-wrap">
         {project.technologies.map((technology) => (
           <div
             key={technology}
-            className="py-1 px-1.5 bg-accent rounded-sm text-xs"
+            className="py-1 px-1.5 bg-accent rounded-sm text-xs shadow"
           >
             {technology}
           </div>
         ))}
       </div>
+
+      <Line
+        orientation="horizontal"
+        variant="contained"
+        position="bottom"
+        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        className="max-w-[650px]"
+      />
     </div>
   );
 }

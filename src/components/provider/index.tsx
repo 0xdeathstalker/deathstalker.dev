@@ -11,7 +11,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
     <CSPostHogProvider>
       <ThemeProvider
         attribute="class"
-        defaultTheme="dark"
+        defaultTheme="light"
         disableTransitionOnChange
       >
         {/* smooth scrolling */}
