@@ -50,12 +50,12 @@ function Title() {
       <Line
         orientation="horizontal"
         position="top"
-        color="text-muted-foreground/15"
+        color="text-muted-foreground/25 dark:text-muted-foreground/20"
       />
       <Line
         orientation="horizontal"
         position="bottom"
-        color="text-muted-foreground/15"
+        color="text-muted-foreground/25 dark:text-muted-foreground/20"
       />
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-5 sm:justify-between">
@@ -74,7 +74,7 @@ function Bio() {
         orientation="horizontal"
         position="bottom"
         variant="contained"
-        color="text-muted-foreground/15"
+        color="text-muted-foreground/25 dark:text-muted-foreground/20"
         className="max-w-[650px]"
       />
 

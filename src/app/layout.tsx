@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Deathstalker",
+  title: "Soumya",
   description: "What I’ve been crafting instead of sleeping.",
   icons: {
     icon: "/images/favicon-dark.ico", // default favicon

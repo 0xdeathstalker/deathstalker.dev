@@ -64,7 +64,7 @@ export function Line({
   className,
   color = "text-muted-foreground/15",
   strokeWidth = "2",
-  dashArray = "6 6",
+  dashArray = "4 4",
 }: LineProps) {
   const isHorizontal = orientation === "horizontal";
   const defaultPosition = isHorizontal ? "top" : "left";
