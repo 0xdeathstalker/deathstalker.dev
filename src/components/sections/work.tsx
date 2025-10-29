@@ -49,8 +49,8 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
             src={`/images/work/${work.logo}`}
             alt={`${work.company} logo`}
             className={cn(
-              "size-11 rounded-sm grayscale dark:invert-0 opacity-75 dark:opacity-100 group-hover:opacity-100 group-hover:grayscale-0 group-hover:invert-0 transition-all ease-linear",
-              isOpen && "grayscale-0 invert-0 opacity-100",
+              "size-11 rounded-sm mix-blend-hard-light dark:mix-blend-normal grayscale opacity-75 dark:opacity-100 group-hover:opacity-100 group-hover:grayscale-0 group-hover:mix-blend-normal transition-all ease-linear",
+              isOpen && "grayscale-0 mix-blend-normal opacity-100",
             )}
           />
           <div className="flex flex-col items-start gap-0.5">
