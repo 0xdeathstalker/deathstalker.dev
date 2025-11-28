@@ -42,10 +42,7 @@ export default function Footer() {
       // calculating how much of the text is visible
       const textTop = textRect.top;
       const textHeight = textRect.height;
-      const textVisibleHeight = Math.max(
-        0,
-        Math.min(textHeight, windowHeight - textTop)
-      );
+      const textVisibleHeight = Math.max(0, Math.min(textHeight, windowHeight - textTop));
       const textVisibilityRatio = textVisibleHeight / textHeight;
 
       // mapping visibility ratio to font weight
