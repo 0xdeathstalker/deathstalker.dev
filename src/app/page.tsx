@@ -3,6 +3,7 @@ import Hero from "@/components/sections/hero";
 import Projects from "@/components/sections/projects";
 import Work from "@/components/sections/work";
 import { Line } from "@/components/ui/line";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -16,9 +17,9 @@ export default function Home() {
 
         <Work />
 
-        <Blogs />
-
         <Projects />
+
+        <Blogs />
 
         <div className="bg-gradient-to-t from-background to-background/50 absolute bottom-0 left-0 h-20 w-full z-50 pointer-events-none" />
       </div>

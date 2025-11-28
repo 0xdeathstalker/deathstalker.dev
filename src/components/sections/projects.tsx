@@ -6,17 +6,23 @@ import { Line } from "../ui/line";
 
 export default function Projects() {
   return (
-    <section
-      id="builds"
-      className="py-10 px-4 max-[690px]:px-8"
-    >
-      <h1 className="text-3xl text-shadow-sm dark:shadow-black/65 font-medium group w-fit">builds </h1>
+    <section id="builds" className="px-4 max-[690px]:px-8">
+      <div className="relative">
+        <h1 className="text-3xl py-4 text-shadow-sm dark:shadow-black/65 font-medium group w-fit">
+          builds{" "}
+        </h1>
+
+        <Line
+          orientation="horizontal"
+          variant="contained"
+          position="bottom"
+          color="text-muted-foreground/25 dark:text-muted-foreground/20"
+          className="max-w-[650px]"
+        />
+      </div>
       <div>
         {projects.map((project) => (
-          <ProjectItem
-            key={project.title}
-            project={project}
-          />
+          <ProjectItem key={project.title} project={project} />
         ))}
       </div>
     </section>
@@ -25,7 +31,7 @@ export default function Projects() {
 
 export function ProjectItem({ project }: { project: Project }) {
   return (
-    <div className="relative text-muted-foreground py-10">
+    <div className="relative text-muted-foreground py-6">
       <div className="w-fit relative inline-flex items-center gap-1 link">
         <Link
           href={project.href}

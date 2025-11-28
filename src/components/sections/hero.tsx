@@ -29,7 +29,9 @@ function Title() {
       />
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-5 sm:justify-between">
-        <h1 className="text-4xl font-medium text-shadow-sm dark:shadow-black/65">{portfolio.author}</h1>
+        <h1 className="text-4xl font-medium text-shadow-sm dark:shadow-black/65">
+          {portfolio.author}
+        </h1>
 
         <Socials />
       </div>
@@ -41,7 +43,7 @@ function Bio() {
   const contributions = getGitHubContributions();
 
   return (
-    <div className="relative py-10 px-4 max-[690px]:px-8 ">
+    <div className="relative pt-6 pb-8 px-4 max-[690px]:px-8 ">
       <Line
         orientation="horizontal"
         position="bottom"

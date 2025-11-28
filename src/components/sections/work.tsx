@@ -9,12 +9,22 @@ import { cn } from "@/lib/utils";
 
 export default function Work() {
   return (
-    <section id="work" className="relative py-10 px-4 max-[690px]:px-8">
-      <h1 className="text-3xl text-shadow-sm dark:shadow-black/65 font-medium mb-8 group w-fit">
-        places i've been{" "}
-      </h1>
+    <section id="work" className="relative px-4 max-[690px]:px-8">
+      <div className="relative">
+        <h1 className="text-3xl py-4 text-shadow-sm dark:shadow-black/65 font-medium group w-fit">
+          places i've been{" "}
+        </h1>
 
-      <div className="space-y-6">
+        <Line
+          orientation="horizontal"
+          variant="contained"
+          position="bottom"
+          color="text-muted-foreground/25 dark:text-muted-foreground/20"
+          className="max-w-[650px]"
+        />
+      </div>
+
+      <div className="space-y-6 py-6">
         {works.map((work, index) => (
           <WorkItemAccordion
             // biome-ignore lint/suspicious/noArrayIndexKey: no other variable to use as key
@@ -90,8 +100,8 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
       {hasDescription ? (
         <ul
           className={cn(
-            "mt-4 list-inside flex-col overflow-hidden transition-all duration-500 ease-in-out",
-            isOpen ? "max-h-screen" : "max-h-0"
+            "list-inside flex-col overflow-hidden transition-all duration-500 ease-in-out",
+            isOpen ? "pt-3 max-h-screen" : "max-h-0"
           )}
         >
           {work.description?.map((d, i) => (
