@@ -16,7 +16,8 @@ export type Work = {
   role: string;
   logo: string;
   period: string;
-  description: Array<ReactElement | string>;
+  description?: Array<ReactElement | string>;
+  bgColour?: string;
   href: string;
 };
 
