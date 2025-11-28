@@ -13,10 +13,9 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { getGitHubContributions } from "@/lib/actions/github-contributions";
 import { portfolio } from "@/lib/config/site-data";
+import { useGithubContributions } from "@/lib/hooks/useGithubContributions";
 import { cn } from "@/lib/utils";
-import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
 import Link from "next/link";
 
@@ -25,10 +24,7 @@ export function GithubContributions({
 }: {
   contributions: Promise<Array<Activity>>;
 }) {
-  const { data, isLoading, isError } = useQuery<Array<Activity>>({
-    queryKey: ["github-contributions"],
-    queryFn: getGitHubContributions,
-  });
+  const { data, isLoading } = useGithubContributions();
 
   if (isLoading) {
     return (
