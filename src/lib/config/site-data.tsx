@@ -7,8 +7,7 @@ export const portfolio = {
     "hey, i'm soumya — a design engineer building at the intersection of craft and code.",
     "i care about the details from clean ui to smooth interactions and interfaces that feel good to use. deep diving into web3 and motion design. i build things that are fast, functional and just polished enough to make you smile.",
   ],
-  resume:
-    "https://drive.google.com/file/d/1afreIcD7OfaimQ4HNHpHZsr3mxt18BS1/view?usp=drive_link",
+  resume: "https://drive.google.com/file/d/1afreIcD7OfaimQ4HNHpHZsr3mxt18BS1/view?usp=drive_link",
   socials: {
     github: "https://github.com/0xdeathstalker",
     linkedin: "https://www.linkedin.com/in/soumya-mukherjee-88a551248/",
@@ -34,12 +33,10 @@ export const works: Array<Work> = [
         >
           nitro explorer
         </Link>
-        , cross-chain blockchain explorer processing more than thousand daily
-        transactions
+        , cross-chain blockchain explorer processing more than thousand daily transactions
       </span>,
       <span>
-        integrated multiple blockchain ecosystems: (cosmos, bitcoin, tron, near,
-        ton) into{" "}
+        integrated multiple blockchain ecosystems: (cosmos, bitcoin, tron, near, ton) into{" "}
         <Link
           href="https://github.com/router-protocol/tangled"
           target="_blank"
@@ -50,8 +47,7 @@ export const works: Array<Work> = [
         , a wallet sdk developed for handling multi-chain wallet flows.
       </span>,
       <span>
-        optimised transaction ux by reducing drop-offs, improving completion
-        rates on{" "}
+        optimised transaction ux by reducing drop-offs, improving completion rates on{" "}
         <Link
           href="https://routernitro.com/swap"
           target="_blank"
@@ -89,14 +85,7 @@ export const projects: Array<Project> = [
       "eliminated layout shift and loading jank with full non-blocking data flow",
       "designed keyboard-driven cmdk navigation for rapid search experience",
     ],
-    technologies: [
-      "next.js",
-      "tailwindcss",
-      "shadcnui",
-      "zod",
-      "zustand",
-      "typescript",
-    ],
+    technologies: ["next.js", "tailwindcss", "shadcnui", "zod", "zustand", "typescript"],
     href: "https://nitro-explorer.vercel.app",
   },
   {
@@ -124,15 +113,7 @@ export const projects: Array<Project> = [
       "added system messages for join/leave activity and contextual flow",
       "implemented graceful UX for handling expired or invalid rooms",
     ],
-    technologies: [
-      "next.js",
-      "tailwind css",
-      "convex",
-      "react query",
-      "zod",
-      "uploadthing",
-      "posthog",
-    ],
+    technologies: ["next.js", "tailwind css", "convex", "react query", "zod", "uploadthing", "posthog"],
     href: "https://whispr-room.vercel.app",
   },
 ] as const;

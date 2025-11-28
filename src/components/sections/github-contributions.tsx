@@ -8,22 +8,14 @@ import {
   ContributionGraphFooter,
   ContributionGraphTotalCount,
 } from "@/components/kibo-ui/contribution-graph";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { portfolio } from "@/lib/config/site-data";
 import { useGithubContributions } from "@/lib/hooks/useGithubContributions";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import Link from "next/link";
 
-export function GithubContributions({
-  contributions,
-}: {
-  contributions: Promise<Array<Activity>>;
-}) {
+export function GithubContributions({ contributions }: { contributions: Promise<Array<Activity>> }) {
   const { data, isLoading } = useGithubContributions();
 
   if (isLoading) {
@@ -55,16 +47,19 @@ export function GithubContributions({
                     'data-[level="1"]:fill-[#adb5bd]',
                     'data-[level="2"]:fill-[#6c757d]',
                     'data-[level="3"]:fill-[#495057]',
-                    'data-[level="4"]:fill-[#343a40]'
+                    'data-[level="4"]:fill-[#343a40]',
                   )}
                 />
               </g>
             </TooltipTrigger>
 
-            <TooltipContent className="font-sans" sideOffset={0}>
+            <TooltipContent
+              className="font-sans"
+              sideOffset={0}
+            >
               <p>
-                {activity.count} contribution{activity.count > 1 ? "s" : null}{" "}
-                on {format(new Date(activity.date), "dd.MM.yyyy")}
+                {activity.count} contribution{activity.count > 1 ? "s" : null} on{" "}
+                {format(new Date(activity.date), "dd.MM.yyyy")}
               </p>
             </TooltipContent>
           </Tooltip>
