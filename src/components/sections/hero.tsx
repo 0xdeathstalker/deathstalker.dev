@@ -1,40 +1,10 @@
-"use client";
-
-import * as React from "react";
 import { Line } from "@/components/ui/line";
 import { portfolio } from "@/lib/config/site-data";
 import Socials from "./socials";
+import { GithubContributions } from "./github-contributions";
+import { getGitHubContributions } from "@/lib/actions/github-contributions";
 
 export default function Hero() {
-  React.useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
-        return;
-      }
-
-      switch (event.key.toLowerCase()) {
-        case "h":
-          event.preventDefault();
-          document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
-          break;
-        case "p":
-          event.preventDefault();
-          document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
-          break;
-        case "b":
-          event.preventDefault();
-          document.getElementById("builds")?.scrollIntoView({ behavior: "smooth" });
-          break;
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyPress);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyPress);
-    };
-  }, []);
-
   return (
     <section id="hero">
       <Title />
@@ -59,7 +29,9 @@ function Title() {
       />
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-5 sm:justify-between">
-        <h1 className="text-4xl font-medium text-shadow-sm dark:shadow-black/65">{portfolio.author}</h1>
+        <h1 className="text-4xl font-medium text-shadow-sm dark:shadow-black/65">
+          {portfolio.author}
+        </h1>
 
         <Socials />
       </div>
@@ -68,6 +40,8 @@ function Title() {
 }
 
 function Bio() {
+  const contributions = getGitHubContributions();
+
   return (
     <div className="relative py-10 px-4 max-[690px]:px-8 ">
       <Line
@@ -89,6 +63,8 @@ function Bio() {
           </p>
         ))}
       </div>
+
+      <GithubContributions contributions={contributions} />
     </div>
   );
 }
