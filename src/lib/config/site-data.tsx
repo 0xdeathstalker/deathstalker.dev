@@ -25,6 +25,7 @@ export const works: Array<Work> = [
     bgColour: "#5C43DD",
     period: "sep 2025 - present",
     href: "https://ladddr.com",
+    isCurrentEmployer: true,
   },
   {
     company: "router-protocol",
@@ -66,6 +67,7 @@ export const works: Array<Work> = [
       </span>,
     ],
     href: "https://www.routerprotocol.com",
+    isCurrentEmployer: true,
   },
   {
     company: "router-protocol",

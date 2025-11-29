@@ -69,7 +69,7 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
             )}
           />
           <div className="flex flex-col items-start gap-0.5">
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-2.5">
               <h2
                 className={cn(
                   "relative text-lg before:content-[''] before:absolute before:bottom-0.5 before:h-[1px] before:w-0 dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-[cubic-bezier(0.785,0.135,0.15,0.86)] group-hover:before:w-full",
@@ -78,10 +78,18 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
               >
                 {work.company}
               </h2>
+
+              {work.isCurrentEmployer && (
+                <span className="relative flex items-center justify-center">
+                  <span className="absolute inline-flex size-2 animate-ping rounded-full bg-foreground opacity-50" />
+                  <span className="absolute inline-flex size-1.5 rounded-full bg-foreground/50" />
+                </span>
+              )}
+
               {hasDescription && (
                 <ChevronRight
                   className={cn(
-                    "size-3.5 md:opacity-0 md:scale-40 md:-translate-x-1.5 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0 transition-all ease-in-out",
+                    "size-3.5 md:opacity-0 md:scale-40 md:-translate-x-1.5 group-hover:opacity-100 group-hover:scale-100 group-hover:-translate-x-0 transition-all ease-in-out",
                     isOpen && "rotate-90 md:opacity-100 md:scale-100 md:translate-x-0",
                   )}
                 />

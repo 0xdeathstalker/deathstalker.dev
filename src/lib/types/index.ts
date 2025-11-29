@@ -19,6 +19,7 @@ export type Work = {
   description?: Array<ReactElement | string>;
   bgColour?: string;
   href: string;
+  isCurrentEmployer?: boolean;
 };
 
 export type SocialKeys = keyof typeof portfolio.socials;

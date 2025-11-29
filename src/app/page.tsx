@@ -3,7 +3,6 @@ import Hero from "@/components/sections/hero";
 import Projects from "@/components/sections/projects";
 import Work from "@/components/sections/work";
 import { Line } from "@/components/ui/line";
-import { cn } from "@/lib/utils";
 
 export default function Home() {
   return (
