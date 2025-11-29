@@ -1,7 +1,8 @@
 "use client";
 
+import { format } from "date-fns";
+import Link from "next/link";
 import {
-  Activity,
   ContributionGraph,
   ContributionGraphBlock,
   ContributionGraphCalendar,
@@ -12,10 +13,8 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { portfolio } from "@/lib/config/site-data";
 import { useGithubContributions } from "@/lib/hooks/useGithubContributions";
 import { cn } from "@/lib/utils";
-import { format } from "date-fns";
-import Link from "next/link";
 
-export function GithubContributions({ contributions }: { contributions: Promise<Array<Activity>> }) {
+export function GithubContributions() {
   const { data, isLoading } = useGithubContributions();
 
   if (isLoading) {

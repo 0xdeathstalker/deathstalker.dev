@@ -38,6 +38,13 @@ export default function Work() {
       <Line
         orientation="horizontal"
         variant="contained"
+        position="top"
+        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        className="max-w-[650px]"
+      />
+      <Line
+        orientation="horizontal"
+        variant="contained"
         position="bottom"
         color="text-muted-foreground/25 dark:text-muted-foreground/20"
         className="max-w-[650px]"
@@ -82,7 +89,7 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
               {work.isCurrentEmployer && (
                 <span className="relative flex items-center justify-center">
                   <span className="absolute inline-flex size-2 animate-ping rounded-full bg-foreground opacity-50" />
-                  <span className="absolute inline-flex size-1.5 rounded-full bg-foreground/50" />
+                  <span className="absolute inline-flex size-1.5 rounded-full bg-foreground/70" />
                 </span>
               )}
 

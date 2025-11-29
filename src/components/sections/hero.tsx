@@ -1,8 +1,7 @@
 import { Line } from "@/components/ui/line";
 import { portfolio } from "@/lib/config/site-data";
-import Socials from "./socials";
 import { GithubContributions } from "./github-contributions";
-import { getGitHubContributions } from "@/lib/actions/github-contributions";
+import Socials from "./socials";
 
 export default function Hero() {
   return (
@@ -38,8 +37,6 @@ function Title() {
 }
 
 function Bio() {
-  const contributions = getGitHubContributions();
-
   return (
     <div className="relative pt-6 pb-8 px-4 max-[690px]:px-8 ">
       <Line
@@ -55,14 +52,14 @@ function Bio() {
           <p
             // biome-ignore lint/suspicious/noArrayIndexKey: no other variable to use as key
             key={i}
-            className="text-muted-foreground leading-relaxed"
+            className="text-[#272727] leading-relaxed"
           >
             {b}
           </p>
         ))}
       </div>
 
-      <GithubContributions contributions={contributions} />
+      <GithubContributions />
     </div>
   );
 }
