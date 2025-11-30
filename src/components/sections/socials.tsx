@@ -3,7 +3,11 @@
 import { FileText } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { portfolio } from "@/lib/config/site-data";
 import type { SocialKeys } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -11,7 +15,7 @@ import { ScheduleCallButton } from "./cal";
 
 export default function Socials() {
   return (
-    <div className="inline-flex items-center gap-2">
+    <div className="h-[29px] inline-flex items-center gap-2">
       <ResumeButton />
 
       {(Object.keys(portfolio.socials) as Array<SocialKeys>).map((key) => {
@@ -19,21 +23,23 @@ export default function Socials() {
         // const IconComponent = AnimatedIconMap[key];
 
         return (
-          <Tooltip
-            key={key}
-            delayDuration={300}
-          >
+          <Tooltip key={key}>
             <TooltipTrigger>
               <Link
                 href={link}
                 target="_blank"
-                className={cn(buttonVariants({ variant: "outline", size: "icon" }), "size-7")}
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "icon" }),
+                  "size-7"
+                )}
               >
                 {IconMap[key]}
                 {/* <IconComponent /> */}
               </Link>
             </TooltipTrigger>
-            <TooltipContent className="font-sans">{key.charAt(0).toUpperCase() + key.slice(1)}</TooltipContent>
+            <TooltipContent className="font-sans">
+              {key.charAt(0).toUpperCase() + key.slice(1)}
+            </TooltipContent>
           </Tooltip>
         );
       })}
@@ -51,10 +57,11 @@ function ResumeButton() {
         <Link
           href={portfolio.resume}
           target="_blank"
-          className={cn(buttonVariants({ variant: "outline", size: "icon" }), "size-7 font-normal")}
+          className={cn(
+            buttonVariants({ variant: "outline", size: "icon" }),
+            "size-7 font-normal"
+          )}
         >
-          {/* resume */}
-          {/* <FileTextIcon /> */}
           <FileText />
         </Link>
       </TooltipTrigger>
