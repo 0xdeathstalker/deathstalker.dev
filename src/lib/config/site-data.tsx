@@ -4,8 +4,8 @@ import type { Project, Work } from "@/lib/types";
 export const portfolio = {
   author: "soumya mukherjee",
   bio: [
-    "hey, i'm soumya — a design engineer building at the intersection of craft and code.",
-    "i care about the details from clean ui to smooth interactions and interfaces that feel good to use. deep diving into web3 and motion design. i build things that are fast, functional and just polished enough to make you smile.",
+    "hey, i'm soumya — a frontend developer building polished interfaces with react, next.js and typescript.",
+    "i focus on the craft: clean code, smooth animations and interactions that feel effortless. shipped production apps from blockchain explorers to component libraries. i build web experiences that are fast, functional and polished enough to make you smile.",
   ],
   resume: "https://drive.google.com/file/d/1afreIcD7OfaimQ4HNHpHZsr3mxt18BS1/view?usp=drive_link",
   socials: {
