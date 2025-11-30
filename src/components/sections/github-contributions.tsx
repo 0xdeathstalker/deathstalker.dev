@@ -3,31 +3,29 @@
 import { format } from "date-fns";
 import Link from "next/link";
 import {
+  type Activity,
   ContributionGraph,
   ContributionGraphBlock,
   ContributionGraphCalendar,
   ContributionGraphFooter,
   ContributionGraphTotalCount,
 } from "@/components/kibo-ui/contribution-graph";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { portfolio } from "@/lib/config/site-data";
-import { useGithubContributions } from "@/lib/hooks/useGithubContributions";
 import { cn } from "@/lib/utils";
 
-export function GithubContributions() {
-  const { data, isLoading } = useGithubContributions();
-
-  if (isLoading) {
-    return (
-      <div className="flex h-[120px] mt-8 w-full items-center justify-center">
-        <div className="bg-muted size-full animate-pulse" />
-      </div>
-    );
-  }
-
+function GithubContributions({
+  contributions,
+}: {
+  contributions: Array<Activity>;
+}) {
   return (
     <ContributionGraph
-      data={data ?? []}
+      data={contributions}
       blockSize={8}
       blockMargin={3}
       className="mt-8 w-full"
@@ -46,19 +44,16 @@ export function GithubContributions() {
                     'data-[level="1"]:fill-[#adb5bd]',
                     'data-[level="2"]:fill-[#6c757d]',
                     'data-[level="3"]:fill-[#495057]',
-                    'data-[level="4"]:fill-[#343a40]',
+                    'data-[level="4"]:fill-[#343a40]'
                   )}
                 />
               </g>
             </TooltipTrigger>
 
-            <TooltipContent
-              className="font-sans"
-              sideOffset={0}
-            >
+            <TooltipContent className="font-sans" sideOffset={0}>
               <p>
-                {activity.count} contribution{activity.count > 1 ? "s" : null} on{" "}
-                {format(new Date(activity.date), "dd.MM.yyyy")}
+                {activity.count} contribution{activity.count > 1 ? "s" : null}{" "}
+                on {format(new Date(activity.date), "dd.MM.yyyy")}
               </p>
             </TooltipContent>
           </Tooltip>
@@ -86,3 +81,13 @@ export function GithubContributions() {
     </ContributionGraph>
   );
 }
+
+function GithubContributionsFallback() {
+  return (
+    <div className="flex h-[120px] mt-8 w-full items-center justify-center">
+      <div className="bg-muted size-full animate-pulse" />
+    </div>
+  );
+}
+
+export { GithubContributions, GithubContributionsFallback };

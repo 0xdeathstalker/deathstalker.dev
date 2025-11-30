@@ -1,4 +1,5 @@
 import { Line } from "@/components/ui/line";
+import { getGitHubContributions } from "@/lib/actions/github-contributions";
 import { portfolio } from "@/lib/config/site-data";
 import { GithubContributions } from "./github-contributions";
 import Socials from "./socials";
@@ -28,7 +29,9 @@ function Title() {
       />
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-5 sm:justify-between">
-        <h1 className="text-4xl font-medium text-shadow-sm dark:shadow-black/65">{portfolio.author}</h1>
+        <h1 className="text-4xl font-medium text-shadow-sm dark:shadow-black/65">
+          {portfolio.author}
+        </h1>
 
         <Socials />
       </div>
@@ -36,7 +39,9 @@ function Title() {
   );
 }
 
-function Bio() {
+async function Bio() {
+  const contributions = await getGitHubContributions();
+
   return (
     <div className="relative pt-6 pb-8 px-4 max-[690px]:px-8 ">
       <Line
@@ -59,7 +64,7 @@ function Bio() {
         ))}
       </div>
 
-      <GithubContributions />
+      <GithubContributions contributions={contributions} />
     </div>
   );
 }
