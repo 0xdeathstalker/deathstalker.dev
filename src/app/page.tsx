@@ -7,6 +7,7 @@ export default function Home() {
       <div className="bg-gradient-to-b from-background to-transparent fixed top-0 left-0 h-10 w-full z-50 pointer-events-none" />
 
       <VerticalLines />
+
       <Content />
 
       <div className="bg-gradient-to-t from-background to-transparent fixed bottom-0 left-0 h-10 w-full z-50 pointer-events-none" />

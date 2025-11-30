@@ -4,7 +4,7 @@ import { portfolio } from "@/lib/config/site-data";
 import { GithubContributions } from "./github-contributions";
 import Socials from "./socials";
 
-export default function Hero() {
+export function Hero() {
   return (
     <section id="hero">
       <Title />
@@ -29,7 +29,9 @@ function Title() {
       />
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-5 sm:justify-between">
-        <h1 className="text-4xl font-medium text-shadow-sm dark:shadow-black/65">{portfolio.author}</h1>
+        <h1 className="text-4xl font-medium text-shadow-sm dark:shadow-black/65">
+          {portfolio.author}
+        </h1>
 
         <Socials />
       </div>
