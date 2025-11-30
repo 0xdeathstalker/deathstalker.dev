@@ -6,7 +6,10 @@ import { Line } from "../ui/line";
 
 export function Projects() {
   return (
-    <section id="builds" className="px-4 max-[690px]:px-8">
+    <section
+      id="builds"
+      className="px-4 max-[690px]:px-8"
+    >
       <div className="relative">
         <Line
           orientation="horizontal"
@@ -16,9 +19,7 @@ export function Projects() {
           className="max-w-[650px]"
         />
 
-        <h1 className="text-3xl py-4 text-shadow-sm dark:shadow-black/65 font-medium group w-fit">
-          builds{" "}
-        </h1>
+        <h1 className="text-3xl py-4 text-shadow-sm dark:shadow-black/65 font-medium group w-fit">builds </h1>
 
         <Line
           orientation="horizontal"
@@ -30,7 +31,10 @@ export function Projects() {
       </div>
       <div>
         {projects.map((project) => (
-          <ProjectItem key={project.title} project={project} />
+          <ProjectItem
+            key={project.title}
+            project={project}
+          />
         ))}
       </div>
     </section>
@@ -39,7 +43,7 @@ export function Projects() {
 
 export function ProjectItem({ project }: { project: Project }) {
   return (
-    <div className="relative text-muted-foreground py-6">
+    <div className="relative text-[#272727] py-6">
       <div className="w-fit relative inline-flex items-center gap-1 link">
         <Link
           href={project.href}
@@ -52,7 +56,7 @@ export function ProjectItem({ project }: { project: Project }) {
         <LinkIcon />
       </div>
 
-      <h2 className="dark:text-neutral-300 text-neutral-700 text-sm">
+      <h2 className="dark:text-neutral-300 text-muted-foreground/90 text-sm">
         {project.role} {project.period && `(${project.period})`}
       </h2>
 
@@ -62,7 +66,7 @@ export function ProjectItem({ project }: { project: Project }) {
         {project.technologies.map((technology) => (
           <div
             key={technology}
-            className="py-1 px-1.5 bg-accent rounded-sm text-xs shadow"
+            className="py-1 px-1.5 bg-accent rounded-sm text-muted-foreground text-xs shadow"
           >
             {technology}
           </div>
