@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import Provider from "@/components/provider";
 import Footer from "@/components/sections/footer";
-import DynamicFavicon from "@/components/ui/favicon";
+import DynamicFavicon from "@/components/ui/dynamic-favicon";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "Soumya",
   description: "What I’ve been crafting instead of sleeping.",
   icons: {
-    icon: "/images/favicon-dark.ico", // default favicon
+    icon: "/images/favicons/s-favicon-light.ico", // default favicon
   },
 };
 
@@ -29,11 +29,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-    >
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <Provider>
           <DynamicFavicon />
           {children}
