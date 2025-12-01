@@ -10,11 +10,19 @@ import {
   ContributionGraphFooter,
   ContributionGraphTotalCount,
 } from "@/components/kibo-ui/contribution-graph";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { portfolio } from "@/lib/config/site-data";
 import { cn } from "@/lib/utils";
 
-function GithubContributions({ contributions }: { contributions: Array<Activity> }) {
+function GithubContributions({
+  contributions,
+}: {
+  contributions: Array<Activity>;
+}) {
   return (
     <ContributionGraph
       data={contributions}
@@ -36,19 +44,16 @@ function GithubContributions({ contributions }: { contributions: Array<Activity>
                     'data-[level="1"]:fill-[#adb5bd]',
                     'data-[level="2"]:fill-[#6c757d]',
                     'data-[level="3"]:fill-[#495057]',
-                    'data-[level="4"]:fill-[#343a40]',
+                    'data-[level="4"]:fill-[#343a40]'
                   )}
                 />
               </g>
             </TooltipTrigger>
 
-            <TooltipContent
-              className="font-sans"
-              sideOffset={0}
-            >
+            <TooltipContent className="font-sans" sideOffset={0}>
               <p>
-                {activity.count} contribution{activity.count > 1 ? "s" : null} on{" "}
-                {format(new Date(activity.date), "dd.MM.yyyy")}
+                {activity.count} contribution{activity.count > 1 ? "s" : null}{" "}
+                on {format(new Date(activity.date), "dd.MM.yyyy")}
               </p>
             </TooltipContent>
           </Tooltip>
@@ -59,16 +64,7 @@ function GithubContributions({ contributions }: { contributions: Array<Activity>
         <ContributionGraphTotalCount>
           {({ totalCount, year }) => (
             <div className="text-muted-foreground text-xs">
-              {totalCount.toLocaleString("en")} contributions in {year} on{" "}
-              <Link
-                className="font-medium underline underline-offset-4"
-                href={`https://github.com${portfolio.github_username}`}
-                target="_blank"
-                rel="noopener"
-              >
-                GitHub
-              </Link>
-              .
+              {totalCount.toLocaleString("en")} contributions in {year}
             </div>
           )}
         </ContributionGraphTotalCount>
