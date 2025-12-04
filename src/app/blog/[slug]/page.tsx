@@ -20,21 +20,32 @@ export default async function Blog({ params }: PageProps) {
 
   return (
     <main className="mx-auto max-w-[70ch] min-h-screen font-sans px-4 pt-20">
+      <div className="bg-gradient-to-b from-background to-transparent fixed top-0 left-0 h-10 w-full z-50 pointer-events-none" />
+
       <Link
         href="/"
-        className={cn(buttonVariants({ variant: "outline" }), "h-7 has-[>svg]:pl-1 gap-1 mb-8 text-muted-foreground")}
+        className={cn(
+          buttonVariants({ variant: "outline" }),
+          "h-7 has-[>svg]:pl-1 gap-1 mb-8 text-muted-foreground"
+        )}
       >
         <ChevronLeft className="size-4" />
         Back
       </Link>
 
-      <h1 className="text-4xl text-foreground font-semibold mb-4">{blog.metadata.title}</h1>
+      <h1 className="text-4xl text-foreground font-semibold mb-4">
+        {blog.metadata.title}
+      </h1>
 
-      <span className="mb-8 inline-block text-muted-foreground">{formatDate(blog.metadata.date)}</span>
+      <span className="mb-8 inline-block text-muted-foreground">
+        {formatDate(blog.metadata.date)}
+      </span>
 
       <article className="prose prose-invert prose-headings:text-white prose-a:text-white hover:prose-a:underline">
         <BlogContent source={blog.content} />
       </article>
+
+      <div className="bg-gradient-to-t from-background to-transparent fixed bottom-0 left-0 h-10 w-full z-50 pointer-events-none" />
     </main>
   );
 }
