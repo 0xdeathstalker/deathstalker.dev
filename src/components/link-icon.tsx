@@ -1,10 +1,12 @@
 import { ArrowUpRight } from "lucide-react";
+import type * as React from "react";
+import { cn } from "@/lib/utils";
 
-export default function LinkIcon() {
+export default function LinkIcon({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div className="w-4 h-4 grid place-items-center overflow-hidden">
-      <ArrowUpRight className="w-4 h-4 text-foreground link-svg" />
-      <ArrowUpRight className="w-4 h-4 text-foreground link-svg" />
+    <div className={cn("size-4 grid place-items-center overflow-hidden", className)}>
+      <ArrowUpRight className="size-4 text-foreground link-svg" />
+      <ArrowUpRight className="size-4 text-foreground link-svg" />
     </div>
   );
 }

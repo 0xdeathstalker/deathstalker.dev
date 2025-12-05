@@ -64,15 +64,18 @@ function BlogItem({ slug, title, date }: { slug: string; title: string; date: st
 
   return (
     <div className="flex items-center justify-between">
-      <div className="w-fit relative inline-flex items-center gap-1 link">
-        <Link
-          href={`/blog/${slug}`}
-          className="group text-foreground text-lg relative before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-[1px] dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-[cubic-bezier(0.785,0.135,0.15,0.86)] hover:before:w-full"
-        >
-          {title.toLowerCase()}
-        </Link>
+      <div className="w-fit relative inline-flex items-center gap-1 link overflow-x-hidden">
+        <div className="relative overflow-x-hidden">
+          <Link
+            href={`/blog/${slug}`}
+            className="text-lg text-nowrap before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-[1px] dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-[cubic-bezier(0.785,0.135,0.15,0.86)] hover:before:w-full"
+          >
+            {title.toLowerCase()}
+          </Link>
+          <div className="sm:hidden absolute top-0 right-0 h-full w-10 bg-linear-to-l from-background to-transparent" />
+        </div>
 
-        <LinkIcon />
+        <LinkIcon className="size-5" />
       </div>
 
       <span className="hidden sm:inline text-muted-foreground">{formattedDate}</span>

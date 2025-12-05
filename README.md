@@ -15,6 +15,7 @@ A modern, performant portfolio website showcasing my work as a frontend develope
 ## TODO
 
 - [x] convert the github contributions component from client to server
+- [ ] need to fetch the github contributions based on the user timezone
 - [ ] orchestrate enter animation
 - [ ] refactor to static site
 - [ ] modify the bottom mask such that it disappears when scrolled to the bottom
