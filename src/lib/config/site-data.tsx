@@ -31,7 +31,7 @@ export const works: Array<Work> = [
     company: "router-protocol",
     role: "frontend developer",
     logo: "router.png",
-    period: "sep 2023 - present",
+    period: "sep 2023 - sep 2025",
     description: [
       <span>
         built{" "}

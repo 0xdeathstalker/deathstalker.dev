@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import * as React from "react";
 
-export default function DynamicFavicon() {
+export function Favicon() {
   const { theme, resolvedTheme } = useTheme();
 
   React.useEffect(() => {
