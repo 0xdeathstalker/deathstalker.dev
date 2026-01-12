@@ -3,7 +3,11 @@
 import { FileText } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { portfolio } from "@/lib/config/site-data";
 import type { SocialKeys } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -24,13 +28,18 @@ export default function Socials() {
               <Link
                 href={link}
                 target="_blank"
-                className={cn(buttonVariants({ variant: "outline", size: "icon" }), "size-7")}
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "icon" }),
+                  "size-7"
+                )}
               >
                 {IconMap[key]}
                 {/* <IconComponent /> */}
               </Link>
             </TooltipTrigger>
-            <TooltipContent className="font-sans">{key.charAt(0).toUpperCase() + key.slice(1)}</TooltipContent>
+            <TooltipContent className="font-sans">
+              {key.charAt(0).toUpperCase() + key.slice(1)}
+            </TooltipContent>
           </Tooltip>
         );
       })}
@@ -47,8 +56,10 @@ function ResumeButton() {
       <TooltipTrigger>
         <Link
           href={portfolio.resume}
-          target="_blank"
-          className={cn(buttonVariants({ variant: "outline", size: "icon" }), "size-7 font-normal")}
+          className={cn(
+            buttonVariants({ variant: "outline", size: "icon" }),
+            "size-7 font-normal"
+          )}
         >
           <FileText />
         </Link>
