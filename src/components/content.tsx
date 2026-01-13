@@ -3,6 +3,7 @@ import { Hero } from "@/components/sections/hero";
 import { Projects } from "@/components/sections/projects";
 import { Work } from "@/components/sections/work";
 import { PatternSeparator } from "@/components/ui/pattern-separator";
+import { Crafts } from "./sections/crafts";
 
 function Content() {
   return (
@@ -14,6 +15,9 @@ function Content() {
       <PatternSeparator />
 
       <Projects />
+      <PatternSeparator />
+
+      <Crafts />
       <PatternSeparator />
 
       <Blogs />
