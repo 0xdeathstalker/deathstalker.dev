@@ -34,21 +34,6 @@ export function Work() {
           />
         ))}
       </div>
-
-      <Line
-        orientation="horizontal"
-        variant="contained"
-        position="top"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
-        className="max-w-[650px]"
-      />
-      <Line
-        orientation="horizontal"
-        variant="contained"
-        position="bottom"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
-        className="max-w-[650px]"
-      />
     </section>
   );
 }

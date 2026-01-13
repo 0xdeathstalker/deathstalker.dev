@@ -42,14 +42,6 @@ async function Bio() {
 
   return (
     <div className="relative pt-6 pb-8 px-4 max-[690px]:px-8 ">
-      <Line
-        orientation="horizontal"
-        position="bottom"
-        variant="contained"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
-        className="max-w-[650px]"
-      />
-
       <div className="space-y-4">
         {portfolio.bio.map((b, i) => (
           <p

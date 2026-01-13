@@ -1,6 +1,16 @@
+import { Line } from "./line";
+
 function PatternSeparator() {
   return (
     <div className="h-10 w-full relative">
+      <Line
+        orientation="horizontal"
+        variant="contained"
+        position="top"
+        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        className="max-w-[650px]"
+      />
+
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
@@ -11,6 +21,13 @@ function PatternSeparator() {
             repeating-linear-gradient(157.5deg, transparent, transparent 2px, rgba(31, 41, 55, 0.04) 2px, rgba(31, 41, 55, 0.04) 3px, transparent 3px, transparent 8px)
           `,
         }}
+      />
+      <Line
+        orientation="horizontal"
+        variant="contained"
+        position="bottom"
+        className="max-w-[650px]"
+        color="text-muted-foreground/25 dark:text-muted-foreground/20"
       />
     </div>
   );

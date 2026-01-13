@@ -11,14 +11,6 @@ export function Projects() {
       className="px-4 max-[690px]:px-8"
     >
       <div className="relative">
-        <Line
-          orientation="horizontal"
-          variant="contained"
-          position="top"
-          color="text-muted-foreground/25 dark:text-muted-foreground/20"
-          className="max-w-[650px]"
-        />
-
         <h1 className="text-3xl py-4 text-shadow-sm dark:shadow-black/65 font-medium group w-fit">builds </h1>
 
         <Line
@@ -30,18 +22,22 @@ export function Projects() {
         />
       </div>
       <div>
-        {projects.map((project) => (
-          <ProjectItem
-            key={project.title}
-            project={project}
-          />
-        ))}
+        {projects.map((project, idx) => {
+          const isLast = projects.length - 1 === idx;
+          return (
+            <ProjectItem
+              key={project.title}
+              project={project}
+              isLast={isLast}
+            />
+          );
+        })}
       </div>
     </section>
   );
 }
 
-export function ProjectItem({ project }: { project: Project }) {
+export function ProjectItem({ project, isLast }: { project: Project; isLast: boolean }) {
   return (
     <div className="relative text-[#272727] py-6">
       <div className="w-fit relative inline-flex items-center gap-1 link">
@@ -73,13 +69,15 @@ export function ProjectItem({ project }: { project: Project }) {
         ))}
       </div>
 
-      <Line
-        orientation="horizontal"
-        variant="contained"
-        position="bottom"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
-        className="max-w-[650px]"
-      />
+      {!isLast ? (
+        <Line
+          orientation="horizontal"
+          variant="contained"
+          position="bottom"
+          color="text-muted-foreground/25 dark:text-muted-foreground/20"
+          className="max-w-[650px]"
+        />
+      ) : null}
     </div>
   );
 }

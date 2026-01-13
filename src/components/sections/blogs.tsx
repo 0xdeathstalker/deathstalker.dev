@@ -13,14 +13,6 @@ export function Blogs() {
       className="relative px-4 max-[690px]:px-8"
     >
       <div className="relative">
-        <Line
-          orientation="horizontal"
-          variant="contained"
-          position="top"
-          color="text-muted-foreground/25 dark:text-muted-foreground/20"
-          className="max-w-[650px]"
-        />
-
         <h1 className="text-3xl py-4 text-shadow-sm dark:shadow-black/65 font-medium group w-fit">writings </h1>
 
         <Line
