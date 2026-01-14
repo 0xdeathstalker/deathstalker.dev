@@ -1,5 +1,5 @@
 import { Line } from "@/components/ui/line";
-import { crafts } from "@/lib/config/site-data";
+import { type Craft, crafts } from "@/lib/config/site-data";
 import { PatternSeparator } from "@/components/ui/pattern-separator";
 import * as React from "react";
 
@@ -24,31 +24,11 @@ function Crafts() {
         {crafts.map((craft, idx) => {
           const isLast = idx !== crafts.length - 1;
           return (
-            <React.Fragment>
-              <div
-                key={`${craft.title}-${idx}`}
-                className="relative px-4"
-              >
-                <video
-                  src={craft.video}
-                  playsInline
-                  autoPlay
-                  loop
-                  muted
-                >
-                  <track
-                    kind="captions"
-                    srcLang="en"
-                    label="English"
-                  />
-                </video>
-                <span className="absolute bottom-1 left-5 bg-background px-1 font-mono text-[10px] tracking-tight">
-                  {craft.title}
-                </span>
-              </div>
-
-              {isLast ? <PatternSeparator /> : null}
-            </React.Fragment>
+            <CraftItem
+              key={`${craft.title}-${idx}`}
+              craft={craft}
+              isLast={isLast}
+            />
           );
         })}
       </div>
@@ -61,6 +41,35 @@ function Crafts() {
         color="text-muted-foreground/25 dark:text-muted-foreground/20"
       />
     </section>
+  );
+}
+
+function CraftItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
+  return (
+    <React.Fragment>
+      <div className="relative px-4">
+        <video
+          src={craft.video}
+          poster={craft.coverImg}
+          playsInline
+          autoPlay
+          loop
+          muted
+          preload="auto"
+        >
+          <track
+            kind="captions"
+            srcLang="en"
+            label="English"
+          />
+        </video>
+        <span className="absolute bottom-1 left-5 bg-background px-1 font-mono text-[10px] tracking-tight">
+          {craft.title}
+        </span>
+      </div>
+
+      {isLast ? <PatternSeparator /> : null}
+    </React.Fragment>
   );
 }
 

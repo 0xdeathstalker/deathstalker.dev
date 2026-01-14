@@ -127,13 +127,17 @@ export const projects: Array<Project> = [
   },
 ] as const;
 
-export const crafts: Array<{ title: string; video: string }> = [
+export type Craft = { title: string; video: string; coverImg: string };
+
+export const crafts: Array<Craft> = [
   {
     title: "shared-layout-animation",
     video: "https://ik.imagekit.io/r1y1pa7hq/experiments/shared-layout-animation.mov",
+    coverImg: "https://ik.imagekit.io/r1y1pa7hq/experiments/shared-layout-animations-cover-image.png",
   },
   {
     title: "input-morph-text-animation",
     video: "https://ik.imagekit.io/r1y1pa7hq/experiments/input-morph-text-animation.mov",
+    coverImg: "https://ik.imagekit.io/r1y1pa7hq/experiments/input-morph-cover-image.png",
   },
 ];
