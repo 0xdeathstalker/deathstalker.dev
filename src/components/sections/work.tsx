@@ -6,6 +6,7 @@ import { Line } from "@/components/ui/line";
 import { works } from "@/lib/config/site-data";
 import type { Work as WorkType } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { SectionHeading } from "../ui/heading";
 
 export function Work() {
   return (
@@ -13,17 +14,7 @@ export function Work() {
       id="work"
       className="relative px-4 max-[690px]:px-8"
     >
-      <div className="relative">
-        <h1 className="text-3xl py-4 text-shadow-sm dark:shadow-black/65 font-medium group w-fit">places i've been </h1>
-
-        <Line
-          orientation="horizontal"
-          variant="contained"
-          position="bottom"
-          color="text-muted-foreground/25 dark:text-muted-foreground/20"
-          className="max-w-[650px]"
-        />
-      </div>
+      <SectionHeading>experience</SectionHeading>
 
       <div className="space-y-6 py-6">
         {works.map((work, index) => (

@@ -2,6 +2,7 @@ import Link from "next/link";
 import LinkIcon from "@/components/link-icon";
 import { Line } from "@/components/ui/line";
 import { getBlogs } from "@/lib/actions/blog";
+import { SectionHeading } from "../ui/heading";
 
 // sorting by date - latest blogs
 const blogs = getBlogs().sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
@@ -12,17 +13,8 @@ export function Blogs() {
       id="blogs"
       className="relative px-4 max-[690px]:px-8"
     >
-      <div className="relative">
-        <h1 className="text-3xl py-4 text-shadow-sm dark:shadow-black/65 font-medium group w-fit">writings </h1>
+      <SectionHeading>writings</SectionHeading>
 
-        <Line
-          orientation="horizontal"
-          variant="contained"
-          position="bottom"
-          color="text-muted-foreground/25 dark:text-muted-foreground/20"
-          className="max-w-[650px]"
-        />
-      </div>
       <div className="space-y-4 py-6">
         {blogs.map((blog) => (
           <BlogItem

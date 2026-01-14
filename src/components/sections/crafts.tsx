@@ -1,24 +1,13 @@
+import { SectionHeading } from "@/components/ui/heading";
 import { Line } from "@/components/ui/line";
-import { type Craft, crafts } from "@/lib/config/site-data";
 import { PatternSeparator } from "@/components/ui/pattern-separator";
+import { type Craft, crafts } from "@/lib/config/site-data";
 import * as React from "react";
 
 function Crafts() {
   return (
     <section id="crafts">
-      <div className="relative">
-        <h1 className="text-3xl py-4 text-shadow-sm dark:shadow-black/65 font-medium group w-fit px-4 max-[690px]:px-8">
-          craft
-        </h1>
-
-        <Line
-          orientation="horizontal"
-          variant="contained"
-          position="bottom"
-          color="text-muted-foreground/25 dark:text-muted-foreground/20"
-          className="max-w-[650px]"
-        />
-      </div>
+      <SectionHeading className="px-4 max-[690px]:px-8">craft</SectionHeading>
 
       <div className="relative space-y-4 py-4">
         {crafts.map((craft, idx) => {

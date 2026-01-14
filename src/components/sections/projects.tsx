@@ -1,8 +1,9 @@
-import Link from "next/link";
 import LinkIcon from "@/components/link-icon";
+import { SectionHeading } from "@/components/ui/heading";
+import { Line } from "@/components/ui/line";
 import { projects } from "@/lib/config/site-data";
 import type { Project } from "@/lib/types";
-import { Line } from "../ui/line";
+import Link from "next/link";
 
 export function Projects() {
   return (
@@ -10,17 +11,7 @@ export function Projects() {
       id="builds"
       className="px-4 max-[690px]:px-8"
     >
-      <div className="relative">
-        <h1 className="text-3xl py-4 text-shadow-sm dark:shadow-black/65 font-medium group w-fit">builds </h1>
-
-        <Line
-          orientation="horizontal"
-          variant="contained"
-          position="bottom"
-          color="text-muted-foreground/25 dark:text-muted-foreground/20"
-          className="max-w-[650px]"
-        />
-      </div>
+      <SectionHeading>builds</SectionHeading>
       <div>
         {projects.map((project, idx) => {
           const isLast = projects.length - 1 === idx;
