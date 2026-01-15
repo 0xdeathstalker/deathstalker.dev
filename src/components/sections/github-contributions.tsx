@@ -16,7 +16,7 @@ function GithubContributions({ contributions }: { contributions: Array<Activity>
   return (
     <ContributionGraph
       data={contributions}
-      blockSize={8}
+      blockSize={8.72}
       blockMargin={3}
       className="mt-8 w-full"
     >

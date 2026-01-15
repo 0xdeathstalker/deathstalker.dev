@@ -36,7 +36,7 @@ function Crafts() {
 function CraftItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
   return (
     <React.Fragment>
-      <div className="relative px-4">
+      <div className="relative px-4 group overflow-hidden">
         <video
           src={craft.video}
           poster={craft.coverImg}
@@ -52,7 +52,7 @@ function CraftItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
             label="English"
           />
         </video>
-        <span className="absolute bottom-1 left-5 bg-background px-1 font-mono text-[10px] tracking-tight">
+        <span className="absolute bottom-1 left-5 bg-background px-1 font-mono text-xs tracking-tight translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-[cubic-bezier(0.19,_1,_0.22,_1)]">
           {craft.title}
         </span>
       </div>
