@@ -11,7 +11,7 @@ export function Projects() {
       id="builds"
       className="px-4 max-[690px]:px-8"
     >
-      <SectionHeading>builds</SectionHeading>
+      <SectionHeading>projects</SectionHeading>
       <div>
         {projects.map((project, idx) => {
           const isLast = projects.length - 1 === idx;

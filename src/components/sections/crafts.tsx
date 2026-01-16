@@ -2,6 +2,7 @@ import { SectionHeading } from "@/components/ui/heading";
 import { Line } from "@/components/ui/line";
 import { PatternSeparator } from "@/components/ui/pattern-separator";
 import { type Craft, crafts } from "@/lib/config/site-data";
+import { cn } from "@/lib/utils";
 import * as React from "react";
 
 function Crafts() {
@@ -52,7 +53,13 @@ function CraftItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
             label="English"
           />
         </video>
-        <span className="absolute bottom-1 left-5 bg-background px-1 font-mono text-xs tracking-tight translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-[cubic-bezier(0.19,_1,_0.22,_1)]">
+        <span
+          className={cn(
+            "absolute bottom-1 left-5 py-0.5 px-1.5 translate-y-[200%] font-mono text-xs tracking-tight",
+            "bg-background border border-muted-foreground/25 border-dashed",
+            "group-hover:translate-0 transition-transform duration-500 ease-[cubic-bezier(0.19,_1,_0.22,_1)]",
+          )}
+        >
           {craft.title}
         </span>
       </div>

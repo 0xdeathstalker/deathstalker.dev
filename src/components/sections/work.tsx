@@ -1,12 +1,11 @@
 "use client";
 
-import { ChevronRight } from "lucide-react";
-import * as React from "react";
-import { Line } from "@/components/ui/line";
 import { works } from "@/lib/config/site-data";
 import type { Work as WorkType } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { SectionHeading } from "../ui/heading";
+import { ChevronRight } from "lucide-react";
+import * as React from "react";
+import { SectionHeading } from "@/components/ui/heading";
 
 export function Work() {
   return (
@@ -89,15 +88,15 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
       {hasDescription ? (
         <ul
           className={cn(
-            "list-inside flex-col overflow-hidden transition-all duration-500 ease-in-out",
-            isOpen ? "pt-3 max-h-screen" : "max-h-0",
+            "space-y-3.5 list-inside flex-col overflow-hidden transition-all duration-[350ms] ease-in-out",
+            isOpen ? "max-h-screen" : "max-h-0",
           )}
         >
           {work.description?.map((d, i) => (
             <li
               // biome-ignore lint/suspicious/noArrayIndexKey: no other variable to use as key
               key={i}
-              className="flex items-center w-full leading-relaxed"
+              className="flex items-center w-full leading-snug mt-3"
             >
               <div className="pr-2 self-start">•</div>
 

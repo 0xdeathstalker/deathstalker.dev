@@ -20,12 +20,18 @@ export const portfolio = {
 export const works: Array<Work> = [
   {
     company: "ladddr",
-    role: "developer (freelancing)",
+    role: "freelancer",
     logo: "ladddr.png",
     bgColour: "#5C43DD",
     period: "sep 2025 - present",
     href: "https://ladddr.com",
     isCurrentEmployer: true,
+    description: [
+      "built a fullstack b2b saas platform for legal and tax compliance services, featuring multiple workflows",
+      "implemented secure payment infrastructure with razorpay, one-time token system for post payment operations and automated payment confirmation emails via resend",
+      "built multi-channel lead management system with google sheets api and telecrm",
+      "developed a headless cms-driven blog using sanity with improved seo and performance",
+    ],
   },
   {
     company: "router-protocol",
@@ -36,13 +42,13 @@ export const works: Array<Work> = [
       <span>
         built{" "}
         <Link
-          href="https://explorer.routernitro.com"
+          href="https://nitro-explorer.vercel.app"
           target="_blank"
           className="hover:text-foreground underline underline-offset-4 transition-colors ease-in-out"
         >
           nitro explorer
         </Link>
-        , cross-chain blockchain explorer processing more than thousand daily transactions
+        , cross-chain blockchain explorer processing more than thousand daily transactions.
       </span>,
       <span>
         integrated multiple blockchain ecosystems: (cosmos, bitcoin, tron, near, ton) into{" "}
@@ -64,6 +70,7 @@ export const works: Array<Work> = [
         >
           nitro app
         </Link>
+        .
       </span>,
     ],
     href: "https://www.routerprotocol.com",
@@ -74,9 +81,9 @@ export const works: Array<Work> = [
     logo: "router.png",
     period: "may 2023 - sep 2023",
     description: [
-      "built a gamified nft application using the protocol's cross-chain architecture where users were able to mint an nft and then level it up by bridging across chains",
-      "implemented a lottery system with rewards distribution on polygon using ethers.js and custom wallet module for handling wallet connections",
-      "went from intern to full-time based on shipping speed and code quality",
+      "built a gamified nft application using the protocol's cross-chain architecture where users were able to mint an nft and then level it up by bridging across chains.",
+      "implemented a lottery system with rewards distribution on polygon using ethers.js and custom wallet module for handling wallet connections.",
+      "went from intern to full-time based on shipping speed and code quality.",
     ],
     href: "https://www.routerprotocol.com",
   },
