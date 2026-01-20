@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import Provider from "@/components/provider";
 import Footer from "@/components/sections/footer";
 import { Favicon } from "@/components/ui/favicon";
+import { UmamiAnalytics } from "@/components/umami-analytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
           <Favicon />
           {children}
           <Footer />
+          <UmamiAnalytics />
         </Provider>
       </body>
     </html>
