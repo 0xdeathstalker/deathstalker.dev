@@ -4,6 +4,7 @@ import { z } from "zod";
 export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]).optional(),
+    WAKATIME_API_KEY: z.string(),
   },
   client: {
     NEXT_PUBLIC_UMAMI_SRC: z.string(),
@@ -12,6 +13,7 @@ export const env = createEnv({
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    WAKATIME_API_KEY: process.env.WAKATIME_API_KEY,
 
     NEXT_PUBLIC_UMAMI_SRC: process.env.NEXT_PUBLIC_UMAMI_SRC,
     NEXT_PUBLIC_UMAMI_ID: process.env.NEXT_PUBLIC_UMAMI_ID,

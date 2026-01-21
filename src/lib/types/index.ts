@@ -39,3 +39,16 @@ export type FrontmatterParseResult = {
 export type MDXFileData = FrontmatterParseResult & {
   slug: string;
 };
+
+export type ProjectDuration = {
+  time: number;
+  project: string;
+  duration: number;
+  ai_additions: number;
+  ai_deletions: number;
+  human_additions: number;
+  human_deletions: number;
+  color: string | null;
+};
+
+export type CodingTime = { hours: number; minutes: number };

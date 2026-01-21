@@ -11,6 +11,7 @@ import {
 } from "@/components/kibo-ui/contribution-graph";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { CodingHours } from "./coding-hours";
 
 function GithubContributions({ contributions }: { contributions: Array<Activity> }) {
   return (
@@ -53,7 +54,9 @@ function GithubContributions({ contributions }: { contributions: Array<Activity>
         )}
       </ContributionGraphCalendar>
 
-      <ContributionGraphFooter>
+      <ContributionGraphFooter className="items-center justify-between">
+        <CodingHours />
+
         <ContributionGraphTotalCount>
           {({ totalCount, year }) => (
             <div className="text-muted-foreground text-xs">
