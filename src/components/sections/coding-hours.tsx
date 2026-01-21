@@ -1,19 +1,10 @@
-"use client";
-
 import Image from "next/image";
-import * as React from "react";
-import { useCodingHours } from "@/lib/hooks/useCodingHours";
+import { getCodingHours } from "@/lib/actions/coding-hours";
 
-function CodingHours() {
-  const { data: time, isLoading, isError } = useCodingHours();
+async function CodingHours() {
+  const time = await getCodingHours();
 
-  if (isError) {
-    return null;
-  }
-
-  if (isLoading) {
-    return <span className="text-muted-foreground">Loading...</span>;
-  }
+  if (!time) return null;
 
   return (
     <div className="flex items-center text-muted-foreground text-xs">

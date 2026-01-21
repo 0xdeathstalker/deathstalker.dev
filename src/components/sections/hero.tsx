@@ -3,6 +3,7 @@ import { getGitHubContributions } from "@/lib/actions/github-contributions";
 import { portfolio } from "@/lib/config/site-data";
 import { GithubContributions } from "./github-contributions";
 import Socials from "./socials";
+import { CodingHours } from "./coding-hours";
 
 export function Hero() {
   return (
@@ -54,7 +55,9 @@ async function Bio() {
         ))}
       </div>
 
-      <GithubContributions contributions={contributions} />
+      <GithubContributions contributions={contributions}>
+        <CodingHours />
+      </GithubContributions>
     </div>
   );
 }

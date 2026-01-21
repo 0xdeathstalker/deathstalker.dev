@@ -1,11 +1,11 @@
 import { env } from "@/env";
 import type { ProjectDuration } from "@/lib/types";
 
-export async function GET() {
+export async function getCodingHours() {
   try {
     if (!env.WAKATIME_API_KEY) {
       console.error("[ERROR] wakatime api key not found");
-      return Response.json({ error: "Wakatime API Key missing" }, { status: 500 });
+      return null;
     }
 
     const now = new Date();
@@ -16,24 +16,23 @@ export async function GET() {
       headers: {
         Authorization: `Basic ${Buffer.from(`${env.WAKATIME_API_KEY}:`).toString("base64")}`,
       },
-      cache: "no-store",
+      next: { revalidate: 3600 },
     });
 
     if (!response.ok) {
-      return Response.json({ error: "[ERROR] Wakatime API error" }, { status: response.status });
+      console.error("[ERROR] Wakatime API error", response.status);
+      return null;
     }
 
     const data: Array<ProjectDuration> = (await response.json()).data || [];
 
     const totalSeconds = data.reduce((acc, curr) => acc + curr.duration, 0);
-
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
 
-    return Response.json({ hours, minutes });
+    return { hours, minutes };
   } catch (error) {
-    console.error("[ERROR] active-time api failed:: ", error);
-    const errorMsg = error instanceof Error && error.message;
-    return Response.json({ message: errorMsg ?? "Something went wrong" }, { status: 500 });
+    console.error("[ERROR] fetching active IDE hours data failed:: ", error);
+    return null;
   }
 }
