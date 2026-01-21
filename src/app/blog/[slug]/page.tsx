@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import { BlogContent } from "@/components/sections/blog-content";
 import { buttonVariants } from "@/components/ui/button";
-import { getBlogBySlug } from "@/lib/actions/blog";
+import { getBlogBySlug, getBlogs } from "@/lib/actions/blog";
+import { siteConfig } from "@/lib/config/site";
 import { cn, formatDate } from "@/lib/utils";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
@@ -10,6 +12,44 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
+export function generateStaticParams() {
+  const blogs = getBlogs();
+  return blogs.map((blog) => ({
+    slug: blog.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const slug = (await params).slug;
+  const blog = getBlogBySlug(slug);
+
+  if (!blog) {
+    return {};
+  }
+
+  const { title, description, date } = blog.metadata;
+  const ogUrl = `${siteConfig.url}/blog/${slug}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      publishedTime: date,
+      url: ogUrl,
+      authors: [siteConfig.author.name],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      creator: siteConfig.author.twitter,
+    },
+  };
+}
+
 export default async function Blog({ params }: PageProps) {
   const slug = (await params).slug;
   const blog = getBlogBySlug(slug);
@@ -18,8 +58,26 @@ export default async function Blog({ params }: PageProps) {
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: blog.metadata.title,
+    description: blog.metadata.description,
+    datePublished: blog.metadata.date,
+    author: {
+      "@type": "Person",
+      name: siteConfig.author.name,
+      url: siteConfig.url,
+    },
+    url: `${siteConfig.url}/blog/${slug}`,
+  };
+
   return (
     <main className="mx-auto max-w-[70ch] min-h-screen font-sans px-4 pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="bg-gradient-to-b from-background to-transparent fixed top-0 left-0 h-10 w-full z-50 pointer-events-none" />
 
       <Link

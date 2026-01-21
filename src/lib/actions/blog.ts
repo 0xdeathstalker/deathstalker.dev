@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { FrontmatterParseResult, MDXFileData, Metadata } from "@/lib/types";
+import type { FrontmatterParseResult, MDXFileData, Metadata } from "@/lib/types";
 
 export function getBlogs(): Array<MDXFileData> {
   return getMDXData(path.join(process.cwd(), "blogs"));
