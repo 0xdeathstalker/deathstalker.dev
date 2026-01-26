@@ -63,9 +63,9 @@ function GithubContributions({
         {children}
         <ContributionGraphTotalCount>
           {({ totalCount, year }) => (
-            <div className="text-muted-foreground text-xs">
-              {totalCount.toLocaleString("en")} contributions in {year}
-            </div>
+            <span className="text-muted-foreground text-xs">
+              {totalCount.toLocaleString("en")} contributions <span className="hidden sm:inline">in {year}</span>
+            </span>
           )}
         </ContributionGraphTotalCount>
       </ContributionGraphFooter>
