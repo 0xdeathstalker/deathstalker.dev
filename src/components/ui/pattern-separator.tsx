@@ -1,16 +1,17 @@
 import { Line } from "./line";
 
-function PatternSeparator() {
+function PatternSeparator({ topBorder = true, bottomBorder = true }: { topBorder?: boolean; bottomBorder?: boolean }) {
   return (
     <div className="h-10 w-full relative">
-      <Line
-        orientation="horizontal"
-        variant="contained"
-        position="top"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
-        className="max-w-[650px]"
-      />
-
+      {topBorder && (
+        <Line
+          orientation="horizontal"
+          variant="contained"
+          position="top"
+          color="text-muted-foreground/25 dark:text-muted-foreground/20"
+          className="max-w-[650px]"
+        />
+      )}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
@@ -22,13 +23,15 @@ function PatternSeparator() {
           `,
         }}
       />
-      <Line
-        orientation="horizontal"
-        variant="contained"
-        position="bottom"
-        className="max-w-[650px]"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
-      />
+      {bottomBorder && (
+        <Line
+          orientation="horizontal"
+          variant="contained"
+          position="bottom"
+          className="max-w-[650px]"
+          color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        />
+      )}
     </div>
   );
 }

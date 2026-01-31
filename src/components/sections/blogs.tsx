@@ -25,14 +25,6 @@ export function Blogs() {
           />
         ))}
       </div>
-
-      <Line
-        orientation="horizontal"
-        variant="contained"
-        position="bottom"
-        className="max-w-[650px]"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
-      />
     </section>
   );
 }
