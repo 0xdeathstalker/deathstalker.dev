@@ -1,4 +1,5 @@
 import { Clock } from "@/components/clock";
+import { RandomQuotes } from "@/components/random-quotes";
 import { Line } from "@/components/ui/line";
 
 function QuoteTime() {
@@ -10,7 +11,7 @@ function QuoteTime() {
         color="text-muted-foreground/25 dark:text-muted-foreground/20"
       />
 
-      <span className="text-sm text-neutral-500">Find Flow.</span>
+      <RandomQuotes />
       <Clock />
 
       <Line
