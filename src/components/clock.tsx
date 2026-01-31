@@ -9,7 +9,7 @@ function Clock() {
   const [currentTime, setCurrentTime] = React.useState<CurrentTime>({ time: null, timezone: null });
 
   React.useEffect(() => {
-    setCurrentTime((prev) => ({ ...prev, timezone: "UTC+5:30" }));
+    setCurrentTime({ time: formatTime(new Date()), timezone: "UTC+5:30" });
 
     const timeInterval = setInterval(() => {
       setCurrentTime((prev) => ({ ...prev, time: formatTime(new Date()) }));

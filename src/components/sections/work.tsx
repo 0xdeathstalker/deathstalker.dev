@@ -100,7 +100,7 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
             >
               <div className="pr-2 self-start">•</div>
 
-              <span className="text-[#272727] flex-grow">{d}</span>
+              <span className="text-neutral-800 flex-grow">{d}</span>
             </li>
           ))}
         </ul>

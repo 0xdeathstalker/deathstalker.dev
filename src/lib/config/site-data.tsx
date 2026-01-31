@@ -4,7 +4,7 @@ import type { Project, Work } from "@/lib/types";
 export const portfolio = {
   author: "soumya mukherjee",
   bio: [
-    "hey, i'm soumya — a design engineer crafting polished interfaces with react, next.js and typescript.",
+    "hey, i'm soumya — a design engineer creating polished interfaces with react, next.js and typescript.",
     "i focus on the craft: clean code, smooth animations and interactions that feel effortless. shipped production apps from blockchain explorers to component libraries. i build web experiences that are fast, functional and polished enough to make you smile.",
   ],
   resume: "/resume.pdf",
@@ -44,7 +44,7 @@ export const works: Array<Work> = [
         <Link
           href="https://nitro-explorer.vercel.app"
           target="_blank"
-          className="hover:text-foreground underline underline-offset-4 transition-colors ease-in-out"
+          className="hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
         >
           nitro explorer
         </Link>
@@ -55,7 +55,7 @@ export const works: Array<Work> = [
         <Link
           href="https://github.com/router-protocol/tangled"
           target="_blank"
-          className="hover:text-foreground underline underline-offset-4 transition-colors ease-in-out"
+          className="hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
         >
           tangled
         </Link>
@@ -66,7 +66,7 @@ export const works: Array<Work> = [
         <Link
           href="https://routernitro.com/swap"
           target="_blank"
-          className="hover:text-foreground underline underline-offset-4 transition-colors ease-in-out"
+          className="hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
         >
           nitro app
         </Link>
