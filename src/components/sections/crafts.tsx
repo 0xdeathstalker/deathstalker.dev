@@ -8,7 +8,7 @@ function Crafts() {
       <SectionHeading className="px-4 max-[690px]:px-8">craft</SectionHeading>
 
       <div className="relative space-y-4 py-4">
-        {crafts.map((craft, idx) => {
+        {crafts.reverse().map((craft, idx) => {
           const isLast = idx !== crafts.length - 1;
           return (
             <CraftItem

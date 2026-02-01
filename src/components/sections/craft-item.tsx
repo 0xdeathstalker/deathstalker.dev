@@ -45,7 +45,7 @@ function CraftItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
           muted
           preload="metadata"
           onLoadedData={() => setIsLoaded(true)}
-          className={cn("transition-opacity duration-500", isLoaded ? "opacity-100" : "opacity-0")}
+          className={cn("object-fit transition-opacity duration-500", isLoaded ? "opacity-100" : "opacity-0")}
         >
           <track
             kind="captions"
@@ -61,6 +61,15 @@ function CraftItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
           )}
         >
           {craft.title}
+        </span>
+        <span
+          className={cn(
+            "absolute bottom-1 right-5 py-0.5 px-1.5 translate-y-[200%] font-mono text-xs tracking-tight",
+            "bg-background border border-muted-foreground/25 border-dashed",
+            "group-hover:translate-0 transition-transform duration-500 ease-[cubic-bezier(0.19,_1,_0.22,_1)]",
+          )}
+        >
+          {craft.tech}
         </span>
 
         {/* LOADER */}
