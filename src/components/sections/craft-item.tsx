@@ -9,6 +9,7 @@ import { useInView } from "@/lib/hooks/useInView";
 
 function CraftItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
   const { ref: wrapperRef, inView } = useInView({ threshold: 0.3 });
+
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const hasLoadedRef = React.useRef(false);
