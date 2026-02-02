@@ -134,20 +134,18 @@ export const projects: Array<Project> = [
   },
 ] as const;
 
-export type Craft = { title: string; tech: string; video: string; coverImg?: string };
+export type Craft = { title: string; tech: string; video: string };
 
 export const crafts: Array<Craft> = [
   {
     title: "shared-layout-animation",
     tech: "motion",
     video: "https://cdn.deathstalker.dev/shared-layout-animation.mov",
-    coverImg: "https://ik.imagekit.io/r1y1pa7hq/experiments/shared-layout-animations-cover-image.png",
   },
   {
-    title: "input-morph-text-animation",
+    title: "ios-input-morph-text",
     tech: "motion",
-    video: "https://cdn.deathstalker.dev/input-morph-text-animation.mov",
-    coverImg: "https://ik.imagekit.io/r1y1pa7hq/experiments/input-morph-cover-image.png",
+    video: "https://cdn.deathstalker.dev/input-morph-text.mp4",
   },
   {
     title: "mask-scroll",

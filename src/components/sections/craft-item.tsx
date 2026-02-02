@@ -39,13 +39,15 @@ function CraftItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
         <video
           ref={videoRef}
           src={craft.video}
-          poster={craft.coverImg}
           playsInline
           loop
           muted
           preload="metadata"
           onLoadedData={() => setIsLoaded(true)}
-          className={cn("object-fit transition-opacity duration-500", isLoaded ? "opacity-100" : "opacity-0")}
+          className={cn(
+            "w-full h-[clamp(14rem,55vw,22rem)] sm:h-[350px] object-cover transition-opacity duration-500",
+            isLoaded ? "opacity-100" : "opacity-0",
+          )}
         >
           <track
             kind="captions"
@@ -55,18 +57,18 @@ function CraftItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
         </video>
         <span
           className={cn(
-            "absolute bottom-1 left-5 py-0.5 px-1.5 translate-y-[200%] font-mono text-xs tracking-tight",
+            "absolute bottom-1 left-6 py-0.5 px-1.5 font-mono text-[10px] sm:text-xs tracking-tight",
             "bg-background border border-muted-foreground/25 border-dashed",
-            "group-hover:translate-0 transition-transform duration-500 ease-[cubic-bezier(0.19,_1,_0.22,_1)]",
+            "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-[cubic-bezier(0.19,_1,_0.22,_1)]",
           )}
         >
           {craft.title}
         </span>
         <span
           className={cn(
-            "absolute bottom-1 right-5 py-0.5 px-1.5 translate-y-[200%] font-mono text-xs tracking-tight",
+            "absolute bottom-2 right-6 py-0.5 px-1.5 font-mono text-[10px] sm:text-xs tracking-tight",
             "bg-background border border-muted-foreground/25 border-dashed",
-            "group-hover:translate-0 transition-transform duration-500 ease-[cubic-bezier(0.19,_1,_0.22,_1)]",
+            "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-[cubic-bezier(0.19,_1,_0.22,_1)]",
           )}
         >
           {craft.tech}
