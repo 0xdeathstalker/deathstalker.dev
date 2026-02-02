@@ -46,7 +46,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(0.9938 0.0013 106.42);
+  --background: oklch(98.5% 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(0.9938 0.0013 106.42);
   --card-foreground: oklch(0.145 0 0);
@@ -320,5 +320,156 @@
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+
+/* MASK SCROLL AREA STYLES */
+@property --top-mask-height {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --bottom-mask-height {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 90px;
+}
+
+.masked-scrollarea-y {
+  --mask-height: 90px;
+  --scroll-buffer: 2rem;
+
+  mask-image:
+    linear-gradient(to top, transparent, var(--foreground) 90%),
+    linear-gradient(to bottom, transparent 0, var(--foreground) 100%),
+    linear-gradient(var(--foreground), var(--foreground));
+  -webkit-mask-image:
+    linear-gradient(to top, transparent, var(--foreground) 90%),
+    linear-gradient(to bottom, transparent 0, var(--foreground) 100%),
+    linear-gradient(var(--foreground), var(--foreground));
+
+  mask-size:
+    100% var(--top-mask-height),
+    100% var(--bottom-mask-height),
+    100% 100%;
+  -webkit-mask-size:
+    100% var(--top-mask-height),
+    100% var(--bottom-mask-height),
+    100% 100%;
+
+  mask-position:
+    0 0,
+    0 100%,
+    0 0;
+  -webkit-mask-position:
+    0 0,
+    0 100%,
+    0 0;
+
+  mask-repeat: no-repeat, no-repeat, no-repeat;
+  -webkit-mask-repeat: no-repeat, no-repeat, no-repeat;
+
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+
+  animation-name: show-top-mask, hide-bottom-mask;
+  animation-timeline: scroll(self), scroll(self);
+  animation-range:
+    0 var(--scroll-buffer),
+    calc(100% - var(--scroll-buffer)) 100%;
+  animation-fill-mode: both;
+}
+
+@keyframes show-top-mask {
+  0% {
+    --top-mask-height: 0px;
+  }
+  100% {
+    --top-mask-height: var(--mask-height);
+  }
+}
+
+@keyframes hide-bottom-mask {
+  0% {
+    --bottom-mask-height: var(--mask-height);
+  }
+  100% {
+    --bottom-mask-height: 0px;
+  }
+}
+
+@property --left-mask-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --right-mask-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 90px;
+}
+
+.masked-scrollarea-x {
+  --mask-width: 90px;
+  --scroll-buffer: 2rem;
+
+  -webkit-mask-image:
+    linear-gradient(to left, transparent, var(--foreground) 90%),
+    linear-gradient(to right, transparent, var(--foreground) 100%),
+    linear-gradient(var(--foreground), var(--foreground));
+  mask-image:
+    linear-gradient(to left, transparent, var(--foreground) 90%),
+    linear-gradient(to right, transparent, var(--foreground) 100%),
+    linear-gradient(var(--foreground), var(--foreground));
+
+  -webkit-mask-size:
+    var(--left-mask-width) 100%,
+    var(--right-mask-width) 100%,
+    100% 100%;
+  mask-size:
+    var(--left-mask-width) 100%,
+    var(--right-mask-width) 100%,
+    100% 100%;
+
+  -webkit-mask-position:
+    0 0,
+    100% 0,
+    0 0;
+  mask-position:
+    0 0,
+    100% 0,
+    0 0;
+
+  -webkit-mask-repeat: no-repeat, no-repeat, no-repeat;
+  mask-repeat: no-repeat, no-repeat, no-repeat;
+
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  animation-name: show-left-mask, hide-right-mask;
+  animation-timeline: scroll(self inline), scroll(self inline);
+  animation-range:
+    0 var(--scroll-buffer),
+    calc(100% - var(--scroll-buffer)) 100%;
+  animation-fill-mode: both;
+}
+
+@keyframes show-left-mask {
+  0% {
+    --left-mask-width: 0px;
+  }
+  100% {
+    --left-mask-width: var(--mask-width);
+  }
+}
+
+@keyframes hide-right-mask {
+  0% {
+    --right-mask-width: var(--mask-width);
+  }
+  100% {
+    --right-mask-width: 0px;
   }
 }

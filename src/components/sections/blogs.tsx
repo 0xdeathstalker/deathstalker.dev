@@ -1,8 +1,7 @@
 import Link from "next/link";
 import LinkIcon from "@/components/link-icon";
-import { Line } from "@/components/ui/line";
 import { getBlogs } from "@/lib/actions/blog";
-import { SectionHeading } from "../ui/heading";
+import { SectionHeading } from "@/components/ui/heading";
 
 // sorting by date - latest blogs
 const blogs = getBlogs().sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());

@@ -1,4 +1,5 @@
 import { Content } from "@/components/content";
+import Footer from "@/components/sections/footer";
 import { Line } from "@/components/ui/line";
 
 export default function Home() {
@@ -11,6 +12,8 @@ export default function Home() {
       <Content />
 
       <div className="bg-gradient-to-t from-background to-transparent fixed bottom-0 left-0 h-10 w-full z-50 pointer-events-none" />
+
+      <Footer />
     </main>
   );
 }

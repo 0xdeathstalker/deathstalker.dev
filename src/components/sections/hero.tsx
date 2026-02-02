@@ -1,9 +1,9 @@
 import { Line } from "@/components/ui/line";
 import { getGitHubContributions } from "@/lib/actions/github-contributions";
 import { portfolio } from "@/lib/config/site-data";
+import { CodingHours } from "./coding-hours";
 import { GithubContributions } from "./github-contributions";
 import Socials from "./socials";
-import { CodingHours } from "./coding-hours";
 
 export function Hero() {
   return (
@@ -29,7 +29,7 @@ function Title() {
         color="text-muted-foreground/25 dark:text-muted-foreground/20"
       />
 
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-5 sm:justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-2 sm:gap-5 sm:justify-between">
         <h1 className="text-[32px] sm:text-4xl font-medium text-shadow-sm dark:shadow-black/65">{portfolio.author}</h1>
 
         <Socials />
@@ -48,7 +48,7 @@ async function Bio() {
           <p
             // biome-ignore lint/suspicious/noArrayIndexKey: no other variable to use as key
             key={i}
-            className="text-[#272727] leading-relaxed"
+            className="text-neutral-600 leading-relaxed"
           >
             {b}
           </p>

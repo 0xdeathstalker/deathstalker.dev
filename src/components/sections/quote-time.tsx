@@ -1,4 +1,3 @@
-import { Clock } from "@/components/clock";
 import { RandomQuotes } from "@/components/random-quotes";
 import { Line } from "@/components/ui/line";
 
@@ -12,7 +11,8 @@ function QuoteTime() {
       />
 
       <RandomQuotes />
-      <Clock />
+      {/* <Clock /> */}
+      <span className="font-mono text-[13px] text-neutral-500 tabular-nums">2026</span>
 
       <Line
         orientation="horizontal"

@@ -1,10 +1,17 @@
 import Link from "next/link";
 import type { Project, Work } from "@/lib/types";
+import { IOSInputMorphText } from "@/components/labs/input-morph-text";
+import { SubmitButtonStates } from "@/components/labs/button-states";
+import { MaskScroll } from "@/components/labs/mask-scroll";
+import { MotionSharedLayout } from "@/components/labs/shared-layout";
 
 export const portfolio = {
   author: "soumya mukherjee",
   bio: [
-    "hey, i'm soumya — a design engineer creating polished interfaces with react, next.js and typescript.",
+    <span>
+      <span className="text-foreground">hey, i'm soumya — a design engineer</span> creating polished interfaces with
+      react, next.js and typescript.
+    </span>,
     "i focus on the craft: clean code, smooth animations and interactions that feel effortless. shipped production apps from blockchain explorers to component libraries. i build web experiences that are fast, functional and polished enough to make you smile.",
   ],
   resume: "/resume.pdf",
@@ -134,7 +141,13 @@ export const projects: Array<Project> = [
   },
 ] as const;
 
-export type Craft = { title: string; tech: string; video: string };
+export type ComponentTitles =
+  | "shared-layout-animation"
+  | "ios-input-morph-text"
+  | "mask-scroll"
+  | "submit-button-states";
+
+export type Craft = { title: ComponentTitles; tech: string; video: string };
 
 export const crafts: Array<Craft> = [
   {
@@ -158,3 +171,10 @@ export const crafts: Array<Craft> = [
     video: "https://cdn.deathstalker.dev/submit-button-states.mp4",
   },
 ];
+
+export const labsComponents: Partial<Record<ComponentTitles, React.ComponentType>> = {
+  "submit-button-states": SubmitButtonStates,
+  "ios-input-morph-text": IOSInputMorphText,
+  "mask-scroll": MaskScroll,
+  "shared-layout-animation": MotionSharedLayout,
+};

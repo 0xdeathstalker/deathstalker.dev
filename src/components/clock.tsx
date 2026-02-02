@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { formatTime } from "@/lib/utils";
+import { Clock as ClockIcon } from "lucide-react";
 
 type CurrentTime = { time: string | null; timezone: string | null };
 
@@ -21,9 +22,13 @@ function Clock() {
   }, []);
 
   return (
-    <span className="text-[13px] text-neutral-500 tabular-nums">
-      {currentTime.time} {currentTime.timezone}
-    </span>
+    <div className="flex items-center gap-1">
+      {/* <ClockIcon className="size-3.5 shrink-0 text-neutral-500" /> */}
+      <span className="font-mono text-[13px] text-neutral-500 tabular-nums">
+        {currentTime.time} <span className="hidden sm:inline">{currentTime.timezone}</span>{" "}
+        <span className="sm:hidden">IST</span>
+      </span>
+    </div>
   );
 }
 

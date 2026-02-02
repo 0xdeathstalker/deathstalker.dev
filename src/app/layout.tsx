@@ -104,12 +104,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Provider>
-          <Favicon />
-          {children}
-          <Footer />
-          <UmamiAnalytics />
-        </Provider>
+        {/* <Provider> */}
+        <Favicon />
+        {children}
+        <UmamiAnalytics />
+        {/* </Provider> */}
       </body>
     </html>
   );
