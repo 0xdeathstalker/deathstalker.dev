@@ -1,11 +1,9 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "@/styles/globals.css";
-import Provider from "@/components/provider";
-import Footer from "@/components/sections/footer";
 import { Favicon } from "@/components/ui/favicon";
 import { UmamiAnalytics } from "@/components/umami-analytics";
 import { siteConfig } from "@/lib/config/site";
+import "@/styles/globals.css";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

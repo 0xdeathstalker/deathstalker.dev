@@ -51,7 +51,7 @@ export const works: Array<Work> = [
         <Link
           href="https://nitro-explorer.vercel.app"
           target="_blank"
-          className="hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
+          className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
         >
           nitro explorer
         </Link>
@@ -62,7 +62,7 @@ export const works: Array<Work> = [
         <Link
           href="https://github.com/router-protocol/tangled"
           target="_blank"
-          className="hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
+          className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
         >
           tangled
         </Link>
@@ -73,7 +73,7 @@ export const works: Array<Work> = [
         <Link
           href="https://routernitro.com/swap"
           target="_blank"
-          className="hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
+          className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
         >
           nitro app
         </Link>
@@ -153,22 +153,22 @@ export const crafts: Array<Craft> = [
   {
     title: "shared-layout-animation",
     tech: "motion",
-    video: "https://cdn.deathstalker.dev/shared-layout-animation.mov",
+    video: "https://cdn.deathstalker.dev/videos/shared-layout.mp4",
   },
   {
     title: "ios-input-morph-text",
     tech: "motion",
-    video: "https://cdn.deathstalker.dev/input-morph-text.mp4",
+    video: "https://cdn.deathstalker.dev/videos/ios-input-morph.mp4",
   },
   {
     title: "mask-scroll",
     tech: "css",
-    video: "https://cdn.deathstalker.dev/mask-scroll.mp4",
+    video: "https://cdn.deathstalker.dev/videos/mask-scroll-area.mp4",
   },
   {
     title: "submit-button-states",
     tech: "css",
-    video: "https://cdn.deathstalker.dev/submit-button-states.mp4",
+    video: "https://cdn.deathstalker.dev/videos/button-states.mp4",
   },
 ];
 

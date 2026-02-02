@@ -1,8 +1,8 @@
 "use client";
 
-import { Loader2 } from "lucide-react";
-import * as React from "react";
 import { cn } from "@/lib/utils";
+import { Loader } from "lucide-react";
+import * as React from "react";
 
 type ButtonState = "idle" | "loading" | "success" | "failure";
 
@@ -27,7 +27,7 @@ const BUTTON_STATES: Record<ButtonState, { label: React.ReactNode; className?: s
   loading: {
     label: (
       <>
-        <Loader2 className="animate-spin size-4 shrink-0 mr-1" /> Submitting
+        <Loader className="animate-spin size-4 shrink-0 mr-1" /> Submitting
       </>
     ),
   },
@@ -66,12 +66,12 @@ function SuccessButton() {
     <button
       type="button"
       className={cn(
-        "relative cursor-pointer h-10 border rounded-lg px-10 text-blue-500/80 enabled:active:scale-95 transition-all ease-in-out duration-150 disabled:cursor-not-allowed",
+        "relative cursor-pointer h-12 border rounded-lg px-14 font-medium text-indigo-500/80 text-lg enabled:hover:bg-indigo-100/60 enabled:active:scale-95 transition-all ease-in-out duration-150 disabled:cursor-not-allowed",
         buttonState === "success"
           ? "bg-green-200 border-green-500/20"
           : buttonState === "failure"
             ? "bg-red-200 border-red-500/20"
-            : "bg-blue-50 border-blue-500/20",
+            : "bg-indigo-50 border-indigo-500/20",
       )}
       onClick={handleSuccess}
       disabled={buttonState !== "idle"}
@@ -119,12 +119,12 @@ function FailureButton() {
     <button
       type="button"
       className={cn(
-        "relative cursor-pointer h-10 border rounded-lg px-10 text-blue-500/80 enabled:active:scale-95 transition-all ease-in-out duration-150 disabled:cursor-not-allowed",
+        "relative cursor-pointer h-12 border rounded-lg px-14 font-medium text-indigo-500/80 text-lg enabled:hover:bg-indigo-100/60 enabled:active:scale-95 transition-all ease-in-out duration-150 disabled:cursor-not-allowed",
         buttonState === "success"
           ? "bg-green-200 border-green-500/20"
           : buttonState === "failure"
             ? "bg-red-200 border-red-500/20"
-            : "bg-blue-50 border-blue-500/20",
+            : "bg-indigo-50 border-indigo-500/20",
       )}
       onClick={handleFailure}
       disabled={buttonState !== "idle"}
@@ -146,4 +146,4 @@ function FailureButton() {
   );
 }
 
-export { SubmitButtonStates, FailureButton, SuccessButton };
+export { FailureButton, SubmitButtonStates, SuccessButton };

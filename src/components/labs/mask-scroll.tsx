@@ -3,7 +3,7 @@ import { MaskScrollArea } from "@/components/ui/masked-scroll-area";
 function MaskScroll() {
   return (
     <div className="mx-2 space-y-5">
-      <div className="h-88 max-w-[500px] bg-neutral-100/80 border rounded-lg p-2">
+      <div className="h-88 max-w-[500px] bg-zinc-50 border rounded-lg p-2">
         <MaskScrollArea
           orientation="vertical"
           className="space-y-1 h-full"
@@ -11,7 +11,7 @@ function MaskScroll() {
           {ITEMS.map((item, idx) => (
             <div
               key={`${idx + 1}-item`}
-              className="bg-white flex flex-col gap-2 border rounded-md py-2 px-3"
+              className="bg-linear-to-br from-zinc-200/80 to-zinc-100/40 flex flex-col gap-2 border rounded-md py-2 px-3"
             >
               <span>{item.title}</span>
               <span className="text-xs">{item.description}</span>
@@ -20,7 +20,7 @@ function MaskScroll() {
         </MaskScrollArea>
       </div>
 
-      <div className="h-48 w-[500px] bg-neutral-100/80 border rounded-lg p-2">
+      {/* <div className="h-48 w-[500px] bg-zinc-50 border rounded-lg p-2">
         <MaskScrollArea
           orientation="horizontal"
           className="flex items-center gap-2 h-full"
@@ -28,14 +28,14 @@ function MaskScroll() {
           {ITEMS.map((item, idx) => (
             <div
               key={`${idx + 1}-item`}
-              className="bg-white min-w-52 size-full flex flex-col justify-center gap-2 border rounded-sm py-2 px-3"
+              className="bg-linear-to-br from-zinc-200/80 to-zinc-100/40 min-w-52 size-full flex flex-col justify-center gap-2 border rounded-sm py-2 px-3"
             >
               <span>{item.title}</span>
               <span className="text-xs">{item.description}</span>
             </div>
           ))}
         </MaskScrollArea>
-      </div>
+      </div> */}
     </div>
   );
 }

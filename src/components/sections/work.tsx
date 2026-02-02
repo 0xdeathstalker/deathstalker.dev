@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import * as React from "react";
 import { SectionHeading } from "@/components/ui/heading";
+import Link from "next/link";
 
 export function Work() {
   return (
@@ -42,14 +43,19 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
         className="group w-full inline-flex flex-col md:flex-row items-start justify-between gap-2 md:gap-0 cursor-pointer"
       >
         <div className="flex items-center gap-2">
-          <img
-            src={`/images/work/${work.logo}`}
-            alt={`${work.company} logo`}
-            className={cn(
-              "size-11 rounded-sm mix-blend-hard-light dark:mix-blend-normal grayscale opacity-75 dark:opacity-100 group-hover:opacity-100 group-hover:grayscale-0 group-hover:mix-blend-normal transition-all ease-linear",
-              isOpen && "grayscale-0 mix-blend-normal opacity-100",
-            )}
-          />
+          <Link
+            href={work.href}
+            target="_blank"
+          >
+            <img
+              src={`/images/work/${work.logo}`}
+              alt={`${work.company} logo`}
+              className={cn(
+                "size-11 rounded-sm mix-blend-hard-light dark:mix-blend-normal grayscale opacity-75 dark:opacity-100 group-hover:opacity-100 group-hover:grayscale-0 group-hover:mix-blend-normal transition-all ease-linear",
+                isOpen && "grayscale-0 mix-blend-normal opacity-100",
+              )}
+            />
+          </Link>
           <div className="flex flex-col items-start gap-0.5">
             <div className="flex items-center gap-2.5">
               <h2
