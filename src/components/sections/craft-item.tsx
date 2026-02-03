@@ -47,7 +47,7 @@ function CraftItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
             preload="metadata"
             onLoadedData={() => setIsLoaded(true)}
             className={cn(
-              "w-full h-[clamp(14rem,55vw,22rem)] sm:h-[350px] object-cover transition-opacity duration-500",
+              "w-full h-[clamp(14rem,55vw,22rem)] sm:h-[350px] object-cover transition-opacity duration-700",
               isLoaded ? "opacity-100" : "opacity-0",
             )}
           >

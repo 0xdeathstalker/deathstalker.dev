@@ -8,7 +8,7 @@ type ButtonState = "idle" | "loading" | "success" | "failure";
 
 function SubmitButtonStates() {
   return (
-    <div className="h-full flex items-center justify-center gap-10 sm:gap-24">
+    <div className="h-full flex items-center justify-center gap-6 sm:gap-24">
       <div className="flex flex-col items-center gap-2 text-muted-foreground">
         <span>Success</span>
         <SuccessButton />
@@ -66,7 +66,7 @@ function SuccessButton() {
     <button
       type="button"
       className={cn(
-        "relative cursor-pointer h-12 border rounded-lg px-14 font-medium text-indigo-500/80 text-lg enabled:hover:bg-indigo-100/60 enabled:active:scale-95 transition-all ease-in-out duration-150 disabled:cursor-not-allowed",
+        "relative cursor-pointer h-12 border rounded-lg px-12 sm:px-14 font-medium text-indigo-500/80 text-lg enabled:hover:bg-indigo-100/60 enabled:active:scale-95 transition-all ease-in-out duration-150 disabled:cursor-not-allowed",
         buttonState === "success"
           ? "bg-green-200 border-green-500/20"
           : buttonState === "failure"
@@ -119,7 +119,7 @@ function FailureButton() {
     <button
       type="button"
       className={cn(
-        "relative cursor-pointer h-12 border rounded-lg px-14 font-medium text-indigo-500/80 text-lg enabled:hover:bg-indigo-100/60 enabled:active:scale-95 transition-all ease-in-out duration-150 disabled:cursor-not-allowed",
+        "relative cursor-pointer h-12 border rounded-lg px-12 sm:px-14 font-medium text-indigo-500/80 text-lg enabled:hover:bg-indigo-100/60 enabled:active:scale-95 transition-all ease-in-out duration-150 disabled:cursor-not-allowed",
         buttonState === "success"
           ? "bg-green-200 border-green-500/20"
           : buttonState === "failure"

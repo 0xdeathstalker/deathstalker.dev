@@ -84,9 +84,12 @@ export default async function Blog({ params }: PageProps) {
       <div className="mx-auto max-w-[70ch]">
         <Link
           href="/"
-          className={cn(buttonVariants({ variant: "outline" }), "h-7 has-[>svg]:pl-1 gap-1 mb-8 text-muted-foreground")}
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "h-7 has-[>svg]:pl-2 gap-1 mb-8 text-neutral-400 hover:text-neutral-500",
+          )}
         >
-          <ChevronLeft className="size-4" />
+          <BackIcon />
           Back
         </Link>
 
@@ -103,5 +106,27 @@ export default async function Blog({ params }: PageProps) {
 
       <div className="bg-gradient-to-t from-background to-transparent fixed bottom-0 left-0 h-10 w-full z-50 pointer-events-none" />
     </main>
+  );
+}
+
+function BackIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="18"
+      viewBox="0 0 18 18"
+      width="18"
+      xmlns="http://www.w3.org/2000/svg"
+      className="size-3.5 shrink-0 select-none"
+    >
+      <path
+        d="M10.2069 4H12.4828C13.3203 4 14 4.67972 14 5.51724V10.4483C14 11.2858 13.3203 11.9655 12.4828 11.9655H3M3 11.9655L6.03448 8.93103M3 11.9655L6.03448 15"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
+      ></path>
+    </svg>
   );
 }
