@@ -20,7 +20,7 @@ function MaskScroll() {
         </MaskScrollArea>
       </div>
 
-      {/* <div className="h-48 w-[500px] bg-zinc-50 border rounded-lg p-2">
+      <div className="h-48 w-[500px] bg-zinc-50 border rounded-lg p-2">
         <MaskScrollArea
           orientation="horizontal"
           className="flex items-center gap-2 h-full"
@@ -35,7 +35,7 @@ function MaskScroll() {
             </div>
           ))}
         </MaskScrollArea>
-      </div> */}
+      </div>
     </div>
   );
 }
