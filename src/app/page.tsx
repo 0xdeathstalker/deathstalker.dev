@@ -1,17 +1,16 @@
 import { Content } from "@/components/content";
+import { ScrollGradients } from "@/components/scroll-gradients";
 import Footer from "@/components/sections/footer";
 import { Line } from "@/components/ui/line";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen w-full font-sans overflow-x-hidden">
-      <div className="bg-gradient-to-b from-background to-transparent fixed top-0 left-0 h-10 w-full z-50 pointer-events-none" />
+      <ScrollGradients />
 
       <VerticalLines />
 
       <Content />
-
-      <div className="bg-gradient-to-t from-background to-transparent fixed bottom-0 left-0 h-10 w-full z-50 pointer-events-none" />
 
       <Footer />
     </main>
