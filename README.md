@@ -18,5 +18,4 @@ A modern, performant portfolio website showcasing my work as a frontend develope
 - [x] need to fetch the github contributions based on the user timezone
 - [x] refactor to static site
 - [x] modify the top/bottom mask such that it disappears when scrolled to the bottom
-- [ ] orchestrate enter animation
 - [ ] replace the github contributions graph with gitmap
