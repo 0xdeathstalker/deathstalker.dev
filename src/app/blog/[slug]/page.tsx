@@ -8,6 +8,7 @@ import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/components/sections/footer";
+import { ScrollGradients } from "@/components/scroll-gradients";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -79,8 +80,6 @@ export default async function Blog({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="bg-gradient-to-b from-background to-transparent fixed top-0 left-0 h-10 w-full z-50 pointer-events-none" />
-
       <div className="mx-auto max-w-[70ch]">
         <Link
           href="/"
@@ -104,7 +103,7 @@ export default async function Blog({ params }: PageProps) {
 
       <Footer />
 
-      <div className="bg-gradient-to-t from-background to-transparent fixed bottom-0 left-0 h-10 w-full z-50 pointer-events-none" />
+      <ScrollGradients />
     </main>
   );
 }
