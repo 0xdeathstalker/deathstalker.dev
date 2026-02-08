@@ -1,3 +1,4 @@
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { Favicon } from "@/components/ui/favicon";
 import { UmamiAnalytics } from "@/components/umami-analytics";
 import { siteConfig } from "@/lib/config/site";
@@ -102,11 +103,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* <Provider> */}
         <Favicon />
+        <ScrollToTop />
         {children}
         <UmamiAnalytics />
-        {/* </Provider> */}
       </body>
     </html>
   );
