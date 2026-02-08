@@ -27,12 +27,12 @@ export function Projects() {
 
 export function ProjectItem({ project, isLast }: { project: Project; isLast: boolean }) {
   return (
-    <div className="relative text-[#272727] py-6 px-4">
+    <div className="relative py-6 px-4">
       <div className="w-fit relative inline-flex items-center gap-1 link">
         <Link
           href={project.href}
           target="_blank"
-          className="group text-foreground text-lg relative before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-[1px] dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-[cubic-bezier(0.785,0.135,0.15,0.86)] hover:before:w-full"
+          className="group text-lg relative before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-[1px] dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-[cubic-bezier(0.785,0.135,0.15,0.86)] hover:before:w-full"
         >
           {project.title}
         </Link>
@@ -44,7 +44,7 @@ export function ProjectItem({ project, isLast }: { project: Project; isLast: boo
         {project.role} {project.period && `(${project.period})`}
       </h2>
 
-      <p className="leading-relaxed my-6">{project.description}</p>
+      <p className="leading-relaxed my-6 text-[#272727]">{project.description}</p>
 
       <div className="inline-flex items-center gap-3 flex-wrap">
         {project.technologies.map((technology) => (
