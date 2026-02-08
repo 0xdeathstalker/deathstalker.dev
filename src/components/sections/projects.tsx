@@ -44,7 +44,7 @@ export function ProjectItem({ project, isLast }: { project: Project; isLast: boo
         {project.role} {project.period && `(${project.period})`}
       </h2>
 
-      <p className="leading-relaxed my-6 text-[#272727]">{project.description}</p>
+      <p className="leading-relaxed my-6 text-neutral-600">{project.description}</p>
 
       <div className="inline-flex items-center gap-3 flex-wrap">
         {project.technologies.map((technology) => (
