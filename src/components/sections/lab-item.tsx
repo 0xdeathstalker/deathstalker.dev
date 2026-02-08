@@ -8,7 +8,7 @@ import { Loader } from "lucide-react";
 import { useInView } from "@/lib/hooks/useInView";
 import Link from "next/link";
 
-function CraftItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
+function LabItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
   const { ref: wrapperRef, inView } = useInView({ threshold: 0.3 });
 
   const videoRef = React.useRef<HTMLVideoElement>(null);
@@ -93,4 +93,4 @@ function CraftItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
   );
 }
 
-export { CraftItem };
+export { LabItem };

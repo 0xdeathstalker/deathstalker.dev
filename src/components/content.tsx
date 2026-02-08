@@ -1,5 +1,5 @@
 import { Blogs } from "@/components/sections/blogs";
-import { Crafts } from "@/components/sections/crafts";
+import { Crafts } from "@/components/sections/labs";
 import { Hero } from "@/components/sections/hero";
 import { Projects } from "@/components/sections/projects";
 import { QuoteTime } from "@/components/sections/quote-time";
@@ -8,18 +8,18 @@ import { PatternSeparator } from "@/components/ui/pattern-separator";
 
 function Content() {
   return (
-    <div className="relative pt-28 mx-auto max-w-[650px]">
+    <div className="relative pt-28 mx-auto max-w-[650px] max-[690px]:mx-4">
       <Hero />
-      <PatternSeparator />
+      <PatternSeparator bottomBorder={false} />
 
       <Work />
-      <PatternSeparator />
+      <PatternSeparator bottomBorder={false} />
 
       <Projects />
-      <PatternSeparator />
+      <PatternSeparator bottomBorder={false} />
 
       <Crafts />
-      <PatternSeparator />
+      <PatternSeparator bottomBorder={false} />
 
       <Blogs />
       <PatternSeparator bottomBorder={false} />

@@ -4,6 +4,7 @@ import { portfolio } from "@/lib/config/site-data";
 import { CodingHours } from "./coding-hours";
 import { GithubContributions } from "./github-contributions";
 import Socials from "./socials";
+import { CornerBorder } from "@/components/ui/corner-border";
 
 export function Hero() {
   return (
@@ -17,7 +18,9 @@ export function Hero() {
 
 function Title() {
   return (
-    <div className="relative py-4 px-4 max-[690px]:px-8">
+    <div className="relative py-4 px-4 min-[690px]:px-8">
+      <CornerBorder />
+
       <Line
         orientation="horizontal"
         position="top"
@@ -42,7 +45,7 @@ async function Bio() {
   const contributions = await getGitHubContributions();
 
   return (
-    <div className="relative pt-6 pb-8 px-4 max-[690px]:px-8 ">
+    <div className="relative pt-6 pb-8 px-4 min-[690px]:px-8 ">
       <div className="space-y-4">
         {portfolio.bio.map((b, i) => (
           <p

@@ -10,9 +10,9 @@ export function Blogs() {
   return (
     <section
       id="blogs"
-      className="relative px-4 max-[690px]:px-8"
+      className="relative"
     >
-      <SectionHeading>writings</SectionHeading>
+      <SectionHeading className="px-4 min-[690px]:px-8">writings</SectionHeading>
 
       <div className="space-y-4 py-6">
         {blogs.map((blog) => (
@@ -38,7 +38,7 @@ function BlogItem({ slug, title, date }: { slug: string; title: string; date: st
     .toLowerCase();
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between px-4 min-[690px]:px-8">
       <div className="w-fit relative inline-flex items-center gap-1 link overflow-x-hidden">
         <div className="relative overflow-x-hidden">
           <Link

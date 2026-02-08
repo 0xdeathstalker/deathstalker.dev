@@ -80,23 +80,28 @@ export function Line({
 
   const baseClasses = "absolute pointer-events-none z-10";
   const dimensionClasses = isHorizontal ? "w-full" : "top-0 h-full";
+  const containedHorizontalClasses = isHorizontal && variant === "contained" ? "left-0" : "";
 
   if (isHorizontal) {
+    const horizontalStyle =
+      variant === "contained"
+        ? undefined
+        : {
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "100vw",
+          };
     return (
       <svg
         data-direction={finalPosition}
         data-variant={variant}
         data-orientation={orientation}
-        className={cn(baseClasses, dimensionClasses, positionClass, color, className)}
+        className={cn(baseClasses, dimensionClasses, positionClass, containedHorizontalClasses, color, className)}
         width="100%"
         height="1"
         viewBox="0 0 100 1"
         preserveAspectRatio="none"
-        style={{
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "100vw",
-        }}
+        style={horizontalStyle}
       >
         <line
           x1="0"

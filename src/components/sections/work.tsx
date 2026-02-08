@@ -1,20 +1,20 @@
 "use client";
 
+import { SectionHeading } from "@/components/ui/heading";
 import { works } from "@/lib/config/site-data";
 import type { Work as WorkType } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
-import * as React from "react";
-import { SectionHeading } from "@/components/ui/heading";
 import Link from "next/link";
+import * as React from "react";
 
 export function Work() {
   return (
     <section
       id="work"
-      className="relative px-4 max-[690px]:px-8"
+      className="relative"
     >
-      <SectionHeading>experience</SectionHeading>
+      <SectionHeading className="px-4 min-[690px]:px-8">experience</SectionHeading>
 
       <div className="space-y-6 py-6">
         {works.map((work, index) => (
@@ -35,7 +35,7 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
   const hasDescription = work.description;
 
   return (
-    <div>
+    <div className="px-4 min-[690px]:px-8">
       <button
         onClick={() => {
           if (hasDescription) setIsOpen((prev) => !prev);
