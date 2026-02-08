@@ -18,7 +18,7 @@ export function Hero() {
 
 function Title() {
   return (
-    <div className="relative py-4 px-4 min-[690px]:px-8">
+    <div className="relative py-4 px-4 group">
       <CornerBorder />
 
       <Line
@@ -45,7 +45,7 @@ async function Bio() {
   const contributions = await getGitHubContributions();
 
   return (
-    <div className="relative pt-6 pb-8 px-4 min-[690px]:px-8 ">
+    <div className="relative pt-6 pb-8 px-4">
       <div className="space-y-4">
         {portfolio.bio.map((b, i) => (
           <p

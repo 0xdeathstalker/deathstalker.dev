@@ -5,7 +5,7 @@ import { crafts } from "@/lib/config/site-data";
 function Crafts() {
   return (
     <section id="crafts">
-      <SectionHeading className="px-4 min-[690px]:px-8">labs</SectionHeading>
+      <SectionHeading className="px-4">labs</SectionHeading>
 
       <div className="relative space-y-4 py-4">
         {[...crafts].reverse().map((craft, idx) => {

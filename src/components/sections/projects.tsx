@@ -8,7 +8,7 @@ import Link from "next/link";
 export function Projects() {
   return (
     <section id="builds">
-      <SectionHeading className="px-4 min-[690px]:px-8">projects</SectionHeading>
+      <SectionHeading className="px-4">projects</SectionHeading>
       <div>
         {projects.map((project, idx) => {
           const isLast = projects.length - 1 === idx;
@@ -27,7 +27,7 @@ export function Projects() {
 
 export function ProjectItem({ project, isLast }: { project: Project; isLast: boolean }) {
   return (
-    <div className="relative text-[#272727] py-6 px-4 min-[690px]:px-8">
+    <div className="relative text-[#272727] py-6 px-4">
       <div className="w-fit relative inline-flex items-center gap-1 link">
         <Link
           href={project.href}

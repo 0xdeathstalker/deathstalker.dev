@@ -10,11 +10,8 @@ import * as React from "react";
 
 export function Work() {
   return (
-    <section
-      id="work"
-      className="relative"
-    >
-      <SectionHeading className="px-4 min-[690px]:px-8">experience</SectionHeading>
+    <section id="work">
+      <SectionHeading className="px-4">experience</SectionHeading>
 
       <div className="space-y-6 py-6">
         {works.map((work, index) => (
@@ -35,7 +32,7 @@ function WorkItemAccordion({ work }: { work: WorkType }) {
   const hasDescription = work.description;
 
   return (
-    <div className="px-4 min-[690px]:px-8">
+    <div className="px-4">
       <button
         onClick={() => {
           if (hasDescription) setIsOpen((prev) => !prev);

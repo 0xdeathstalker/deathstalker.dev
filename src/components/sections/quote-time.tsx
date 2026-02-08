@@ -3,7 +3,7 @@ import { Line } from "@/components/ui/line";
 
 function QuoteTime() {
   return (
-    <div className="relative h-18 px-4 min-[690px]:px-8 flex items-center justify-between">
+    <div className="relative h-18 px-4 flex items-center justify-between">
       <Line
         orientation="horizontal"
         position="top"
