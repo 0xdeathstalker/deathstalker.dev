@@ -1,0 +1,263 @@
+---
+title: "Pull up the curtains"
+description: "How to create the curtain reveal effect for footer of a website."
+date: "February 22, 2026"
+---
+
+# The Sticky Footer Reveal Effect
+
+When you scroll to the bottom of a page and the footer slides into view like it was always sitting underneath the content, you are looking at the sticky footer reveal effect. The page content lifts off the footer as you scroll, revealing it from below. This post explains how it works and how to build it yourself.
+
+---
+
+## What It Looks Like
+
+```
+BEFORE SCROLLING                  WHILE SCROLLING                   FULLY REVEALED
+
+┌──────────────┐ ← top            ┌──────────────┐ ← top            ┌──────────────┐
+│              │                  │              │                  │              │
+│   Page       │                  │   Page       │                  │              │
+│   Content    │                  │   Content    │                  │   Footer     │
+│              │                  │   (ending)   │                  │   (fully     │
+│              │                  │              │                  │    visible)  │
+└──────────────┘ ← bottom         ├──────────────┤                  └──────────────┘
+                                  │   Footer     │ ← peeking
+[footer hidden below viewport]    │   (partial)  │
+                                  └──────────────┘
+```
+
+The footer is not fixed to the screen. It sits below the page content in the document and gets revealed as the user scrolls, almost like lifting a sheet of paper off a table to reveal what is underneath.
+
+---
+
+## How It Works
+
+There are three nested elements, each playing a specific role.
+
+### Layer 1: The outer footer element
+
+```
+┌────────────────────────────────────────────────┐
+│  <footer>  height: 750px  (document space)     │
+│                                                │
+│  This is the only space the footer takes up    │
+│  in the normal document flow. Think of it      │
+│  as a "placeholder" that reserves room.        │
+└────────────────────────────────────────────────┘
+```
+
+The outer element has a fixed height matching the footer's visual height. This tells the browser "reserve this much space at the bottom of the page." A `clipPath` is added to ensure nothing visually bleeds outside this boundary during the animation.
+
+### Layer 2: The tall inner container
+
+```
+                                  ← top of footer's document position
+┌────────────────────────────────┐
+│  -top: 100vh  (pulled up)      │  ← starts 100vh above the footer
+│                                │
+│                                │
+│  height: 100vh + 750px         │  ← total height gives scroll room
+│                                │
+│                                │
+└────────────────────────────────┘
+                                  ← bottom aligns with footer bottom
+```
+
+This div is made taller than the viewport and pulled upward by exactly one viewport height. The result is that this container spans from one viewport height above the footer's top all the way to the footer's bottom. This extra height is the "scroll budget" that the sticky child uses to travel.
+
+### Layer 3: The sticky content div
+
+```
+SCROLL POSITION A                 SCROLL POSITION B
+
+┌──── tall container ────────┐    ┌──── tall container ────────┐
+│                            │    │                            │
+│                            │    │  ┌──── sticky div ──────┐  │
+│                            │    │  │  Footer Content      │  │  ← stuck at
+│                            │    │  │                      │  │    top: 100vh - 750px
+│  ┌──── sticky div ──────┐  │    │  └──────────────────────┘  │
+│  │  Footer Content      │  │    │                            │
+│  └──────────────────────┘  │    │                            │
+└────────────────────────────┘    └────────────────────────────┘
+```
+
+The sticky div has `top: calc(100vh - 750px)`. This means it sticks at a position that places its bottom edge exactly at the bottom of the viewport. It starts scrolling when the tall container enters the viewport and stops when the container ends, at which point the footer is fully visible.
+
+### Full picture
+
+```
+Document Layout (zoomed out)
+
+┌─────────────────────┐  ↑
+│                     │  │
+│    Page Content     │  │  normal page height
+│                     │  │
+│                     │  ↓
+├─────────────────────┤  ← footer top (in document flow)
+│  ┌───────────────┐  │  ↑
+│  │  tall inner   │  │  │  100vh + 750px
+│  │  container    │  │  │
+│  │               │  │  │
+│  │  ┌─────────┐  │  │  ↓
+│  │  │ sticky  │  │  │  ← sticks here once it reaches top: (100vh - 750px)
+│  │  │ content │  │  │
+│  │  └─────────┘  │  │
+│  └───────────────┘  │
+└─────────────────────┘  ← footer bottom (750px below footer top)
+```
+
+---
+
+## Steps to Recreate It
+
+**Step 1: Decide your footer height.**
+
+Pick a fixed pixel height for your footer. In this example it is `750px`. All the calculations are based on this number.
+
+**Step 2: Create the outer footer element.**
+
+Give it a `relative` position and set its height to your chosen footer height. Add a `clipPath` covering the full rectangle so that nothing overflows visually during the scroll animation.
+
+```css
+height: 750px;
+position: relative;
+clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+```
+
+**Step 3: Create the tall inner container.**
+
+Inside the footer, add a div with:
+- height equal to `100vh + footer height`
+- negative top offset equal to `-100vh`
+- `position: relative`
+
+This pulls the container up so it starts one viewport height before the footer's document position and gives the sticky child enough room to scroll.
+
+```css
+height: calc(100vh + 750px);
+top: -100vh;
+position: relative;
+```
+
+**Step 4: Create the sticky content wrapper.**
+
+Inside the tall container, add the div that will hold your actual footer content. Make it:
+- the same height as the footer (`750px`)
+- `position: sticky`
+- `top` set to `calc(100vh - 750px)`
+
+This value places the sticky element so that it sits flush with the bottom of the viewport when it sticks.
+
+```css
+height: 750px;
+position: sticky;
+top: calc(100vh - 750px);
+```
+
+**Step 5: Add your footer content inside the sticky wrapper.**
+
+Everything inside the sticky wrapper is your visible footer: logo, links, copyright text and so on.
+
+---
+
+## Example Component
+
+export const FOOTER_HEIGHT = 750;
+
+<div style={{ border: "1px solid #e5e7eb", borderRadius: 8, overflow: "hidden", marginBottom: "2rem" }}>
+  <div style={{ background: "#f9fafb", padding: "0.5rem 1rem", borderBottom: "1px solid #e5e7eb", fontSize: 13, color: "#6b7280" }}>
+    Preview not available in static render — copy the component below to use it.
+  </div>
+</div>
+
+```tsx
+const FOOTER_HEIGHT = 750;
+
+export function StickyFooterReveal() {
+  return (
+    <div className="min-h-screen">
+      {/* Simulate page content above the footer */}
+      <main className="h-[200vh] bg-white flex items-center justify-center">
+        <p className="text-2xl font-semibold text-gray-500">Scroll down</p>
+      </main>
+
+      {/*
+        Layer 1: Outer footer
+        - Only takes up FOOTER_HEIGHT in the document flow
+        - clipPath prevents visual overflow during scroll
+      */}
+      <footer
+        className="relative font-sans"
+        style={{
+          height: FOOTER_HEIGHT,
+          clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)",
+        }}
+      >
+        {/*
+          Layer 2: Tall inner container
+          - Height is viewport + footer height to create scroll budget
+          - Pulled up by 100vh so the sticky child can begin travelling early
+        */}
+        <div
+          className="relative"
+          style={{
+            height: `calc(100vh + ${FOOTER_HEIGHT}px)`,
+            top: "-100vh",
+          }}
+        >
+          {/*
+            Layer 3: Sticky content
+            - Sticks at top: (100vh - footer height)
+            - This keeps its bottom edge flush with the viewport bottom
+          */}
+          <div
+            className="sticky bg-gray-900 text-white"
+            style={{
+              height: FOOTER_HEIGHT,
+              top: `calc(100vh - ${FOOTER_HEIGHT}px)`,
+            }}
+          >
+            {/* Your footer content goes here */}
+            <div className="max-w-5xl mx-auto px-8 py-16">
+              <p className="text-3xl font-bold mb-4">Your Brand</p>
+              <p className="text-gray-400 text-sm mb-8">
+                Making great things since 2024.
+              </p>
+              <div className="flex gap-8 text-sm text-gray-400">
+                <a href="#" className="hover:text-white transition-colors">About</a>
+                <a href="#" className="hover:text-white transition-colors">Work</a>
+                <a href="#" className="hover:text-white transition-colors">Contact</a>
+              </div>
+              <div className="mt-16 pt-8 border-t border-gray-700 text-xs text-gray-600">
+                © 2026 Your Brand. All rights reserved.
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+```
+
+---
+
+## Why Not Just Use `position: fixed`?
+
+A fixed footer is always on screen. This effect only shows the footer when you reach the end of the page. It also allows the footer to participate in normal document flow so the page does not have awkward empty space at the bottom. The sticky approach gives you a smooth, scroll-driven reveal without any JavaScript.
+
+---
+
+## Quick Reference
+
+| Property | Element | Value | Purpose |
+|---|---|---|---|
+| `height` | outer footer | `750px` | Reserves document space |
+| `clip-path` | outer footer | full rect | Prevents visual overflow |
+| `height` | inner container | `100vh + 750px` | Scroll budget for sticky child |
+| `top` | inner container | `-100vh` | Pulls container up to start early |
+| `position` | inner container | `relative` | Establishes containing block |
+| `height` | sticky div | `750px` | Matches visual footer height |
+| `position` | sticky div | `sticky` | Enables sticky behavior |
+| `top` | sticky div | `100vh - 750px` | Aligns bottom edge to viewport bottom |
