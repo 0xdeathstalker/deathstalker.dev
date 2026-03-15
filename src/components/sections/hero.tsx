@@ -18,7 +18,7 @@ export function Hero() {
 
 function Title() {
   return (
-    <div className="relative py-4 px-4 group">
+    <div className="relative py-4 px-4">
       <CornerBorder />
 
       <Line
