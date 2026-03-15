@@ -9,10 +9,11 @@ export const portfolio = {
   author: "soumya mukherjee",
   bio: [
     <span>
-      <span className="text-foreground">hey, i'm soumya — a design engineer</span> creating polished interfaces with
-      react, next.js and typescript.
+      <span className="text-foreground">hey, i'm soumya — a design engineer</span> with 3 years of experience in
+      building polished interfaces with react, next.js and typescript.
     </span>,
-    "i focus on the craft: clean code, smooth animations and interactions that feel effortless. shipped production apps from blockchain explorers to component libraries. i build web experiences that are fast, functional and polished enough to make you smile.",
+    "i focus on performance and user experience, prioritizing resilient code and thoughtful interactions that feel effortless. shipped production apps from blockchain explorers to component libraries.",
+    "always pushing the details that make interfaces feel alive.",
   ],
   resume: "/resume.pdf",
   socials: {
