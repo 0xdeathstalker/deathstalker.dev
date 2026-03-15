@@ -151,9 +151,14 @@ export type Craft = { title: ComponentTitles; tech: string; video: string };
 
 export const crafts: Array<Craft> = [
   {
-    title: "shared-layout-animation",
-    tech: "motion",
-    video: "https://cdn.deathstalker.dev/videos/shared-layout.mp4",
+    title: "submit-button-states",
+    tech: "css",
+    video: "https://cdn.deathstalker.dev/videos/button-states.mp4",
+  },
+  {
+    title: "mask-scroll",
+    tech: "css",
+    video: "https://cdn.deathstalker.dev/videos/mask-scroll-fade.mp4",
   },
   {
     title: "ios-input-morph-text",
@@ -161,14 +166,9 @@ export const crafts: Array<Craft> = [
     video: "https://cdn.deathstalker.dev/videos/ios-input-morph.mp4",
   },
   {
-    title: "mask-scroll",
-    tech: "css",
-    video: "https://cdn.deathstalker.dev/videos/mask-scroll-area.mp4",
-  },
-  {
-    title: "submit-button-states",
-    tech: "css",
-    video: "https://cdn.deathstalker.dev/videos/button-states.mp4",
+    title: "shared-layout-animation",
+    tech: "motion",
+    video: "https://cdn.deathstalker.dev/videos/shared-layout.mp4",
   },
 ];
 
