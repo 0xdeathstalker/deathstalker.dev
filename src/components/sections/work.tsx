@@ -27,7 +27,9 @@ export function Work() {
 }
 
 function WorkItemAccordion({ work }: { work: WorkType }) {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(() => 
+    work.id === 1 ? true : false
+  );
 
   const hasDescription = work.description;
 

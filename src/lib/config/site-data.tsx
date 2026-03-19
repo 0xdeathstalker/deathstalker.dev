@@ -27,6 +27,7 @@ export const portfolio = {
 
 export const works: Array<Work> = [
   {
+    id: 1,
     company: "ladddr",
     role: "freelancer",
     logo: "ladddr.png",
@@ -42,6 +43,7 @@ export const works: Array<Work> = [
     ],
   },
   {
+    id: 2,
     company: "router-protocol",
     role: "frontend developer",
     logo: "router.png",
@@ -84,6 +86,7 @@ export const works: Array<Work> = [
     href: "https://www.routerprotocol.com",
   },
   {
+    id: 3,
     company: "router-protocol",
     role: "frontend developer intern",
     logo: "router.png",

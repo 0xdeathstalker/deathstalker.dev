@@ -12,6 +12,7 @@ export type Project = {
 };
 
 export type Work = {
+  id: number;
   company: string;
   role: string;
   logo: string;
