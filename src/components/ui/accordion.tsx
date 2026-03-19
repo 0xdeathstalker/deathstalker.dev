@@ -6,7 +6,7 @@ import * as React from "react";
 type AccordionContextValue = {
   isOpen: boolean;
   toggle: () => void;
-}
+};
 
 const AccordionContext = React.createContext<AccordionContextValue | null>(null);
 
@@ -19,7 +19,7 @@ function useAccordionContext() {
 type AccordionProps = {
   defaultOpen?: boolean;
   disabled?: boolean;
-} & React.ComponentProps<"div">
+} & React.ComponentProps<"div">;
 
 function Accordion({ defaultOpen = false, disabled = false, children, className, ...props }: AccordionProps) {
   const [isOpen, setIsOpen] = React.useState(defaultOpen);
@@ -30,7 +30,11 @@ function Accordion({ defaultOpen = false, disabled = false, children, className,
 
   return (
     <AccordionContext.Provider value={{ isOpen, toggle }}>
-      <div data-state={isOpen ? "open" : "closed"} className={className} {...props}>
+      <div
+        data-state={isOpen ? "open" : "closed"}
+        className={className}
+        {...props}
+      >
         {children}
       </div>
     </AccordionContext.Provider>
