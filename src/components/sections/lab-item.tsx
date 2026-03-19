@@ -61,7 +61,7 @@ function LabItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
             className={cn(
               "absolute bottom-1 left-6 py-0.5 px-1.5 font-mono text-[10px] sm:text-xs tracking-tight",
               "bg-background border border-muted-foreground/25 border-dashed",
-              "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-[cubic-bezier(0.19,_1,_0.22,_1)]",
+              "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-expo-out",
             )}
           >
             {craft.title}
@@ -70,7 +70,7 @@ function LabItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
             className={cn(
               "absolute bottom-2 right-6 py-0.5 px-1.5 font-mono text-[10px] sm:text-xs tracking-tight",
               "bg-background border border-muted-foreground/25 border-dashed",
-              "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-[cubic-bezier(0.19,_1,_0.22,_1)]",
+              "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-expo-out",
             )}
           >
             {craft.tech}
