@@ -10,7 +10,7 @@ function SectionHeading({ className, ...props }: React.ComponentProps<"h1">) {
         orientation="horizontal"
         variant="contained"
         position="top"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        color="text-[oklch(71.4%_0.014_41.2)]/86 dark:text-muted-foreground/20"
         className="max-w-[650px]"
       />
 
@@ -23,7 +23,7 @@ function SectionHeading({ className, ...props }: React.ComponentProps<"h1">) {
         orientation="horizontal"
         variant="contained"
         position="bottom"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        color="text-[oklch(71.4%_0.014_41.2)]/86 dark:text-muted-foreground/20"
         className="max-w-[650px]"
       />
 

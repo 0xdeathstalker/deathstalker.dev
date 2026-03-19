@@ -7,7 +7,7 @@ function QuoteTime() {
       <Line
         orientation="horizontal"
         position="top"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        color="text-[oklch(71.4%_0.014_41.2)]/86"
       />
 
       <RandomQuotes />
@@ -17,7 +17,7 @@ function QuoteTime() {
       <Line
         orientation="horizontal"
         position="bottom"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        color="text-[oklch(71.4%_0.014_41.2)]/86"
       />
     </div>
   );

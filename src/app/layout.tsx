@@ -2,19 +2,9 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { Favicon } from "@/components/ui/favicon";
 import { UmamiAnalytics } from "@/components/umami-analytics";
 import { siteConfig } from "@/lib/config/site";
+import { fontVariables } from "@/lib/fonts";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -102,7 +92,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${fontVariables} antialiased`}>
         <Favicon />
         <ScrollToTop />
         {children}

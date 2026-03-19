@@ -18,12 +18,20 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
       <div className="mx-auto max-w-[650px] max-[690px]:mx-4">
         <ComponentHeader slug={slug} />
 
-        <div className="p-2">
+        <div className="m-4 border border-muted-foreground/15 rounded-lg">
           <div className="h-8 w-full" />
 
           <div className="flex items-center justify-center min-h-72">{Component && <Component />}</div>
 
           <div className="h-8 w-full" />
+
+          <Line
+            orientation="horizontal"
+            position="bottom"
+            color="text-muted-foreground/25 dark:text-muted-foreground/20"
+            className="max-w-[650px]"
+            variant="contained"
+          />
         </div>
       </div>
     </main>
