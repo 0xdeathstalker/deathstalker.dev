@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Line } from "./line";
 
-function PatternSeparator({ topBorder = true, bottomBorder = true }: { topBorder?: boolean; bottomBorder?: boolean }) {
+function PatternSeparator({ topBorder = true, bottomBorder = false }: { topBorder?: boolean; bottomBorder?: boolean }) {
   return (
     <div className="h-10 w-full relative">
       {topBorder && (
@@ -13,18 +13,7 @@ function PatternSeparator({ topBorder = true, bottomBorder = true }: { topBorder
           className="max-w-[650px]"
         />
       )}
-      {/* <div
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-            repeating-linear-gradient(22.5deg, transparent, transparent 2px, rgba(75, 85, 99, 0.07) 2px, rgba(75, 85, 99, 0.07) 3px, transparent 3px, transparent 8px),
-            repeating-linear-gradient(67.5deg, transparent, transparent 2px, rgba(107, 114, 128, 0.06) 2px, rgba(107, 114, 128, 0.06) 3px, transparent 3px, transparent 8px),
-            repeating-linear-gradient(112.5deg, transparent, transparent 2px, rgba(55, 65, 81, 0.05) 2px, rgba(55, 65, 81, 0.05) 3px, transparent 3px, transparent 8px),
-            repeating-linear-gradient(157.5deg, transparent, transparent 2px, rgba(31, 41, 55, 0.04) 2px, rgba(31, 41, 55, 0.04) 3px, transparent 3px, transparent 8px)
-          `,
-        }}
-      /> */}
-      {/* // TODO: need to implement similar logic for placing this (pattern separator & dashed lines) */}
+
       <div
         className={cn(
           "screen-line-after h-10",

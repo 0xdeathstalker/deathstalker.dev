@@ -88,7 +88,7 @@ function LabItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
         </div>
       </Link>
 
-      {isLast ? <PatternSeparator /> : null}
+      {isLast ? <PatternSeparator bottomBorder /> : null}
     </React.Fragment>
   );
 }
