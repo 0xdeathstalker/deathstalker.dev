@@ -32,7 +32,7 @@ export const works: Array<Work> = [
     role: "freelancer",
     logo: "ladddr.png",
     bgColour: "#5C43DD",
-    period: "sep 2025 - present",
+    period: "09.2025 - present",
     href: "https://ladddr.com",
     isCurrentEmployer: true,
     description: [
@@ -47,7 +47,7 @@ export const works: Array<Work> = [
     company: "router-protocol",
     role: "frontend developer",
     logo: "router.png",
-    period: "sep 2023 - sep 2025",
+    period: "09.2023 - 09.2025",
     description: [
       <span>
         built{" "}
@@ -90,7 +90,7 @@ export const works: Array<Work> = [
     company: "router-protocol",
     role: "frontend developer intern",
     logo: "router.png",
-    period: "may 2023 - sep 2023",
+    period: "05.2023 - 09.2023",
     description: [
       "built a gamified nft application using the protocol's cross-chain architecture where users were able to mint an nft and then level it up by bridging across chains.",
       "implemented a lottery system with rewards distribution on polygon using ethers.js and custom wallet module for handling wallet connections.",
@@ -102,11 +102,16 @@ export const works: Array<Work> = [
 
 export const projects: Array<Project> = [
   {
+    id: 1,
     title: "nitro-explorer-v2",
-    description:
-      "a blazing-fast revamped version of cross-chain blockchain explorer (nitro explorer) rebuilt with a focus on performance and ux.",
-    role: "creator and maintainer",
-    period: "mar 2025 - jul 2025",
+    description: [
+      "Independently rebuilt an internal version of Nitro Explorer with a focus on performance and UX, achieving up to 99 Lighthouse performance score (previous max: 65).",
+      "Crafted a blazing-fast explorer experience by implementing a command based search and non-blocking data states to eliminate layout shifts and improve perceived latency.",
+      "Architected GraphQL data layer using React Query for optimistic updates, query deduplication, and automatic cache invalidation across blockchain transaction states",
+    ],
+    logo: "nitro-explorer",
+      role: "creator and maintainer",
+    period: "03.2025 - 07.2025",
     achievements: [
       "improved ux and codebase to achieve up to 99 lighthouse performance score (prev max: 65)",
       "eliminated layout shift and loading jank with full non-blocking data flow",
@@ -116,11 +121,14 @@ export const projects: Array<Project> = [
     href: "https://nitro-explorer.vercel.app",
   },
   {
+    id: 2,
     title: "cracked-ui-components",
-    description:
-      "a growing component library built for web3 applications, designed to simplify integration and speed up development across dapps with polished, reusable primitives.",
-    role: "creator and maintainer",
-    period: "jun 2025 - present",
+    description: [
+      "Developing a comprehensive component ecosystem for web3 applications, accelerating developer integration time by 50-60% and can be used across multiple applications with consistent design patterns."
+    ],
+      logo: "cracked-ui",
+      role: "creator and maintainer",
+    period: "06.2025 - present",
     achievements: [
       "accelerated web3 dapp integration by 50–60% through reusable, framework-agnostic components",
       "built chain/token selectors and qr-based address utilities used across multiple production apps",
@@ -130,11 +138,14 @@ export const projects: Array<Project> = [
     href: "https://github.com/cracked0x/ui",
   },
   {
+    id: 3,
     title: "whispr-room",
-    description:
-      "a real-time disposable chat app where users can instantly create or join temporary chat rooms without login—built for fast, private and ephemeral conversations.",
-    role: "creator and maintainer",
-    period: "jun 2025 - jul 2025",
+    description: [
+      "Built a real-time chat app with ephemeral rooms using Convex for live state synchronization, user presence tracking, system event broadcasting and graceful room expiration handling."
+    ],
+      logo: "whispr-room",
+      role: "creator and maintainer",
+    period: "06.2025 - 07.2025",
     achievements: [
       "integrated convex as a serverless backend for live room and message sync",
       "added system messages for join/leave activity and contextual flow",

@@ -2,8 +2,10 @@ import type { ReactElement } from "react";
 import type { portfolio } from "@/lib/config/site-data";
 
 export type Project = {
+  id: number;
   title: string;
-  description: string;
+  description: Array<ReactElement | string>;
+  logo: string;
   role: string;
   period: string;
   achievements: Array<string>;
