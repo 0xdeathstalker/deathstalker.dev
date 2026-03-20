@@ -31,79 +31,86 @@ export const works: Array<Work> = [
     id: 1,
     company: "ladddr",
     companyLogo: "ladddr.png",
-    role: "fullstack engineer",
-    roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
-    type: "freelancer",
     bgColour: "#5C43DD",
-    period: "09.2025 - present",
     href: "https://ladddr.com",
     isCurrentEmployer: true,
-    description: [
-      "built a fullstack b2b saas platform for legal and tax compliance services, featuring multiple workflows.",
-      "implemented secure payment infrastructure with razorpay, one-time token system for post payment operations and automated payment confirmation emails via resend.",
-      "built multi-channel lead management system with google sheets api and telecrm.",
-      "developed a headless cms-driven blog using sanity with improved seo and performance.",
+    positions: [
+      {
+        id: 1,
+        role: "fullstack engineer",
+        roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
+        type: "freelancer",
+        period: "09.2025 - present",
+        description: [
+          "built a fullstack b2b saas platform for legal and tax compliance services, featuring multiple workflows.",
+          "implemented secure payment infrastructure with razorpay, one-time token system for post payment operations and automated payment confirmation emails via resend.",
+          "built multi-channel lead management system with google sheets api and telecrm.",
+          "developed a headless cms-driven blog using sanity with improved seo and performance.",
+        ],
+      },
     ],
   },
   {
     id: 2,
     company: "router-protocol",
     companyLogo: "router.png",
-    role: "frontend engineer",
-    roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
-    type: "full-time",
-    period: "09.2023 - 09.2025",
-    description: [
-      <span>
-        built{" "}
-        <Link
-          href="https://nitro-explorer.vercel.app"
-          target="_blank"
-          className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
-        >
-          nitro explorer
-        </Link>
-        , cross-chain blockchain explorer processing more than thousand daily transactions.
-      </span>,
-      <span>
-        integrated multiple blockchain ecosystems: (cosmos, bitcoin, tron, near, ton) into{" "}
-        <Link
-          href="https://github.com/router-protocol/tangled"
-          target="_blank"
-          className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
-        >
-          tangled
-        </Link>
-        , a wallet sdk developed for handling multi-chain wallet flows.
-      </span>,
-      <span>
-        optimised transaction ux by reducing drop-offs, improving completion rates on{" "}
-        <Link
-          href="https://routernitro.com/swap"
-          target="_blank"
-          className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
-        >
-          nitro app
-        </Link>
-        .
-      </span>,
-    ],
     href: "https://www.routerprotocol.com",
-  },
-  {
-    id: 3,
-    company: "router-protocol",
-    companyLogo: "router.png",
-    role: "frontend engineer intern",
-    roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
-    type: "intern",
-    period: "05.2023 - 08.2023",
-    description: [
-      "built a gamified nft application using the protocol's cross-chain architecture where users were able to mint an nft and then level it up by bridging across chains.",
-      "implemented a lottery system with rewards distribution on polygon using ethers.js and custom wallet module for handling wallet connections.",
-      "went from intern to full-time based on shipping speed and code quality.",
+    positions: [
+      {
+        id: 1,
+        role: "frontend engineer",
+        roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
+        type: "full-time",
+        period: "09.2023 - 09.2025",
+        description: [
+          <span>
+            built{" "}
+            <Link
+              href="https://nitro-explorer.vercel.app"
+              target="_blank"
+              className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
+            >
+              nitro explorer
+            </Link>
+            , cross-chain blockchain explorer processing more than thousand daily transactions.
+          </span>,
+          <span>
+            integrated multiple blockchain ecosystems: (cosmos, bitcoin, tron, near, ton) into{" "}
+            <Link
+              href="https://github.com/router-protocol/tangled"
+              target="_blank"
+              className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
+            >
+              tangled
+            </Link>
+            , a wallet sdk developed for handling multi-chain wallet flows.
+          </span>,
+          <span>
+            optimised transaction ux by reducing drop-offs, improving completion rates on{" "}
+            <Link
+              href="https://routernitro.com/swap"
+              target="_blank"
+              className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
+            >
+              nitro app
+            </Link>
+            .
+          </span>,
+        ],
+      },
+      {
+        id: 2,
+        role: "frontend engineer intern",
+        roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
+        type: "intern",
+        period: "05.2023 - 08.2023",
+        description: [
+          "built a gamified nft application using the protocol's cross-chain architecture where users were able to mint an nft and then level it up by bridging across chains.",
+          "implemented a lottery system with rewards distribution on polygon using ethers.js and custom wallet module for handling wallet connections.",
+          "went from intern to full-time based on shipping speed and code quality.",
+        ],
+      },
     ],
-    href: "https://www.routerprotocol.com",
   },
 ] as const;
 

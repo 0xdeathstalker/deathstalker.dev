@@ -12,18 +12,23 @@ export type Project = {
   href: string;
 };
 
-export type Work = {
+export type WorkPosition = {
   id: number;
-  company: string;
-  companyLogo: string;
   role: string;
   roleIcon: ReactElement;
   type: "freelancer" | "intern" | "full-time" | "contract";
   period: string;
   description?: Array<ReactElement | string>;
+};
+
+export type Work = {
+  id: number;
+  company: string;
+  companyLogo: string;
   bgColour?: string;
   href: string;
   isCurrentEmployer?: boolean;
+  positions: Array<WorkPosition>;
 };
 
 export type SocialKeys = keyof typeof portfolio.socials;
