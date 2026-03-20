@@ -103,10 +103,10 @@ function RoleInfo({ work, hasDescription }: { work: WorkType; hasDescription: bo
 
             <div className="mt-0.5 text-xs leading-snug inline-flex items-center gap-0.5 text-muted-foreground/75">
               {work.period.split("-").map((p, i, arr) => (
-                <>
-                  <span key={p}>{p}</span>
+                <React.Fragment key={p}>
+                  <span>{p}</span>
                   {i < arr.length - 1 && <span key={`sep-${i + 1}`}>-</span>}
-                </>
+                </React.Fragment>
               ))}
             </div>
           </div>
@@ -118,31 +118,28 @@ function RoleInfo({ work, hasDescription }: { work: WorkType; hasDescription: bo
 
 function CompanyInfo({ work }: { work: WorkType }) {
   return (
-    <div className="flex items-center gap-2 mb-3">
+    <div className="group flex items-center gap-2 mb-3">
       <img
         src={`/images/work/${work.companyLogo}`}
         alt={`${work.company} logo`}
-        className="size-6 rounded-sm mix-blend-hard-light dark:mix-blend-normal grayscale opacity-75 dark:opacity-100 peer-hover:opacity-100 peer-hover:grayscale-0 peer-hover:mix-blend-normal transition-all ease-linear"
+        className="size-6 rounded"
       />
 
-      <div className="flex flex-col items-start gap-0.5">
-        <div className="relative group flex items-center gap-0.5 link">
-          <Link
-            href={work.href}
-            target="_blank"
-          >
-            <h2 className="relative text-lg font-medium before:content-[''] before:absolute before:bottom-0.5 before:h-[1px] before:w-0 dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-circ-in-out group-hover:before:w-full group-data-[state=open]:before:w-full">
-              {work.company}
-            </h2>
-          </Link>
+      <div className="relative flex items-center gap-0.5 link">
+        <Link
+          href={work.href}
+          target="_blank"
+        >
+          <h2 className="relative text-lg font-medium before:content-[''] before:absolute before:bottom-0.5 before:h-[1px] before:w-0 dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-circ-in-out hover:before:w-full">
+            {work.company}
+          </h2>
+        </Link>
 
-          {work.isCurrentEmployer && (
-            <div className="absolute top-1/2 -right-2.5">
-              <CurrentWorkIndicator />
-            </div>
-          )}
-          {/* <LinkArrowIcon /> */}
-        </div>
+        {work.isCurrentEmployer && (
+          <div className="absolute top-1/2 -right-2.5">
+            <CurrentWorkIndicator />
+          </div>
+        )}
       </div>
     </div>
   );

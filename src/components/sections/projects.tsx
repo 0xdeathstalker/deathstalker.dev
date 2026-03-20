@@ -5,6 +5,7 @@ import { projects } from "@/lib/config/site-data";
 import type { Project } from "@/lib/types";
 import { ChevronRight } from "lucide-react";
 import { LinkIcon } from "@/components/link-icon";
+import React from "react";
 
 export function Projects() {
   return (
@@ -78,11 +79,11 @@ function ProjectItemInfo({ project }: { project: Project }) {
   return (
     <div className="w-full inline-flex items-center justify-between">
       <div className="flex items-start gap-4">
-        <div className="mt-1 size-6 rounded-sm flex items-center justify-center overflow-hidden">
+        <div className="mt-1 size-6 rounded flex items-center justify-center overflow-hidden">
           <img
             src={`/images/projects/${project.logo}`}
             alt={`${project.title} logo`}
-            className="size-6 mix-blend-hard-light dark:mix-blend-normal grayscale opacity-75 dark:opacity-100 group-hover:opacity-100 group-hover:grayscale-0 group-hover:mix-blend-normal group-data-[state=open]:grayscale-0 group-data-[state=open]:mix-blend-normal group-data-[state=open]:opacity-100 transition-all ease-circ-in-out"
+            className="size-6"
           />
         </div>
 
@@ -97,10 +98,10 @@ function ProjectItemInfo({ project }: { project: Project }) {
 
           <div className="inline-flex items-center gap-0.5 font-mono text-sm text-muted-foreground/90">
             {project.period.split("-").map((p, i, arr) => (
-              <>
-                <span key={p}>{p}</span>
+              <React.Fragment key={p}>
+                <span>{p}</span>
                 {i < arr.length - 1 && <span key={`sep-${i + 1}`}>-</span>}
-              </>
+              </React.Fragment>
             ))}
           </div>
         </div>

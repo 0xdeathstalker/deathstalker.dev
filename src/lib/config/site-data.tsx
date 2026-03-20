@@ -39,10 +39,10 @@ export const works: Array<Work> = [
     href: "https://ladddr.com",
     isCurrentEmployer: true,
     description: [
-      "built a fullstack b2b saas platform for legal and tax compliance services, featuring multiple workflows",
-      "implemented secure payment infrastructure with razorpay, one-time token system for post payment operations and automated payment confirmation emails via resend",
-      "built multi-channel lead management system with google sheets api and telecrm",
-      "developed a headless cms-driven blog using sanity with improved seo and performance",
+      "built a fullstack b2b saas platform for legal and tax compliance services, featuring multiple workflows.",
+      "implemented secure payment infrastructure with razorpay, one-time token system for post payment operations and automated payment confirmation emails via resend.",
+      "built multi-channel lead management system with google sheets api and telecrm.",
+      "developed a headless cms-driven blog using sanity with improved seo and performance.",
     ],
   },
   {
