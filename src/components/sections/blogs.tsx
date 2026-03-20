@@ -1,5 +1,5 @@
 import Link from "next/link";
-import LinkIcon from "@/components/link-icon";
+import LinkIcon from "@/components/link-arrow-icon";
 import { getBlogs } from "@/lib/actions/blog";
 import { SectionHeading } from "@/components/ui/heading";
 

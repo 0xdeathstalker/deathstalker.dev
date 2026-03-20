@@ -1,12 +1,21 @@
-import { ArrowUpRight } from "lucide-react";
-import type * as React from "react";
-import { cn } from "@/lib/utils";
+"use client";
 
-export default function LinkIcon({ className, ...props }: React.ComponentProps<"div">) {
+import Link from "next/link";
+import { Link as LucideLinkIcon } from "lucide-react";
+
+function LinkIcon({ href, className, ...props }: React.ComponentProps<typeof Link>) {
   return (
-    <div className={cn("size-4 grid place-items-center overflow-hidden", className)}>
-      <ArrowUpRight className="size-4 text-foreground link-svg" />
-      <ArrowUpRight className="size-4 text-foreground link-svg" />
-    </div>
+    <Link
+      href={href}
+      target="_blank"
+      onClick={(e) => e.stopPropagation()}
+      {...props}
+    >
+      <div className="size-6 flex items-center justify-center bg-muted border border-muted-foreground/15 rounded-xl ring-1 ring-offset-1 ring-muted-foreground/15">
+        <LucideLinkIcon className="size-3.5 text-[oklch(43.8%_0.017_39.3)]" />
+      </div>
+    </Link>
   );
 }
+
+export { LinkIcon };

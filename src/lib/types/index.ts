@@ -8,7 +8,6 @@ export type Project = {
   logo: string;
   role: string;
   period: string;
-  achievements: Array<string>;
   technologies: Array<string>;
   href: string;
 };
