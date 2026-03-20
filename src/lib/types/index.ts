@@ -15,8 +15,10 @@ export type Project = {
 export type Work = {
   id: number;
   company: string;
+  companyLogo: string;
   role: string;
-  logo: string;
+  roleIcon: ReactElement;
+  type: "freelancer" | "intern" | "full-time" | "contract";
   period: string;
   description?: Array<ReactElement | string>;
   bgColour?: string;

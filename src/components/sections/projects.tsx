@@ -43,17 +43,17 @@ export function ProjectItem({ project, isLast }: { project: Project; isLast: boo
               key={`${i + 1}`}
               className="flex items-center w-full leading-snug mt-3"
             >
-              <div className="pr-2 self-start">•</div>
+              <div className="pr-2 self-start text-muted-foreground/40">•</div>
               <span className="text-neutral-800 flex-grow text-sm">{d}</span>
             </li>
           ))}
         </ul>
 
-        <div className="inline-flex items-center gap-3 flex-wrap mt-6 mb-1">
+        <div className="inline-flex items-center gap-1.5 flex-wrap mt-6 mb-1">
           {project.technologies.map((technology) => (
             <div
               key={technology}
-              className="font-pixel-square py-1 px-1.5 bg-accent rounded-sm text-muted-foreground text-xs shadow"
+              className="font-pixel-square mx-1 py-1 px-1.5 bg-accent rounded-sm text-muted-foreground text-xs shadow"
             >
               {technology}
             </div>
@@ -77,18 +77,18 @@ export function ProjectItem({ project, isLast }: { project: Project; isLast: boo
 function ProjectItemInfo({ project }: { project: Project }) {
   return (
     <div className="w-full inline-flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <div className="size-11 rounded-sm flex items-center justify-center overflow-hidden">
+      <div className="flex items-start gap-4">
+        <div className="mt-1 size-6 rounded-sm flex items-center justify-center overflow-hidden">
           <img
             src={`/images/projects/${project.logo}`}
             alt={`${project.title} logo`}
-            className="size-11 mix-blend-hard-light dark:mix-blend-normal grayscale opacity-75 dark:opacity-100 group-hover:opacity-100 group-hover:grayscale-0 group-hover:mix-blend-normal group-data-[state=open]:grayscale-0 group-data-[state=open]:mix-blend-normal group-data-[state=open]:opacity-100 transition-all ease-circ-in-out"
+            className="size-6 mix-blend-hard-light dark:mix-blend-normal grayscale opacity-75 dark:opacity-100 group-hover:opacity-100 group-hover:grayscale-0 group-hover:mix-blend-normal group-data-[state=open]:grayscale-0 group-data-[state=open]:mix-blend-normal group-data-[state=open]:opacity-100 transition-all ease-circ-in-out"
           />
         </div>
 
         <div className="flex flex-col items-start gap-0.5">
           <div className="w-fit relative inline-flex items-center gap-1 link">
-            <h1 className="text-lg relative before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-[1px] dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-circ-in-out group-hover:before:w-full group-data-[state=open]:before:w-full">
+            <h1 className="font-medium text-lg relative before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-[1px] dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-circ-in-out group-hover:before:w-full group-data-[state=open]:before:w-full">
               {project.title}
             </h1>
 

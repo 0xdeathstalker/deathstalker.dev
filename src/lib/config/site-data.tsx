@@ -1,9 +1,10 @@
-import Link from "next/link";
-import type { Project, Work } from "@/lib/types";
-import { IOSInputMorphText } from "@/components/labs/input-morph-text";
 import { SubmitButtonStates } from "@/components/labs/button-states";
+import { IOSInputMorphText } from "@/components/labs/input-morph-text";
 import { MaskScroll } from "@/components/labs/mask-scroll";
 import { MotionSharedLayout } from "@/components/labs/shared-layout";
+import type { Project, Work } from "@/lib/types";
+import { Code } from "lucide-react";
+import Link from "next/link";
 
 export const portfolio = {
   author: "soumya mukherjee",
@@ -29,8 +30,10 @@ export const works: Array<Work> = [
   {
     id: 1,
     company: "ladddr",
-    role: "freelancer",
-    logo: "ladddr.png",
+    companyLogo: "ladddr.png",
+    role: "fullstack engineer",
+    roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
+    type: "freelancer",
     bgColour: "#5C43DD",
     period: "09.2025 - present",
     href: "https://ladddr.com",
@@ -45,8 +48,10 @@ export const works: Array<Work> = [
   {
     id: 2,
     company: "router-protocol",
-    role: "frontend developer",
-    logo: "router.png",
+    companyLogo: "router.png",
+    role: "frontend engineer",
+    roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
+    type: "full-time",
     period: "09.2023 - 09.2025",
     description: [
       <span>
@@ -88,8 +93,10 @@ export const works: Array<Work> = [
   {
     id: 3,
     company: "router-protocol",
-    role: "frontend developer intern",
-    logo: "router.png",
+    companyLogo: "router.png",
+    role: "frontend engineer intern",
+    roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
+    type: "intern",
     period: "05.2023 - 08.2023",
     description: [
       "built a gamified nft application using the protocol's cross-chain architecture where users were able to mint an nft and then level it up by bridging across chains.",

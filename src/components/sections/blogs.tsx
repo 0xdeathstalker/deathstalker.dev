@@ -1,5 +1,5 @@
 import Link from "next/link";
-import LinkIcon from "@/components/link-arrow-icon";
+import { LinkArrowIcon } from "@/components/link-arrow-icon";
 import { getBlogs } from "@/lib/actions/blog";
 import { SectionHeading } from "@/components/ui/heading";
 
@@ -47,7 +47,7 @@ function BlogItem({ slug, title, date }: { slug: string; title: string; date: st
           <div className="sm:hidden absolute top-0 right-0 h-full w-10 bg-linear-to-l from-background to-transparent" />
         </div>
 
-        <LinkIcon className="size-5" />
+        <LinkArrowIcon className="size-5" />
       </div>
 
       <span className="hidden sm:inline text-muted-foreground">{formattedDate}</span>
