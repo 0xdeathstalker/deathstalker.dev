@@ -6,8 +6,8 @@ import type { Project } from "@/lib/types";
 import { ChevronRight } from "lucide-react";
 import { LinkIcon } from "@/components/link-icon";
 import React from "react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-import { Url } from "next/dist/shared/lib/router/router";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import type { Url } from "next/dist/shared/lib/router/router";
 
 export function Projects() {
   return (
