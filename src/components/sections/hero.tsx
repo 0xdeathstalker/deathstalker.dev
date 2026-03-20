@@ -51,7 +51,7 @@ async function Bio() {
           <p
             // biome-ignore lint/suspicious/noArrayIndexKey: no other variable to use as key
             key={i}
-            className="text-neutral-600 leading-relaxed"
+            className="text-sm [text-neutral-600 leading-relaxed"
           >
             {b}
           </p>
