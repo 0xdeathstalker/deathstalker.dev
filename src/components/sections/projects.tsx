@@ -6,6 +6,8 @@ import type { Project } from "@/lib/types";
 import { ChevronRight } from "lucide-react";
 import { LinkIcon } from "@/components/link-icon";
 import React from "react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { Url } from "next/dist/shared/lib/router/router";
 
 export function Projects() {
   return (
@@ -96,7 +98,7 @@ function ProjectItemInfo({ project }: { project: Project }) {
             <ChevronRight className="size-3.5 md:opacity-0 md:scale-40 md:-translate-x-1.5 group-hover:opacity-100 group-hover:scale-100 group-hover:-translate-x-0 group-data-[state=open]:rotate-90 group-data-[state=open]:md:opacity-100 group-data-[state=open]:md:scale-100 group-data-[state=open]:md:translate-x-0 transition-all ease-in-out" />
           </div>
 
-          <div className="inline-flex items-center gap-0.5 font-mono text-sm text-muted-foreground/90">
+          <div className="inline-flex items-center gap-0.5 font-mono text-xs text-muted-foreground/90">
             {project.period.split("-").map((p, i, arr) => (
               <React.Fragment key={p}>
                 <span>{p}</span>
@@ -107,7 +109,21 @@ function ProjectItemInfo({ project }: { project: Project }) {
         </div>
       </div>
 
-      <LinkIcon href={project.href} />
+      <ProjectLinkTooltip href={project.href} />
     </div>
+  );
+}
+
+function ProjectLinkTooltip({ href }: { href: Url }) {
+  return (
+    <Tooltip>
+      <TooltipTrigger>
+        <LinkIcon href={href} />
+      </TooltipTrigger>
+
+      <TooltipContent>
+        <span className="font-sans">visit project link</span>
+      </TooltipContent>
+    </Tooltip>
   );
 }
