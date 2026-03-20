@@ -35,7 +35,7 @@ function WorkItem({ work, isLast }: { work: WorkType; isLast: boolean }) {
     <div className="relative py-6 px-4">
       <CompanyInfo work={work} />
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         {work.positions.map((position, idx) => (
           <PositionItem
             key={position.id}

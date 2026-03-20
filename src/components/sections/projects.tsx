@@ -117,7 +117,7 @@ function ProjectItemInfo({ project }: { project: Project }) {
 function ProjectLinkTooltip({ href }: { href: Url }) {
   return (
     <Tooltip>
-      <TooltipTrigger>
+      <TooltipTrigger asChild>
         <LinkIcon href={href} />
       </TooltipTrigger>
 
