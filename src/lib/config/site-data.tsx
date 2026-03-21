@@ -11,8 +11,8 @@ export const portfolio = {
   author: "soumya mukherjee",
   bio: [
     <span>
-      <span className="text-foreground">hey, i'm soumya — a design engineer</span> with 3 years of experience in
-      building polished interfaces with react, next.js and typescript.
+      <span className="text-mauve-800 font-medium">hey, i'm soumya — a design engineer</span> with 3 years of experience
+      in building polished interfaces with react, next.js and typescript.
     </span>,
     "i focus on performance and user experience, prioritizing resilient code and thoughtful interactions that feel effortless. shipped production apps from blockchain explorers to component libraries.",
     "always pushing the details that make interfaces feel alive.",
@@ -69,7 +69,7 @@ export const works: Array<Work> = [
             <Link
               href="https://nitro-explorer.vercel.app"
               target="_blank"
-              className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
+              className="font-semibold underline decoration-neutral-300 hover:decoration-neutral-800 underline-offset-3 transition-colors ease-in-out"
             >
               nitro explorer
             </Link>
@@ -80,7 +80,7 @@ export const works: Array<Work> = [
             <Link
               href="https://github.com/router-protocol/tangled"
               target="_blank"
-              className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
+              className="font-semibold underline decoration-neutral-300 hover:decoration-neutral-800 underline-offset-3 transition-colors ease-in-out"
             >
               tangled
             </Link>
@@ -91,7 +91,7 @@ export const works: Array<Work> = [
             <Link
               href="https://routernitro.com/swap"
               target="_blank"
-              className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
+              className="font-semibold underline decoration-neutral-300 hover:decoration-neutral-800 underline-offset-3 transition-colors ease-in-out"
             >
               nitro app
             </Link>

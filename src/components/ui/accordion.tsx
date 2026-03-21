@@ -49,7 +49,7 @@ function AccordionTrigger({ children, className, ...props }: React.ComponentProp
       type="button"
       onClick={toggle}
       data-state={isOpen ? "open" : "closed"}
-      className={cn("group w-full", className)}
+      className={cn("group w-full cursor-pointer", className)}
       {...props}
     >
       {children}
@@ -64,7 +64,7 @@ function AccordionContent({ children, className, ...props }: React.ComponentProp
     <div
       data-state={isOpen ? "open" : "closed"}
       className={cn(
-        "overflow-hidden transition-all duration-[350ms] ease-in-out",
+        "overflow-hidden transition-all duration-350 ease-in-out",
         "data-[state=open]:max-h-screen data-[state=closed]:max-h-0",
         className,
       )}

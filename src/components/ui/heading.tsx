@@ -15,7 +15,10 @@ function SectionHeading({ className, ...props }: React.ComponentProps<"h1">) {
       />
 
       <h1
-        className={cn("text-3xl py-4 text-shadow-sm dark:shadow-black/65 font-medium group w-fit", className)}
+        className={cn(
+          "text-3xl py-4 text-mauve-800 text-shadow-sm dark:shadow-black/65 font-medium group w-fit",
+          className,
+        )}
         {...props}
       />
 
