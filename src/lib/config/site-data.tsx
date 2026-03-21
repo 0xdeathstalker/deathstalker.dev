@@ -4,6 +4,7 @@ import { IOSInputMorphText } from "@/components/labs/input-morph-text";
 import { SubmitButtonStates } from "@/components/labs/button-states";
 import { MaskScroll } from "@/components/labs/mask-scroll";
 import { MotionSharedLayout } from "@/components/labs/shared-layout";
+import { TestimonialMarquee } from "@/components/labs/testimonial-marquee";
 
 export const portfolio = {
   author: "soumya mukherjee",
@@ -146,6 +147,7 @@ export type ComponentTitles =
   | "shared-layout-animation"
   | "ios-input-morph-text"
   | "mask-scroll"
+  | "testimonial-marquee"
   | "submit-button-states";
 
 export type Craft = { title: ComponentTitles; tech: string; video: string };
@@ -155,6 +157,11 @@ export const crafts: Array<Craft> = [
     title: "submit-button-states",
     tech: "css",
     video: "https://cdn.deathstalker.dev/videos/button-states.mp4",
+  },
+  {
+    title: "testimonial-marquee",
+    tech: "css",
+    video: "https://cdn.deathstalker.dev/videos/testimonial-marquee.mp4",
   },
   {
     title: "mask-scroll",
@@ -175,7 +182,8 @@ export const crafts: Array<Craft> = [
 
 export const labsComponents: Partial<Record<ComponentTitles, React.ComponentType>> = {
   "submit-button-states": SubmitButtonStates,
-  "ios-input-morph-text": IOSInputMorphText,
+  "testimonial-marquee": TestimonialMarquee,
   "mask-scroll": MaskScroll,
+  "ios-input-morph-text": IOSInputMorphText,
   "shared-layout-animation": MotionSharedLayout,
 };
