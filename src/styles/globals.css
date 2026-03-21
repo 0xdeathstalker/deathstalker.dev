@@ -51,7 +51,7 @@
 :root {
   --radius: 0.625rem;
   --background: oklch(98.6% 0.002 67.8);
-  --foreground: oklch(0.145 0 0);
+  --foreground: oklch(26.8% 0.011 36.5);
   --card: oklch(0.9938 0.0013 106.42);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(0.9938 0.0013 106.42);
@@ -189,13 +189,13 @@
 
 /* selection colours based on theme */
 ::-moz-selection {
-  color: var(--background);
-  background: var(--foreground);
+  color: oklch(96% 0.002 17.2);
+  background: oklch(26.8% 0.011 36.5);
 }
 
 ::selection {
-  color: var(--background);
-  background: var(--foreground);
+  color: oklch(96% 0.002 17.2);
+  background: oklch(26.8% 0.011 36.5);
 }
 
 /* mdx content styles */
