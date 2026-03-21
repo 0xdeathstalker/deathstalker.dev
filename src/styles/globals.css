@@ -44,6 +44,16 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  --animate-marquee: marquee var(--duration) infinite linear;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
   --ease-expo-out: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-circ-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
