@@ -47,7 +47,7 @@ export function ProjectItem({ project, isLast }: { project: Project; isLast: boo
               className="flex items-center w-full leading-snug mt-3"
             >
               <div className="pr-2 self-start text-muted-foreground/40">•</div>
-              <span className="text-neutral-800 flex-grow text-sm">{d}</span>
+              <span className="text-neutral-800 grow text-sm">{d}</span>
             </li>
           ))}
         </ul>
@@ -91,7 +91,7 @@ function ProjectItemInfo({ project }: { project: Project }) {
 
         <div className="flex flex-col items-start gap-0.5">
           <div className="w-fit relative inline-flex items-center gap-1 link">
-            <h1 className="font-medium text-lg relative before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-[1px] dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-circ-in-out group-hover:before:w-full group-data-[state=open]:before:w-full">
+            <h1 className="font-medium text-lg relative before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-px dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-circ-in-out group-hover:before:w-full group-data-[state=open]:before:w-full">
               {project.title}
             </h1>
 

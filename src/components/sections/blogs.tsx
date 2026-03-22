@@ -40,7 +40,7 @@ function BlogItem({ slug, title, date }: { slug: string; title: string; date: st
         <div className="relative overflow-x-hidden">
           <Link
             href={`/blog/${slug}`}
-            className="text-lg text-nowrap before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-[1px] dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-circ-in-out hover:before:w-full"
+            className="text-lg text-nowrap before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-px dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-circ-in-out hover:before:w-full"
           >
             {title.toLowerCase()}
           </Link>
