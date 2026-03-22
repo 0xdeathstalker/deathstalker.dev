@@ -38,25 +38,25 @@ function CopyStateIcon({ state, idleIcon, successIcon, errorIcon }: CopyStateIco
         <motion.div
           key="idle"
           {...motionProps}
-          className="relative size-3.5"
+          className="relative size-4"
         >
-          {idleIcon ?? <CopyIcon className="absolute size-3.5 -scale-x-100 text-foreground" />}
+          {idleIcon ?? <CopyIcon className="absolute size-4 -scale-x-100 text-foreground" />}
         </motion.div>
       ) : state === "success" ? (
         <motion.div
           key="success"
           {...motionProps}
-          className="relative size-3.5"
+          className="relative size-4"
         >
-          {successIcon ?? <CheckCircle className="absolute size-3.5 text-foreground" />}
+          {successIcon ?? <CheckCircle className="absolute size-4 text-foreground" />}
         </motion.div>
       ) : state === "error" ? (
         <motion.div
           key="error"
           {...motionProps}
-          className="relative size-3.5"
+          className="relative size-4"
         >
-          {errorIcon ?? <CircleXIcon className="absolute size-3.5 text-foreground" />}
+          {errorIcon ?? <CircleXIcon className="absolute size-4 text-foreground" />}
         </motion.div>
       ) : null}
     </AnimatePresence>

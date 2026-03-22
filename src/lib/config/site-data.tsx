@@ -6,6 +6,7 @@ import type { Project, Work } from "@/lib/types";
 import { Code } from "lucide-react";
 import Link from "next/link";
 import { TestimonialMarquee } from "@/components/labs/testimonial-marquee";
+import { CopyButtonDemo } from "@/components/labs/copy-button-demo";
 
 export const portfolio = {
   author: "soumya mukherjee",
@@ -164,7 +165,8 @@ export type ComponentTitles =
   | "ios-input-morph-text"
   | "mask-scroll"
   | "testimonial-marquee"
-  | "submit-button-states";
+  | "submit-button-states"
+  | "copy-button";
 
 export type Craft = { title: ComponentTitles; tech: string; video: string };
 
@@ -173,6 +175,11 @@ export const crafts: Array<Craft> = [
     title: "submit-button-states",
     tech: "css",
     video: "https://cdn.deathstalker.dev/videos/button-states.mp4",
+  },
+  {
+    title: "copy-button",
+    tech: "motion",
+    video: "https://cdn.deathstalker.dev/videos/copy-button.mov",
   },
   {
     title: "testimonial-marquee",
@@ -202,4 +209,5 @@ export const labsComponents: Partial<Record<ComponentTitles, React.ComponentType
   "mask-scroll": MaskScroll,
   "ios-input-morph-text": IOSInputMorphText,
   "shared-layout-animation": MotionSharedLayout,
+  "copy-button": CopyButtonDemo,
 };
