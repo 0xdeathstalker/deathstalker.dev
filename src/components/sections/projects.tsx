@@ -95,7 +95,7 @@ function ProjectItemInfo({ project }: { project: Project }) {
               {project.title}
             </h1>
 
-            <ChevronRight className="size-3.5 md:opacity-0 md:scale-40 md:-translate-x-1.5 group-hover:opacity-100 group-hover:scale-100 group-hover:-translate-x-0 group-data-[state=open]:rotate-90 group-data-[state=open]:md:opacity-100 group-data-[state=open]:md:scale-100 group-data-[state=open]:md:translate-x-0 transition-all ease-in-out" />
+            <ChevronRight className="size-3.5 md:opacity-0 md:scale-40 md:-translate-x-1.5 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0 group-data-[state=open]:rotate-90 group-data-[state=open]:md:opacity-100 group-data-[state=open]:md:scale-100 group-data-[state=open]:md:translate-x-0 transition-all ease-in-out" />
           </div>
 
           <div className="inline-flex items-center gap-0.5 font-mono text-xs text-muted-foreground/90">

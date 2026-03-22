@@ -1,3 +1,4 @@
+import { CopyButton } from "@/components/ui/copy-button";
 import { CornerBorder } from "@/components/ui/corner-border";
 import { Line } from "@/components/ui/line";
 import { getGitHubContributions } from "@/lib/actions/github-contributions";
@@ -6,7 +7,6 @@ import Link from "next/link";
 import { CodingHours } from "./coding-hours";
 import { GithubContributions } from "./github-contributions";
 import Socials from "./socials";
-import { CopyIcon } from "lucide-react";
 
 export function Hero() {
   return (
@@ -60,20 +60,31 @@ async function Bio() {
           </p>
         ))}
 
-        <p className="text-sm text-neutral-600 leading-relaxed">
-          email me at{" "}
-          <Link
-            href={`mailto:${portfolio.mail}`}
-            className="ml-0.5 text-mauve-800 font-medium underline decoration-mauve-300 group-hover:decoration-mauve-800 underline-offset-3 transition-colors ease-in-out"
-          >
-            {portfolio.mail}
-          </Link>
-        </p>
+        <EmailInfo />
       </div>
 
       <GithubContributions contributions={contributions}>
         <CodingHours />
       </GithubContributions>
+    </div>
+  );
+}
+
+function EmailInfo() {
+  return (
+    <div className="group flex flex-wrap items-center gap-0.5 text-sm text-neutral-600 leading-relaxed">
+      <span>pixels to my inbox:</span>
+      <Link
+        href={`mailto:${portfolio.mail}`}
+        className="ml-0.5 text-mauve-800 font-medium underline decoration-mauve-300 group-hover:decoration-mauve-800 underline-offset-3 transition-colors ease-in-out"
+      >
+        soumya@deathstalker.dev
+      </Link>
+      <CopyButton
+        variant="ghost"
+        className="hidden can-hover:inline-flex opacity-0 group-hover:opacity-100 blur-px group-hover:blur-none"
+        text={portfolio.mail}
+      />
     </div>
   );
 }
