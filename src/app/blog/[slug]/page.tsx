@@ -7,7 +7,7 @@ import { cn, formatDate } from "@/lib/utils";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Footer from "@/components/sections/footer";
+import { Footer } from "@/components/sections/footer";
 import { ScrollGradients } from "@/components/scroll-gradients";
 
 type PageProps = {
