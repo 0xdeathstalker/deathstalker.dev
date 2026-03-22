@@ -3,7 +3,7 @@ import { Line } from "./line";
 
 function PatternSeparator({ topBorder = true, bottomBorder = false }: { topBorder?: boolean; bottomBorder?: boolean }) {
   return (
-    <div className="h-10 w-full relative">
+    <div className="h-10 w-full relative bg-mauve-100/40">
       {topBorder && (
         <Line
           orientation="horizontal"

@@ -1,6 +1,6 @@
 import { Content } from "@/components/content";
 import { ScrollGradients } from "@/components/scroll-gradients";
-import Footer from "@/components/sections/footer";
+import { Footer } from "@/components/sections/footer";
 import { Line } from "@/components/ui/line";
 
 export default function Home() {
