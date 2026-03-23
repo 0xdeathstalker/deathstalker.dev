@@ -34,6 +34,7 @@ function IOSInputMorphText() {
             <MessageItem
               key={message.id}
               layoutId={`container-[${messages.length - 1}]`}
+              className="bg-mauve-200"
             >
               {message.text}
             </MessageItem>
@@ -51,11 +52,15 @@ function IOSInputMorphText() {
             <MessageInputPseudoMesage
               key={messages.length}
               layoutId={`container-[${messages.length}]`}
+              className="bg-mauve-200"
             >
               {value}
             </MessageInputPseudoMesage>
 
-            <MessageInputButton disabled={!value}>
+            <MessageInputButton
+              disabled={!value}
+              className="bg-mauve-100 border-mauve-200 hover:border-mauve-300"
+            >
               <Send className="size-4" />
             </MessageInputButton>
           </MessageForm>
