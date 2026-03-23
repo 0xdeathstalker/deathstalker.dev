@@ -9,7 +9,7 @@ function PatternSeparator({ topBorder = true, bottomBorder = false }: { topBorde
           orientation="horizontal"
           variant="contained"
           position="top"
-          color="text-[oklch(71.4%_0.014_41.2)]/86"
+          color="text-mauve-500/65"
           className="max-w-[650px]"
         />
       )}
@@ -28,7 +28,7 @@ function PatternSeparator({ topBorder = true, bottomBorder = false }: { topBorde
           variant="contained"
           position="bottom"
           className="max-w-[650px]"
-          color="text-[oklch(71.4%_0.014_41.2)]/86"
+          color="text-mauve-500/65"
         />
       )}
     </div>

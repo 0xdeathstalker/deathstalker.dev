@@ -51,7 +51,7 @@ function WorkItem({ work, isLast }: { work: WorkType; isLast: boolean }) {
           orientation="horizontal"
           variant="contained"
           position="bottom"
-          color="text-[oklch(71.4%_0.014_41.2)]/86"
+          color="text-mauve-500/65"
           className="max-w-[650px]"
         />
       ) : null}

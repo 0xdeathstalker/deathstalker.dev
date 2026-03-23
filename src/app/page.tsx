@@ -23,12 +23,12 @@ function VerticalLines() {
       <Line
         orientation="vertical"
         position="left"
-        color="text-[oklch(71.4%_0.014_41.2)]/86 dark:text-muted-foreground/20"
+        color="text-mauve-500/65 dark:text-muted-foreground/20"
       />
       <Line
         orientation="vertical"
         position="right"
-        color="text-[oklch(71.4%_0.014_41.2)]/86 dark:text-muted-foreground/20"
+        color="text-mauve-500/65 dark:text-muted-foreground/20"
       />
     </div>
   );

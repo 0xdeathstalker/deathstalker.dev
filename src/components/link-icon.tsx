@@ -12,7 +12,7 @@ function LinkIcon({ href, className, ...props }: React.ComponentProps<typeof Lin
       {...props}
     >
       <div className="size-6 flex items-center justify-center bg-muted border border-muted-foreground/15 rounded-xl ring-1 ring-offset-1 ring-muted-foreground/15">
-        <LucideLinkIcon className="size-3.5 text-[oklch(43.8%_0.017_39.3)]" />
+        <LucideLinkIcon className="size-3.5 text-taupe-600" />
       </div>
     </Link>
   );

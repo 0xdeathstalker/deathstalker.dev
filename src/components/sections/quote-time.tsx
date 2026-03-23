@@ -3,11 +3,11 @@ import { Line } from "@/components/ui/line";
 
 function QuoteTime() {
   return (
-    <div className="relative h-18 px-4 flex items-center justify-between before:content-[''] before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-screen before:h-px before:bg-[oklch(71.4%_0.014_41.2)]/50">
+    <div className="relative h-18 px-4 flex items-center justify-between before:content-[''] before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-screen before:h-px before:bg-mauve-400/65">
       <Line
         orientation="horizontal"
         position="top"
-        color="text-[oklch(71.4%_0.014_41.2)]/86"
+        color="text-mauve-500/65"
       />
 
       <RandomQuotes />
