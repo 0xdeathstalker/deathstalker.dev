@@ -100,7 +100,7 @@ function PositionItem({
                   className="flex items-center w-full leading-snug first:mt-3"
                 >
                   <div className="pr-2 self-start text-muted-foreground/40">•</div>
-                  <span className="text-neutral-800 grow text-sm">{d}</span>
+                  <span className="text-taupe-700 grow text-sm">{d}</span>
                 </li>
               ))}
             </ul>
@@ -120,7 +120,7 @@ function RoleInfo({ position, hasDescription }: { position: WorkPosition; hasDes
 
       <div className="text-left text-base">
         <div className="flex items-center gap-0.5">
-          <h4 className="relative leading-snug before:content-[''] before:absolute before:bottom-0.5 before:h-px before:w-0 dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-circ-in-out group-hover:before:w-full group-data-[state=open]:before:w-full">
+          <h4 className="relative leading-snug before:content-[''] before:absolute before:bottom-0.5 before:h-px before:w-0 before:bg-mauve-900 before:transition-all before:ease-circ-in-out group-hover:before:w-full group-data-[state=open]:before:w-full">
             {position.role}
           </h4>
           {hasDescription && (
@@ -161,7 +161,7 @@ function CompanyInfo({ work }: { work: WorkType }) {
           href={work.href}
           target="_blank"
         >
-          <h2 className="relative text-lg font-medium before:content-[''] before:absolute before:bottom-0.5 before:h-px before:w-0 dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-circ-in-out hover:before:w-full">
+          <h2 className="relative text-lg font-medium before:content-[''] before:absolute before:bottom-0.5 before:h-px before:w-0 before:bg-mauve-900 before:transition-all before:ease-circ-in-out hover:before:w-full">
             {work.company}
           </h2>
         </Link>

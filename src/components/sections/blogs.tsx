@@ -40,7 +40,7 @@ function BlogItem({ slug, title, date }: { slug: string; title: string; date: st
         <div className="relative overflow-x-hidden">
           <Link
             href={`/blog/${slug}`}
-            className="text-lg text-nowrap before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-px dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-circ-in-out hover:before:w-full"
+            className="text-lg text-nowrap before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-px before:bg-mauve-900 before:transition-all before:ease-circ-in-out hover:before:w-full"
           >
             {title.toLowerCase()}
           </Link>
@@ -50,7 +50,7 @@ function BlogItem({ slug, title, date }: { slug: string; title: string; date: st
         <LinkArrowIcon className="size-5" />
       </div>
 
-      <span className="hidden sm:inline text-muted-foreground">{formattedDate}</span>
+      <span className="font-mono text-sm tracking-tighter hidden sm:inline text-mauve-500">{formattedDate}</span>
     </div>
   );
 }

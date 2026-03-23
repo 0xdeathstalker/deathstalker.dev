@@ -3,7 +3,7 @@ import { Line } from "@/components/ui/line";
 
 function QuoteTime() {
   return (
-    <div className="relative h-18 px-4 flex items-center justify-between before:content-[''] before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-screen before:h-px before:bg-mauve-400/65">
+    <div className="relative h-18 px-4 flex items-center justify-between before:content-[''] before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-screen before:h-px before:bg-mauve-500/35">
       <Line
         orientation="horizontal"
         position="top"
@@ -12,7 +12,7 @@ function QuoteTime() {
 
       <RandomQuotes />
 
-      <span className="font-mono text-[13px] text-neutral-500 tabular-nums">2026</span>
+      <span className="font-mono text-[13px] text-mauve-400 tabular-nums">2026</span>
     </div>
   );
 }

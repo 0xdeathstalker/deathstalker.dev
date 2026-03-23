@@ -10,7 +10,7 @@ function Footer() {
           "bg-[radial-gradient(circle_at_1px_1px,rgba(89,76,91,0.15)_1px,transparent_0)] bg-size-[10px_10px]",
         )}
       />
-      <h1 className="font-pixel-square font-black dark:text-neutral-600 cursor-default select-none absolute inset-x-0 bottom-0 text-center uppercase tracking-tighter text-[oklch(72.8%_0.007_39.5)] text-shadow-md leading-[0.7] text-[clamp(4rem,18vw,7.5rem)]">
+      <h1 className="font-pixel-square font-black cursor-default select-none absolute inset-x-0 bottom-0 text-center uppercase tracking-tighter text-[oklch(72.8%_0.007_39.5)] text-shadow-md leading-[0.7] text-[clamp(4rem,18vw,7.5rem)]">
         dthstlkr
       </h1>
     </footer>

@@ -19,7 +19,7 @@ function RandomQuotes() {
     setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
   }, []);
 
-  return <span className="font-mono text-sm text-neutral-500">{quote}</span>;
+  return <span className="font-mono text-sm text-mauve-400">{quote}</span>;
 }
 
 export { RandomQuotes, quotes };

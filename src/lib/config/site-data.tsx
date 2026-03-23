@@ -70,7 +70,7 @@ export const works: Array<Work> = [
             <Link
               href="https://nitro-explorer.vercel.app"
               target="_blank"
-              className="font-semibold underline decoration-neutral-300 hover:decoration-neutral-800 underline-offset-3 transition-colors ease-in-out"
+              className="font-semibold underline decoration-mauve-300 hover:decoration-mauve-800 underline-offset-3 transition-colors ease-in-out"
             >
               nitro explorer
             </Link>
@@ -81,7 +81,7 @@ export const works: Array<Work> = [
             <Link
               href="https://github.com/router-protocol/tangled"
               target="_blank"
-              className="font-semibold underline decoration-neutral-300 hover:decoration-neutral-800 underline-offset-3 transition-colors ease-in-out"
+              className="font-semibold underline decoration-mauve-300 hover:decoration-mauve-800 underline-offset-3 transition-colors ease-in-out"
             >
               tangled
             </Link>
@@ -92,7 +92,7 @@ export const works: Array<Work> = [
             <Link
               href="https://routernitro.com/swap"
               target="_blank"
-              className="font-semibold underline decoration-neutral-300 hover:decoration-neutral-800 underline-offset-3 transition-colors ease-in-out"
+              className="font-semibold underline decoration-mauve-300 hover:decoration-mauve-800 underline-offset-3 transition-colors ease-in-out"
             >
               nitro app
             </Link>

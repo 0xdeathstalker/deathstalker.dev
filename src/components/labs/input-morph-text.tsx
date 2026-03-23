@@ -27,7 +27,7 @@ function IOSInputMorphText() {
   }
 
   return (
-    <div className="h-96 w-fit sm:w-full max-w-[500px] border border-neutral-300/80 rounded-lg bg-white">
+    <div className="h-96 w-fit sm:w-full max-w-[500px] border border-mauve-200 rounded-lg bg-white">
       <MessagesContainer>
         <MessagesList>
           {messages.map((message) => (
@@ -45,7 +45,7 @@ function IOSInputMorphText() {
             <MessageInput
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              className="border-neutral-200 bg-neutral-100 placeholder:text-neutral-400"
+              className="border-mauve-200 bg-taupe-100 placeholder:text-mauve-400"
             />
 
             <MessageInputPseudoMesage

@@ -259,12 +259,12 @@
 }
 
 .prose p {
-  @apply mb-4 leading-relaxed dark:text-gray-300 text-neutral-800;
+  @apply mb-4 leading-relaxed dark:text-gray-300 text-taupe-800;
 }
 
 .prose ul,
 .prose ol {
-  @apply mb-4 pl-6 dark:text-gray-300 text-neutral-800;
+  @apply mb-4 pl-6 dark:text-gray-300 text-taupe-800;
 }
 
 .prose li {
@@ -310,7 +310,7 @@
 }
 
 .prose code:not(pre code) {
-  @apply px-1 py-0.5 text-sm border bg-neutral-300 dark:bg-neutral-900 border-neutral-500 dark:border-neutral-700 rounded dark:text-neutral-300 font-mono font-medium;
+  @apply px-1 py-0.5 text-sm border bg-taupe-300 dark:bg-taupe-900 border-taupe-500 dark:border-taupe-700 rounded dark:text-mauve-300 font-mono font-medium;
 }
 
 .prose code:not(pre code)::before,

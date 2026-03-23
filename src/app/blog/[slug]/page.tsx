@@ -85,7 +85,7 @@ export default async function Blog({ params }: PageProps) {
           href="/"
           className={cn(
             buttonVariants({ variant: "outline" }),
-            "h-7 has-[>svg]:pl-2 gap-1 mb-8 text-neutral-400 hover:text-neutral-500",
+            "h-7 has-[>svg]:pl-2 gap-1 mb-8 text-mauve-400 hover:text-mauve-500",
           )}
         >
           <BackIcon />
@@ -94,7 +94,9 @@ export default async function Blog({ params }: PageProps) {
 
         <h1 className="text-4xl text-foreground font-semibold mb-4">{blog.metadata.title}</h1>
 
-        <span className="mb-8 inline-block text-muted-foreground">{formatDate(blog.metadata.date)}</span>
+        <span className="mb-8 inline-block font-mono tracking-tight text-mauve-400">
+          {formatDate(blog.metadata.date)}
+        </span>
 
         <article className="prose prose-invert prose-headings:text-white prose-a:text-white hover:prose-a:underline">
           <BlogContent source={blog.content} />

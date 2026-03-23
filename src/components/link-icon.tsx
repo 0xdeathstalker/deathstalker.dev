@@ -11,8 +11,8 @@ function LinkIcon({ href, className, ...props }: React.ComponentProps<typeof Lin
       onClick={(e) => e.stopPropagation()}
       {...props}
     >
-      <div className="size-6 flex items-center justify-center bg-muted border border-muted-foreground/15 rounded-xl ring-1 ring-offset-1 ring-muted-foreground/15">
-        <LucideLinkIcon className="size-3.5 text-taupe-600" />
+      <div className="size-6 flex items-center justify-center bg-taupe-100 border border-taupe-400/40 rounded-xl ring-1 ring-offset-1 ring-taupe-400/40">
+        <LucideLinkIcon className="size-3.5 text-mauve-600" />
       </div>
     </Link>
   );

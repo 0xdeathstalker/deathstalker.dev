@@ -54,7 +54,7 @@ async function Bio() {
         {portfolio.bio.map((b, i) => (
           <p
             key={`${i + 1}`}
-            className="text-sm text-neutral-600 leading-relaxed"
+            className="text-sm text-taupe-700 leading-relaxed"
           >
             {b}
           </p>
@@ -72,7 +72,7 @@ async function Bio() {
 
 function EmailInfo() {
   return (
-    <div className="group flex flex-wrap items-center gap-0.5 text-sm text-neutral-600 leading-relaxed">
+    <div className="group flex flex-wrap items-center gap-0.5 text-sm text-taupe-700 leading-relaxed">
       <span>pixels to my inbox:</span>
       <Link
         href={`mailto:${portfolio.mail}`}

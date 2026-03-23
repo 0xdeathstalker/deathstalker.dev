@@ -40,28 +40,9 @@ export function ProjectItem({ project, isLast }: { project: Project; isLast: boo
       </AccordionTrigger>
 
       <AccordionContent>
-        <ul className="space-y-3.5 list-inside flex-col">
-          {project.description?.map((d, i) => (
-            <li
-              key={`${i + 1}`}
-              className="flex items-center w-full leading-snug mt-3"
-            >
-              <div className="pr-2 self-start text-muted-foreground/40">•</div>
-              <span className="text-neutral-800 grow text-sm">{d}</span>
-            </li>
-          ))}
-        </ul>
+        <ProjectDetails description={project.description} />
 
-        <div className="inline-flex items-center gap-1.5 flex-wrap mt-6 mb-1">
-          {project.technologies.map((technology) => (
-            <div
-              key={technology}
-              className="font-pixel-square mx-1 py-1 px-1.5 bg-accent rounded-sm text-muted-foreground text-xs shadow"
-            >
-              {technology}
-            </div>
-          ))}
-        </div>
+        <ProjectTechnologies technologies={project.technologies} />
       </AccordionContent>
 
       {!isLast ? (
@@ -91,7 +72,7 @@ function ProjectItemInfo({ project }: { project: Project }) {
 
         <div className="flex flex-col items-start gap-0.5">
           <div className="w-fit relative inline-flex items-center gap-1 link">
-            <h1 className="font-medium text-lg relative before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-px dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-circ-in-out group-hover:before:w-full group-data-[state=open]:before:w-full">
+            <h1 className="font-medium text-lg relative before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-px before:bg-mauve-900 before:transition-all before:ease-circ-in-out group-hover:before:w-full group-data-[state=open]:before:w-full">
               {project.title}
             </h1>
 
@@ -125,5 +106,36 @@ function ProjectLinkTooltip({ href }: { href: Url }) {
         <span className="font-sans">visit project link</span>
       </TooltipContent>
     </Tooltip>
+  );
+}
+
+function ProjectTechnologies({ technologies }: { technologies: Array<string> }) {
+  return (
+    <div className="inline-flex items-center gap-1.5 flex-wrap mt-6 mb-1">
+      {technologies.map((technology) => (
+        <div
+          key={technology}
+          className="font-pixel-square mx-1 py-1 px-1.5 bg-mauve-200 rounded-sm text-muted-foreground text-xs shadow"
+        >
+          {technology}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ProjectDetails({ description }: { description: Array<React.ReactElement | string> }) {
+  return (
+    <ul className="space-y-3.5 list-inside flex-col">
+      {description?.map((d, i) => (
+        <li
+          key={`${i + 1}`}
+          className="flex items-center w-full leading-snug mt-3"
+        >
+          <div className="pr-2 self-start text-muted-foreground/40">•</div>
+          <span className="text-taupe-700 grow text-sm">{d}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
