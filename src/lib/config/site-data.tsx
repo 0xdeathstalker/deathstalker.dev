@@ -128,7 +128,7 @@ export const projects: Array<Project> = [
     logo: "nitro-explorer.svg",
     role: "creator and maintainer",
     period: "03.2025-07.2025",
-    technologies: ["next.js", "tailwindcss", "shadcnui", "zod", "zustand", "typescript"],
+    technologies: ["next.js", "typescript", "zod", "zustand", "tanstack-query", "shadncui", "cmdk", "tailwindcss"],
     href: "https://nitro-explorer.vercel.app",
   },
   {
@@ -141,7 +141,7 @@ export const projects: Array<Project> = [
     logo: "cracked-ui.svg",
     role: "creator and maintainer",
     period: "06.2025-present",
-    technologies: ["react", "typescript", "tailwind css", "viem", "wagmi"],
+    technologies: ["react", "typescript", "motion", "viem", "wagmi", "tailwind css"],
     href: "https://github.com/cracked0x/ui",
   },
   {
@@ -155,7 +155,17 @@ export const projects: Array<Project> = [
     logo: "whispr-room.svg",
     role: "creator and maintainer",
     period: "06.2025-07.2025",
-    technologies: ["next.js", "tailwind css", "convex", "react query", "zod", "uploadthing", "posthog"],
+    technologies: [
+      "next.js",
+      "typescript",
+      "convex",
+      "tanstack-query",
+      "zod",
+      "uploadthing",
+      "posthog",
+      "motion",
+      "tailwindcss",
+    ],
     href: "https://whispr-room.vercel.app",
   },
 ] as const;
