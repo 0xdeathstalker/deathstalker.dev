@@ -128,7 +128,17 @@ export const projects: Array<Project> = [
     logo: "nitro-explorer.svg",
     role: "creator and maintainer",
     period: "03.2025-07.2025",
-    technologies: ["next.js", "typescript", "zod", "zustand", "tanstack-query", "shadncui", "cmdk", "tailwindcss"],
+    technologies: [
+      "next.js",
+      "typescript",
+      "zod",
+      "zustand",
+      "graphql",
+      "tanstack-query",
+      "shadncui",
+      "cmdk",
+      "tailwindcss",
+    ],
     href: "https://nitro-explorer.vercel.app",
   },
   {
