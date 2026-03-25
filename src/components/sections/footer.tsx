@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 function Footer() {
   return (
-    <footer className="relative h-[clamp(8rem,17vw,18rem)] w-full bg-background overflow-hidden">
+    <footer className="relative h-[clamp(12rem,17vw,18rem)] w-full bg-background overflow-hidden">
       <div
         className={cn(
           "absolute top-0 bottom-0 left-1/2 -translate-x-1/2 z-0",

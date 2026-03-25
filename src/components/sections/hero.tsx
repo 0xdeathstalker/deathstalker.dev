@@ -20,22 +20,22 @@ export function Hero() {
 
 function Title() {
   return (
-    <div className="relative py-4 px-4">
+    <div className="relative p-4">
       <CornerBorder />
 
       <Line
         orientation="horizontal"
         position="top"
-        color="text-mauve-500/65 dark:text-muted-foreground/20"
+        color="text-mauve-500/65"
       />
       <Line
         orientation="horizontal"
         position="bottom"
-        color="text-mauve-500/65 dark:text-muted-foreground/20"
+        color="text-mauve-500/65"
       />
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-2 sm:gap-5 sm:justify-between">
-        <h1 className="text-[32px] sm:text-4xl font-medium text-mauve-800 text-shadow-sm dark:shadow-black/65">
+        <h1 className="leading-tight text-[32px] sm:text-4xl font-medium text-mauve-800 text-shadow-sm dark:shadow-black/65">
           {portfolio.author}
         </h1>
 
