@@ -27,14 +27,14 @@ function IOSInputMorphText() {
   }
 
   return (
-    <div className="h-96 w-fit sm:w-full max-w-[500px] border border-mauve-200 rounded-lg bg-white">
+    <div className="h-72 w-fit sm:w-full max-w-[370px] border border-mauve-200 rounded-lg bg-white">
       <MessagesContainer>
         <MessagesList>
           {messages.map((message) => (
             <MessageItem
               key={message.id}
               layoutId={`container-[${messages.length - 1}]`}
-              className="bg-mauve-200"
+              className="text-sm bg-mauve-200"
             >
               {message.text}
             </MessageItem>
@@ -46,13 +46,13 @@ function IOSInputMorphText() {
             <MessageInput
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              className="border-mauve-200 bg-taupe-100 placeholder:text-mauve-400"
+              className="text-sm placeholder:text-sm border-mauve-200 bg-taupe-100 placeholder:text-mauve-400"
             />
 
             <MessageInputPseudoMesage
               key={messages.length}
               layoutId={`container-[${messages.length}]`}
-              className="bg-mauve-200"
+              className="text-sm bg-mauve-200"
             >
               {value}
             </MessageInputPseudoMesage>

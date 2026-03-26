@@ -46,9 +46,35 @@ export const labs: Array<Lab> = [
   },
   {
     slug: "ios-input-morph-text",
-    title: "input text morph (ios style)",
-    subHeading: "",
-    description: [""],
+    title: "input text morph",
+    subHeading: "an example to showcase input text morphing into message using motion.",
+    description: [
+      <p>
+        an attempt to recreate the famous ios style imessage animation where the input text morphs into the message when
+        sent. initially i struggled in making the morphing animation seamless when the message 'travels' from input box
+        to the chat area. it was tricky to handle the multi-line input text such that when typing it should not spill
+        over the input box.
+      </p>,
+      <p>
+        the trick here is to use{" "}
+        <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">layoutId</code> to connect the
+        input text to the message. since we cannot access the text in the input box to pass the{" "}
+        <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">layoutId</code>, we need to
+        create a pseudo input text that remains hidden while typing but gets animated to the message in the chat once
+        sent.
+      </p>,
+      <p>
+        this was inspired by{" "}
+        <Link
+          href=""
+          target="_blank"
+          className="font-semibold underline underline-offset-3 decoration-mauve-300 hover:decoration-mauve-800 transition-colors ease-in-out"
+        >
+          @ibelick
+        </Link>
+        's original implementation.
+      </p>,
+    ],
     tech: "motion",
     video: "https://cdn.deathstalker.dev/videos/ios-input-morph.mp4",
     component: IOSInputMorphText,

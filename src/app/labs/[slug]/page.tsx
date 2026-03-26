@@ -11,7 +11,6 @@ import * as React from "react";
 export default async function LabPage({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
   const component = labs.find((l) => l.slug === slug);
-  console.log("[lab-component] = ", { slug, component });
 
   return (
     <main className="relative min-h-screen w-full font-sans overflow-x-hidden">
