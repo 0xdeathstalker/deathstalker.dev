@@ -1,6 +1,6 @@
 import { Blogs } from "@/components/sections/blogs";
 import { Hero } from "@/components/sections/hero";
-import { Crafts } from "@/components/sections/labs";
+import { Labs } from "@/components/sections/labs";
 import { Projects } from "@/components/sections/projects";
 import { QuoteTime } from "@/components/sections/quote-time";
 import { Work } from "@/components/sections/work";
@@ -18,7 +18,7 @@ function Content() {
       <Projects />
       <PatternSeparator />
 
-      <Crafts />
+      <Labs />
       <PatternSeparator />
 
       <Blogs />

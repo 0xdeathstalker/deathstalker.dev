@@ -1,12 +1,6 @@
-import { SubmitButtonStates } from "@/components/labs/button-states";
-import { IOSInputMorphText } from "@/components/labs/input-morph-text";
-import { MaskScroll } from "@/components/labs/mask-scroll";
-import { MotionSharedLayout } from "@/components/labs/shared-layout";
 import type { Project, Work } from "@/lib/types";
 import { Code } from "lucide-react";
 import Link from "next/link";
-import { TestimonialMarquee } from "@/components/labs/testimonial-marquee";
-import { CopyButtonDemo } from "@/components/labs/copy-button-demo";
 
 export const portfolio = {
   author: "soumya mukherjee",
@@ -137,7 +131,7 @@ export const projects: Array<Project> = [
       "tanstack-query",
       "shadncui",
       "cmdk",
-      "tailwindcss",
+      "tailwind",
     ],
     href: "https://nitro-explorer.vercel.app",
   },
@@ -174,60 +168,8 @@ export const projects: Array<Project> = [
       "uploadthing",
       "posthog",
       "motion",
-      "tailwindcss",
+      "tailwind",
     ],
     href: "https://whispr-room.vercel.app",
   },
 ] as const;
-
-export type ComponentTitles =
-  | "shared-layout-animation"
-  | "ios-input-morph-text"
-  | "mask-scroll"
-  | "testimonial-marquee"
-  | "submit-button-states"
-  | "copy-button";
-
-export type Craft = { title: ComponentTitles; tech: string; video: string };
-
-export const crafts: Array<Craft> = [
-  {
-    title: "submit-button-states",
-    tech: "css",
-    video: "https://cdn.deathstalker.dev/videos/button-states.mp4",
-  },
-  {
-    title: "copy-button",
-    tech: "motion",
-    video: "https://cdn.deathstalker.dev/videos/copy-button.mov",
-  },
-  {
-    title: "testimonial-marquee",
-    tech: "css",
-    video: "https://cdn.deathstalker.dev/videos/testimonial-marquee.mp4",
-  },
-  {
-    title: "mask-scroll",
-    tech: "css",
-    video: "https://cdn.deathstalker.dev/videos/mask-scroll-fade.mp4",
-  },
-  {
-    title: "ios-input-morph-text",
-    tech: "motion",
-    video: "https://cdn.deathstalker.dev/videos/ios-input-morph.mp4",
-  },
-  {
-    title: "shared-layout-animation",
-    tech: "motion",
-    video: "https://cdn.deathstalker.dev/videos/shared-layout.mp4",
-  },
-];
-
-export const labsComponents: Partial<Record<ComponentTitles, React.ComponentType>> = {
-  "submit-button-states": SubmitButtonStates,
-  "testimonial-marquee": TestimonialMarquee,
-  "mask-scroll": MaskScroll,
-  "ios-input-morph-text": IOSInputMorphText,
-  "shared-layout-animation": MotionSharedLayout,
-  "copy-button": CopyButtonDemo,
-};

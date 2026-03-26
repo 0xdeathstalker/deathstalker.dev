@@ -2,13 +2,13 @@
 
 import * as React from "react";
 import { PatternSeparator } from "@/components/ui/pattern-separator";
-import type { Craft } from "@/lib/config/site-data";
 import { cn } from "@/lib/utils";
 import { Loader } from "lucide-react";
 import { useInView } from "@/lib/hooks/useInView";
 import Link from "next/link";
+import type { Lab } from "@/lib/types";
 
-function LabItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
+function LabItem({ lab, isLast }: { lab: Lab; isLast: boolean }) {
   const { ref: wrapperRef, inView } = useInView({ threshold: 0.3 });
 
   const videoRef = React.useRef<HTMLVideoElement>(null);
@@ -33,14 +33,14 @@ function LabItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
 
   return (
     <React.Fragment>
-      <Link href={`/labs/${craft.title}`}>
+      <Link href={`/labs/${lab.slug}`}>
         <div
           ref={wrapperRef}
           className="relative px-4 group overflow-hidden mb-4"
         >
           <video
             ref={videoRef}
-            src={craft.video}
+            src={lab.video}
             playsInline
             loop
             muted
@@ -64,7 +64,7 @@ function LabItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
               "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-expo-out",
             )}
           >
-            {craft.title}
+            {lab.title}
           </span>
           <span
             className={cn(
@@ -73,7 +73,7 @@ function LabItem({ craft, isLast }: { craft: Craft; isLast: boolean }) {
               "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-expo-out",
             )}
           >
-            {craft.tech}
+            {lab.tech}
           </span>
 
           {/* LOADER */}

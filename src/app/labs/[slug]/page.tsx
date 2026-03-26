@@ -3,13 +3,15 @@ import { Footer } from "@/components/sections/footer";
 import { QuoteTime } from "@/components/sections/quote-time";
 import { buttonVariants } from "@/components/ui/button";
 import { Line } from "@/components/ui/line";
-import { type ComponentTitles, labsComponents } from "@/lib/config/site-data";
+import { labs } from "@/lib/config/lab-data";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import * as React from "react";
 
 export default async function LabPage({ params }: { params: Promise<{ slug: string }> }) {
-  const slug = (await params).slug as ComponentTitles;
-  const Component = labsComponents[slug];
+  const slug = (await params).slug;
+  const component = labs.find((l) => l.slug === slug);
+  console.log("[lab-component] = ", { slug, component });
 
   return (
     <main className="relative min-h-screen w-full font-sans overflow-x-hidden">
@@ -18,69 +20,20 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
       <VerticalLines />
 
       <div className="pt-28 mx-auto max-w-[650px] max-[690px]:mx-4">
-        <div className="relative p-4">
-          <Link
-            href="/"
-            className={cn(
-              buttonVariants({ variant: "outline" }),
-              "h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-400 hover:text-mauve-500",
-            )}
-          >
-            <BackIcon />
-            Back
-          </Link>
-
-          <Line
-            orientation="horizontal"
-            position="top"
-            color="text-mauve-500/65"
-          />
-          <Line
-            orientation="horizontal"
-            position="bottom"
-            color="text-mauve-500/65"
-          />
-        </div>
+        <Navigation />
 
         <div className="py-6 px-4">
-          <h2 className="text-xl font-semibold">shared layout animation</h2>
-          <p className="mt-1 mb-10 text-sm text-muted-foreground">
-            an example demonstrating shared layout animation with motion.
-          </p>
+          <h2 className="text-xl font-semibold">{component?.title}</h2>
+          <p className="mt-1 mb-10 text-sm text-muted-foreground">{component?.subHeading}</p>
 
           <div className="relative min-h-96 grid place-items-center border border-mauve-300 rounded-xl p-2 overflow-hidden">
-            {Component && <Component />}
+            {component?.component && <component.component />}
           </div>
 
           <div className="space-y-6 mt-10 text-sm">
-            <p>
-              i tried to recreate the shared layout animation between a grid of items and a full screen modal using
-              motion. at first this might seem to be difficult but one can easily get the hang of it once he understands
-              the core principle.
-            </p>
-
-            <p>
-              with the help of{" "}
-              <Link
-                href="https://www.framer.com/motion/layout-animations/#shared-layout-animations"
-                target="_blank"
-                className="font-semibold underline underline-offset-3 decoration-mauve-300 hover:decoration-mauve-800 transition-colors ease-in-out"
-              >
-                shared layout animations support
-              </Link>{" "}
-              from motion, we can easily connect two elements and create a smooth transition between them. we don't need
-              to move an item to have the morph effect.
-            </p>
-
-            <p>
-              the trick here is to connect the two elements with{" "}
-              <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">layoutId</code> which
-              indicates the motion library to smoothly transition between them. we also need{" "}
-              <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">Animate Presence</code> to
-              create the exit animation for the modal and overlay.{" "}
-              <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">Animate Presence</code>{" "}
-              component is used to keep the exiting element in the DOM until its exit animation has finished.
-            </p>
+            {component?.description.map((d, idx) => (
+              <React.Fragment key={`${component.slug}-description-${idx}`}>{d}</React.Fragment>
+            ))}
           </div>
         </div>
 
@@ -103,6 +56,34 @@ function VerticalLines() {
       <Line
         orientation="vertical"
         position="right"
+        color="text-mauve-500/65"
+      />
+    </div>
+  );
+}
+
+function Navigation() {
+  return (
+    <div className="relative p-4">
+      <Link
+        href="/"
+        className={cn(
+          buttonVariants({ variant: "outline" }),
+          "h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-400 hover:text-mauve-500",
+        )}
+      >
+        <BackIcon />
+        Back
+      </Link>
+
+      <Line
+        orientation="horizontal"
+        position="top"
+        color="text-mauve-500/65"
+      />
+      <Line
+        orientation="horizontal"
+        position="bottom"
         color="text-mauve-500/65"
       />
     </div>

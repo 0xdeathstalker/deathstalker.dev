@@ -61,3 +61,13 @@ export type ProjectDuration = {
 };
 
 export type CodingTime = { hours: number; minutes: number };
+
+export type Lab = {
+  slug: string;
+  title: string;
+  subHeading: string;
+  description: Array<React.ReactElement | string>;
+  tech: string;
+  video: string;
+  component?: React.ComponentType;
+};
