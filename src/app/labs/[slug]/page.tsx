@@ -48,7 +48,7 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
             an example demonstrating shared layout animation with motion.
           </p>
 
-          <div className="min-h-96 grid place-items-center border border-mauve-300 rounded-xl p-2">
+          <div className="relative min-h-96 grid place-items-center border border-mauve-300 rounded-xl p-2 overflow-hidden">
             {Component && <Component />}
           </div>
 
@@ -64,7 +64,7 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
               <Link
                 href="https://www.framer.com/motion/layout-animations/#shared-layout-animations"
                 target="_blank"
-                className="underline underline-offset-3 decoration-mauve-300 hover:decoration-mauve-800 transition-colors ease-in-out"
+                className="font-semibold underline underline-offset-3 decoration-mauve-300 hover:decoration-mauve-800 transition-colors ease-in-out"
               >
                 shared layout animations support
               </Link>{" "}
@@ -74,12 +74,12 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
 
             <p>
               the trick here is to connect the two elements with{" "}
-              <code className="border py-0.5 px-1 rounded-md text-xs">layoutId</code> which indicates the motion library
-              to smoothly transition between them. we also need{" "}
-              <code className="border py-0.5 px-1 rounded-md text-xs">Animate Presence</code> to create the exit
-              animation for the modal and overlay.{" "}
-              <code className="border py-0.5 px-1 rounded-md text-xs">Animate Presence</code> component is used to keep
-              the exiting element in the DOM until its exit animation has finished.
+              <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">layoutId</code> which
+              indicates the motion library to smoothly transition between them. we also need{" "}
+              <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">Animate Presence</code> to
+              create the exit animation for the modal and overlay.{" "}
+              <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">Animate Presence</code>{" "}
+              component is used to keep the exiting element in the DOM until its exit animation has finished.
             </p>
           </div>
         </div>

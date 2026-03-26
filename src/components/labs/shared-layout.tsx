@@ -25,7 +25,7 @@ function MotionSharedLayout() {
               <img
                 src={item.image}
                 alt={item.title}
-                className="size-full object-cover"
+                className="size-24 md:size-full object-cover"
               />
             </SharedLayoutCard>
           ))}
@@ -41,7 +41,7 @@ function MotionSharedLayout() {
               <img
                 src={activeCard.image}
                 alt={activeCard.title}
-                className="max-h-[calc(100vh-100px)] object-cover"
+                className="max-h-[350px] object-cover"
               />
             </SharedLayoutCardModalContent>
           )}
