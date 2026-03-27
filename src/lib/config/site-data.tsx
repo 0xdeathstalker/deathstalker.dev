@@ -129,7 +129,7 @@ export const projects: Array<Project> = [
       "zustand",
       "graphql",
       "tanstack-query",
-      "shadncui",
+      "shadcnui",
       "cmdk",
       "tailwind",
     ],
@@ -145,7 +145,7 @@ export const projects: Array<Project> = [
     logo: "cracked-ui.svg",
     role: "creator and maintainer",
     period: "06.2025-present",
-    technologies: ["react", "typescript", "motion", "viem", "wagmi", "tailwind css"],
+    technologies: ["react", "typescript", "motion", "viem", "wagmi", "tailwind"],
     href: "https://github.com/cracked0x/ui",
   },
   {
