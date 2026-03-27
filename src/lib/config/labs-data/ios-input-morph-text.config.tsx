@@ -1,5 +1,6 @@
 import { IOSInputMorphText } from "@/components/labs/input-morph-text";
 import { Code } from "@/components/ui/code";
+import { InlineLink } from "@/components/ui/inline-link";
 import Link from "next/link";
 
 const iosInputMorphTextConfig = {
@@ -20,14 +21,7 @@ const iosInputMorphTextConfig = {
       interactive animation.
     </p>,
     <p className="mb-4">
-      this was inspired by{" "}
-      <Link
-        href="https://x.com/ibelick"
-        target="_blank"
-        className="font-semibold underline underline-offset-3 decoration-mauve-300 hover:decoration-mauve-800 transition-colors ease-in-out"
-      >
-        @ibelick
-      </Link>
+      this was inspired by <InlineLink href="https://x.com/ibelick">@ibelick</InlineLink>
       's original implementation.
     </p>,
   ],

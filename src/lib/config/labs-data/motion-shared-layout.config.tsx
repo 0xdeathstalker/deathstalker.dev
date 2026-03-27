@@ -1,5 +1,6 @@
 import { MotionSharedLayout } from "@/components/labs/shared-layout";
 import { Code } from "@/components/ui/code";
+import { InlineLink } from "@/components/ui/inline-link";
 import Link from "next/link";
 
 const motionSharedLayoutConfig = {
@@ -9,24 +10,14 @@ const motionSharedLayoutConfig = {
   description: [
     <p>
       i tried to recreate the shared layout animation between a grid of items and a full screen modal from{" "}
-      <Link
-        href="https://motion.dev/examples/react-modal-shared-layout"
-        target="_blank"
-        className="font-semibold underline underline-offset-3 decoration-mauve-300 hover:decoration-mauve-800 transition-colors ease-in-out"
-      >
-        motion.dev example
-      </Link>
-      . at first this might seem to be difficult but one can easily get it right once he understands the core principle.
+      <InlineLink href="https://motion.dev/examples/react-modal-shared-layout">motion.dev example</InlineLink>. at first
+      this might seem to be difficult but one can easily get it right once he understands the core principle.
     </p>,
     <p>
       with the help of{" "}
-      <Link
-        href="https://www.framer.com/motion/layout-animations/#shared-layout-animations"
-        target="_blank"
-        className="font-semibold underline underline-offset-3 decoration-mauve-300 hover:decoration-mauve-800 transition-colors ease-in-out"
-      >
+      <InlineLink href="https://www.framer.com/motion/layout-animations/#shared-layout-animations">
         shared layout animations support
-      </Link>{" "}
+      </InlineLink>{" "}
       from motion, we can easily connect two elements and create a smooth transition between them. we don't need to move
       an item to have the morph effect.
     </p>,

@@ -1,6 +1,7 @@
 import { MaskScroll } from "@/components/labs/mask-scroll";
 import { Code } from "@/components/ui/code";
 import { CopyButton } from "@/components/ui/copy-button";
+import { InlineLink } from "@/components/ui/inline-link";
 import Link from "next/link";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { github } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -51,31 +52,15 @@ const maskScrollAreaConfig = {
   description: [
     <p>
       after coming across{" "}
-      <Link
-        href="https://x.com/sorenblank/status/1982192826956849243?s=20"
-        target="_blank"
-        className="font-semibold underline underline-offset-3 decoration-mauve-300 hover:decoration-mauve-800 transition-colors ease-in-out"
-      >
-        @sorenblank's post
-      </Link>{" "}
-      about using <Code>animation-timeline</Code> css property to create a masked scroll area that fades the content
-      around the edges as the user scrolls and{" "}
-      <Link
-        href="https://x.com/jh3yy/status/1789359851094614449?s=20"
-        target="_blank"
-        className="font-semibold underline underline-offset-3 decoration-mauve-300 hover:decoration-mauve-800 transition-colors ease-in-out"
-      >
-        @jh3yy
-      </Link>
+      <InlineLink href="https://x.com/sorenblank/status/1982192826956849243?s=20">@sorenblank's post</InlineLink> about
+      using <Code>animation-timeline</Code> css property to create a masked scroll area that fades the content around
+      the edges as the user scrolls and{" "}
+      <InlineLink href="https://x.com/jh3yy/status/1789359851094614449?s=20">@jh3yy</InlineLink>
       's implementation of the same, i wanted to recreate that. as a result, i decided to dig deeper and explore more
       about <Code>animation-timeline</Code> from the{" "}
-      <Link
-        href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/animation-timeline"
-        target="_blank"
-        className="font-semibold underline underline-offset-3 decoration-mauve-300 hover:decoration-mauve-800 transition-colors ease-in-out"
-      >
+      <InlineLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/animation-timeline">
         mdn docs
-      </Link>
+      </InlineLink>
       .
     </p>,
     <div>

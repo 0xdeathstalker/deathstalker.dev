@@ -1,3 +1,4 @@
+import { InlineLink } from "@/components/ui/inline-link";
 import type { Project, Work } from "@/lib/types";
 import { Code } from "lucide-react";
 import Link from "next/link";
@@ -60,37 +61,17 @@ export const works: Array<Work> = [
         period: "09.2023 - 09.2025",
         description: [
           <span>
-            built{" "}
-            <Link
-              href="https://nitro-explorer.vercel.app"
-              target="_blank"
-              className="font-semibold underline decoration-mauve-300 hover:decoration-mauve-800 underline-offset-3 transition-colors ease-in-out"
-            >
-              nitro explorer
-            </Link>
-            , cross-chain blockchain explorer processing more than thousand daily transactions.
+            built <InlineLink href="https://nitro-explorer.vercel.app">nitro explorer</InlineLink>, cross-chain
+            blockchain explorer processing more than thousand daily transactions.
           </span>,
           <span>
             integrated multiple blockchain ecosystems: (cosmos, bitcoin, tron, near, ton) into{" "}
-            <Link
-              href="https://github.com/router-protocol/tangled"
-              target="_blank"
-              className="font-semibold underline decoration-mauve-300 hover:decoration-mauve-800 underline-offset-3 transition-colors ease-in-out"
-            >
-              tangled
-            </Link>
-            , a wallet sdk developed for handling multi-chain wallet flows.
+            <InlineLink href="https://github.com/router-protocol/tangled">tangled</InlineLink>, a wallet sdk developed
+            for handling multi-chain wallet flows.
           </span>,
           <span>
             optimised transaction ux by reducing drop-offs, improving completion rates on{" "}
-            <Link
-              href="https://routernitro.com/swap"
-              target="_blank"
-              className="font-semibold underline decoration-mauve-300 hover:decoration-mauve-800 underline-offset-3 transition-colors ease-in-out"
-            >
-              nitro app
-            </Link>
-            .
+            <InlineLink href="https://routernitro.com/swap">nitro app</InlineLink>.
           </span>,
         ],
       },
