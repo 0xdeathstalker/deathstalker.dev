@@ -1,6 +1,6 @@
 import { LabItem } from "@/components/sections/lab-item";
 import { SectionHeading } from "@/components/ui/heading";
-import { labs } from "@/lib/config/lab-data";
+import { labs } from "@/lib/config/labs-data";
 
 function Labs() {
   return (

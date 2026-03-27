@@ -11,7 +11,7 @@ function MaskScroll() {
           {tags.map((item, idx) => (
             <div
               key={`${idx + 1}-item`}
-              className="bg-linear-to-br w-48 from-zinc-200/80 to-zinc-100/40 flex flex-col gap-2 border rounded-md py-2 px-3"
+              className="bg-linear-to-br w-48 from-mauve-200 to-mauve-50 flex flex-col gap-2 border rounded-md py-2 px-3"
             >
               <span className="text-sm">{item}</span>
             </div>

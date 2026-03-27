@@ -3,7 +3,7 @@ import { Footer } from "@/components/sections/footer";
 import { QuoteTime } from "@/components/sections/quote-time";
 import { buttonVariants } from "@/components/ui/button";
 import { Line } from "@/components/ui/line";
-import { labs } from "@/lib/config/lab-data";
+import { labs } from "@/lib/config/labs-data";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import * as React from "react";
