@@ -4,6 +4,7 @@ import { IOSInputMorphText } from "@/components/labs/input-morph-text";
 import { MaskScroll } from "@/components/labs/mask-scroll";
 import { MotionSharedLayout } from "@/components/labs/shared-layout";
 import { TestimonialMarquee } from "@/components/labs/testimonial-marquee";
+import { Code } from "@/components/ui/code";
 import type { Lab } from "@/lib/types";
 import Link from "next/link";
 
@@ -36,14 +37,11 @@ const motionSharedLayoutConfig = {
       an item to have the morph effect.
     </p>,
     <p className="mb-4">
-      the trick here is to use{" "}
-      <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">layoutId</code> prop to connect the
-      two elements, which tells the motion library to smoothly transition between the exit and the enter animation. we
-      need to use <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">Animate Presence</code>{" "}
-      to create the exit animation for the modal and the overlay.{" "}
-      <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">Animate Presence</code> component
-      is used to keep the exiting element in the DOM until its exit animation has finished. therefore, we get our
-      desired layout animation.
+      the trick here is to use <Code>layoutId</Code> prop to connect the two elements, which tells the motion library to
+      smoothly transition between the exit and the enter animation. we need to use <Code>Animate Presence</Code> to
+      create the exit animation for the modal and the overlay. <Code>Animate Presence</Code> component is used to keep
+      the exiting element in the DOM until its exit animation has finished. therefore, we get our desired layout
+      animation.
     </p>,
   ],
   tech: "motion",
@@ -63,14 +61,12 @@ const iosInputMorphTextConfig = {
       input box.
     </p>,
     <p>
-      the trick here is to use{" "}
-      <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">layoutId</code> to connect the
-      input text to the message. since we cannot access the text in the input box to pass the{" "}
-      <code className="font-mono bg-mauve-100 border py-0.5 px-1 rounded-md text-xs">layoutId</code> prop, we need to
-      create a pseudo input text that remains hidden while typing but gets animated to the message in the chat once
-      sent. this re-creates our desired interactive animation.
+      the trick here is to use <Code>layoutId</Code> to connect the input text to the message. since we cannot access
+      the text in the input box to pass the <Code>layoutId</Code> prop, we need to create a pseudo input text that
+      remains hidden while typing but gets animated to the message in the chat once sent. this re-creates our desired
+      interactive animation.
     </p>,
-    <p>
+    <p className="mb-4">
       this was inspired by{" "}
       <Link
         href="https://x.com/ibelick"
