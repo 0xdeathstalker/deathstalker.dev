@@ -23,12 +23,12 @@ const motionProps: HTMLMotionProps<"div"> = {
 
 type CopyStateIconProps = {
   state: CopyState;
-  idleIcon?: React.ReactNode;
+  copyIcon?: React.ReactNode;
   successIcon?: React.ReactNode;
   errorIcon?: React.ReactNode;
 };
 
-function CopyStateIcon({ state, idleIcon, successIcon, errorIcon }: CopyStateIconProps) {
+function CopyStateIcon({ state, copyIcon, successIcon, errorIcon }: CopyStateIconProps) {
   return (
     <AnimatePresence
       mode="popLayout"
@@ -38,25 +38,22 @@ function CopyStateIcon({ state, idleIcon, successIcon, errorIcon }: CopyStateIco
         <motion.div
           key="idle"
           {...motionProps}
-          className="relative size-4"
         >
-          {idleIcon ?? <CopyIcon className="absolute size-4 -scale-x-100 text-foreground" />}
+          {copyIcon ?? <CopyIcon className="-scale-x-100" />}
         </motion.div>
       ) : state === "success" ? (
         <motion.div
           key="success"
           {...motionProps}
-          className="relative size-4"
         >
-          {successIcon ?? <CheckCircle className="absolute size-4 text-foreground" />}
+          {successIcon ?? <CheckCircle />}
         </motion.div>
       ) : state === "error" ? (
         <motion.div
           key="error"
           {...motionProps}
-          className="relative size-4"
         >
-          {errorIcon ?? <CircleXIcon className="absolute size-4 text-foreground" />}
+          {errorIcon ?? <CircleXIcon />}
         </motion.div>
       ) : null}
     </AnimatePresence>
@@ -67,12 +64,12 @@ type CopyButtonProps = React.ComponentProps<typeof Button> & {
   text: string;
   onCopySuccess?: (text: string) => void;
   onCopyError?: (error: Error) => void;
-} & Pick<CopyStateIconProps, "idleIcon" | "successIcon" | "errorIcon">;
+} & Pick<CopyStateIconProps, "copyIcon" | "successIcon" | "errorIcon">;
 
 function CopyButton({
   size = "icon",
   text,
-  idleIcon,
+  copyIcon,
   successIcon,
   errorIcon,
   onCopySuccess,
@@ -97,7 +94,7 @@ function CopyButton({
     >
       <CopyStateIcon
         state={state}
-        idleIcon={idleIcon}
+        copyIcon={copyIcon}
         successIcon={successIcon}
         errorIcon={errorIcon}
       />

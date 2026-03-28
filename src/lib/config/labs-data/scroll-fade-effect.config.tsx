@@ -1,10 +1,7 @@
 import { MaskScroll } from "@/components/labs/mask-scroll";
 import { Code } from "@/components/ui/code";
-import { CopyButton } from "@/components/ui/copy-button";
+import { CodeBlock } from "@/components/ui/code-block";
 import { InlineLink } from "@/components/ui/inline-link";
-import Link from "next/link";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { github } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const getMaskStyles = () =>
   `mask-image:
@@ -80,22 +77,7 @@ const maskScrollAreaConfig = {
         </li>
       </ul>
     </div>,
-    <div className="relative p-1 border border-border/40 rounded-lg overflow-hidden **:font-mono">
-      <CopyButton
-        variant="ghost"
-        text={getMaskStyles()}
-        className="absolute top-1.5 right-1.5"
-      />
-      <SyntaxHighlighter
-        style={github}
-        language="css"
-        showLineNumbers
-        lineNumberStyle={{ color: "var(--color-taupe-400)" }}
-        customStyle={{ backgroundColor: "var(--color-mauve-100)", fontSize: 12, borderRadius: 8, padding: 8 }}
-      >
-        {getMaskStyles()}
-      </SyntaxHighlighter>
-    </div>,
+    <CodeBlock code={getMaskStyles()} />,
     <p>
       here we define three layers (top, bottom and solid) with <Code>mask-image</Code>. with <Code>mask-size</Code> we
       are defining how tall each layer should be. the top gradient grows from <span className="font-mono">0px</span> as
@@ -121,42 +103,12 @@ const maskScrollAreaConfig = {
       values can't be interpolated. the <Code>syntax</Code> field tells the browser that this is a length value and now
       it can be interpolated.
     </p>,
-    <div className="relative p-1 border border-border/40 rounded-lg overflow-hidden **:font-mono">
-      <CopyButton
-        variant="ghost"
-        text={getPropertiesStyles()}
-        className="absolute top-1.5 right-1.5"
-      />
-      <SyntaxHighlighter
-        style={github}
-        language="css"
-        showLineNumbers
-        lineNumberStyle={{ color: "var(--color-taupe-400)" }}
-        customStyle={{ backgroundColor: "var(--color-mauve-100)", fontSize: 12, borderRadius: 8, padding: 8 }}
-      >
-        {getPropertiesStyles()}
-      </SyntaxHighlighter>
-    </div>,
+    <CodeBlock code={getPropertiesStyles()} />,
     <p>
       now we need to link the animation with the scroll progress and this is where we use{" "}
       <Code>animation-timeline</Code>.
     </p>,
-    <div className="relative p-1 border border-border/40 rounded-lg overflow-hidden **:font-mono">
-      <CopyButton
-        variant="ghost"
-        text={getAnimationStyles()}
-        className="absolute top-1.5 right-1.5"
-      />
-      <SyntaxHighlighter
-        style={github}
-        language="css"
-        showLineNumbers
-        lineNumberStyle={{ color: "var(--color-taupe-400)" }}
-        customStyle={{ backgroundColor: "var(--color-mauve-100)", fontSize: 12, borderRadius: 8, padding: 8 }}
-      >
-        {getAnimationStyles()}
-      </SyntaxHighlighter>
-    </div>,
+    <CodeBlock code={getAnimationStyles()} />,
     <p>
       <Code>animation-timeline: scroll(self), scroll(self);</Code> means that the animation is driven by the element's
       own scroll position, not the page scroll. as we scroll inside the container, both animations progress.
