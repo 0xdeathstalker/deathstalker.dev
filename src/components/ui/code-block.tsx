@@ -4,9 +4,11 @@ import { CopyButton } from "./copy-button";
 import { cn } from "@/lib/utils";
 import { CopyIcon } from "lucide-react";
 
-function CodeBlock({ code }: { code: string }) {
+function CodeBlock({ code, className = "" }: { code: string; className?: string }) {
   return (
-    <div className="group relative p-1 border border-border/40 rounded-lg overflow-hidden **:font-mono">
+    <div
+      className={cn("group relative p-1 border border-border/40 rounded-lg overflow-hidden **:font-mono", className)}
+    >
       <CopyButton
         variant="ghost"
         text={code}
