@@ -5,6 +5,7 @@ import type { Lab } from "@/lib/types";
 import { iosInputMorphTextConfig } from "./ios-input-morph-text.config";
 import { motionSharedLayoutConfig } from "./motion-shared-layout.config";
 import { maskScrollAreaConfig } from "./scroll-fade-effect.config";
+import { testimonialMarqueeConfig } from "./testimonial-marquee.config";
 
 export const labs: Array<Lab> = [
   {
@@ -25,15 +26,7 @@ export const labs: Array<Lab> = [
     video: "https://cdn.deathstalker.dev/videos/copy-button.mov",
     component: CopyButtonDemo,
   },
-  {
-    slug: "testimonial-marquee",
-    title: "testimonial marquee",
-    subHeading: "",
-    description: [""],
-    tech: "css",
-    video: "https://cdn.deathstalker.dev/videos/testimonial-marquee.mp4",
-    component: TestimonialMarquee,
-  },
+  testimonialMarqueeConfig,
   maskScrollAreaConfig,
   iosInputMorphTextConfig,
   motionSharedLayoutConfig,

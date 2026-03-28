@@ -22,7 +22,7 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
         <Navigation />
 
         <div className="py-6 px-4">
-          <h2 className="text-xl font-semibold">{component?.title}</h2>
+          <h2 className="text-xl font-semibold font-pixel-square">{component?.title}</h2>
           <p className="mt-1 mb-10 text-sm text-muted-foreground">{component?.subHeading}</p>
 
           <div className="relative min-h-96 grid place-items-center border border-mauve-300 rounded-xl p-2 overflow-hidden">

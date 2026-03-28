@@ -59,7 +59,7 @@ function LabItem({ lab, isLast }: { lab: Lab; isLast: boolean }) {
           </video>
           <span
             className={cn(
-              "absolute bottom-1 left-6 py-0.5 px-1.5 font-mono text-[10px] sm:text-xs tracking-tight",
+              "absolute bottom-1 left-6 py-0.5 px-1.5 font-pixel-square font-semibold text-[10px] sm:text-xs tracking-wider",
               "bg-background border border-muted-foreground/25 border-dashed",
               "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-expo-out",
             )}
@@ -68,7 +68,7 @@ function LabItem({ lab, isLast }: { lab: Lab; isLast: boolean }) {
           </span>
           <span
             className={cn(
-              "absolute bottom-2 right-6 py-0.5 px-1.5 font-mono text-[10px] sm:text-xs tracking-tight",
+              "absolute bottom-2 right-6 py-0.5 px-1.5 font-pixel-square font-semibold text-[10px] sm:text-xs tracking-wider",
               "bg-background border border-muted-foreground/25 border-dashed",
               "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-expo-out",
             )}

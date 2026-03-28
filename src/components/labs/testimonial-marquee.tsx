@@ -13,7 +13,7 @@ import {
 
 function TestimonialMarquee() {
   return (
-    <div className="space-y-4 max-w-[650px] w-full px-4">
+    <div className="space-y-4 max-w-[600px] w-full">
       <div className="bg-neutral-900 flex flex-col justify-center border rounded-md py-14 space-y-4">
         <Marquee gap="0.5rem">
           <MarqueeFade
