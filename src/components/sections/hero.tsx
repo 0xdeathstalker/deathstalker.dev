@@ -35,7 +35,7 @@ function Title() {
       />
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-2 sm:gap-5 sm:justify-between">
-        <h1 className="leading-tight text-[32px] sm:text-4xl font-medium text-mauve-800 text-shadow-sm dark:shadow-black/65">
+        <h1 className="font-pixel-square leading-tight tracking-tight sm:tracking-normal text-4xl font-semibold text-mauve-700">
           {portfolio.author}
         </h1>
 

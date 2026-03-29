@@ -7,7 +7,6 @@ import { SectionHeading } from "@/components/ui/heading";
 const blogs = getBlogs().sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
 
 export function Blogs() {
-  console.log("[blogs] = ", { blogs });
   return (
     <section id="blogs">
       <SectionHeading className="px-4">writings</SectionHeading>

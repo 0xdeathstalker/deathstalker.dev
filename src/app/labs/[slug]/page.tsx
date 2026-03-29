@@ -2,6 +2,7 @@ import { ScrollGradients } from "@/components/scroll-gradients";
 import { Footer } from "@/components/sections/footer";
 import { QuoteTime } from "@/components/sections/quote-time";
 import { buttonVariants } from "@/components/ui/button";
+import { CornerBorder } from "@/components/ui/corner-border";
 import { Line } from "@/components/ui/line";
 import { labs } from "@/lib/config/labs-data";
 import { cn } from "@/lib/utils";
@@ -22,20 +23,30 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
 
       <VerticalLines />
 
-      <div className="pt-28 mx-auto max-w-[650px] max-[690px]:mx-4">
-        <Navigation />
+      <div className="pt-18 min-[840px]:pt-28 mx-auto max-w-[650px] max-[690px]:mx-4">
+        <div className="min-[840px]:hidden px-4 pb-3">
+          <Link
+            href="/"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-400 hover:text-mauve-500",
+            )}
+          >
+            <BackIcon />
+            Back
+          </Link>
+        </div>
+
+        <Title title={component?.title} />
 
         <div className="py-6 px-4">
-          <h2 className="text-xl font-semibold font-pixel-square">{component?.title}</h2>
-          <p className="mt-1 mb-10 text-sm text-muted-foreground">{component?.subHeading}</p>
+          <p className="mt-1 mb-6 text-sm text-muted-foreground">{component?.subHeading}</p>
 
           <div className="relative min-h-96 grid place-items-center border border-mauve-300 rounded-xl p-2 overflow-hidden">
             {component?.component && <component.component />}
           </div>
 
-          <div className="space-y-6 mt-10 text-sm">
-            {component?.description}
-          </div>
+          <div className="space-y-6 mt-10 text-sm">{component?.description}</div>
         </div>
 
         <QuoteTime />
@@ -63,19 +74,25 @@ function VerticalLines() {
   );
 }
 
-function Navigation() {
+function Title({ title }: { title: string | undefined }) {
   return (
     <div className="relative p-4">
-      <Link
-        href="/"
-        className={cn(
-          buttonVariants({ variant: "outline" }),
-          "h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-400 hover:text-mauve-500",
-        )}
-      >
-        <BackIcon />
-        Back
-      </Link>
+      <div className="absolute right-full top-1/2 -translate-y-1/2 pr-4 hidden min-[840px]:flex">
+        <Link
+          href="/"
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-400 hover:text-mauve-500",
+          )}
+        >
+          <BackIcon />
+          Back
+        </Link>
+      </div>
+
+      <h1 className="font-pixel-square text-3xl md:text-4xl text-mauve-700 font-semibold tracking-tight sm:tracking-wide">
+        {title}
+      </h1>
 
       <Line
         orientation="horizontal"
@@ -87,6 +104,8 @@ function Navigation() {
         position="bottom"
         color="text-mauve-500/65"
       />
+
+      <CornerBorder />
     </div>
   );
 }

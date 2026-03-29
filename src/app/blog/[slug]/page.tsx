@@ -139,7 +139,9 @@ function Title({ title }: { title: string }) {
         </Link>
       </div>
 
-      <h1 className="text-2xl md:text-4xl text-foreground font-semibold">{title}</h1>
+      <h1 className="font-pixel-square text-[28px] md:text-4xl text-mauve-700 font-semibold tracking-tight sm:tracking-wide">
+        {title}
+      </h1>
 
       <Line
         orientation="horizontal"
