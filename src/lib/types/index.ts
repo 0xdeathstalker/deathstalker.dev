@@ -66,7 +66,7 @@ export type Lab = {
   slug: string;
   title: string;
   subHeading: string;
-  description: Array<React.ReactElement | string>;
+  description: React.ReactNode;
   tech: string;
   video: string;
   component?: React.ComponentType;

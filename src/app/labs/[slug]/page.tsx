@@ -34,9 +34,7 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
           </div>
 
           <div className="space-y-6 mt-10 text-sm">
-            {component?.description.map((d, idx) => (
-              <React.Fragment key={`${component.slug}-description-${idx}`}>{d}</React.Fragment>
-            ))}
+            {component?.description}
           </div>
         </div>
 
