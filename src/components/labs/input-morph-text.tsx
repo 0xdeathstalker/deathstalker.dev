@@ -46,7 +46,7 @@ function IOSInputMorphText() {
             <MessageInput
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              className="text-sm placeholder:text-sm border-mauve-200 bg-taupe-100 placeholder:text-mauve-400"
+              className="w-48 sm:w-[250px] text-sm placeholder:text-sm border-mauve-200 bg-taupe-100 placeholder:text-mauve-400"
             />
 
             <MessageInputPseudoMesage
