@@ -2,24 +2,6 @@ import { CopyButtonDemo } from "@/components/labs/copy-button-demo";
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";
 import { InlineLink } from "@/components/ui/inline-link";
-import Link from "next/link";
-
-const getCopyStateIconLogic = () =>
-  `<AnimatePresence mode="popLayout" initial={false}>
-  {state === "idle" ? (
-    <motion.div key="idle" {...motionProps}>
-      {copyIcon ?? <CopyIcon />}
-    </motion.div>
-  ) : state === "success" ? (
-    <motion.div key="success" {...motionProps}>
-      {successIcon ?? <CheckCircle />}
-    </motion.div>
-  ) : state === "error" ? (
-    <motion.div key="error" {...motionProps}>
-      {errorIcon ?? <CircleXIcon />}
-    </motion.div>
-  ) : null}
-</AnimatePresence>`;
 
 const getMotionVariantsLogic = () =>
   `const motionVariants: Variants = {

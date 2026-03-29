@@ -9,12 +9,12 @@ type ButtonState = "idle" | "loading" | "success" | "failure";
 function SubmitButtonStates() {
   return (
     <div className="h-full flex items-center justify-center gap-6 sm:gap-24">
-      <div className="flex flex-col items-center gap-2 text-muted-foreground">
+      <div className="flex flex-col items-center gap-2 text-muted-foreground/50">
         <span>Success</span>
         <SuccessButton />
       </div>
 
-      <div className="flex flex-col items-center gap-2 text-muted-foreground">
+      <div className="flex flex-col items-center gap-2 text-muted-foreground/50">
         <span>Failure</span>
         <FailureButton />
       </div>
