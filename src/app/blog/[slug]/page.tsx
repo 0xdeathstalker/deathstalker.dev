@@ -9,6 +9,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/sections/footer";
 import { ScrollGradients } from "@/components/scroll-gradients";
+import { Line } from "@/components/ui/line";
+import { QuoteTime } from "@/components/sections/quote-time";
+import { CornerBorder } from "@/components/ui/corner-border";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -75,38 +78,80 @@ export default async function Blog({ params }: PageProps) {
   };
 
   return (
-    <main className="mx-auto min-h-screen font-sans px-4 pt-20">
+    <main className="relative min-h-screen w-full font-sans overflow-x-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="mx-auto max-w-[70ch]">
+      <ScrollGradients />
+
+      <VerticalLines />
+
+      <div className="pt-18 min-[840px]:pt-28 mx-auto max-w-[650px] max-[690px]:mx-4">
+        <div className="min-[840px]:hidden px-4 pb-3">
+          <Link
+            href="/"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-400 hover:text-mauve-500",
+            )}
+          >
+            <BackIcon />
+            Back
+          </Link>
+        </div>
+
+        <Title title={blog.metadata.title} />
+
+        <div className="py-6 px-4">
+          <span className="mb-8 inline-block font-mono tracking-tight text-sm text-mauve-400">
+            {formatDate(blog.metadata.date)}
+          </span>
+
+          <article className="prose prose-invert prose-headings:text-white prose-a:text-white hover:prose-a:underline">
+            <BlogContent source={blog.content} />
+          </article>
+        </div>
+
+        <QuoteTime />
+      </div>
+
+      <Footer />
+    </main>
+  );
+}
+
+function Title({ title }: { title: string }) {
+  return (
+    <div className="relative p-4">
+      <CornerBorder />
+
+      <div className="absolute right-full top-1/2 -translate-y-1/2 pr-3 hidden min-[840px]:flex">
         <Link
           href="/"
           className={cn(
             buttonVariants({ variant: "outline" }),
-            "h-7 has-[>svg]:pl-2 gap-1 mb-8 text-mauve-400 hover:text-mauve-500",
+            "h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-400 hover:text-mauve-500",
           )}
         >
           <BackIcon />
           Back
         </Link>
-
-        <h1 className="text-4xl text-foreground font-semibold mb-4">{blog.metadata.title}</h1>
-
-        <span className="mb-8 inline-block font-mono tracking-tight text-mauve-400">
-          {formatDate(blog.metadata.date)}
-        </span>
-
-        <article className="prose prose-invert prose-headings:text-white prose-a:text-white hover:prose-a:underline">
-          <BlogContent source={blog.content} />
-        </article>
       </div>
 
-      <Footer />
+      <h1 className="text-2xl md:text-4xl text-foreground font-semibold">{title}</h1>
 
-      <ScrollGradients />
-    </main>
+      <Line
+        orientation="horizontal"
+        position="top"
+        color="text-mauve-500/65"
+      />
+      <Line
+        orientation="horizontal"
+        position="bottom"
+        color="text-mauve-500/65"
+      />
+    </div>
   );
 }
 
@@ -129,5 +174,22 @@ function BackIcon() {
         strokeWidth="1.5"
       ></path>
     </svg>
+  );
+}
+
+function VerticalLines() {
+  return (
+    <div className="absolute inset-0 max-w-[650px] max-[690px]:mx-4 mx-auto pointer-events-none">
+      <Line
+        orientation="vertical"
+        position="left"
+        color="text-mauve-500/65"
+      />
+      <Line
+        orientation="vertical"
+        position="right"
+        color="text-mauve-500/65"
+      />
+    </div>
   );
 }

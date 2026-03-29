@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/ui/heading";
 const blogs = getBlogs().sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
 
 export function Blogs() {
+  console.log("[blogs] = ", { blogs });
   return (
     <section id="blogs">
       <SectionHeading className="px-4">writings</SectionHeading>
@@ -36,7 +37,7 @@ function BlogItem({ slug, title, date }: { slug: string; title: string; date: st
 
   return (
     <div className="flex items-center justify-between px-4">
-      <div className="w-fit relative inline-flex items-center gap-1 link overflow-x-hidden">
+      <div className="w-full sm:w-fit relative inline-flex items-center justify-between gap-1 link overflow-x-hidden">
         <div className="relative overflow-x-hidden">
           <Link
             href={`/blog/${slug}`}
@@ -44,10 +45,12 @@ function BlogItem({ slug, title, date }: { slug: string; title: string; date: st
           >
             {title.toLowerCase()}
           </Link>
-          <div className="sm:hidden absolute top-0 right-0 h-full w-10 bg-linear-to-l from-background to-transparent" />
         </div>
 
-        <LinkArrowIcon className="size-5" />
+        <div className="relative">
+          <div className="sm:hidden absolute top-0 right-5 h-full w-10 bg-linear-to-l from-background to-transparent" />
+          <LinkArrowIcon className="size-5" />
+        </div>
       </div>
 
       <span className="font-mono text-sm tracking-tighter hidden sm:inline text-mauve-500">{formattedDate}</span>
