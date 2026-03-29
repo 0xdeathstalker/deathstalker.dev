@@ -8,6 +8,10 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import * as React from "react";
 
+export function generateStaticParams() {
+  return labs.map((l) => ({ slug: l.slug }));
+}
+
 export default async function LabPage({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
   const component = labs.find((l) => l.slug === slug);
