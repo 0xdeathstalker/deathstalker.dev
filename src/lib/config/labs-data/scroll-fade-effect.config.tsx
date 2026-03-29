@@ -77,7 +77,10 @@ const maskScrollAreaConfig = {
         </li>
       </ul>
     </div>,
-    <CodeBlock code={getMaskStyles()} />,
+    <CodeBlock
+      code={getMaskStyles()}
+      language="css"
+    />,
     <p>
       here we define three layers (top, bottom and solid) with <Code>mask-image</Code>. with <Code>mask-size</Code> we
       are defining how tall each layer should be. the top gradient grows from <span className="font-mono">0px</span> as
@@ -103,12 +106,18 @@ const maskScrollAreaConfig = {
       values can't be interpolated. the <Code>syntax</Code> field tells the browser that this is a length value and now
       it can be interpolated.
     </p>,
-    <CodeBlock code={getPropertiesStyles()} />,
+    <CodeBlock
+      code={getPropertiesStyles()}
+      language="css"
+    />,
     <p>
       now we need to link the animation with the scroll progress and this is where we use{" "}
       <Code>animation-timeline</Code>.
     </p>,
-    <CodeBlock code={getAnimationStyles()} />,
+    <CodeBlock
+      code={getAnimationStyles()}
+      language="css"
+    />,
     <p>
       <Code>animation-timeline: scroll(self), scroll(self);</Code> means that the animation is driven by the element's
       own scroll position, not the page scroll. as we scroll inside the container, both animations progress.

@@ -4,7 +4,7 @@ import { CopyButton } from "./copy-button";
 import { cn } from "@/lib/utils";
 import { CopyIcon } from "lucide-react";
 
-function CodeBlock({ code, className = "" }: { code: string; className?: string }) {
+function CodeBlock({ code, language, className = "" }: { code: string; language: string; className?: string }) {
   return (
     <div
       className={cn("group relative p-1 border border-border/40 rounded-lg overflow-hidden **:font-mono", className)}
@@ -21,7 +21,7 @@ function CodeBlock({ code, className = "" }: { code: string; className?: string 
       />
       <SyntaxHighlighter
         style={github}
-        language="css"
+        language={language}
         showLineNumbers
         lineNumberStyle={{ color: "var(--color-taupe-400)" }}
         customStyle={{ backgroundColor: "var(--color-mauve-100)", fontSize: 12, borderRadius: 8, padding: 8 }}

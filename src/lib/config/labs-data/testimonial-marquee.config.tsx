@@ -68,12 +68,18 @@ const testimonialMarqueeConfig = {
         component receives keyboard focus, the spotlight effect is suppressed.
       </p>
     </div>,
-    <CodeBlock code={getPointerTrackingLogic()} />,
+    <CodeBlock
+      code={getPointerTrackingLogic()}
+      language="typescript"
+    />,
     <p>
       on touch-only devices that do not support hover, the spotlight effect serves no purpose. to detect hover
       capability, we check the <Code>(hover: hover)</Code> media query.
     </p>,
-    <CodeBlock code={getHoverDeviceCheckLogic()} />,
+    <CodeBlock
+      code={getHoverDeviceCheckLogic()}
+      language="typescript"
+    />,
     <div>
       <h3 className="font-semibold mb-2">marquee</h3>
       <p>
@@ -83,7 +89,10 @@ const testimonialMarqueeConfig = {
         here testimonial is used.
       </p>
     </div>,
-    <CodeBlock code={getMarqueeContentLogic()} />,
+    <CodeBlock
+      code={getMarqueeContentLogic()}
+      language="typescript"
+    />,
     <p>
       the children are rendered <Code>repeat</Code> times to create the illusion of infinite scrolling — as one copy
       scrolls out of view, the next fills the gap seamlessly. animation behaviour is controlled via tailwind utility
@@ -96,7 +105,10 @@ const testimonialMarqueeConfig = {
       root element and consumed by the animation and layout which is overridable via the <Code>duration</Code> and{" "}
       <Code>gap</Code> props.
     </p>,
-    <CodeBlock code={getMarqueeCSSVarsLogic()} />,
+    <CodeBlock
+      code={getMarqueeCSSVarsLogic()}
+      language="typescript"
+    />,
     <p>
       <Code>MarqueeFade</Code> is a separate absolutely-positioned overlay that renders a gradient fade on any of the
       four sides. it fades from the background colour to transparent, creating the soft edge effect.

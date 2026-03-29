@@ -44,7 +44,10 @@ const buttonStatesConfig = {
       the active state is revealed with <Code>opacity-100 blur-none</Code> while the rest are hidden with{" "}
       <Code>opacity-0 blur-sm</Code>, mimicking an enter and exit animation entirely through css transitions.
     </p>,
-    <CodeBlock code={getStateStyles()} />,
+    <CodeBlock
+      code={getStateStyles()}
+      language="typescript"
+    />,
     <div>
       <p>the button's background colour also transitions between states:</p>
       <ul className="my-1">
@@ -70,7 +73,10 @@ const buttonStatesConfig = {
       </ul>
       <p> this reinforces the feedback visually without any javascript animation.</p>
     </div>,
-    <CodeBlock code={getButtonStyles()} />,
+    <CodeBlock
+      code={getButtonStyles()}
+      language="typescript"
+    />,
     <div>
       <p className="mb-2">advantages of this approach:</p>
       <ul className="my-1">

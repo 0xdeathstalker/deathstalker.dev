@@ -67,13 +67,19 @@ const copyButtonConfig = {
       <Code>150ms</Code>. all three states reuse the same <Code>motionProps</Code> object, so the transition feels
       consistent regardless of which state is entered.
     </p>,
-    <CodeBlock code={getMotionVariantsLogic()} />,
+    <CodeBlock
+      code={getMotionVariantsLogic()}
+      language="typescript"
+    />,
     <p>
       the component accepts <Code>onCopySuccess</Code> and <Code>onCopyError</Code> callbacks, both are optional. on
       success, the copied text is passed back to the caller. on failure, the caught error is forwarded. each icon slot
       is also overridable, so the button can be adapted to any visual context without forking the component.
     </p>,
-    <CodeBlock code={getCopyButtonPropsLogic()} />,
+    <CodeBlock
+      code={getCopyButtonPropsLogic()}
+      language="typescript"
+    />,
     <p>
       state is managed by the <Code>useCopyToClipboard</Code> hook, which writes to the clipboard via{" "}
       <Code>navigator.clipboard.writeText</Code> and automatically resets back to <Code>idle</Code> after a configurable{" "}
@@ -82,6 +88,7 @@ const copyButtonConfig = {
     </p>,
     <CodeBlock
       code={getResetDelayLogic()}
+      language="typescript"
       className="mb-4"
     />,
   ],
