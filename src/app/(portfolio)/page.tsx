@@ -6,9 +6,9 @@ import { QuoteTime } from "@/components/sections/quote-time";
 import { Work } from "@/components/sections/work";
 import { PatternSeparator } from "@/components/ui/pattern-separator";
 
-function Content() {
+export default function Home() {
   return (
-    <div className="relative pt-28 mx-auto max-w-[650px] max-[690px]:mx-4">
+    <div className="relative pt-28">
       <Hero />
       <PatternSeparator />
 
@@ -28,5 +28,3 @@ function Content() {
     </div>
   );
 }
-
-export { Content };
