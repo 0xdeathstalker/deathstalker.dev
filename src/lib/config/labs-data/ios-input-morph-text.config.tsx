@@ -11,9 +11,9 @@ const iosInputMorphTextConfig = {
     <>
       <p>
         an attempt to recreate the famous ios style imessage animation where the input text morphs into the message when
-        sent. initially i struggled to create the seamless morphing animation when the message 'travels' from input box to
-        the chat area. it was tricky to handle the multi-line input text because when typing it should not spill over the
-        input box.
+        sent. initially i struggled to create the seamless morphing animation when the message 'travels' from input box
+        to the chat area. it was tricky to handle the multi-line input text because when typing it should not spill over
+        the input box.
       </p>
       <p>
         the trick here is to use <Code>layoutId</Code> to connect the input text to the message. since we cannot access
@@ -28,7 +28,7 @@ const iosInputMorphTextConfig = {
     </>
   ),
   tech: "motion",
-  video: "https://cdn.deathstalker.dev/videos/ios-input-morph.mp4",
+  video: "https://cdn.deathstalker.dev/videos/ios-input-morph-text.mp4",
   component: IOSInputMorphText,
 };
 

@@ -59,9 +59,9 @@ const copyButtonConfig = {
       </p>
       <p>
         the copy button manages three distinct states: <Code>idle</Code>, <Code>success</Code>, and <Code>error</Code>{" "}
-        allowing us to render a different icon for each. a dedicated <Code>CopyStateIcon</Code> component handles this by
-        switching between icons using <Code>AnimatePresence</Code> with <Code>mode="popLayout"</Code>, so the outgoing
-        icon animates out before the incoming one animates in.
+        allowing us to render a different icon for each. a dedicated <Code>CopyStateIcon</Code> component handles this
+        by switching between icons using <Code>AnimatePresence</Code> with <Code>mode="popLayout"</Code>, so the
+        outgoing icon animates out before the incoming one animates in.
       </p>
       <p>
         each icon transition runs the same shared motion variants: fading, scaling, and blurring in and out over{" "}
@@ -83,9 +83,9 @@ const copyButtonConfig = {
       />
       <p>
         state is managed by the <Code>useCopyToClipboard</Code> hook, which writes to the clipboard via{" "}
-        <Code>navigator.clipboard.writeText</Code> and automatically resets back to <Code>idle</Code> after a configurable{" "}
-        <Code>resetDelay</Code> (default <Code>2000ms</Code>). a ref-tracked timeout ensures that rapid repeated clicks
-        cancel the previous reset before starting a new one.
+        <Code>navigator.clipboard.writeText</Code> and automatically resets back to <Code>idle</Code> after a
+        configurable <Code>resetDelay</Code> (default <Code>2000ms</Code>). a ref-tracked timeout ensures that rapid
+        repeated clicks cancel the previous reset before starting a new one.
       </p>
       <CodeBlock
         code={getResetDelayLogic()}
@@ -95,7 +95,7 @@ const copyButtonConfig = {
     </>
   ),
   tech: "motion",
-  video: "https://cdn.deathstalker.dev/videos/copy-button.mov",
+  video: "https://cdn.deathstalker.dev/videos/animated-copy-button.mp4",
   component: CopyButtonDemo,
 };
 

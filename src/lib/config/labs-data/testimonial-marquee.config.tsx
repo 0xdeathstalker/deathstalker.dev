@@ -58,15 +58,15 @@ const testimonialMarqueeConfig = {
     <>
       <p>
         this is an example which combines two components: <span className="font-semibold">testimonial</span> &{" "}
-        <span className="font-semibold">marquee</span>. i created both of them while working on a marketing website for a
-        client.
+        <span className="font-semibold">marquee</span>. i created both of them while working on a marketing website for
+        a client.
       </p>
       <div>
         <h3 className="font-semibold mb-2">testimonial</h3>
         <p>
-          this component features an opt-in spotlight hover effect using a classic layout for showcasing testimonials. the
-          effect works by tracking the mouse position within the card. it also respects keyboard navigation. when the
-          component receives keyboard focus, the spotlight effect is suppressed.
+          this component features an opt-in spotlight hover effect using a classic layout for showcasing testimonials.
+          the effect works by tracking the mouse position within the card. it also respects keyboard navigation. when
+          the component receives keyboard focus, the spotlight effect is suppressed.
         </p>
       </div>
       <CodeBlock
@@ -102,8 +102,8 @@ const testimonialMarqueeConfig = {
       </p>
       <p>
         animation speed and item spacing are driven by two css custom properties: <Code>--duration</Code> (default{" "}
-        <Code>40s</Code>) and <Code>--gap</Code> (default <Code>32px</Code>). they are set as inline css variables on the
-        root element and consumed by the animation and layout which is overridable via the <Code>duration</Code> and{" "}
+        <Code>40s</Code>) and <Code>--gap</Code> (default <Code>32px</Code>). they are set as inline css variables on
+        the root element and consumed by the animation and layout which is overridable via the <Code>duration</Code> and{" "}
         <Code>gap</Code> props.
       </p>
       <CodeBlock
@@ -122,7 +122,7 @@ const testimonialMarqueeConfig = {
     </>
   ),
   tech: "css",
-  video: "https://cdn.deathstalker.dev/videos/testimonial-marquee.mp4",
+  video: "https://cdn.deathstalker.dev/videos/testimonial-marquee-animation.mp4",
   component: TestimonialMarquee,
 };
 
