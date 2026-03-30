@@ -95,7 +95,7 @@ const copyButtonConfig = {
     </>
   ),
   tech: "motion",
-  video: "https://cdn.deathstalker.dev/videos/animated-copy-button.mp4",
+  video: "https://cdn.deathstalker.dev/videos/motion-copy-button.mp4",
   component: CopyButtonDemo,
 };
 

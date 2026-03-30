@@ -32,7 +32,7 @@ const motionSharedLayoutConfig = {
     </>
   ),
   tech: "motion",
-  video: "https://cdn.deathstalker.dev/videos/motion-shared-layout.mp4",
+  video: "https://cdn.deathstalker.dev/videos/motion-shared-layout-animation.mp4",
   component: MotionSharedLayout,
 };
 

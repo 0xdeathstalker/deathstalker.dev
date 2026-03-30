@@ -144,7 +144,7 @@ const maskScrollAreaConfig = {
     </>
   ),
   tech: "css",
-  video: "https://cdn.deathstalker.dev/videos/scroll-fade-effect.mp4",
+  video: "https://cdn.deathstalker.dev/videos/scroll-fade.mp4",
   component: MaskScroll,
 };
 

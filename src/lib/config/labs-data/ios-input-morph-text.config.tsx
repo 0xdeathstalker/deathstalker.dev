@@ -28,7 +28,7 @@ const iosInputMorphTextConfig = {
     </>
   ),
   tech: "motion",
-  video: "https://cdn.deathstalker.dev/videos/ios-input-morph-text.mp4",
+  video: "https://cdn.deathstalker.dev/videos/ios-input-morph-text-animation.mp4",
   component: IOSInputMorphText,
 };
 
