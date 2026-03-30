@@ -35,11 +35,11 @@ export function ScrollGradients() {
   return (
     <>
       <div
-        className="bg-gradient-to-b from-background to-transparent fixed top-0 left-0 h-10 w-full z-50 pointer-events-none transition-opacity duration-300"
+        className="bg-linear-to-b from-background to-transparent fixed top-0 left-0 h-10 w-full z-50 pointer-events-none transition-opacity duration-300"
         style={{ opacity: topOpacity }}
       />
       <div
-        className="bg-gradient-to-t from-background to-transparent fixed bottom-0 left-0 h-10 w-full z-50 pointer-events-none transition-opacity duration-300"
+        className="bg-linear-to-t from-background to-transparent fixed bottom-0 left-0 h-10 w-full z-50 pointer-events-none transition-opacity duration-300"
         style={{ opacity: bottomOpacity }}
       />
     </>

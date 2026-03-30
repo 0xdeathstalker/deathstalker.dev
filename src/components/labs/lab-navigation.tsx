@@ -1,0 +1,76 @@
+"use client";
+
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+import * as React from "react";
+import { Kbd } from "@/components/ui/kbd";
+
+interface LabNavigationProps {
+  prevSlug: string | null;
+  nextSlug: string | null;
+}
+
+export function LabNavigation({ prevSlug, nextSlug }: LabNavigationProps) {
+  const router = useRouter();
+
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft" && prevSlug) {
+        router.push(`/labs/${prevSlug}`);
+      } else if (e.key === "ArrowRight" && nextSlug) {
+        router.push(`/labs/${nextSlug}`);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [prevSlug, nextSlug, router]);
+
+  return (
+    <div className="flex items-center gap-2">
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => prevSlug && router.push(`/labs/${prevSlug}`)}
+            disabled={!prevSlug}
+            aria-label="Go to previous component"
+            className="size-7"
+          >
+            <ArrowLeft className="size-3.5" />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent className="font-sans inline-flex items-center gap-2 py-2 px-2">
+          <Kbd>
+            <ArrowLeft />
+          </Kbd>
+          previous component
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => nextSlug && router.push(`/labs/${nextSlug}`)}
+            disabled={!nextSlug}
+            aria-label="Go to next component"
+            className="h-7 w-7"
+          >
+            <ArrowRight className="size-3.5" />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent className="font-sans inline-flex items-center gap-2 py-2 px-2">
+          next component
+          <Kbd>
+            <ArrowRight />
+          </Kbd>
+        </TooltipContent>
+      </Tooltip>
+    </div>
+  );
+}

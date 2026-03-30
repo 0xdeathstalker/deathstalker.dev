@@ -1,10 +1,12 @@
+import { CopyButton } from "@/components/ui/copy-button";
+import { CornerBorder } from "@/components/ui/corner-border";
 import { Line } from "@/components/ui/line";
 import { getGitHubContributions } from "@/lib/actions/github-contributions";
 import { portfolio } from "@/lib/config/site-data";
+import Link from "next/link";
 import { CodingHours } from "./coding-hours";
 import { GithubContributions } from "./github-contributions";
 import Socials from "./socials";
-import { CornerBorder } from "@/components/ui/corner-border";
 
 export function Hero() {
   return (
@@ -18,22 +20,24 @@ export function Hero() {
 
 function Title() {
   return (
-    <div className="relative py-4 px-4 group">
+    <div className="relative p-4">
       <CornerBorder />
 
       <Line
         orientation="horizontal"
         position="top"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        color="text-mauve-500/65"
       />
       <Line
         orientation="horizontal"
         position="bottom"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        color="text-mauve-500/65"
       />
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-2 sm:gap-5 sm:justify-between">
-        <h1 className="text-[32px] sm:text-4xl font-medium text-shadow-sm dark:shadow-black/65">{portfolio.author}</h1>
+        <h1 className="font-pixel-square leading-tight tracking-tight sm:tracking-normal text-4xl font-semibold text-mauve-700">
+          {portfolio.author}
+        </h1>
 
         <Socials />
       </div>
@@ -49,18 +53,38 @@ async function Bio() {
       <div className="space-y-4">
         {portfolio.bio.map((b, i) => (
           <p
-            // biome-ignore lint/suspicious/noArrayIndexKey: no other variable to use as key
-            key={i}
-            className="text-neutral-600 leading-relaxed"
+            key={`${i + 1}`}
+            className="text-sm text-taupe-700 leading-relaxed"
           >
             {b}
           </p>
         ))}
+
+        <EmailInfo />
       </div>
 
       <GithubContributions contributions={contributions}>
         <CodingHours />
       </GithubContributions>
+    </div>
+  );
+}
+
+function EmailInfo() {
+  return (
+    <div className="group flex flex-wrap items-center gap-0.5 text-sm text-taupe-700 leading-relaxed">
+      <span>pixels to my inbox:</span>
+      <Link
+        href={`mailto:${portfolio.mail}`}
+        className="ml-0.5 text-mauve-800 font-medium underline decoration-mauve-300 group-hover:decoration-mauve-800 underline-offset-3 transition-colors ease-in-out"
+      >
+        soumya@deathstalker.dev
+      </Link>
+      <CopyButton
+        variant="ghost"
+        className="hidden can-hover:inline-flex opacity-0 group-hover:opacity-100 blur-px group-hover:blur-none"
+        text={portfolio.mail}
+      />
     </div>
   );
 }

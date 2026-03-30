@@ -1,5 +1,5 @@
 import Link from "next/link";
-import LinkIcon from "@/components/link-icon";
+import { LinkArrowIcon } from "@/components/link-arrow-icon";
 import { getBlogs } from "@/lib/actions/blog";
 import { SectionHeading } from "@/components/ui/heading";
 
@@ -36,21 +36,23 @@ function BlogItem({ slug, title, date }: { slug: string; title: string; date: st
 
   return (
     <div className="flex items-center justify-between px-4">
-      <div className="w-fit relative inline-flex items-center gap-1 link overflow-x-hidden">
+      <div className="w-full sm:w-fit relative inline-flex items-center justify-between gap-1 link overflow-x-hidden">
         <div className="relative overflow-x-hidden">
           <Link
             href={`/blog/${slug}`}
-            className="text-lg text-nowrap before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-[1px] dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-[cubic-bezier(0.785,0.135,0.15,0.86)] hover:before:w-full"
+            className="text-lg text-nowrap before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-px before:bg-mauve-900 before:transition-all before:ease-circ-in-out hover:before:w-full"
           >
             {title.toLowerCase()}
           </Link>
-          <div className="sm:hidden absolute top-0 right-0 h-full w-10 bg-linear-to-l from-background to-transparent" />
         </div>
 
-        <LinkIcon className="size-5" />
+        <div className="relative">
+          <div className="sm:hidden absolute top-0 right-5 h-full w-10 bg-linear-to-l from-background to-transparent" />
+          <LinkArrowIcon className="size-5" />
+        </div>
       </div>
 
-      <span className="hidden sm:inline text-muted-foreground">{formattedDate}</span>
+      <span className="font-mono text-sm tracking-tighter hidden sm:inline text-mauve-500">{formattedDate}</span>
     </div>
   );
 }

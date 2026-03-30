@@ -1,113 +1,187 @@
 "use client";
 
+import { Accordion, AccordionContent, AccordionTrigger } from "@/components/ui/accordion";
 import { SectionHeading } from "@/components/ui/heading";
 import { works } from "@/lib/config/site-data";
-import type { Work as WorkType } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import type { Work as WorkType, WorkPosition } from "@/lib/types";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
+import { Line } from "@/components/ui/line";
 
 export function Work() {
   return (
     <section id="work">
       <SectionHeading className="px-4">experience</SectionHeading>
 
-      <div className="space-y-6 py-6">
-        {works.map((work, index) => (
-          <WorkItemAccordion
-            // biome-ignore lint/suspicious/noArrayIndexKey: no other variable to use as key
-            key={index}
-            work={work}
-          />
-        ))}
+      <div>
+        {works.map((work, idx) => {
+          const isLast = works.length - 1 === idx;
+          return (
+            <WorkItem
+              key={`${idx + 1}`}
+              work={work}
+              isLast={isLast}
+            />
+          );
+        })}
       </div>
     </section>
   );
 }
 
-function WorkItemAccordion({ work }: { work: WorkType }) {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  const hasDescription = work.description;
-
+function WorkItem({ work, isLast }: { work: WorkType; isLast: boolean }) {
   return (
-    <div className="px-4">
-      <button
-        onClick={() => {
-          if (hasDescription) setIsOpen((prev) => !prev);
-        }}
-        className="group w-full inline-flex flex-col md:flex-row items-start justify-between gap-2 md:gap-0 cursor-pointer"
-      >
-        <div className="flex items-center gap-2">
-          <Link
-            href={work.href}
-            target="_blank"
-          >
-            <img
-              src={`/images/work/${work.logo}`}
-              alt={`${work.company} logo`}
-              className={cn(
-                "size-11 rounded-sm mix-blend-hard-light dark:mix-blend-normal grayscale opacity-75 dark:opacity-100 group-hover:opacity-100 group-hover:grayscale-0 group-hover:mix-blend-normal transition-all ease-linear",
-                isOpen && "grayscale-0 mix-blend-normal opacity-100",
-              )}
-            />
-          </Link>
-          <div className="flex flex-col items-start gap-0.5">
-            <div className="flex items-center gap-2.5">
-              <h2
-                className={cn(
-                  "relative text-lg before:content-[''] before:absolute before:bottom-0.5 before:h-[1px] before:w-0 dark:before:bg-neutral-100 before:bg-neutral-900 before:transition-all before:ease-[cubic-bezier(0.785,0.135,0.15,0.86)] group-hover:before:w-full",
-                  isOpen ? "before:w-full" : "before:w-0",
-                )}
-              >
-                {work.company}
-              </h2>
+    <div className="relative py-6 px-4">
+      <CompanyInfo work={work} />
 
-              {work.isCurrentEmployer && (
-                <span className="relative flex items-center justify-center">
-                  <span className="absolute inline-flex size-2 animate-ping rounded-full bg-foreground opacity-50" />
-                  <span className="absolute inline-flex size-1.5 rounded-full bg-foreground/70" />
-                </span>
-              )}
+      <div className="space-y-6">
+        {work.positions.map((position, idx) => (
+          <PositionItem
+            key={position.id}
+            position={position}
+            defaultOpen={work.id === 1 && position.id === 1}
+            isLastPosition={idx === work.positions.length - 1}
+          />
+        ))}
+      </div>
 
-              {hasDescription && (
-                <ChevronRight
-                  className={cn(
-                    "size-3.5 md:opacity-0 md:scale-40 md:-translate-x-1.5 group-hover:opacity-100 group-hover:scale-100 group-hover:-translate-x-0 transition-all ease-in-out",
-                    isOpen && "rotate-90 md:opacity-100 md:scale-100 md:translate-x-0",
-                  )}
-                />
-              )}
-            </div>
-
-            <span className="text-sm text-muted-foreground/90">{work.role}</span>
-          </div>
-        </div>
-
-        <span className="text-neutral-500 text-sm text-left">{work.period}</span>
-      </button>
-
-      {hasDescription ? (
-        <ul
-          className={cn(
-            "space-y-3.5 list-inside flex-col overflow-hidden transition-all duration-[350ms] ease-in-out",
-            isOpen ? "max-h-screen" : "max-h-0",
-          )}
-        >
-          {work.description?.map((d, i) => (
-            <li
-              // biome-ignore lint/suspicious/noArrayIndexKey: no other variable to use as key
-              key={i}
-              className="flex items-center w-full leading-snug mt-3"
-            >
-              <div className="pr-2 self-start">•</div>
-
-              <span className="text-neutral-800 flex-grow">{d}</span>
-            </li>
-          ))}
-        </ul>
+      {!isLast ? (
+        <Line
+          orientation="horizontal"
+          variant="contained"
+          position="bottom"
+          color="text-mauve-500/65"
+          className="max-w-[650px]"
+        />
       ) : null}
     </div>
+  );
+}
+
+function PositionItem({
+  position,
+  defaultOpen,
+  isLastPosition,
+}: {
+  position: WorkPosition;
+  defaultOpen: boolean;
+  isLastPosition: boolean;
+}) {
+  const hasDescription = !!position.description?.length;
+
+  return (
+    <div className="relative">
+      {!isLastPosition ? (
+        <div
+          aria-hidden
+          className="absolute left-3 top-3 z-0 w-px bg-border h-[calc(100%+1rem)]"
+        />
+      ) : null}
+
+      <Accordion
+        defaultOpen={defaultOpen}
+        disabled={!hasDescription}
+        className="relative z-10"
+      >
+        <AccordionTrigger>
+          <RoleInfo
+            position={position}
+            hasDescription={hasDescription}
+          />
+        </AccordionTrigger>
+
+        {hasDescription && (
+          <AccordionContent className="pl-8">
+            <ul className="space-y-2.5 list-inside flex-col">
+              {position.description?.map((d, i) => (
+                <li
+                  key={`${i + 1}`}
+                  className="flex items-center w-full leading-snug first:mt-3"
+                >
+                  <div className="pr-2 self-start text-muted-foreground/40">•</div>
+                  <span className="text-taupe-700 grow text-sm">{d}</span>
+                </li>
+              ))}
+            </ul>
+          </AccordionContent>
+        )}
+      </Accordion>
+    </div>
+  );
+}
+
+function RoleInfo({ position, hasDescription }: { position: WorkPosition; hasDescription: boolean }) {
+  return (
+    <div className="flex items-start gap-2">
+      <div className="size-6 flex items-center justify-center bg-muted border border-muted-foreground/15 rounded-xl ring-1 ring-offset-1 ring-muted-foreground/15">
+        {position.roleIcon}
+      </div>
+
+      <div className="text-left text-base">
+        <div className="flex items-center gap-0.5">
+          <h4 className="relative leading-snug before:content-[''] before:absolute before:bottom-0.5 before:h-px before:w-0 before:bg-mauve-900 before:transition-all before:ease-circ-in-out group-hover:before:w-full group-data-[state=open]:before:w-full">
+            {position.role}
+          </h4>
+          {hasDescription && (
+            <ChevronRight className="size-3.5 group-data-[state=open]:rotate-90 transition-all ease-in-out" />
+          )}
+        </div>
+
+        <div className="flex items-center gap-2">
+          <p className="text-sm text-muted-foreground/75">{position.type}</p>
+
+          <div className="w-px h-3 bg-muted-foreground/20" />
+
+          <div className="font-mono mt-0.5 text-xs leading-snug inline-flex items-center gap-0.5 text-muted-foreground/75">
+            {position.period.split("-").map((p, i, arr) => (
+              <React.Fragment key={p}>
+                <span>{p}</span>
+                {i < arr.length - 1 && <span key={`sep-${i + 1}`}>-</span>}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CompanyInfo({ work }: { work: WorkType }) {
+  return (
+    <div className="flex items-center gap-2 mb-3">
+      <img
+        src={`/images/work/${work.companyLogo}`}
+        alt={`${work.company} logo`}
+        className="size-6 rounded group-hover:opacity-80 transition-opacity ease-in-out"
+      />
+
+      <div className="relative flex items-center gap-0.5 link">
+        <Link
+          href={work.href}
+          target="_blank"
+        >
+          <h2 className="relative text-lg font-medium before:content-[''] before:absolute before:bottom-0.5 before:h-px before:w-0 before:bg-mauve-900 before:transition-all before:ease-circ-in-out hover:before:w-full">
+            {work.company}
+          </h2>
+        </Link>
+
+        {work.isCurrentEmployer && (
+          <div className="absolute top-1/2 -right-2.5">
+            <CurrentWorkIndicator />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function CurrentWorkIndicator() {
+  return (
+    <span className="relative flex items-center justify-center">
+      <span className="absolute inline-flex size-2 animate-ping rounded-full bg-indigo-700 opacity-50" />
+      <span className="absolute inline-flex size-1.5 rounded-full bg-indigo-700/70" />
+      <span className="sr-only">Current Employer</span>
+    </span>
   );
 }

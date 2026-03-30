@@ -1,16 +1,15 @@
-import { Content } from "@/components/content";
 import { ScrollGradients } from "@/components/scroll-gradients";
-import Footer from "@/components/sections/footer";
+import { Footer } from "@/components/sections/footer";
 import { Line } from "@/components/ui/line";
 
-export default function Home() {
+export default function PortfolioLayout({ children }: { children: React.ReactNode }) {
   return (
     <main className="relative min-h-screen w-full font-sans overflow-x-hidden">
       <ScrollGradients />
 
       <VerticalLines />
 
-      <Content />
+      <div className="mx-auto max-w-[650px] max-[690px]:mx-4">{children}</div>
 
       <Footer />
     </main>
@@ -23,12 +22,12 @@ function VerticalLines() {
       <Line
         orientation="vertical"
         position="left"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        color="text-mauve-500/65"
       />
       <Line
         orientation="vertical"
         position="right"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        color="text-mauve-500/65"
       />
     </div>
   );

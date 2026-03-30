@@ -11,9 +11,9 @@ import {
 
 function MotionSharedLayout() {
   return (
-    <div className="px-2">
+    <div>
       <SharedLayout>
-        <SharedLayoutContent className="mx-auto relative max-w-[500px] w-full h-[350px] p-7 grid grid-cols-2 md:grid-cols-3 gap-5 border rounded-4xl">
+        <SharedLayoutContent className="mx-auto relative max-w-[350px] w-full h-[250px] p-4 grid grid-cols-2 md:grid-cols-3 gap-5 border rounded-[18px] shadow">
           {CARD_ITEMS.map((item) => (
             <SharedLayoutCard
               key={`layout-card-${item.title}`}
@@ -25,7 +25,7 @@ function MotionSharedLayout() {
               <img
                 src={item.image}
                 alt={item.title}
-                className="size-full object-cover"
+                className="size-24 md:size-full object-cover"
               />
             </SharedLayoutCard>
           ))}
@@ -41,7 +41,7 @@ function MotionSharedLayout() {
               <img
                 src={activeCard.image}
                 alt={activeCard.title}
-                className="max-h-[calc(100vh-100px)] object-cover"
+                className="max-h-[350px] object-cover"
               />
             </SharedLayoutCardModalContent>
           )}

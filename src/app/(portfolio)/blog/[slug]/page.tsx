@@ -1,14 +1,13 @@
-import type { Metadata } from "next";
+import { BackButton } from "@/components/back-button";
 import { BlogContent } from "@/components/sections/blog-content";
-import { buttonVariants } from "@/components/ui/button";
+import { QuoteTime } from "@/components/sections/quote-time";
+import { CornerBorder } from "@/components/ui/corner-border";
+import { Line } from "@/components/ui/line";
 import { getBlogBySlug, getBlogs } from "@/lib/actions/blog";
 import { siteConfig } from "@/lib/config/site";
-import { cn, formatDate } from "@/lib/utils";
-import { ChevronLeft } from "lucide-react";
-import Link from "next/link";
+import { formatDate } from "@/lib/utils";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Footer from "@/components/sections/footer";
-import { ScrollGradients } from "@/components/scroll-gradients";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -75,57 +74,56 @@ export default async function Blog({ params }: PageProps) {
   };
 
   return (
-    <main className="mx-auto min-h-screen font-sans px-4 pt-20">
+    <div className="pt-18 min-[840px]:pt-28">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="mx-auto max-w-[70ch]">
-        <Link
-          href="/"
-          className={cn(
-            buttonVariants({ variant: "outline" }),
-            "h-7 has-[>svg]:pl-2 gap-1 mb-8 text-neutral-400 hover:text-neutral-500",
-          )}
-        >
-          <BackIcon />
-          Back
-        </Link>
 
-        <h1 className="text-4xl text-foreground font-semibold mb-4">{blog.metadata.title}</h1>
+      <div className="min-[840px]:hidden px-4 pb-3">
+        <BackButton />
+      </div>
 
-        <span className="mb-8 inline-block text-muted-foreground">{formatDate(blog.metadata.date)}</span>
+      <Title title={blog.metadata.title} />
+
+      <div className="py-6 px-4">
+        <span className="mb-8 inline-block font-mono tracking-tight text-sm text-mauve-400">
+          {formatDate(blog.metadata.date)}
+        </span>
 
         <article className="prose prose-invert prose-headings:text-white prose-a:text-white hover:prose-a:underline">
           <BlogContent source={blog.content} />
         </article>
       </div>
 
-      <Footer />
-
-      <ScrollGradients />
-    </main>
+      <QuoteTime />
+    </div>
   );
 }
 
-function BackIcon() {
+function Title({ title }: { title: string }) {
   return (
-    <svg
-      aria-hidden="true"
-      fill="none"
-      height="18"
-      viewBox="0 0 18 18"
-      width="18"
-      xmlns="http://www.w3.org/2000/svg"
-      className="size-3.5 shrink-0 select-none"
-    >
-      <path
-        d="M10.2069 4H12.4828C13.3203 4 14 4.67972 14 5.51724V10.4483C14 11.2858 13.3203 11.9655 12.4828 11.9655H3M3 11.9655L6.03448 8.93103M3 11.9655L6.03448 15"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      ></path>
-    </svg>
+    <div className="relative p-4">
+      <CornerBorder />
+
+      <div className="absolute right-full top-1/2 -translate-y-1/2 pr-3 hidden min-[840px]:flex">
+        <BackButton />
+      </div>
+
+      <h1 className="font-pixel-square text-[28px] md:text-4xl text-mauve-700 font-semibold tracking-tight sm:tracking-wide">
+        {title}
+      </h1>
+
+      <Line
+        orientation="horizontal"
+        position="top"
+        color="text-mauve-500/65"
+      />
+      <Line
+        orientation="horizontal"
+        position="bottom"
+        color="text-mauve-500/65"
+      />
+    </div>
   );
 }

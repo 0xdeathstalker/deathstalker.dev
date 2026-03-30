@@ -10,12 +10,15 @@ function SectionHeading({ className, ...props }: React.ComponentProps<"h1">) {
         orientation="horizontal"
         variant="contained"
         position="top"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        color="text-mauve-500/65 dark:text-muted-foreground/20"
         className="max-w-[650px]"
       />
 
       <h1
-        className={cn("text-3xl py-4 text-shadow-sm dark:shadow-black/65 font-medium group w-fit", className)}
+        className={cn(
+          "font-pixel-square tracking-tight sm:tracking-wide text-3xl py-4 text-mauve-700 font-semibold group w-fit",
+          className,
+        )}
         {...props}
       />
 
@@ -23,7 +26,7 @@ function SectionHeading({ className, ...props }: React.ComponentProps<"h1">) {
         orientation="horizontal"
         variant="contained"
         position="bottom"
-        color="text-muted-foreground/25 dark:text-muted-foreground/20"
+        color="text-mauve-500/65 dark:text-muted-foreground/20"
         className="max-w-[650px]"
       />
 

@@ -36,11 +36,11 @@ function GithubContributions({
                   dayIndex={dayIndex}
                   weekIndex={weekIndex}
                   className={cn(
-                    'data-[level="0"]:fill-[#efefef]',
-                    'data-[level="1"]:fill-[#adb5bd]',
-                    'data-[level="2"]:fill-[#6c757d]',
-                    'data-[level="3"]:fill-[#495057]',
-                    'data-[level="4"]:fill-[#343a40]',
+                    'data-[level="0"]:fill-mauve-200',
+                    'data-[level="1"]:fill-mauve-400',
+                    'data-[level="2"]:fill-mauve-500',
+                    'data-[level="3"]:fill-mauve-600',
+                    'data-[level="4"]:fill-mauve-700',
                   )}
                 />
               </g>

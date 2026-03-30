@@ -2,24 +2,33 @@ import type { ReactElement } from "react";
 import type { portfolio } from "@/lib/config/site-data";
 
 export type Project = {
+  id: number;
   title: string;
-  description: string;
+  description: Array<ReactElement | string>;
+  logo: string;
   role: string;
   period: string;
-  achievements: Array<string>;
   technologies: Array<string>;
   href: string;
 };
 
-export type Work = {
-  company: string;
+export type WorkPosition = {
+  id: number;
   role: string;
-  logo: string;
+  roleIcon: ReactElement;
+  type: "freelancer" | "intern" | "full-time" | "contract";
   period: string;
   description?: Array<ReactElement | string>;
+};
+
+export type Work = {
+  id: number;
+  company: string;
+  companyLogo: string;
   bgColour?: string;
   href: string;
   isCurrentEmployer?: boolean;
+  positions: Array<WorkPosition>;
 };
 
 export type SocialKeys = keyof typeof portfolio.socials;
@@ -52,3 +61,13 @@ export type ProjectDuration = {
 };
 
 export type CodingTime = { hours: number; minutes: number };
+
+export type Lab = {
+  slug: string;
+  title: string;
+  subHeading: string;
+  description: React.ReactNode;
+  tech: string;
+  video: string;
+  component?: React.ComponentType;
+};

@@ -1,32 +1,30 @@
 import { Blogs } from "@/components/sections/blogs";
-import { Crafts } from "@/components/sections/labs";
 import { Hero } from "@/components/sections/hero";
+import { Labs } from "@/components/sections/labs";
 import { Projects } from "@/components/sections/projects";
 import { QuoteTime } from "@/components/sections/quote-time";
 import { Work } from "@/components/sections/work";
 import { PatternSeparator } from "@/components/ui/pattern-separator";
 
-function Content() {
+export default function Home() {
   return (
-    <div className="relative pt-28 mx-auto max-w-[650px] max-[690px]:mx-4">
+    <div className="relative pt-28">
       <Hero />
-      <PatternSeparator bottomBorder={false} />
+      <PatternSeparator />
 
       <Work />
-      <PatternSeparator bottomBorder={false} />
+      <PatternSeparator />
 
       <Projects />
-      <PatternSeparator bottomBorder={false} />
+      <PatternSeparator />
 
-      <Crafts />
-      <PatternSeparator bottomBorder={false} />
+      <Labs />
+      <PatternSeparator />
 
       <Blogs />
-      <PatternSeparator bottomBorder={false} />
+      <PatternSeparator />
 
       <QuoteTime />
     </div>
   );
 }
-
-export { Content };

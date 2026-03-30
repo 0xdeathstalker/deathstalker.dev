@@ -1,17 +1,14 @@
-import Link from "next/link";
+import { InlineLink } from "@/components/ui/inline-link";
 import type { Project, Work } from "@/lib/types";
-import { IOSInputMorphText } from "@/components/labs/input-morph-text";
-import { SubmitButtonStates } from "@/components/labs/button-states";
-import { MaskScroll } from "@/components/labs/mask-scroll";
-import { MotionSharedLayout } from "@/components/labs/shared-layout";
-import { TestimonialMarquee } from "@/components/labs/testimonial-marquee";
+import { Code } from "lucide-react";
+import Link from "next/link";
 
 export const portfolio = {
   author: "soumya mukherjee",
   bio: [
     <span>
-      <span className="text-foreground">hey, i'm soumya — a design engineer</span> with 3 years of experience in
-      building polished interfaces with react, next.js and typescript.
+      <span className="text-mauve-800 font-medium">hey, i'm soumya — a design engineer</span> with 3 years of experience
+      in building polished interfaces with react, next.js and typescript.
     </span>,
     "i focus on performance and user experience, prioritizing resilient code and thoughtful interactions that feel effortless. shipped production apps from blockchain explorers to component libraries.",
     "always pushing the details that make interfaces feel alive.",
@@ -28,162 +25,132 @@ export const portfolio = {
 
 export const works: Array<Work> = [
   {
+    id: 1,
     company: "ladddr",
-    role: "freelancer",
-    logo: "ladddr.png",
+    companyLogo: "ladddr.png",
     bgColour: "#5C43DD",
-    period: "sep 2025 - present",
     href: "https://ladddr.com",
     isCurrentEmployer: true,
-    description: [
-      "built a fullstack b2b saas platform for legal and tax compliance services, featuring multiple workflows",
-      "implemented secure payment infrastructure with razorpay, one-time token system for post payment operations and automated payment confirmation emails via resend",
-      "built multi-channel lead management system with google sheets api and telecrm",
-      "developed a headless cms-driven blog using sanity with improved seo and performance",
+    positions: [
+      {
+        id: 1,
+        role: "fullstack engineer",
+        roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
+        type: "freelancer",
+        period: "09.2025 - present",
+        description: [
+          "built a fullstack b2b saas platform for legal and tax compliance services, featuring multiple workflows.",
+          "implemented secure payment infrastructure with razorpay, one-time token system for post payment operations and automated payment confirmation emails via resend.",
+          "built multi-channel lead management system with google sheets api and telecrm.",
+          "developed a headless cms-driven blog using sanity with improved seo and performance.",
+        ],
+      },
     ],
   },
   {
+    id: 2,
     company: "router-protocol",
-    role: "frontend developer",
-    logo: "router.png",
-    period: "sep 2023 - sep 2025",
-    description: [
-      <span>
-        built{" "}
-        <Link
-          href="https://nitro-explorer.vercel.app"
-          target="_blank"
-          className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
-        >
-          nitro explorer
-        </Link>
-        , cross-chain blockchain explorer processing more than thousand daily transactions.
-      </span>,
-      <span>
-        integrated multiple blockchain ecosystems: (cosmos, bitcoin, tron, near, ton) into{" "}
-        <Link
-          href="https://github.com/router-protocol/tangled"
-          target="_blank"
-          className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
-        >
-          tangled
-        </Link>
-        , a wallet sdk developed for handling multi-chain wallet flows.
-      </span>,
-      <span>
-        optimised transaction ux by reducing drop-offs, improving completion rates on{" "}
-        <Link
-          href="https://routernitro.com/swap"
-          target="_blank"
-          className="font-semibold hover:decoration-neutral-800 underline decoration-neutral-300 underline-offset-3 transition-colors ease-in-out"
-        >
-          nitro app
-        </Link>
-        .
-      </span>,
-    ],
+    companyLogo: "router.png",
     href: "https://www.routerprotocol.com",
-  },
-  {
-    company: "router-protocol",
-    role: "frontend developer intern",
-    logo: "router.png",
-    period: "may 2023 - sep 2023",
-    description: [
-      "built a gamified nft application using the protocol's cross-chain architecture where users were able to mint an nft and then level it up by bridging across chains.",
-      "implemented a lottery system with rewards distribution on polygon using ethers.js and custom wallet module for handling wallet connections.",
-      "went from intern to full-time based on shipping speed and code quality.",
+    positions: [
+      {
+        id: 1,
+        role: "frontend engineer",
+        roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
+        type: "full-time",
+        period: "09.2023 - 09.2025",
+        description: [
+          <span>
+            built <InlineLink href="https://nitro-explorer.vercel.app">nitro explorer</InlineLink>, cross-chain
+            blockchain explorer processing more than thousand daily transactions.
+          </span>,
+          <span>
+            integrated multiple blockchain ecosystems: (cosmos, bitcoin, tron, near, ton) into{" "}
+            <InlineLink href="https://github.com/router-protocol/tangled">tangled</InlineLink>, a wallet sdk developed
+            for handling multi-chain wallet flows.
+          </span>,
+          <span>
+            optimised transaction ux by reducing drop-offs, improving completion rates on{" "}
+            <InlineLink href="https://routernitro.com/swap">nitro app</InlineLink>.
+          </span>,
+        ],
+      },
+      {
+        id: 2,
+        role: "frontend engineer intern",
+        roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
+        type: "intern",
+        period: "05.2023 - 08.2023",
+        description: [
+          "built a gamified nft application using the protocol's cross-chain architecture where users were able to mint an nft and then level it up by bridging across chains.",
+          "implemented a lottery system with rewards distribution on polygon using ethers.js and custom wallet module for handling wallet connections.",
+          "went from intern to full-time based on shipping speed and code quality.",
+        ],
+      },
     ],
-    href: "https://www.routerprotocol.com",
   },
 ] as const;
 
 export const projects: Array<Project> = [
   {
+    id: 1,
     title: "nitro-explorer-v2",
-    description:
-      "a blazing-fast revamped version of cross-chain blockchain explorer (nitro explorer) rebuilt with a focus on performance and ux.",
-    role: "creator and maintainer",
-    period: "mar 2025 - jul 2025",
-    achievements: [
-      "improved ux and codebase to achieve up to 99 lighthouse performance score (prev max: 65)",
-      "eliminated layout shift and loading jank with full non-blocking data flow",
-      "designed keyboard-driven cmdk navigation for rapid search experience",
+    description: [
+      "independently rebuilt nitro explorer with a focus on performance and user experience, achieving up to 99 lighthouse score (prev max: 65).",
+      "architected graphql data layer by combining tanstack query and next.js ssr features to handle optimistic updates, query deduplication, refetching strategy and automatic cache invalidation.",
+      "implemented command-based search and non-blocking data states to eliminate layout shifts and improve perceived latency.",
     ],
-    technologies: ["next.js", "tailwindcss", "shadcnui", "zod", "zustand", "typescript"],
+    logo: "nitro-explorer.svg",
+    role: "creator and maintainer",
+    period: "03.2025-07.2025",
+    technologies: [
+      "next.js",
+      "typescript",
+      "zod",
+      "zustand",
+      "graphql",
+      "tanstack-query",
+      "shadcnui",
+      "cmdk",
+      "tailwind",
+    ],
     href: "https://nitro-explorer.vercel.app",
   },
   {
-    title: "cracked-ui-components",
-    description:
-      "a growing component library built for web3 applications, designed to simplify integration and speed up development across dapps with polished, reusable primitives.",
-    role: "creator and maintainer",
-    period: "jun 2025 - present",
-    achievements: [
-      "accelerated web3 dapp integration by 50–60% through reusable, framework-agnostic components",
-      "built chain/token selectors and qr-based address utilities used across multiple production apps",
-      "ensured responsive and accessible design for seamless experience across devices",
+    id: 2,
+    title: "cracked-ui",
+    description: [
+      "building a reusable, framework-agnostic component library for apps and thereby reducing developer integration time by 50–60%.",
+      "designed for responsive and accessible use across devices with consistent design patterns.",
     ],
-    technologies: ["react", "typescript", "tailwind css", "viem", "wagmi"],
+    logo: "cracked-ui.svg",
+    role: "creator and maintainer",
+    period: "06.2025-present",
+    technologies: ["react", "typescript", "motion", "viem", "wagmi", "tailwind"],
     href: "https://github.com/cracked0x/ui",
   },
   {
+    id: 3,
     title: "whispr-room",
-    description:
-      "a real-time disposable chat app where users can instantly create or join temporary chat rooms without login—built for fast, private and ephemeral conversations.",
-    role: "creator and maintainer",
-    period: "jun 2025 - jul 2025",
-    achievements: [
-      "integrated convex as a serverless backend for live room and message sync",
-      "added system messages for join/leave activity and contextual flow",
-      "implemented graceful UX for handling expired or invalid rooms",
+    description: [
+      "built a real-time chat app with ephemeral rooms using convex for live state sync and user presence tracking.",
+      "added system messages for join/leave activity to provide contextual flow.",
+      "implemented graceful ux for expired or invalid room states.",
     ],
-    technologies: ["next.js", "tailwind css", "convex", "react query", "zod", "uploadthing", "posthog"],
+    logo: "whispr-room.svg",
+    role: "creator and maintainer",
+    period: "06.2025-07.2025",
+    technologies: [
+      "next.js",
+      "typescript",
+      "convex",
+      "tanstack-query",
+      "zod",
+      "uploadthing",
+      "posthog",
+      "motion",
+      "tailwind",
+    ],
     href: "https://whispr-room.vercel.app",
   },
 ] as const;
-
-export type ComponentTitles =
-  | "shared-layout-animation"
-  | "ios-input-morph-text"
-  | "mask-scroll"
-  | "testimonial-marquee"
-  | "submit-button-states";
-
-export type Craft = { title: ComponentTitles; tech: string; video: string };
-
-export const crafts: Array<Craft> = [
-  {
-    title: "submit-button-states",
-    tech: "css",
-    video: "https://cdn.deathstalker.dev/videos/button-states.mp4",
-  },
-  {
-    title: "testimonial-marquee",
-    tech: "css",
-    video: "https://cdn.deathstalker.dev/videos/testimonial-marquee.mp4",
-  },
-  {
-    title: "mask-scroll",
-    tech: "css",
-    video: "https://cdn.deathstalker.dev/videos/mask-scroll-fade.mp4",
-  },
-  {
-    title: "ios-input-morph-text",
-    tech: "motion",
-    video: "https://cdn.deathstalker.dev/videos/ios-input-morph.mp4",
-  },
-  {
-    title: "shared-layout-animation",
-    tech: "motion",
-    video: "https://cdn.deathstalker.dev/videos/shared-layout.mp4",
-  },
-];
-
-export const labsComponents: Partial<Record<ComponentTitles, React.ComponentType>> = {
-  "submit-button-states": SubmitButtonStates,
-  "testimonial-marquee": TestimonialMarquee,
-  "mask-scroll": MaskScroll,
-  "ios-input-morph-text": IOSInputMorphText,
-  "shared-layout-animation": MotionSharedLayout,
-};

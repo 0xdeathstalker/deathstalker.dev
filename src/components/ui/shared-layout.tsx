@@ -82,7 +82,7 @@ function SharedLayoutCardModalOverlay({ className, ...props }: React.ComponentPr
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className={cn("absolute inset-0 bg-black/20 z-5", className)}
+          className={cn("absolute inset-0 bg-black/20 z-50", className)}
           {...props}
         />
       ) : null}
@@ -99,7 +99,7 @@ function SharedLayoutCardModal<T>({ children }: SharedLayoutCardModalProps<T>) {
 
   return (
     <AnimatePresence>
-      {activeCard ? <div className="absolute inset-0 grid place-items-center z-10">{children(activeCard)}</div> : null}
+      {activeCard ? <div className="absolute inset-0 grid place-items-center z-50">{children(activeCard)}</div> : null}
     </AnimatePresence>
   );
 }
