@@ -1,19 +1,28 @@
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 function BackButton() {
+  const router = useRouter();
+
+  function handleBack() {
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      router.push("/");
+    }
+  }
+
   return (
-    <Link
-      href="/"
-      className={cn(
-        buttonVariants({ variant: "outline" }),
-        "h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-500 hover:text-mauve-600",
-      )}
+    <Button
+      onClick={handleBack}
+      variant="outline"
+      className="h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-500 hover:text-mauve-600"
     >
       <BackIcon />
-      home
-    </Link>
+      back
+    </Button>
   );
 }
 
