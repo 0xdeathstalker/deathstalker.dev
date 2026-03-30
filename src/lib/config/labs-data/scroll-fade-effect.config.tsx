@@ -1,4 +1,4 @@
-import { MaskScroll } from "@/components/labs/mask-scroll";
+import { MaskScroll } from "@/components/labs/components/mask-scroll";
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";
 import { InlineLink } from "@/components/ui/inline-link";

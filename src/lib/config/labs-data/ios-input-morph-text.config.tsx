@@ -1,4 +1,4 @@
-import { IOSInputMorphText } from "@/components/labs/input-morph-text";
+import { IOSInputMorphText } from "@/components/labs/components/input-morph-text";
 import { Code } from "@/components/ui/code";
 import { InlineLink } from "@/components/ui/inline-link";
 import Link from "next/link";

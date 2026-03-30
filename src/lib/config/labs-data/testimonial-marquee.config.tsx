@@ -1,4 +1,4 @@
-import { TestimonialMarquee } from "@/components/labs/testimonial-marquee";
+import { TestimonialMarquee } from "@/components/labs/components/testimonial-marquee";
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";
 

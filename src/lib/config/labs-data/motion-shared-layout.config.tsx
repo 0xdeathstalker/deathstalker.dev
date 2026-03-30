@@ -1,4 +1,4 @@
-import { MotionSharedLayout } from "@/components/labs/shared-layout";
+import { MotionSharedLayout } from "@/components/labs/components/shared-layout";
 import { Code } from "@/components/ui/code";
 import { InlineLink } from "@/components/ui/inline-link";
 import Link from "next/link";

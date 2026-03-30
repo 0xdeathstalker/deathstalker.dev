@@ -8,11 +8,11 @@ function BackButton() {
       href="/"
       className={cn(
         buttonVariants({ variant: "outline" }),
-        "h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-400 hover:text-mauve-500",
+        "h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-500 hover:text-mauve-600",
       )}
     >
       <BackIcon />
-      Back
+      home
     </Link>
   );
 }
