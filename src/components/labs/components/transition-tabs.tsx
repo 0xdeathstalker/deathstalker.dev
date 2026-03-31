@@ -42,9 +42,9 @@ function TransitionTabs() {
       <div
         ref={containerRef}
         aria-hidden="true"
-        className="absolute inset-0 [clip-path:inset(0_88%_0_0_round_16px)] transition-[clip-path] duration-[0.25s] ease"
+        className="absolute inset-0 [clip-path:inset(0_91%_0_0_round_16px)] transition-[clip-path] duration-[0.25s] ease"
       >
-        <ul className="flex items-center gap-5 bg-mauve-500">
+        <ul className="flex items-center gap-5 bg-purple-600">
           {TABS.map((tab, idx) => (
             <li key={`${tab}-${idx + 1}`}>
               <button
@@ -63,4 +63,4 @@ function TransitionTabs() {
 
 export { TransitionTabs };
 
-const TABS = ["all", "corporate", "engineering", "product"];
+const TABS = ["all", "products", "resources", "developers", "about"];

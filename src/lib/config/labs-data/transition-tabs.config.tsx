@@ -1,9 +1,9 @@
-import { TransitionTabs } from "@/components/labs/components/animated-tabs";
+import { TransitionTabs } from "@/components/labs/components/transition-tabs";
 import type { Lab } from "@/lib/types";
 
 const transitionTabsConfig: Lab = {
-  slug: "animated-tabs",
-  title: "animated tabs",
+  slug: "transition-tabs",
+  title: "transition tabs",
   subHeading: "",
   description: <></>,
   tech: "waapi",
