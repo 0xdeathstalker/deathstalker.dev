@@ -44,7 +44,7 @@ const transitionTabsConfig: Lab = {
         the right edge of the active tab to the right inner edge of the container and subtract that from 100.
       </p>
       <ToggleClippathDemo />
-      <p className="mb-4">
+      <p>
         try toggling the clip path to see it in action. slowing down the transition makes the difference easier to spot.
         it might seem subtle but details like this are what make an experience feel polished. the things users don't
         consciously notice are often what separates something good from something great.

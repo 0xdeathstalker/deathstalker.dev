@@ -90,7 +90,6 @@ const copyButtonConfig = {
       <CodeBlock
         code={getResetDelayLogic()}
         language="typescript"
-        className="mb-4"
       />
     </>
   ),

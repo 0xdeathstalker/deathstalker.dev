@@ -22,7 +22,7 @@ const motionSharedLayoutConfig = {
         from motion, we can easily connect two elements and create a smooth transition between them. we don't need to
         move an item to have the morph effect.
       </p>
-      <p className="mb-4">
+      <p>
         the trick here is to use <Code>layoutId</Code> prop to connect the two elements, which tells the motion library
         to smoothly transition between the exit and the enter animation. we need to use <Code>Animate Presence</Code> to
         create the exit animation for the modal and the overlay. <Code>Animate Presence</Code> component is used to keep

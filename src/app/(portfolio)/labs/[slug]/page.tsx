@@ -36,11 +36,11 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
       <div className="py-6 px-4">
         <p className="mt-1 mb-6 text-sm text-muted-foreground">{component?.subHeading}</p>
 
-        <div className="relative min-h-96 grid place-items-center border border-mauve-300 rounded-xl p-2 overflow-hidden">
+        <div className="relative min-h-96 grid place-items-center border border-mauve-300 rounded-xl p-2 overflow-hidden last:mb-4">
           {component?.component && <component.component />}
         </div>
 
-        <div className="space-y-6 mt-10 text-sm">{component?.description}</div>
+        <div className="space-y-6 mt-10 text-sm [&>*:last-child]:mb-4">{component?.description}</div>
       </div>
 
       <QuoteTime />
