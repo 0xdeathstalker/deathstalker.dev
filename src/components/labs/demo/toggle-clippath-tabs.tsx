@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { TransitionTabs } from "@/components/labs/components/transition-tabs";
+import { ToggleSpeed } from "@/components/labs/speed-toggle";
 
 function ToggleClippathDemo() {
   const [toggleClipPath, setToggleClipPath] = React.useState(false);
@@ -17,19 +18,10 @@ function ToggleClippathDemo() {
           toggle clip path
         </button>
 
-        <button
-          onClick={() => {
-            setSpeed((prev) => {
-              if (prev === 0.25) {
-                return 1.25;
-              }
-              return 0.25;
-            });
-          }}
-          className="bg-mauve-200 rounded-lg px-2 py-0.5 overflow-hidden active:scale-[0.97]"
-        >
-          <span className="text-xs inline-block">{speed === 0.25 ? "1x" : "0.2x"}</span>
-        </button>
+        <ToggleSpeed
+          speed={speed}
+          setSpeed={setSpeed}
+        />
       </div>
 
       <TransitionTabs

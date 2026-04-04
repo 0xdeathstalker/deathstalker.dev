@@ -1,7 +1,7 @@
 "use client";
 
+import { ToggleSpeed } from "@/components/labs/speed-toggle";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "motion/react";
 import * as React from "react";
 
 function ColorTransitionTabs() {
@@ -26,19 +26,11 @@ function ColorTransitionTabs() {
 
   return (
     <div className="relative flex justify-center border rounded-lg py-12">
-      <button
-        onClick={() => {
-          setSpeed((prev) => {
-            if (prev === 0.25) {
-              return 1.25;
-            }
-            return 0.25;
-          });
-        }}
-        className="absolute top-2 right-2 bg-mauve-200 rounded-lg px-2 py-0.5 overflow-hidden active:scale-[0.97]"
-      >
-        <span className="text-xs inline-block">{speed === 0.25 ? "1x" : "0.2x"}</span>
-      </button>
+      <ToggleSpeed
+        speed={speed}
+        setSpeed={setSpeed}
+        className="absolute top-2 right-2"
+      />
 
       <div className="relative">
         <ul
