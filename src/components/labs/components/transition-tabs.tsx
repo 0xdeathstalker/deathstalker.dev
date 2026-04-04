@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-function TransitionTabs() {
+function TransitionTabs({ toggleClipPath, speed }: { toggleClipPath?: boolean; speed?: number }) {
   const [activeTab, setActiveTab] = React.useState(TABS[0]);
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const activeTabElementRef = React.useRef<HTMLButtonElement | null>(null);
@@ -18,10 +18,16 @@ function TransitionTabs() {
         const clipLeft = offsetLeft;
         const clipRight = offsetLeft + offsetWidth;
 
-        container.style.clipPath = `inset(0 ${Number(100 - (clipRight / container.offsetWidth) * 100).toFixed()}% 0 ${Number((clipLeft / container.offsetWidth) * 100).toFixed()}% round 16px)`;
+        if (toggleClipPath) {
+          container.style.clipPath = "inset(0 0 0 0)";
+        } else {
+          const leftValue = Number((clipLeft / container.offsetWidth) * 100).toFixed();
+          const rightValue = Number(100 - (clipRight / container.offsetWidth) * 100).toFixed();
+          container.style.clipPath = `inset(0 ${rightValue}% 0 ${leftValue}% round 16px)`;
+        }
       }
     }
-  }, [activeTab]);
+  }, [activeTab, toggleClipPath]);
 
   return (
     <div className="relative">
@@ -42,9 +48,10 @@ function TransitionTabs() {
       <div
         ref={containerRef}
         aria-hidden="true"
-        className="absolute inset-0 [clip-path:inset(0_91%_0_0_round_16px)] transition-[clip-path] duration-[0.25s] ease"
+        className="absolute inset-0 transition-[clip-path] [clip-path:inset(0_91%_0_0_round_16px)] ease"
+        style={{ transitionDuration: `${speed}s` }}
       >
-        <ul className="flex items-center gap-5 bg-purple-600">
+        <ul className="flex items-center gap-5 bg-[#F76F53]">
           {TABS.map((tab, idx) => (
             <li key={`${tab}-${idx + 1}`}>
               <button
