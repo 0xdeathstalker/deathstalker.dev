@@ -112,7 +112,7 @@ const buttonStatesConfig = {
           </li>
         </ul>
       </div>
-      <p className="mb-4">
+      <p>
         overall, this is a lightweight technique well-suited for simple, predictable state transitions. it is also a
         good fit when bundle size is a constraint, for example, in performance-critical apps where avoiding an animation
         library dependency matters. for anything more complex like dynamic content, variable label widths or sequenced

@@ -21,7 +21,7 @@ const iosInputMorphTextConfig = {
         remains hidden while typing but gets animated to the message in the chat once sent. this re-creates our desired
         interactive animation.
       </p>
-      <p className="mb-4">
+      <p>
         this was inspired by <InlineLink href="https://x.com/ibelick">@ibelick</InlineLink>
         's original implementation.
       </p>

@@ -136,7 +136,7 @@ const maskScrollAreaConfig = {
         its start state before it begins and at its end state after it finishes. without this, the top mask would snap
         back to invisible before we start scrolling and the bottom mask would snap back after it finishes.
       </p>
-      <p className="mb-4">
+      <p>
         therefore, we have a container that fades the content around the edges as we scroll. we can create the
         horizontal scroll fade effect by replicating the same logic by animating the <Code>width</Code> property instead
         of <Code>height</Code>.

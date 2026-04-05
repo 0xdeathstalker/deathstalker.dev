@@ -118,7 +118,7 @@ const testimonialMarqueeConfig = {
         <Code>MarqueeItem</Code> is a minimal wrapper with <Code>shrink-0</Code> applied, preventing items from being
         squeezed when the container is too narrow. it is the recommended way to wrap each item in the marquee.
       </p>
-      <p className="mb-4">composing the two gives us an infinite scrolling marquee that showcases testimonials.</p>
+      <p>composing the two gives us an infinite scrolling marquee that showcases testimonials.</p>
     </>
   ),
   tech: "css",
