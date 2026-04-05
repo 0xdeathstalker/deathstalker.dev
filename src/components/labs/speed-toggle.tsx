@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type * as React from "react";
+import * as React from "react";
 
 type ToggleSpeedProps = {
   speed: number;
@@ -7,6 +7,23 @@ type ToggleSpeedProps = {
 } & React.ComponentProps<"button">;
 
 function ToggleSpeed({ speed, setSpeed, className, ...props }: ToggleSpeedProps) {
+  React.useEffect(() => {
+    function handleKeyPress(e: KeyboardEvent) {
+      if (e.key === "s") {
+        setSpeed((prev) => {
+          if (prev === 0.25) {
+            return 1.25;
+          }
+          return 0.25;
+        });
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [setSpeed]);
+
   return (
     <button
       onClick={() => {
