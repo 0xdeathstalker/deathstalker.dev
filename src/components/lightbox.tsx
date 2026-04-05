@@ -10,6 +10,11 @@ function Lightbox() {
   const contentRef = React.useRef<HTMLDivElement | null>(null);
   useOnClickOutside(contentRef as React.RefObject<HTMLDivElement>, () => setOpen(false));
 
+  React.useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
     <React.Fragment>
       <motion.div
