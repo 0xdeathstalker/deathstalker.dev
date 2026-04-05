@@ -1,10 +1,10 @@
 import { TransitionTabs } from "@/components/labs/components/transition-tabs";
 import { ColorTransitionTabs } from "@/components/labs/demo/color-transition-tabs";
 import { ToggleClippathDemo } from "@/components/labs/demo/toggle-clippath-tabs";
+import { Lightbox } from "@/components/lightbox";
 import { Code } from "@/components/ui/code";
 import { InlineLink } from "@/components/ui/inline-link";
 import type { Lab } from "@/lib/types";
-import Image from "next/image";
 
 const transitionTabsConfig: Lab = {
   slug: "transition-tabs",
@@ -30,14 +30,7 @@ const transitionTabsConfig: Lab = {
         try toggling the speed and you'll spot the visual glitch the color transition creates. that's the reason{" "}
         <Code>clip-path</Code> is used instead.
       </p>
-      <div className="p-4 border border-border/40 rounded-lg overflow-hidden">
-        <Image
-          src="/images/labs/clip-path-transition-tabs.svg"
-          alt="clip path calculation"
-          width={634}
-          height={400}
-        />
-      </div>
+      <Lightbox />
       <p>
         to make this work we need to calculate the <Code>clip-path</Code> values based on the active tab. the left value
         comes from the <Code>offsetLeft</Code> of the active tab element. for the right value, we take the distance from
