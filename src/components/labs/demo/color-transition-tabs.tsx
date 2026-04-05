@@ -32,12 +32,44 @@ function ColorTransitionTabs() {
         className="absolute top-2 right-2"
       />
 
-      <div className="relative">
+      <div className="relative hidden md:block">
         <ul
           ref={containerRef}
-          className="flex items-center gap-5"
+          className="flex flex-wrap items-center gap-5"
         >
           {TABS.map((tab, idx) => (
+            <li key={`${tab}-${idx + 1}`}>
+              <button
+                ref={tab === activeTab ? activeTabRef : null}
+                onClick={() => setActiveTab(tab)}
+                className={cn(
+                  "h-10 px-4 py-2 rounded-[16px] relative z-10 transition-colors ease",
+                  activeTab === tab ? "text-white" : "text-foreground",
+                )}
+                style={{ transitionDuration: `${speed}s` }}
+              >
+                {tab}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <div
+          aria-hidden="true"
+          className="absolute top-0 h-10 rounded-[16px] bg-[#F76F53] transition-[left,width] ease"
+          style={{
+            transitionDuration: `${speed}s`,
+            ...indicatorStyle,
+          }}
+        />
+      </div>
+
+      <div className="relative md:hidden">
+        <ul
+          ref={containerRef}
+          className="flex flex-wrap items-center gap-5"
+        >
+          {TABS.slice(0, 3).map((tab, idx) => (
             <li key={`${tab}-${idx + 1}`}>
               <button
                 ref={tab === activeTab ? activeTabRef : null}

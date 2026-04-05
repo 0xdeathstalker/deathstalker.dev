@@ -30,41 +30,79 @@ function TransitionTabs({ toggleClipPath, speed }: { toggleClipPath?: boolean; s
   }, [activeTab, toggleClipPath]);
 
   return (
-    <div className="relative">
-      <ul className="flex items-center gap-5">
-        {TABS.map((tab, idx) => (
-          <li key={`${tab}-${idx + 1}`}>
-            <button
-              ref={tab === activeTab ? activeTabElementRef : null}
-              onClick={() => setActiveTab(tab)}
-              className="h-10 px-4 py-2"
-            >
-              {tab}
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      <div
-        ref={containerRef}
-        aria-hidden="true"
-        className="absolute inset-0 transition-[clip-path] [clip-path:inset(0_91%_0_0_round_16px)] ease"
-        style={{ transitionDuration: `${speed}s` }}
-      >
-        <ul className="flex items-center gap-5 bg-[#F76F53]">
+    <React.Fragment>
+      <div className="relative hidden md:block">
+        <ul className="flex items-center gap-5">
           {TABS.map((tab, idx) => (
             <li key={`${tab}-${idx + 1}`}>
               <button
-                tabIndex={-1}
-                className="h-10 px-4 py-2 text-white"
+                ref={tab === activeTab ? activeTabElementRef : null}
+                onClick={() => setActiveTab(tab)}
+                className="h-10 px-4 py-2"
               >
                 {tab}
               </button>
             </li>
           ))}
         </ul>
+
+        <div
+          ref={containerRef}
+          aria-hidden="true"
+          className="absolute inset-0 transition-[clip-path] [clip-path:inset(0_91%_0_0_round_16px)] ease"
+          style={{ transitionDuration: `${speed}s` }}
+        >
+          <ul className="flex items-center gap-5 bg-[#F76F53]">
+            {TABS.map((tab, idx) => (
+              <li key={`${tab}-${idx + 1}`}>
+                <button
+                  tabIndex={-1}
+                  className="h-10 px-4 py-2 text-white"
+                >
+                  {tab}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+
+      <div className="relative md:hidden">
+        <ul className="flex items-center gap-5">
+          {TABS.slice(0, 3).map((tab, idx) => (
+            <li key={`${tab}-${idx + 1}`}>
+              <button
+                ref={tab === activeTab ? activeTabElementRef : null}
+                onClick={() => setActiveTab(tab)}
+                className="h-10 px-4 py-2 text-sm"
+              >
+                {tab}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <div
+          ref={containerRef}
+          aria-hidden="true"
+          className="absolute inset-0 transition-[clip-path] [clip-path:inset(0_91%_0_0_round_16px)] ease"
+          style={{ transitionDuration: `${speed}s` }}
+        >
+          <ul className="flex items-center gap-5 bg-[#F76F53]">
+            {TABS.slice(0, 3).map((tab, idx) => (
+              <li key={`${tab}-${idx + 1}`}>
+                <button
+                  tabIndex={-1}
+                  className="h-10 px-4 py-2 text-white text-sm"
+                >
+                  {tab}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </React.Fragment>
   );
 }
 
