@@ -6,20 +6,30 @@ import { Lightbox, LightboxContent, LightboxTrigger } from "@/components/ui/ligh
 import { cn } from "@/lib/utils";
 
 type ImageLightboxProps = React.ComponentProps<"img"> &
-  MotionProps & { triggerImageClassName?: string; contentImageClassName?: string };
+  MotionProps & { triggerImageClassName?: string; contentImageClassName?: string; children?: React.ReactNode };
 
-function ImageLightbox({ src, alt, triggerImageClassName, contentImageClassName, ...props }: ImageLightboxProps) {
+function ImageLightbox({
+  src,
+  alt,
+  triggerImageClassName,
+  contentImageClassName,
+  children,
+  ...props
+}: ImageLightboxProps) {
   return (
     <Lightbox>
-      <LightboxTrigger className="bg-background">
-        <motion.img
-          src={src}
-          alt={alt}
-          layoutId="image"
-          className={cn(triggerImageClassName)}
-          {...props}
-        />
-      </LightboxTrigger>
+      <div className="space-y-2">
+        <LightboxTrigger className="bg-background">
+          <motion.img
+            src={src}
+            alt={alt}
+            layoutId="image"
+            className={cn(triggerImageClassName)}
+            {...props}
+          />
+        </LightboxTrigger>
+        {children}
+      </div>
 
       <LightboxContent className="bg-background">
         <motion.img

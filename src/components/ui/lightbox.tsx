@@ -105,4 +105,13 @@ function LightboxContent({ className, ...props }: React.ComponentProps<"div"> & 
   );
 }
 
-export { Lightbox, LightboxTrigger, LightboxOverlay, LightboxContent };
+function LightboxCaption({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      className={cn("block text-center text-xs text-muted-foreground/70", className)}
+      {...props}
+    />
+  );
+}
+
+export { Lightbox, LightboxTrigger, LightboxOverlay, LightboxContent, LightboxCaption };

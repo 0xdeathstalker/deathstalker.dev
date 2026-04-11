@@ -3,6 +3,7 @@ import { BatterySprite, FireEyeSprite, RainSprite } from "@/components/labs/comp
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";
 import { InlineLink } from "@/components/ui/inline-link";
+import { LightboxCaption } from "@/components/ui/lightbox";
 
 function getKeyframeAnimation() {
   return `--animate-sprite: sprite 1.5s steps(16, jump-none) infinite;
@@ -118,7 +119,14 @@ const spritesConfig = {
         alt="step position values visualisation"
         triggerImageClassName="md:max-w-[300px] mx-auto rounded-md"
         contentImageClassName="mx-auto"
-      />
+      >
+        <LightboxCaption>
+          from{" "}
+          <InlineLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/easing-function/steps">
+            mdn docs
+          </InlineLink>
+        </LightboxCaption>
+      </ImageLightbox>
 
       <p>
         the <Code>steps()</Code> splits the progression into discrete values. in our case, we need 16 steps{" "}
