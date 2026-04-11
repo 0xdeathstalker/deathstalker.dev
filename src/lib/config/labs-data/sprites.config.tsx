@@ -1,5 +1,5 @@
+import { ImageLightbox } from "@/components/image-lightbox";
 import { BatterySprite, FireEyeSprite, RainSprite } from "@/components/labs/components/sprites";
-import { StepsLightbox } from "@/components/steps-lightbox";
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";
 import { InlineLink } from "@/components/ui/inline-link";
@@ -44,7 +44,7 @@ const spritesConfig = {
         happens when the size of the image and the img element differ.
       </p>
 
-      <div className="py-12 px-6 border rounded-lg">
+      <div className="py-12 px-6 border border-mauve-200 rounded-lg">
         <img
           src="https://cdn.deathstalker.dev/images/eye-fire.png"
           alt="fire eye sprite"
@@ -57,7 +57,7 @@ const spritesConfig = {
         element. even though it scales the image, it's still not quite right.
       </p>
 
-      <div className="py-12 px-6 border rounded-lg">
+      <div className="py-12 px-6 border border-mauve-200 rounded-lg">
         <img
           src="https://cdn.deathstalker.dev/images/eye-fire.png"
           alt="fire eye sprite"
@@ -69,7 +69,7 @@ const spritesConfig = {
         we need <Code>object-position</Code> to determine which part of the image needs to be shown.
       </p>
 
-      <div className="py-12 px-6 border rounded-lg">
+      <div className="py-12 px-6 border border-mauve-200 rounded-lg">
         <img
           src="https://cdn.deathstalker.dev/images/eye-fire.png"
           alt="fire eye sprite"
@@ -92,7 +92,7 @@ const spritesConfig = {
           }
         }
       `}</style>
-      <div className="py-12 px-6 border rounded-lg">
+      <div className="py-12 px-6 border border-mauve-200 rounded-lg">
         <img
           src="https://cdn.deathstalker.dev/images/eye-fire.png"
           alt="fire eye sprite"
@@ -113,7 +113,12 @@ const spritesConfig = {
         better understood if visualised.
       </p>
 
-      <StepsLightbox />
+      <ImageLightbox
+        src="/images/labs/step-css.svg"
+        alt="step position values visualisation"
+        triggerImageClassName="md:max-w-[300px] mx-auto rounded-md"
+        contentImageClassName="mx-auto"
+      />
 
       <p>
         the <Code>steps()</Code> splits the progression into discrete values. in our case, we need 16 steps{" "}
@@ -131,7 +136,7 @@ const spritesConfig = {
         property we can animate sprites.
       </p>
 
-      <div className="py-12 px-6 border rounded-lg flex items-center justify-center">
+      <div className="py-12 px-6 border border-mauve-200 rounded-lg flex items-center justify-center">
         <FireEyeSprite />
       </div>
 
@@ -143,7 +148,7 @@ const spritesConfig = {
         comes highly recommended. i might try this next.
       </p>
 
-      <div className="py-12 px-6 border rounded-lg flex items-center justify-center gap-10">
+      <div className="py-12 px-6 border border-mauve-200 rounded-lg flex items-center justify-center gap-10">
         <RainSprite />
         <BatterySprite />
       </div>

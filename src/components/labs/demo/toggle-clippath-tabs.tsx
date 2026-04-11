@@ -9,7 +9,7 @@ function ToggleClippathDemo() {
   const [speed, setSpeed] = React.useState(0.25);
 
   return (
-    <div className="relative flex justify-center border rounded-lg py-12">
+    <div className="relative flex justify-center border border-mauve-200 rounded-lg py-12">
       <div className="absolute top-2 right-2 space-x-2">
         <button
           onClick={() => setToggleClipPath((prev) => !prev)}

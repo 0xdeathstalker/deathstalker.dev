@@ -53,7 +53,7 @@ function LightboxTrigger({ className, ...props }: React.ComponentProps<"div"> & 
   return (
     <motion.div
       layoutId="lightbox-card"
-      className={cn("p-4 border overflow-hidden", className)}
+      className={cn("p-4 border border-mauve-200 overflow-hidden", className)}
       style={{ borderRadius: 10 }}
       onClick={() => setOpen(true)}
       {...props}

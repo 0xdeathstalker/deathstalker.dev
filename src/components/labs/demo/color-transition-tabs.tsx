@@ -25,7 +25,7 @@ function ColorTransitionTabs() {
   }, [activeTab]);
 
   return (
-    <div className="relative flex justify-center border rounded-lg py-12">
+    <div className="relative flex justify-center border border-mauve-200 rounded-lg py-12">
       <ToggleSpeed
         speed={speed}
         setSpeed={setSpeed}

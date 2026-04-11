@@ -30,7 +30,10 @@ const transitionTabsConfig: Lab = {
         try toggling the speed and you'll spot the visual glitch the color transition creates. that's the reason{" "}
         <Code>clip-path</Code> is used instead.
       </p>
-      <ImageLightbox />
+      <ImageLightbox
+        src="/images/labs/transition-tabs.svg"
+        alt="tabs transition using clip path logic"
+      />
       <p>
         to make this work we need to calculate the <Code>clip-path</Code> values based on the active tab. the left value
         comes from the <Code>offsetLeft</Code> of the active tab element. for the right value, we take the distance from

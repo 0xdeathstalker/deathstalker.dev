@@ -1,24 +1,33 @@
 "use client";
 
-import { motion } from "motion/react";
+import { type MotionProps, motion } from "motion/react";
+import type * as React from "react";
 import { Lightbox, LightboxContent, LightboxTrigger } from "@/components/ui/lightbox";
+import { cn } from "@/lib/utils";
 
-function ImageLightbox() {
+type ImageLightboxProps = React.ComponentProps<"img"> &
+  MotionProps & { triggerImageClassName?: string; contentImageClassName?: string };
+
+function ImageLightbox({ src, alt, triggerImageClassName, contentImageClassName, ...props }: ImageLightboxProps) {
   return (
     <Lightbox>
       <LightboxTrigger className="bg-background">
         <motion.img
-          src="/images/labs/transition-tabs.svg"
-          alt="tabs transition using clip path logic"
-          layoutId="image-2"
+          src={src}
+          alt={alt}
+          layoutId="image"
+          className={cn(triggerImageClassName)}
+          {...props}
         />
       </LightboxTrigger>
 
       <LightboxContent className="bg-background">
         <motion.img
-          src="/images/labs/transition-tabs.svg"
-          alt="tabs transition using clip path logic"
-          layoutId="image-2"
+          src={src}
+          alt={alt}
+          layoutId="image"
+          className={cn(contentImageClassName)}
+          {...props}
         />
       </LightboxContent>
     </Lightbox>
