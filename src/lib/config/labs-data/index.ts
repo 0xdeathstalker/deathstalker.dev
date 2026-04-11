@@ -6,9 +6,11 @@ import { motionSharedLayoutConfig } from "./motion-shared-layout.config";
 import { maskScrollAreaConfig } from "./scroll-fade-effect.config";
 import { testimonialMarqueeConfig } from "./testimonial-marquee.config";
 import { transitionTabsConfig } from "./transition-tabs.config";
+import { spritesConfig } from "./sprites.config";
 
 export const labs: Array<Lab> = [
   buttonStatesConfig,
+  spritesConfig,
   copyButtonConfig,
   testimonialMarqueeConfig,
   maskScrollAreaConfig,

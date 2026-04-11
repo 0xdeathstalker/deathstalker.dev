@@ -57,6 +57,26 @@
 
   --ease-expo-out: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-circ-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+  --animate-battery: battery 2s steps(6, jump-none) infinite;
+  @keyframes battery {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  --animate-sprite: sprite 1.5s steps(16, jump-none) infinite;
+  @keyframes sprite {
+    from {
+      object-position: 0% 0%;
+    }
+    to {
+      object-position: 100% 0%;
+    }
+  }
 }
 
 :root {

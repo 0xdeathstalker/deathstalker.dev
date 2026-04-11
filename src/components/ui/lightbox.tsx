@@ -92,7 +92,7 @@ function LightboxContent({ className, ...props }: React.ComponentProps<"div"> & 
             layoutId="lightbox-card"
             ref={cardRef}
             className={cn(
-              "h-fit max-w-[calc(100vw-1rem)] md:max-w-[calc(100vw-7rem)]",
+              "h-fit max-w-[calc(100vw-1rem)] md:w-[calc(100vw-7rem)]",
               "p-4 md:p-6 flex flex-col items-start border",
               className,
             )}

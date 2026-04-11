@@ -1,7 +1,6 @@
 import { MotionSharedLayout } from "@/components/labs/components/shared-layout";
 import { Code } from "@/components/ui/code";
 import { InlineLink } from "@/components/ui/inline-link";
-import Link from "next/link";
 
 const motionSharedLayoutConfig = {
   slug: "shared-layout-animation",
