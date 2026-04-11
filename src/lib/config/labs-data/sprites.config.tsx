@@ -150,7 +150,7 @@ const spritesConfig = {
     </>
   ),
   tech: "css",
-  video: "",
+  video: "https://cdn.deathstalker.dev/videos/sprites.mp4",
   component: FireEyeSprite,
 };
 
