@@ -5,8 +5,12 @@ import type * as React from "react";
 import { Lightbox, LightboxContent, LightboxTrigger } from "@/components/ui/lightbox";
 import { cn } from "@/lib/utils";
 
-type ImageLightboxProps = React.ComponentProps<"img"> &
-  MotionProps & { triggerImageClassName?: string; contentImageClassName?: string; children?: React.ReactNode };
+type ImageLightboxProps = {
+  triggerImageClassName?: string;
+  contentImageClassName?: string;
+  children?: React.ReactNode;
+} & React.ComponentProps<"img"> &
+  MotionProps;
 
 function ImageLightbox({
   src,
