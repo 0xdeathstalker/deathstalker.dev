@@ -37,4 +37,17 @@ function RainSprite() {
   );
 }
 
-export { BatterySprite, FireEyeSprite, RainSprite };
+function JonSnowSprite() {
+  return (
+    <img
+      src="https://cdn.deathstalker.dev/images/jon-snow.png"
+      alt="fire eye sprite animation"
+      className="size-32 object-cover animate-sprite rounded-xl"
+      style={{
+        animationTimingFunction: "steps(5, jump-none)",
+      }}
+    />
+  );
+}
+
+export { BatterySprite, FireEyeSprite, RainSprite, JonSnowSprite };

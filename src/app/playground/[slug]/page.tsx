@@ -1,4 +1,4 @@
-import { BatterySprite, FireEyeSprite, RainSprite } from "@/components/labs/components/sprites";
+import { BatterySprite, FireEyeSprite, JonSnowSprite, RainSprite } from "@/components/labs/components/sprites";
 import { labs } from "@/lib/config/labs-data";
 
 export default async function Playground({ params }: { params: Promise<{ slug: string }> }) {
@@ -9,15 +9,7 @@ export default async function Playground({ params }: { params: Promise<{ slug: s
 
   return (
     <main className="min-h-screen w-full font-sans flex items-center justify-center">
-      {lab.slug === "sprites" ? (
-        <div className="relative flex items-center justify-center gap-10">
-          <FireEyeSprite />
-          <BatterySprite />
-          <RainSprite />
-        </div>
-      ) : (
-        <lab.component />
-      )}
+      <lab.component />
     </main>
   );
 }

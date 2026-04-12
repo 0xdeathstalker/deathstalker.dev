@@ -1,5 +1,5 @@
 import { ImageLightbox } from "@/components/image-lightbox";
-import { BatterySprite, FireEyeSprite, RainSprite } from "@/components/labs/components/sprites";
+import { BatterySprite, FireEyeSprite, JonSnowSprite, RainSprite } from "@/components/labs/components/sprites";
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";
 import { InlineLink } from "@/components/ui/inline-link";
@@ -159,6 +159,7 @@ const spritesConfig = {
       <div className="py-12 px-6 border border-mauve-200 rounded-lg flex items-center justify-center gap-10">
         <RainSprite />
         <BatterySprite />
+        <JonSnowSprite />
       </div>
     </>
   ),
