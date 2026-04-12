@@ -156,7 +156,7 @@ const spritesConfig = {
         comes highly recommended. i might try this next.
       </p>
 
-      <div className="py-12 px-6 border border-mauve-200 rounded-lg flex items-center justify-center gap-10">
+      <div className="py-12 px-6 border border-mauve-200 rounded-lg flex flex-col md:flex-row items-center justify-center gap-10">
         <RainSprite />
         <BatterySprite />
         <JonSnowSprite />
