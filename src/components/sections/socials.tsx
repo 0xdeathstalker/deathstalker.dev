@@ -2,24 +2,29 @@
 
 import { FileText } from "lucide-react";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { portfolio } from "@/lib/config/site-data";
 import type { SocialKeys } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { Line } from "../ui/line";
+import { Line } from "@/components/ui/line";
+import { useRouter } from "next/navigation";
 
 function SocialIconButtons() {
   return (
     <div className="relative inline-flex items-center gap-2 py-6 px-4">
       <Tooltip delayDuration={300}>
-        <TooltipTrigger>
-          <Link
-            href={portfolio.resume}
-            className={cn(buttonVariants({ variant: "outline", size: "icon" }), "size-7 font-normal")}
+        <TooltipTrigger asChild>
+          <Button
+            asChild
+            variant="outline"
+            size="icon"
+            className="size-7 font-normal"
           >
-            <FileText />
-          </Link>
+            <Link href={portfolio.resume}>
+              <FileText />
+            </Link>
+          </Button>
         </TooltipTrigger>
         <TooltipContent className="font-sans">Resume</TooltipContent>
       </Tooltip>
@@ -29,14 +34,20 @@ function SocialIconButtons() {
 
         return (
           <Tooltip key={key}>
-            <TooltipTrigger>
-              <Link
-                href={link}
-                target="_blank"
-                className={cn(buttonVariants({ variant: "outline", size: "icon" }), "size-7")}
+            <TooltipTrigger asChild>
+              <Button
+                asChild
+                variant="outline"
+                size="icon"
+                className="size-7"
               >
-                {IconMap[key]}
-              </Link>
+                <Link
+                  href={link}
+                  target="_blank"
+                >
+                  {IconMap[key]}
+                </Link>
+              </Button>
             </TooltipTrigger>
             <TooltipContent className="font-sans">{key.charAt(0).toUpperCase() + key.slice(1)}</TooltipContent>
           </Tooltip>
@@ -47,33 +58,32 @@ function SocialIconButtons() {
 }
 
 function SocialLargeButtons() {
+  const router = useRouter();
+
   return (
     <div className="relative grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-2 sm:p-4">
-      <Link
-        href={portfolio.resume}
-        className={cn(
-          buttonVariants({ variant: "outline", size: "lg" }),
-          "border-taupe-300 shadow-none rounded-sm h-12 grow",
-        )}
+      <Button
+        variant="outline"
+        size="lg"
+        onClick={() => router.push(portfolio.resume)}
+        className="border-taupe-300 shadow-none rounded-sm h-12 grow"
       >
         <FileText /> resume
-      </Link>
+      </Button>
 
       {(Object.keys(portfolio.socials) as Array<SocialKeys>).map((key) => {
         const link = portfolio.socials[key];
 
         return (
-          <Link
+          <Button
             key={key}
-            href={link}
-            target="_blank"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
-              "border-taupe-300 shadow-none rounded-sm h-12 grow",
-            )}
+            variant="outline"
+            size="lg"
+            onClick={() => window.open(link, "_blank", "noopener,noreferrer")}
+            className="border-taupe-300 shadow-none rounded-sm h-12 grow"
           >
             {IconMap[key]} {key}
-          </Link>
+          </Button>
         );
       })}
     </div>
@@ -83,45 +93,55 @@ function SocialLargeButtons() {
 function SocialOutlineButtons() {
   return (
     <div className="relative grid grid-cols-2 sm:grid-cols-4">
-      <Link
-        href={portfolio.resume}
+      <Button
+        asChild
+        variant={null}
+        size={null}
         className="relative inline-flex items-center justify-center gap-2 grow text-sm py-5 px-4 hover:bg-accent/50 transition-colors ease-out"
       >
-        <FileText className="size-3.5" /> resume
-        <Line
-          orientation="vertical"
-          position="right"
-          color="text-mauve-500/65"
-          variant="contained"
-        />
-      </Link>
+        <Link href={portfolio.resume}>
+          <FileText className="size-3.5" /> resume
+          <Line
+            orientation="vertical"
+            position="right"
+            color="text-mauve-500/65"
+            variant="contained"
+          />
+        </Link>
+      </Button>
 
       {(Object.keys(portfolio.socials) as Array<SocialKeys>).map((key, idx) => {
         const link = portfolio.socials[key];
 
         return (
-          <Link
+          <Button
             key={key}
-            href={link}
-            target="_blank"
+            asChild
+            variant={null}
+            size={null}
             className="relative inline-flex items-center justify-center gap-2 grow text-sm py-5 px-4 hover:bg-accent/50 transition-colors ease-out"
           >
-            <Line
-              orientation="vertical"
-              position="right"
-              color="text-mauve-500/65"
-              variant="contained"
-              className={cn(idx === 0 ? "hidden sm:block" : idx === 2 ? "hidden" : "absolute")}
-            />
-            <Line
-              orientation="horizontal"
-              position="top"
-              color="text-mauve-500/65"
-              variant="contained"
-              className={cn(idx === 0 ? "hidden" : "sm:hidden")}
-            />
-            {IconMap[key]} {key}
-          </Link>
+            <Link
+              href={link}
+              target="_blank"
+            >
+              <Line
+                orientation="vertical"
+                position="right"
+                color="text-mauve-500/65"
+                variant="contained"
+                className={cn(idx === 0 ? "hidden sm:block" : idx === 2 ? "hidden" : "absolute")}
+              />
+              <Line
+                orientation="horizontal"
+                position="top"
+                color="text-mauve-500/65"
+                variant="contained"
+                className={cn(idx === 0 ? "hidden" : "sm:hidden")}
+              />
+              {IconMap[key]} {key}
+            </Link>
+          </Button>
         );
       })}
     </div>
