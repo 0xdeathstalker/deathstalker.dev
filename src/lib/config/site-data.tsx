@@ -6,12 +6,8 @@ import Link from "next/link";
 export const portfolio = {
   author: "soumya mukherjee",
   bio: [
-    <span>
-      <span className="text-mauve-800 font-medium">hey, i'm soumya — a design engineer</span> with 3 years of experience
-      in building polished interfaces with react, next.js and typescript.
-    </span>,
-    "i focus on performance and user experience, prioritizing resilient code and thoughtful interactions that feel effortless. shipped production apps from blockchain explorers to component libraries.",
-    "always pushing the details that make interfaces feel alive.",
+    "hey, i'm a frontend focused developer with fullstack knowledge with 3 years of experience in building polished interfaces with react, next.js and typescript.",
+    "i focus on performance and user experience, prioritizing resilient code and thoughtful interactions that feel effortless. always pushing the details that make interfaces feel alive.",
   ],
   resume: "/resume.pdf",
   socials: {
