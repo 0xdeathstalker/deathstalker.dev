@@ -7,6 +7,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { portfolio } from "@/lib/config/site-data";
 import type { SocialKeys } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { Line } from "../ui/line";
 
 function SocialIconButtons() {
   return (
@@ -73,7 +74,55 @@ function SocialLargeButtons() {
   );
 }
 
-export { SocialIconButtons, SocialLargeButtons };
+function SocialOutlineButtons() {
+  return (
+    <div className="relative grid grid-cols-2 sm:grid-cols-4">
+      <Link
+        href={portfolio.resume}
+        className="relative inline-flex items-center justify-center gap-2 grow text-sm py-5 px-4 hover:bg-accent/50 transition-colors ease-out"
+      >
+        <FileText className="size-3.5" /> resume
+        <Line
+          orientation="vertical"
+          position="right"
+          color="text-mauve-500/65"
+          variant="contained"
+        />
+      </Link>
+
+      {(Object.keys(portfolio.socials) as Array<SocialKeys>).map((key, idx) => {
+        const link = portfolio.socials[key];
+
+        return (
+          <Link
+            key={key}
+            href={link}
+            target="_blank"
+            className="relative inline-flex items-center justify-center gap-2 grow text-sm py-5 px-4 hover:bg-accent/50 transition-colors ease-out"
+          >
+            <Line
+              orientation="vertical"
+              position="right"
+              color="text-mauve-500/65"
+              variant="contained"
+              className={cn(idx === 0 ? "hidden sm:block" : idx === 2 ? "hidden" : "absolute")}
+            />
+            <Line
+              orientation="horizontal"
+              position="top"
+              color="text-mauve-500/65"
+              variant="contained"
+              className={cn(idx === 0 ? "hidden" : "sm:hidden")}
+            />
+            {IconMap[key]} {key}
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
+export { SocialIconButtons, SocialLargeButtons, SocialOutlineButtons };
 
 const IconMap = {
   github: (
