@@ -48,10 +48,13 @@ function SocialIconButtons() {
 
 function SocialLargeButtons() {
   return (
-    <div className="relative grid grid-cols-2 sm:grid-cols-4 gap-2 p-4">
+    <div className="relative grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-2 sm:p-4">
       <Link
         href={portfolio.resume}
-        className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-12 font-normal grow")}
+        className={cn(
+          buttonVariants({ variant: "outline", size: "lg" }),
+          "border-taupe-300 shadow-none rounded-sm h-12 grow",
+        )}
       >
         <FileText /> resume
       </Link>
@@ -64,7 +67,10 @@ function SocialLargeButtons() {
             key={key}
             href={link}
             target="_blank"
-            className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-12 grow")}
+            className={cn(
+              buttonVariants({ variant: "outline", size: "lg" }),
+              "border-taupe-300 shadow-none rounded-sm h-12 grow",
+            )}
           >
             {IconMap[key]} {key}
           </Link>
