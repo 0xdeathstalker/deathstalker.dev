@@ -1,17 +1,27 @@
 "use client";
 
+import { FileText } from "lucide-react";
+import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { portfolio } from "@/lib/config/site-data";
 import type { SocialKeys } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { FileText } from "lucide-react";
-import Link from "next/link";
 
-export default function Socials() {
+function SocialIconButtons() {
   return (
-    <div className="h-[29px] inline-flex items-center gap-2">
-      <ResumeButton />
+    <div className="relative inline-flex items-center gap-2 py-6 px-4">
+      <Tooltip delayDuration={300}>
+        <TooltipTrigger>
+          <Link
+            href={portfolio.resume}
+            className={cn(buttonVariants({ variant: "outline", size: "icon" }), "size-7 font-normal")}
+          >
+            <FileText />
+          </Link>
+        </TooltipTrigger>
+        <TooltipContent className="font-sans">Resume</TooltipContent>
+      </Tooltip>
 
       {(Object.keys(portfolio.socials) as Array<SocialKeys>).map((key) => {
         const link = portfolio.socials[key];
@@ -35,21 +45,35 @@ export default function Socials() {
   );
 }
 
-function ResumeButton() {
+function SocialLargeButtons() {
   return (
-    <Tooltip delayDuration={300}>
-      <TooltipTrigger>
-        <Link
-          href={portfolio.resume}
-          className={cn(buttonVariants({ variant: "outline", size: "icon" }), "size-7 font-normal")}
-        >
-          <FileText />
-        </Link>
-      </TooltipTrigger>
-      <TooltipContent className="font-sans">Resume</TooltipContent>
-    </Tooltip>
+    <div className="relative grid grid-cols-2 sm:grid-cols-4 gap-2 p-4">
+      <Link
+        href={portfolio.resume}
+        className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-12 font-normal grow")}
+      >
+        <FileText /> resume
+      </Link>
+
+      {(Object.keys(portfolio.socials) as Array<SocialKeys>).map((key) => {
+        const link = portfolio.socials[key];
+
+        return (
+          <Link
+            key={key}
+            href={link}
+            target="_blank"
+            className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-12 grow")}
+          >
+            {IconMap[key]} {key}
+          </Link>
+        );
+      })}
+    </div>
   );
 }
+
+export { SocialIconButtons, SocialLargeButtons };
 
 const IconMap = {
   github: (

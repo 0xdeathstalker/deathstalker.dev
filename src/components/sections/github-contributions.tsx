@@ -24,7 +24,7 @@ function GithubContributions({
       data={contributions}
       blockSize={8.72}
       blockMargin={3}
-      className="mt-8 w-full"
+      className="w-full"
     >
       <ContributionGraphCalendar className="no-scrollbar">
         {({ activity, dayIndex, weekIndex }) => (
@@ -75,7 +75,7 @@ function GithubContributions({
 
 function GithubContributionsFallback() {
   return (
-    <div className="flex h-[120px] mt-8 w-full items-center justify-center">
+    <div className="flex h-[120px] w-full items-center justify-center">
       <div className="bg-muted size-full animate-pulse" />
     </div>
   );
