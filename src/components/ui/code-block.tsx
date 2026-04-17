@@ -13,7 +13,7 @@ function CodeBlock({ code, language, className = "" }: { code: string; language:
         variant="ghost"
         text={code}
         className={cn(
-          "absolute top-1.5 right-1.5 size-6",
+          "absolute top-1.5 right-1.5 size-6 opacity-0 group-hover:opacity-100 transition-opacity ease-out",
           "border shadow-md bg-background hover:bg-card",
           // "-translate-y-[calc(100%+15px)] group-hover:translate-y-0 translate-x-[calc(100%+15px)] group-hover:translate-x-0 ease-circ-in-out",
         )}
