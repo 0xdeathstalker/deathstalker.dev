@@ -13,7 +13,7 @@ export const portfolio = {
   socials: {
     github: "https://github.com/0xdeathstalker",
     linkedin: "https://www.linkedin.com/in/soumya-mukherjee-88a551248/",
-    twitter: "https://x.com/0xdeathstalker",
+    x: "https://x.com/0xdeathstalker",
   },
   mail: "soumyamukherjee.work@gmail.com",
   github_username: "0xdeathstalker",
