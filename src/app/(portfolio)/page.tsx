@@ -1,4 +1,5 @@
 import { Blogs } from "@/components/sections/blogs";
+import { Certifications } from "@/components/sections/certifications";
 import { Hero } from "@/components/sections/hero";
 import { Labs } from "@/components/sections/labs";
 import { Projects } from "@/components/sections/projects";
@@ -19,6 +20,9 @@ export default function Home() {
       <PatternSeparator />
 
       <Labs />
+      <PatternSeparator />
+
+      <Certifications />
       <PatternSeparator />
 
       <Blogs />

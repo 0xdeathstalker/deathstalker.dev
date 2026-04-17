@@ -73,8 +73,7 @@ function SocialLargeButtons() {
 
       {(Object.keys(portfolio.socials) as Array<SocialKeys>).map((key) => {
         const link = portfolio.socials[key];
-        const style = stylesMap[key];
-        console.log("style", { style });
+        const IconComponent = IconMap[key];
 
         return (
           <Button
@@ -87,7 +86,7 @@ function SocialLargeButtons() {
               stylesMap[key],
             )}
           >
-            {IconMap[key]}{" "}
+            {IconComponent}{" "}
             {key === "x" ? (
               <span>
                 X <span className="font-normal">(fka twitter)</span>
