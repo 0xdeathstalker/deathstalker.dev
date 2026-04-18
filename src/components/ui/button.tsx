@@ -1,7 +1,6 @@
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import type * as React from "react";
-import { haptic } from "@/lib/haptic";
 
 import { cn } from "@/lib/utils/index";
 
@@ -37,7 +36,6 @@ function Button({
   className,
   variant,
   size,
-  onClick,
   asChild = false,
   ...props
 }: React.ComponentProps<"button"> &
@@ -50,10 +48,6 @@ function Button({
     <Comp
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
-      onClick={(event) => {
-        haptic();
-        onClick?.(event);
-      }}
       {...props}
     />
   );

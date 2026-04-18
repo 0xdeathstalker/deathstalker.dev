@@ -2,13 +2,13 @@
 
 import { FileText } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { useWebHaptics } from "web-haptics/react";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Line } from "@/components/ui/line";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { portfolio } from "@/lib/config/site-data";
 import type { SocialKeys } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { Line } from "@/components/ui/line";
-import { useRouter } from "next/navigation";
 
 function SocialIconButtons() {
   return (
@@ -58,32 +58,33 @@ function SocialIconButtons() {
 }
 
 function SocialLargeButtons() {
-  const router = useRouter();
+  const { trigger } = useWebHaptics();
 
   return (
     <div className="relative grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-2 sm:p-4">
-      <Button
-        variant="outline"
-        size="lg"
-        onClick={() => router.push(portfolio.resume)}
-        className="h-12 grow border-taupe-300 shadow-none rounded-sm"
+      <Link
+        href={portfolio.resume}
+        onClick={() => trigger()}
+        className={cn(
+          buttonVariants({ variant: "outline", size: "lg" }),
+          "h-12 grow border-taupe-300 shadow-none rounded-sm",
+        )}
       >
         <FileText /> resume
-      </Button>
+      </Link>
 
       {(Object.keys(portfolio.socials) as Array<SocialKeys>).map((key) => {
         const link = portfolio.socials[key];
         const IconComponent = IconMap[key];
 
         return (
-          <Button
+          <Link
             key={key}
-            variant="outline"
-            size="lg"
-            onClick={() => window.open(link, "_blank", "noopener,noreferrer")}
+            href={link}
+            onClick={() => trigger()}
             className={cn(
+              buttonVariants({ variant: "outline", size: "lg" }),
               "group border-taupe-300 shadow-none rounded-sm h-12 grow transition-colors ease-out",
-              stylesMap[key],
             )}
           >
             {IconComponent}{" "}
@@ -94,7 +95,7 @@ function SocialLargeButtons() {
             ) : (
               key
             )}
-          </Button>
+          </Link>
         );
       })}
     </div>
@@ -209,10 +210,4 @@ const IconMap = {
       ></path>
     </svg>
   ),
-};
-
-const stylesMap = {
-  github: "hover:bg-[#232925]/5 hover:text-[#101411] hover:border-[#101411]",
-  linkedin: "hover:bg-[#0077b5]/5 hover:text-[#0077b5]/80 hover:border-[#0077b5]/80",
-  x: "hover:bg-black/10 hover:text-black hover:border-black/70",
 };

@@ -6,6 +6,7 @@ import type * as React from "react";
 import { Button } from "@/components/ui/button";
 import { type CopyState, useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 import { cn } from "@/lib/utils";
+import { useWebHaptics } from "web-haptics/react";
 
 const motionVariants: Variants = {
   initial: { opacity: 0, scale: 0.8, filter: "blur(3px)" },
@@ -78,6 +79,7 @@ function CopyButton({
   className,
   ...props
 }: CopyButtonProps) {
+  const { trigger } = useWebHaptics();
   const { state, copy } = useCopyToClipboard({
     onCopySuccess,
     onCopyError,
@@ -87,6 +89,7 @@ function CopyButton({
     <Button
       size={size}
       onClick={() => {
+        trigger();
         copy(text);
       }}
       className={cn("size-6 enabled:active:scale-[0.97]", className)}
