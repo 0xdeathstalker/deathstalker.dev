@@ -2,7 +2,7 @@ import { BackButton } from "@/components/back-button";
 import { ScrollGradients } from "@/components/scroll-gradients";
 import { LabItem } from "@/components/sections/lab-item";
 import { QuoteTime } from "@/components/sections/quote-time";
-import { CornerBorder } from "@/components/ui/corner-border";
+import { CornerDiamondShapes } from "@/components/ui/corner-shapes";
 import { Line } from "@/components/ui/line";
 import { labs } from "@/lib/config/labs-data";
 
@@ -15,13 +15,13 @@ export default function LabsPage() {
         <BackButton href="/">home</BackButton>
       </div>
 
-      <section id="hero">
+      <section>
         <div className="relative p-4">
           <div className="absolute right-full top-1/2 -translate-y-1/2 pr-4 hidden min-[840px]:flex">
             <BackButton href="/">home</BackButton>
           </div>
 
-          <CornerBorder />
+          <CornerDiamondShapes />
 
           <Line
             orientation="horizontal"
@@ -41,7 +41,7 @@ export default function LabsPage() {
         </div>
       </section>
 
-      <div className="space-y-4 py-4">
+      <section className="space-y-4 py-4">
         {[...labs].reverse().map(({ component: _, ...lab }, idx) => {
           const isLast = idx !== labs.length - 1;
 
@@ -53,7 +53,7 @@ export default function LabsPage() {
             />
           );
         })}
-      </div>
+      </section>
 
       <QuoteTime />
     </div>

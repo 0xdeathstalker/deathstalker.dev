@@ -2,7 +2,7 @@ import { BackButton } from "@/components/back-button";
 import { LabNavigation } from "@/components/labs/lab-navigation";
 import { QuoteTime } from "@/components/sections/quote-time";
 import { buttonVariants } from "@/components/ui/button";
-import { CornerBorder } from "@/components/ui/corner-border";
+import { CornerDiamondShapes } from "@/components/ui/corner-shapes";
 import { Line } from "@/components/ui/line";
 import { labs } from "@/lib/config/labs-data";
 import { cn } from "@/lib/utils";
@@ -88,7 +88,7 @@ function Title({
         color="text-mauve-500/65"
       />
 
-      <CornerBorder />
+      <CornerDiamondShapes />
     </div>
   );
 }

@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
-import { Line } from "./line";
 import type * as React from "react";
-import { CornerBorder } from "./corner-border";
+import { cn } from "@/lib/utils";
+import { CornerDiamondShapes } from "./corner-shapes";
+import { Line } from "./line";
 
 function SectionHeading({ className, ...props }: React.ComponentProps<"h1">) {
   return (
@@ -11,7 +11,6 @@ function SectionHeading({ className, ...props }: React.ComponentProps<"h1">) {
         variant="contained"
         position="top"
         color="text-mauve-500/65 dark:text-muted-foreground/20"
-        className="max-w-[650px]"
       />
 
       <h1
@@ -27,10 +26,9 @@ function SectionHeading({ className, ...props }: React.ComponentProps<"h1">) {
         variant="contained"
         position="bottom"
         color="text-mauve-500/65 dark:text-muted-foreground/20"
-        className="max-w-[650px]"
       />
 
-      <CornerBorder />
+      <CornerDiamondShapes />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { BackButton } from "@/components/back-button";
 import { BlogContent } from "@/components/sections/blog-content";
 import { QuoteTime } from "@/components/sections/quote-time";
-import { CornerBorder } from "@/components/ui/corner-border";
+import { CornerDiamondShapes } from "@/components/ui/corner-shapes";
 import { Line } from "@/components/ui/line";
 import { getBlogBySlug, getBlogs } from "@/lib/actions/blog";
 import { siteConfig } from "@/lib/config/site";
@@ -104,7 +104,7 @@ export default async function Blog({ params }: PageProps) {
 function Title({ title }: { title: string }) {
   return (
     <div className="relative p-4">
-      <CornerBorder />
+      <CornerDiamondShapes />
 
       <div className="absolute right-full top-1/2 -translate-y-1/2 pr-3 hidden min-[840px]:flex">
         <BackButton />

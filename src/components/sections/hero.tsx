@@ -1,5 +1,5 @@
 import { TextFlip } from "@/components/text-flip";
-import { CornerBorder } from "@/components/ui/corner-border";
+import { CornerDiamondShapes } from "@/components/ui/corner-shapes";
 import { Line } from "@/components/ui/line";
 import { getGitHubContributions } from "@/lib/actions/github-contributions";
 import { portfolio } from "@/lib/config/site-data";
@@ -37,7 +37,7 @@ export async function Hero() {
 function Title() {
   return (
     <div className="relative p-4">
-      <CornerBorder />
+      <CornerDiamondShapes />
 
       <Line
         orientation="horizontal"
