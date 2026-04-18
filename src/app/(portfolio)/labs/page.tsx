@@ -1,5 +1,3 @@
-"use client";
-
 import { BackButton } from "@/components/back-button";
 import { ScrollGradients } from "@/components/scroll-gradients";
 import { LabItem } from "@/components/sections/lab-item";
@@ -44,7 +42,7 @@ export default function LabsPage() {
       </section>
 
       <div className="space-y-4 py-4">
-        {[...labs].reverse().map((lab, idx) => {
+        {[...labs].reverse().map(({ component: _, ...lab }, idx) => {
           const isLast = idx !== labs.length - 1;
 
           return (

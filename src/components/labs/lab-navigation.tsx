@@ -1,11 +1,12 @@
 "use client";
 
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import * as React from "react";
+import { useWebHaptics } from "web-haptics/react";
+import { Button } from "@/components/ui/button";
 import { Kbd } from "@/components/ui/kbd";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface LabNavigationProps {
   prevSlug: string | null;
@@ -14,6 +15,7 @@ interface LabNavigationProps {
 
 export function LabNavigation({ prevSlug, nextSlug }: LabNavigationProps) {
   const router = useRouter();
+  const { trigger } = useWebHaptics();
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -35,7 +37,10 @@ export function LabNavigation({ prevSlug, nextSlug }: LabNavigationProps) {
           <Button
             variant="outline"
             size="icon"
-            onClick={() => prevSlug && router.push(`/labs/${prevSlug}`)}
+            onClick={() => {
+              prevSlug && router.push(`/labs/${prevSlug}`);
+              trigger();
+            }}
             disabled={!prevSlug}
             aria-label="Go to previous component"
             className="size-7"
@@ -56,7 +61,10 @@ export function LabNavigation({ prevSlug, nextSlug }: LabNavigationProps) {
           <Button
             variant="outline"
             size="icon"
-            onClick={() => nextSlug && router.push(`/labs/${nextSlug}`)}
+            onClick={() => {
+              nextSlug && router.push(`/labs/${nextSlug}`);
+              trigger();
+            }}
             disabled={!nextSlug}
             aria-label="Go to next component"
             className="h-7 w-7"
