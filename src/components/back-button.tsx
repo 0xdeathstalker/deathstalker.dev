@@ -1,28 +1,28 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import type * as React from "react";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { useWebHaptics } from "web-haptics/react";
 
-function BackButton() {
-  const router = useRouter();
-
-  function handleBack() {
-    if (window.history.length > 1) {
-      router.back();
-    } else {
-      router.push("/");
-    }
-  }
+function BackButton({ href, target = "_self", children, className, ...props }: React.ComponentProps<typeof Link>) {
+  const { trigger } = useWebHaptics();
 
   return (
-    <Button
-      onClick={handleBack}
-      variant="outline"
-      className="h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-500 hover:text-mauve-600"
+    <Link
+      href={href}
+      target={target}
+      onClick={() => trigger()}
+      className={cn(
+        buttonVariants({ variant: "outline" }),
+        "h-7 has-[>svg]:pl-2 gap-1 text-xs text-mauve-500 hover:text-mauve-600",
+        className,
+      )}
     >
       <BackIcon />
-      back
-    </Button>
+      {children}
+    </Link>
   );
 }
 
