@@ -81,7 +81,7 @@ export default async function Blog({ params }: PageProps) {
       />
 
       <div className="min-[840px]:hidden px-4 pb-3">
-        <BackButton />
+        <BackButton href="/">home</BackButton>
       </div>
 
       <Title title={blog.metadata.title} />
@@ -107,7 +107,7 @@ function Title({ title }: { title: string }) {
       <CornerDiamondShapes />
 
       <div className="absolute right-full top-1/2 -translate-y-1/2 pr-3 hidden min-[840px]:flex">
-        <BackButton />
+        <BackButton href="/">home</BackButton>
       </div>
 
       <h1 className="font-pixel-square text-[28px] md:text-4xl text-mauve-700 font-semibold tracking-tight sm:tracking-wide">

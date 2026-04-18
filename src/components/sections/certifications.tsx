@@ -30,6 +30,7 @@ function CertificateItem({ certificate }: { certificate: Certificate }) {
         <div className="relative overflow-x-hidden">
           <Link
             href={certificate.link}
+            target="_blank"
             className={cn(
               "text-lg text-nowrap",
               "before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-px before:bg-mauve-900",
