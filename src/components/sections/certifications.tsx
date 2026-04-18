@@ -24,23 +24,25 @@ function Certifications() {
 function CertificateItem({ certificate }: { certificate: Certificate }) {
   return (
     <div className="flex items-center justify-between px-4">
-      <div className="relative flex items-center gap-3">
-        <div className="size-6 rounded flex items-center justify-center overflow-hidden">{certificate.icon}</div>
+      <div className="relative inline-flex items-center justify-between gap-1 link overflow-x-hidden">
+        <div className="size-6 shrink-0">{certificate.icon}</div>
 
-        <div className="group/title flex items-center gap-1.5 link">
+        <div className="relative overflow-x-hidden">
           <Link
             href={certificate.link}
-            target="_blank"
             className={cn(
-              "relative w-full text-lg",
+              "text-lg text-nowrap",
               "before:content-[''] before:-z-10 before:absolute before:bottom-0.5 before:w-0 before:h-px before:bg-mauve-900",
-              "before:ease-circ-in-out before:transition-[width] group-hover/title:before:w-full",
+              "before:transition-all before:ease-circ-in-out hover:before:w-full",
             )}
           >
             {certificate.name}
           </Link>
+        </div>
 
-          <LinkArrowIcon />
+        <div className="relative">
+          {/* <div className="sm:hidden absolute top-0 right-5 h-full w-10 bg-linear-to-l from-background to-transparent" /> */}
+          <LinkArrowIcon className="size-5" />
         </div>
       </div>
 
