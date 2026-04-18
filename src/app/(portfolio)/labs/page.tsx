@@ -39,6 +39,20 @@ export default function LabsPage() {
             color="text-mauve-500/65"
           />
         </div>
+
+        <div className="relative p-4 text-sm">
+          <p>
+            this is a creative space for ui experiments, component studies and exploration. i often recreate components
+            to better understand how they work.
+          </p>
+
+          <Line
+            orientation="horizontal"
+            variant="contained"
+            position="bottom"
+            color="text-mauve-500/65"
+          />
+        </div>
       </section>
 
       <section className="space-y-4 py-4">

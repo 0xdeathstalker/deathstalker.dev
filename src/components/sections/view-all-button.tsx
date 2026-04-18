@@ -15,7 +15,8 @@ function ViewAllButton() {
       onClick={() => trigger()}
       className={cn(
         buttonVariants({ variant: "outline" }),
-        "h-10 w-full bg-mauve-200 hover:bg-mauve-300 border-mauve-400 hover:border-mauve-500",
+        "h-10 w-full",
+        // "bg-mauve-200 hover:bg-mauve-300 border-mauve-400 hover:border-mauve-500"
       )}
       // className="h-10 w-full px-4 inline-flex items-center justify-center gap-1 bg-mauve-600 text-background rounded-md hover:bg-mauve-700 transition-colors ease-out"
     >
