@@ -79,7 +79,6 @@ function CopyButton({
   className,
   ...props
 }: CopyButtonProps) {
-  const { trigger } = useWebHaptics();
   const { state, copy } = useCopyToClipboard({
     onCopySuccess,
     onCopyError,
@@ -89,7 +88,6 @@ function CopyButton({
     <Button
       size={size}
       onClick={() => {
-        trigger();
         copy(text);
       }}
       className={cn("size-6 enabled:active:scale-[0.97]", className)}
