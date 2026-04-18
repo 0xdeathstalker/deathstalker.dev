@@ -13,8 +13,9 @@ function CodeBlock({ code, language, className = "" }: { code: string; language:
         variant="ghost"
         text={code}
         className={cn(
-          "absolute top-1.5 right-1.5 size-6 opacity-0 group-hover:opacity-100 transition-opacity ease-out",
+          "absolute top-1.5 right-1.5 size-6 opacity-100 transition-opacity ease-out",
           "border shadow-md bg-background hover:bg-card",
+          "can-hover:opacity-0 can-hover:group-hover:opacity-100",
         )}
         copyIcon={<CopyIcon className="size-3.5 -scale-x-100 text-muted-foreground/75" />}
       />
