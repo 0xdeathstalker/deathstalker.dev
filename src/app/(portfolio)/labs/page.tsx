@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { BackButton } from "@/components/back-button";
 import { ScrollGradients } from "@/components/scroll-gradients";
 import { LabItem } from "@/components/sections/lab-item";
@@ -5,10 +6,71 @@ import { QuoteTime } from "@/components/sections/quote-time";
 import { CornerDiamondShapes } from "@/components/ui/corner-shapes";
 import { Line } from "@/components/ui/line";
 import { labs } from "@/lib/config/labs-data";
+import { siteConfig } from "@/lib/config/site";
+
+export const metadata: Metadata = {
+  title: "Labs",
+  description:
+    "UI experiments, component studies and interaction explorations built with React, Next.js and TypeScript.",
+  alternates: {
+    canonical: "/labs",
+  },
+  openGraph: {
+    title: "Labs",
+    description:
+      "UI experiments, component studies and interaction explorations built with React, Next.js and TypeScript.",
+    url: `${siteConfig.url}/labs`,
+    type: "website",
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Labs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Labs",
+    description:
+      "UI experiments, component studies and interaction explorations built with React, Next.js and TypeScript.",
+    images: [siteConfig.ogImage],
+    creator: siteConfig.author.twitter,
+  },
+};
 
 export default function LabsPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        name: "Labs",
+        url: `${siteConfig.url}/labs`,
+        description:
+          "UI experiments, component studies and interaction explorations built with React, Next.js and TypeScript.",
+      },
+      {
+        "@type": "ItemList",
+        itemListElement: [...labs].reverse().map((lab, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: lab.title,
+          url: `${siteConfig.url}/labs/${lab.slug}`,
+        })),
+      },
+    ],
+  };
+
   return (
     <div className="relative pt-18 min-[840px]:pt-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <ScrollGradients />
 
       <div className="min-[840px]:hidden px-4 pb-4 flex items-center justify-between">

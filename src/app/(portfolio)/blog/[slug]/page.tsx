@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { BackButton } from "@/components/back-button";
 import { BlogContent } from "@/components/sections/blog-content";
 import { QuoteTime } from "@/components/sections/quote-time";
@@ -6,8 +8,6 @@ import { Line } from "@/components/ui/line";
 import { getBlogBySlug, getBlogs } from "@/lib/actions/blog";
 import { siteConfig } from "@/lib/config/site";
 import { formatDate } from "@/lib/utils";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -29,23 +29,35 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const { title, description, date } = blog.metadata;
-  const ogUrl = `${siteConfig.url}/blog/${slug}`;
+  const url = `${siteConfig.url}/blog/${slug}`;
 
   return {
     title,
     description,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       title,
       description,
       type: "article",
       publishedTime: date,
-      url: ogUrl,
+      url,
       authors: [siteConfig.author.name],
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [siteConfig.ogImage],
       creator: siteConfig.author.twitter,
     },
   };
@@ -65,11 +77,18 @@ export default async function Blog({ params }: PageProps) {
     headline: blog.metadata.title,
     description: blog.metadata.description,
     datePublished: blog.metadata.date,
+    mainEntityOfPage: `${siteConfig.url}/blog/${slug}`,
     author: {
       "@type": "Person",
       name: siteConfig.author.name,
       url: siteConfig.url,
     },
+    publisher: {
+      "@type": "Person",
+      name: siteConfig.author.name,
+      url: siteConfig.url,
+    },
+    image: siteConfig.ogImage,
     url: `${siteConfig.url}/blog/${slug}`,
   };
 

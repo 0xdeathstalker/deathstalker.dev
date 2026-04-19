@@ -115,7 +115,7 @@ function ProjectTechnologies({ technologies }: { technologies: Array<string> }) 
       {technologies.map((technology) => (
         <div
           key={technology}
-          className="font-pixel-square mx-1 mt-2 py-1 px-1.5 bg-mauve-200 rounded-sm text-muted-foreground text-xs shadow"
+          className="font-pixel-square mx-1 mt-2 py-1 px-1.5 bg-mauve-200 rounded-sm text-muted-foreground text-xs ring-1 ring-inset ring-mauve-300/65"
         >
           {technology}
         </div>

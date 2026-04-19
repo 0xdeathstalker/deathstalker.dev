@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Blogs } from "@/components/sections/blogs";
 import { Certifications } from "@/components/sections/certifications";
 import { Hero } from "@/components/sections/hero";
@@ -6,10 +7,76 @@ import { Projects } from "@/components/sections/projects";
 import { QuoteTime } from "@/components/sections/quote-time";
 import { Work } from "@/components/sections/work";
 import { PatternSeparator } from "@/components/ui/pattern-separator";
+import { siteConfig } from "@/lib/config/site";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "soumya",
+  },
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Soumya Mukherjee | Frontend Engineer",
+    description: siteConfig.description,
+    url: siteConfig.url,
+    type: "website",
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Soumya Mukherjee | Frontend Engineer",
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: siteConfig.author.twitter,
+  },
+};
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        name: siteConfig.name,
+        url: siteConfig.url,
+        description: siteConfig.description,
+      },
+      {
+        "@type": "WebPage",
+        name: "Soumya Mukherjee | Frontend Engineer",
+        url: siteConfig.url,
+        description: siteConfig.description,
+        isPartOf: {
+          "@type": "WebSite",
+          name: siteConfig.name,
+          url: siteConfig.url,
+        },
+        about: {
+          "@type": "Person",
+          name: siteConfig.author.name,
+          url: siteConfig.url,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="relative pt-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <Hero />
       <PatternSeparator />
 
