@@ -3,6 +3,7 @@
 import * as React from "react";
 import { MorphText } from "@/components/ui/morph-text";
 import { Button } from "@/components/ui/button";
+import { useWebHaptics } from "web-haptics/react";
 
 const buttonStates = {
   idle: "Submit",
@@ -12,8 +13,10 @@ const buttonStates = {
 
 function MorphTextDemo() {
   const [state, setState] = React.useState<"idle" | "loading" | "success">("idle");
+  const { trigger } = useWebHaptics();
 
   function handleClick() {
+    trigger();
     setState("loading");
 
     setTimeout(() => {

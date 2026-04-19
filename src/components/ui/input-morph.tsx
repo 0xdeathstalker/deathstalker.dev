@@ -1,8 +1,11 @@
+"use client";
+
+import type { AnimatePresenceProps, MotionProps } from "motion/react";
 import { AnimatePresence, motion } from "motion/react";
-import type { MotionProps, AnimatePresenceProps } from "motion/react";
 import type * as React from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useWebHaptics } from "web-haptics/react";
 
 function MessagesContainer({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -76,7 +79,9 @@ function MessageInputPseudoMesage({ layoutId, ...props }: React.ComponentProps<"
   );
 }
 
-function MessageInputButton({ className, ...props }: React.ComponentProps<typeof Button>) {
+function MessageInputButton({ className, onClick, ...props }: React.ComponentProps<typeof Button>) {
+  const { trigger } = useWebHaptics();
+
   return (
     <Button
       type="submit"
@@ -85,6 +90,10 @@ function MessageInputButton({ className, ...props }: React.ComponentProps<typeof
         "ml-2 size-10 shrink-0 flex items-center justify-center disabled:text-muted-foreground rounded-full transition-colors ease-in-out",
         className,
       )}
+      onClick={(e) => {
+        trigger();
+        onClick?.(e);
+      }}
       {...props}
     />
   );
