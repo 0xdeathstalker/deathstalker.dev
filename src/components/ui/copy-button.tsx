@@ -6,6 +6,7 @@ import type * as React from "react";
 import { Button } from "@/components/ui/button";
 import { type CopyState, useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 import { cn } from "@/lib/utils";
+import { useWebHaptics } from "web-haptics/react";
 
 const motionVariants: Variants = {
   initial: { opacity: 0, scale: 0.8, filter: "blur(3px)" },

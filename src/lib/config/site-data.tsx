@@ -1,19 +1,19 @@
 import { InlineLink } from "@/components/ui/inline-link";
 import type { Project, Work } from "@/lib/types";
 import { Code } from "lucide-react";
-import Link from "next/link";
+import type * as React from "react";
 
 export const portfolio = {
   author: "soumya mukherjee",
   bio: [
     "hey, i'm a frontend focused developer with fullstack knowledge with 3 years of experience in building polished interfaces with react, next.js and typescript.",
-    "i focus on performance and user experience, prioritizing resilient code and thoughtful interactions that feel effortless. always pushing the details that make interfaces feel alive.",
+    "i focus on performance and user experience with pixel-perfect execution and strong attention to small details. i prioritize resilient code and thoughtful interactions that make interfaces feel effortless and alive.",
   ],
   resume: "/resume.pdf",
   socials: {
     github: "https://github.com/0xdeathstalker",
     linkedin: "https://www.linkedin.com/in/soumya-mukherjee-88a551248/",
-    twitter: "https://x.com/0xdeathstalker",
+    x: "https://x.com/0xdeathstalker",
   },
   mail: "soumyamukherjee.work@gmail.com",
   github_username: "0xdeathstalker",
@@ -92,7 +92,10 @@ export const projects: Array<Project> = [
     id: 1,
     title: "nitro-explorer-v2",
     description: [
-      "independently rebuilt nitro explorer with a focus on performance and user experience, achieving up to 99 lighthouse score (prev max: 65).",
+      <span>
+        independently rebuilt nitro explorer with a focus on performance and user experience, achieving up to{" "}
+        <strong>99 lighthouse score</strong> (prev max: 65).
+      </span>,
       "architected graphql data layer by combining tanstack query and next.js ssr features to handle optimistic updates, query deduplication, refetching strategy and automatic cache invalidation.",
       "implemented command-based search and non-blocking data states to eliminate layout shifts and improve perceived latency.",
     ],
@@ -148,5 +151,30 @@ export const projects: Array<Project> = [
       "tailwind",
     ],
     href: "https://whispr-room.vercel.app",
+  },
+] as const;
+
+export type Certificate = {
+  id: number;
+  icon: string;
+  name: string;
+  date: string;
+  link: string;
+};
+
+export const certificates: Array<Certificate> = [
+  {
+    id: 1,
+    icon: "/images/certificates/animations-dev.svg",
+    name: "animations on the web",
+    date: "27.02.2025",
+    link: "https://animations.dev/certificate/b06ea5f2-49e6-48b6-a254-d2f11bffe108",
+  },
+  {
+    id: 2,
+    icon: "/images/certificates/anthropic.svg",
+    name: "claude in action",
+    date: "22.04.2026",
+    link: "https://verify.skilljar.com/c/g95mh9cvn8z2",
   },
 ] as const;

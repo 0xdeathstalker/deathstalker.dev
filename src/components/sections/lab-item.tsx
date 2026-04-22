@@ -3,7 +3,7 @@
 import * as React from "react";
 import { PatternSeparator } from "@/components/ui/pattern-separator";
 import { cn } from "@/lib/utils";
-import { Loader } from "lucide-react";
+import { ArrowUpRight, Loader } from "lucide-react";
 import { useInView } from "@/lib/hooks/useInView";
 import Link from "next/link";
 import type { Lab } from "@/lib/types";
@@ -59,22 +59,37 @@ function LabItem({ lab, isLast }: { lab: Lab; isLast: boolean }) {
           </video>
           <span
             className={cn(
-              "absolute bottom-1 left-6 py-0.5 px-1.5 font-pixel-square font-semibold text-[10px] sm:text-xs tracking-wider",
-              "bg-background border border-muted-foreground/25 border-dashed",
+              "absolute bottom-1 left-6 py-0.5 px-1.5 font-pixel-square font-semibold text-xs tracking-wider",
+              "bg-background border border-muted-foreground/25",
               "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-expo-out",
             )}
           >
             {lab.title}
           </span>
-          <span
+          {/* <span
             className={cn(
-              "absolute bottom-2 right-6 py-0.5 px-1.5 font-pixel-square font-semibold text-[10px] sm:text-xs tracking-wider",
-              "bg-background border border-muted-foreground/25 border-dashed",
+              "absolute bottom-1 right-6 py-0.5 px-1.5 font-pixel-square font-semibold text-xs tracking-wider",
+              "bg-background border border-muted-foreground/25",
               "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-expo-out",
             )}
           >
             {lab.tech}
-          </span>
+          </span> */}
+
+          <div
+            className={cn(
+              "absolute bottom-1 right-6 py-0.5 px-1.5 flex items-center gap-1 font-pixel-square font-semibold text-xs tracking-wider",
+              "bg-background border border-muted-foreground/25",
+              "translate-y-0 sm:translate-y-[200%] group-hover:translate-0 transition-transform duration-500 ease-expo-out",
+            )}
+          >
+            view live
+            <ArrowUpRight className="size-3" />
+          </div>
+
+          {/* <div className="absolute top-2 right-6 p-1 border rounded-md bg-background">
+            <ArrowUpRight className="size-3" />
+          </div> */}
 
           {/* LOADER */}
           <div

@@ -10,7 +10,7 @@ function PatternSeparator({ topBorder = true, bottomBorder = false }: { topBorde
           variant="contained"
           position="top"
           color="text-mauve-500/65"
-          className="max-w-[650px]"
+          className="max-w-[650px] z-50"
         />
       )}
 

@@ -61,7 +61,7 @@ export function ProjectItem({ project, isLast }: { project: Project; isLast: boo
 function ProjectItemInfo({ project }: { project: Project }) {
   return (
     <div className="w-full inline-flex items-center justify-between">
-      <div className="flex items-start gap-4">
+      <div className="flex items-start gap-3">
         <div className="mt-1 size-6 rounded flex items-center justify-center overflow-hidden">
           <img
             src={`/images/projects/${project.logo}`}
@@ -115,7 +115,7 @@ function ProjectTechnologies({ technologies }: { technologies: Array<string> }) 
       {technologies.map((technology) => (
         <div
           key={technology}
-          className="font-pixel-square mx-1 mt-2 py-1 px-1.5 bg-mauve-200 rounded-sm text-muted-foreground text-xs shadow"
+          className="font-pixel-square mx-1 mt-2 py-1 px-1.5 bg-mauve-200 rounded-sm text-muted-foreground text-xs ring-1 ring-inset ring-mauve-300/65"
         >
           {technology}
         </div>
