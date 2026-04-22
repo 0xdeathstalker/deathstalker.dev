@@ -172,7 +172,7 @@ export const certificates: Array<Certificate> = [
   },
   {
     id: 2,
-    icon: "/images/certificates/claude.svg",
+    icon: "/images/certificates/anthropic.svg",
     name: "claude in action",
     date: "22.04.2026",
     link: "https://verify.skilljar.com/c/g95mh9cvn8z2",
