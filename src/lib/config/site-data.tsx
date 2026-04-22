@@ -165,7 +165,7 @@ export type Certificate = {
 export const certificates: Array<Certificate> = [
   {
     id: 1,
-    icon: "/images/certificates/animations.svg",
+    icon: "/images/certificates/animations-dev.svg",
     name: "animations on the web",
     date: "27.02.2025",
     link: "https://animations.dev/certificate/b06ea5f2-49e6-48b6-a254-d2f11bffe108",

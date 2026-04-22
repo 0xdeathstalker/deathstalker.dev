@@ -37,6 +37,7 @@ export type SocialKeys = keyof typeof portfolio.socials;
 export type Metadata = {
   title: string;
   description: string;
+  icon: string;
   date: string;
 };
 

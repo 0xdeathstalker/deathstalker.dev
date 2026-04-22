@@ -26,7 +26,7 @@ function CertificateItem({ certificate }: { certificate: Certificate }) {
   return (
     <div className="flex items-center justify-between px-4">
       <div className="relative inline-flex items-center justify-between gap-3 link overflow-x-hidden">
-        <div className="size-6 shrink-0">
+        <div className="size-6 shrink-0 border rounded p-0.5 bg-accent">
           <Image
             src={certificate.icon}
             alt={certificate.name}
