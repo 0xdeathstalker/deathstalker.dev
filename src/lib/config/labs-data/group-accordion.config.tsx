@@ -39,7 +39,7 @@ const groupAccordionConfig = {
     </>
   ),
   tech: "css",
-  video: "https://cdn.deathstalker.dev/videos/motion-shared-layout-animation.mp4",
+  video: "https://cdn.deathstalker.dev/videos/group-accordion-css.mp4",
   component: GroupAccordionComponent,
 };
 

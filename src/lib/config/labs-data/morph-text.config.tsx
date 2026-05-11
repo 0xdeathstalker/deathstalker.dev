@@ -4,7 +4,7 @@ import { InlineLink } from "@/components/ui/inline-link";
 
 const morphTextConfig = {
   slug: "morph-text",
-  title: "morph text",
+  title: "morphing text",
   subHeading: "an example to showcase text morphing between button states using motion.",
   description: (
     <>
