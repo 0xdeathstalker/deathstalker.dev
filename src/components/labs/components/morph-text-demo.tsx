@@ -31,7 +31,7 @@ function MorphTextDemo() {
   return (
     <Button
       variant="default"
-      className="w-48 h-12 text-xl rounded-[20px]"
+      className="bg-mauve-700 hover:bg-mauve-800 w-48 h-12 text-xl rounded-[20px] enabled:active:scale-[0.97]"
       onClick={handleClick}
     >
       <MorphText className="font-medium font-sans">{buttonStates[state]}</MorphText>
