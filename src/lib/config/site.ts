@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Soumya Mukherjee",
-  shortName: "Soumya",
+  shortName: "soumya",
   title: "soumya",
   description:
     "Frontend engineer crafting polished interfaces with React, Next.js and TypeScript. Focused on clean code, smooth animations and interactions that feel effortless.",

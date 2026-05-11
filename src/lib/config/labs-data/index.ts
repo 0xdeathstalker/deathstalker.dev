@@ -8,6 +8,7 @@ import { testimonialMarqueeConfig } from "./testimonial-marquee.config";
 import { transitionTabsConfig } from "./transition-tabs.config";
 import { spritesConfig } from "./sprites.config";
 import { morphTextConfig } from "./morph-text.config";
+import { groupAccordionConfig } from "./group-accordion.config";
 
 export const labs: Array<Lab> = [
   buttonStatesConfig,
@@ -19,4 +20,5 @@ export const labs: Array<Lab> = [
   motionSharedLayoutConfig,
   transitionTabsConfig,
   morphTextConfig,
+  groupAccordionConfig,
 ];
