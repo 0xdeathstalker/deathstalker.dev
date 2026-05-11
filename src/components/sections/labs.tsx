@@ -3,6 +3,8 @@ import { SectionHeading } from "@/components/ui/heading";
 import { labs } from "@/lib/config/labs-data";
 import { ViewAllButton } from "./view-all-button";
 
+const LABS_PREVIEW_COUNT = 4;
+
 function Labs() {
   return (
     <section id="labs">
@@ -10,10 +12,10 @@ function Labs() {
 
       <div className="relative space-y-4 pt-4">
         {[...labs]
-          .slice(5, labs.length)
+          .slice(-LABS_PREVIEW_COUNT)
           .reverse()
           .map(({ component: _, ...lab }, idx) => {
-            const isLast = idx !== 3;
+            const isLast = idx !== LABS_PREVIEW_COUNT - 1;
             return (
               <LabItem
                 key={`${lab.title}-${idx}`}

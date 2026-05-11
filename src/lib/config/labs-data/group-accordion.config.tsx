@@ -7,6 +7,35 @@ import {
 } from "@/components/labs/components/group-accordion";
 import { cn } from "@/lib/utils";
 import { Code } from "@/components/ui/code";
+import { CodeBlock } from "@/components/ui/code-block";
+
+function getUsage() {
+  return `<GroupAccordion>
+  <GroupAccordionItem
+    value="item-1"
+    className={cn(
+      "bg-mauve-100 text-mauve-700 border border-transparent",
+      "data-[open=true]:text-mauve-900",
+      "hover:border-mauve-300 data-[open=true]:border-mauve-300",
+      "transition-[color,border-radius] ease-out-cubic duration-300",
+      "group-has-data-[open=true]/accordion:text-mauve-400 data-[open=true]:text-mauve-800",
+    )}
+  >
+    <GroupAccordionTrigger
+      className={cn(
+        "data-[open=true]:pb-2 transition-[scale,padding] ease-out-cubic duration-300",
+        "active:scale-[0.97] ease-out",
+      )}
+    >
+      item-1
+    </GroupAccordionTrigger>
+
+    <GroupAccordionContent className="bg-mauve-100 text-mauve-600">
+      <p className="mb-0.5">content-1</p>
+    </GroupAccordionContent>
+  </GroupAccordionItem>
+</GroupAccordion>`;
+}
 
 const groupAccordionConfig = {
   slug: "group-accordion",
@@ -36,6 +65,10 @@ const groupAccordionConfig = {
         <Code>GroupAccordionItem</Code>, <Code>GroupAccordionTrigger</Code> and <Code>GroupAccordionContent</Code>{" "}
         without changing the state logic.
       </p>
+      <CodeBlock
+        language="typescript"
+        code={getUsage()}
+      />
     </>
   ),
   tech: "css",
