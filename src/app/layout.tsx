@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.author.name, url: siteConfig.url }],
   creator: siteConfig.author.name,
   icons: {
-    icon: "/images/favicons/s-favicon-light.ico",
+    icon: "/images/favicons/favicon.ico",
   },
   openGraph: {
     type: "website",

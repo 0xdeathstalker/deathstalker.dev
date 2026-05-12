@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Soumya Mukherjee",
-  shortName: "soumya",
-  title: "soumya",
+  shortName: "deathstalker",
+  title: "deathstalker",
   description:
     "Frontend engineer crafting polished interfaces with React, Next.js and TypeScript. Focused on clean code, smooth animations and interactions that feel effortless.",
   url: "https://deathstalker.dev",
@@ -20,6 +20,7 @@ export const siteConfig = {
   },
   keywords: [
     "Soumya Mukherjee",
+    "Deathstalker",
     "Design Engineer",
     "Frontend Developer",
     "React Developer",
