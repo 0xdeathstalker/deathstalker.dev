@@ -9,7 +9,7 @@ import { labs } from "@/lib/config/labs-data";
 import { siteConfig } from "@/lib/config/site";
 
 export const metadata: Metadata = {
-  title: "Labs",
+  title: "labs",
   description:
     "UI experiments, component studies and interaction explorations built with React, Next.js and TypeScript.",
   alternates: {

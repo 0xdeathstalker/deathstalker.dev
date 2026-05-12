@@ -11,7 +11,7 @@ import { siteConfig } from "@/lib/config/site";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "soumya",
+    absolute: "deathstalker",
   },
   description: siteConfig.description,
   alternates: {

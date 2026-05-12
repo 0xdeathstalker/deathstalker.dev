@@ -24,7 +24,7 @@ export function Favicon() {
     newLink.type = "image/x-icon";
 
     const faviconPath =
-      currentTheme === "dark" ? "/images/favicons/s-favicon-dark.ico" : "/images/favicons/s-favicon-light.ico";
+      currentTheme === "dark" ? "/images/favicons/s-favicon-dark.ico" : "/images/favicons/favicon.ico";
 
     // adding timestamp to prevent caching
     newLink.href = `${faviconPath}?t=${Date.now()}`;

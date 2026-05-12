@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  const title = `${lab.title} Lab`;
+  const title = `${lab.title}`;
   const description = lab.subHeading;
   const url = `${siteConfig.url}/labs/${slug}`;
 
@@ -110,7 +110,7 @@ export default async function LabPage({ params }: PageProps) {
       <div className="py-6 px-4">
         <p className="mt-1 mb-6 text-sm text-muted-foreground">{component?.subHeading}</p>
 
-        <div className="relative min-h-96 grid place-items-center border border-mauve-200 rounded-xl p-2 overflow-hidden last:mb-4">
+        <div className="relative min-h-[420px] grid place-items-center border border-mauve-200 rounded-xl p-2 overflow-hidden last:mb-4">
           {component?.component && <component.component />}
         </div>
 

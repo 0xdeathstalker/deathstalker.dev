@@ -4,7 +4,7 @@ import { InlineLink } from "@/components/ui/inline-link";
 
 const morphTextConfig = {
   slug: "morph-text",
-  title: "morph text",
+  title: "morphing text",
   subHeading: "an example to showcase text morphing between button states using motion.",
   description: (
     <>
@@ -29,7 +29,7 @@ const morphTextConfig = {
     </>
   ),
   tech: "motion",
-  video: "https://cdn.deathstalker.dev/videos/morph-text.mp4",
+  video: "https://cdn.deathstalker.dev/videos/morphing-text.mp4",
   component: MorphTextDemo,
 };
 
