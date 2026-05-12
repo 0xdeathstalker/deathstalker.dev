@@ -9,6 +9,7 @@ import { transitionTabsConfig } from "./transition-tabs.config";
 import { spritesConfig } from "./sprites.config";
 import { morphTextConfig } from "./morph-text.config";
 import { groupAccordionConfig } from "./group-accordion.config";
+import { nestedDropdownMenuConfig } from "./nested-dropdown-menu.config";
 
 export const labs: Array<Lab> = [
   buttonStatesConfig,
@@ -21,4 +22,5 @@ export const labs: Array<Lab> = [
   transitionTabsConfig,
   morphTextConfig,
   groupAccordionConfig,
+  nestedDropdownMenuConfig,
 ];
