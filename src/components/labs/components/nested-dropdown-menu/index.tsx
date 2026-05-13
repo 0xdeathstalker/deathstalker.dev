@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import type { MenuItem, THistory } from "./data";
 import { nestedMenuItems } from "./data";
 import Image from "next/image";
+import { useWebHaptics } from "web-haptics/react";
 
 function NestedDropdownMenu() {
   const [open, setOpen] = React.useState(false);
@@ -16,6 +17,8 @@ function NestedDropdownMenu() {
   const [history, setHistory] = React.useState<THistory[]>([]);
   const [direction, setDirection] = React.useState<-1 | 1>(1);
   const [height, setHeight] = React.useState(128);
+
+  const { trigger } = useWebHaptics();
 
   const buttonRef = React.useRef<HTMLDivElement>(null);
   useOnClickOutside(buttonRef as React.RefObject<HTMLDivElement>, () => setOpen(false));
@@ -40,6 +43,11 @@ function NestedDropdownMenu() {
     setDirection(-1);
     setActiveMenu(previousMenu);
     setHistory(newHistory);
+  }
+
+  function handleClick() {
+    trigger("success");
+    setOpen((prev) => !prev);
   }
 
   React.useEffect(() => {
@@ -69,7 +77,7 @@ function NestedDropdownMenu() {
     >
       <button
         type="button"
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={handleClick}
         className={cn(
           "inline-flex items-center bg-mauve-100 rounded-full border border-mauve-200",
           "hover:bg-mauve-200/80 hover:border-mauve-300 active:scale-95",
@@ -77,7 +85,7 @@ function NestedDropdownMenu() {
         )}
       >
         <Image
-          src="/images/favicons/favicon.ico"
+          src="/images/d-user.png"
           alt="deathstalker user logo"
           width={38}
           height={38}

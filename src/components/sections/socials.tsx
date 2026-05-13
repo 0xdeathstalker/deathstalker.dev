@@ -61,18 +61,7 @@ function SocialLargeButtons() {
   const { trigger } = useWebHaptics();
 
   return (
-    <div className="relative grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-2 sm:p-4">
-      <Link
-        href={portfolio.resume}
-        onClick={() => trigger()}
-        className={cn(
-          buttonVariants({ variant: "outline", size: "lg" }),
-          "h-12 grow border-taupe-300 shadow-none rounded-sm",
-        )}
-      >
-        <FileText /> resume
-      </Link>
-
+    <div className="relative grid grid-cols-3 gap-2.5 p-2 sm:p-4">
       {(Object.keys(portfolio.socials) as Array<SocialKeys>).map((key) => {
         const link = portfolio.socials[key];
         const IconComponent = IconMap[key];
@@ -87,14 +76,7 @@ function SocialLargeButtons() {
               "group border-taupe-300 shadow-none rounded-sm h-12 grow transition-colors ease-out",
             )}
           >
-            {IconComponent}{" "}
-            {key === "x" ? (
-              <span>
-                X <span className="font-normal">(fka twitter)</span>
-              </span>
-            ) : (
-              key
-            )}
+            {IconComponent} {key}
           </Link>
         );
       })}
@@ -179,7 +161,7 @@ const IconMap = {
       ></path>
     </svg>
   ),
-  x: (
+  twitter: (
     <svg
       width="1200"
       height="1227"
