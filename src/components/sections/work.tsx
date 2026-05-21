@@ -120,7 +120,7 @@ function RoleInfo({ position, hasDescription }: { position: WorkPosition; hasDes
 
       <div className="text-left text-base">
         <div className="flex items-center gap-0.5">
-          <h4 className="relative leading-snug before:content-[''] before:absolute before:bottom-0.5 before:h-px before:w-0 before:bg-mauve-900 before:transition-all before:ease-circ-in-out group-hover:before:w-full group-data-[state=open]:before:w-full">
+          <h4 className="relative before:content-[''] before:absolute before:bottom-0.5 before:h-px before:w-0 before:bg-mauve-900 before:transition-all before:ease-circ-in-out group-hover:before:w-full group-data-[state=open]:before:w-full">
             {position.role}
           </h4>
           {hasDescription && (
