@@ -1,10 +1,10 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import type { MotionProps } from "motion/react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, MotionConfig } from "motion/react";
 import * as React from "react";
 import { useOnClickOutside } from "usehooks-ts";
-import { cn } from "@/lib/utils";
 
 type TLightboxContext = { open: boolean; setOpen: React.Dispatch<React.SetStateAction<boolean>> };
 
@@ -40,10 +40,12 @@ function Lightbox({ children }: { children: React.ReactNode }) {
   }, [open]);
 
   return (
-    <LightboxContext.Provider value={{ open, setOpen }}>
-      <LightboxOverlay />
-      {children}
-    </LightboxContext.Provider>
+    <MotionConfig transition={{ ease: [0.215, 0.61, 0.355, 1] }}>
+      <LightboxContext.Provider value={{ open, setOpen }}>
+        <LightboxOverlay />
+        {children}
+      </LightboxContext.Provider>
+    </MotionConfig>
   );
 }
 
@@ -53,8 +55,9 @@ function LightboxTrigger({ className, ...props }: React.ComponentProps<"div"> & 
   return (
     <motion.div
       layoutId="lightbox-card"
-      className={cn("p-4 border border-mauve-200 overflow-hidden", className)}
+      className={cn("relative z-50 p-4 overflow-hidden", className)}
       style={{ borderRadius: 10 }}
+      whileTap={{ scale: 0.985 }}
       onClick={() => setOpen(true)}
       {...props}
     />
@@ -114,4 +117,4 @@ function LightboxCaption({ className, ...props }: React.ComponentProps<"span">) 
   );
 }
 
-export { Lightbox, LightboxTrigger, LightboxOverlay, LightboxContent, LightboxCaption };
+export { Lightbox, LightboxCaption, LightboxContent, LightboxOverlay, LightboxTrigger };

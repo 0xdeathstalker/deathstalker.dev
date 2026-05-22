@@ -4,7 +4,7 @@ import * as React from "react";
 import { PatternSeparator } from "@/components/ui/pattern-separator";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight, Loader } from "lucide-react";
-import { useInView } from "@/lib/hooks/useInView";
+import { useInView } from "@/lib/hooks/use-in-view";
 import Link from "next/link";
 import type { Lab } from "@/lib/types";
 

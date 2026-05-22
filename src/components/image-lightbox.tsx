@@ -23,7 +23,7 @@ function ImageLightbox({
   return (
     <Lightbox>
       <div className="space-y-2">
-        <LightboxTrigger className="bg-background">
+        <LightboxTrigger className="bg-background cursor-zoom-in border border-mauve-200">
           <motion.img
             src={src}
             alt={alt}
