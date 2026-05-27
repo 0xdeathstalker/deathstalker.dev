@@ -56,7 +56,7 @@ function ChatInput() {
             e.preventDefault();
             setText("");
           }}
-          className="relative w-full h-10 pl-4 pr-1 py-2 bg-mauve-100 inline-flex items-center justify-between gap-2 ring ring-inset ring-mauve-200"
+          className="relative w-full h-10 px-4 py-2 bg-mauve-100 inline-flex items-center justify-between gap-2 ring ring-inset ring-mauve-200"
           style={{ borderRadius: 9999 }}
         >
           <input
