@@ -127,18 +127,23 @@ function Tooltip({ id, children }: { id: string; children: React.ReactNode }) {
 }
 
 function TooltipTrigger({
+  asChild = false,
   className,
   onPointerEnter,
   onPointerLeave,
   onFocus,
   onBlur,
   ...props
-}: React.ComponentProps<typeof Slot>) {
+}: React.ComponentProps<"button"> & {
+  asChild?: boolean;
+}) {
   const { handleEnter, handleLeave } = useTooltipContext();
+  const Component = asChild ? Slot : "button";
 
   return (
-    <Slot
+    <Component
       {...props}
+      type={asChild ? undefined : (props.type ?? "button")}
       onPointerEnter={composeEventHandlers(onPointerEnter, handleEnter)}
       onPointerLeave={composeEventHandlers(onPointerLeave, handleLeave)}
       onFocus={composeEventHandlers(onFocus, handleEnter)}
