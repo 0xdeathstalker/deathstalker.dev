@@ -72,7 +72,7 @@ const tooltipGroupConfig = {
     </>
   ),
   tech: "motion",
-  video: "https://cdn.deathstalker.dev/videos/sprites.mp4",
+  video: "https://cdn.deathstalker.dev/videos/grouped-tooltip.mp4",
   component: TooltipGroupComponent,
 };
 

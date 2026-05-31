@@ -22,9 +22,9 @@ export const labs: Array<Lab> = [
   iosInputMorphTextConfig,
   motionSharedLayoutConfig,
   transitionTabsConfig,
+  tooltipGroupConfig,
   morphTextConfig,
   groupAccordionConfig,
   nestedDropdownMenuConfig,
   chatInputConfig,
-  tooltipGroupConfig,
 ];
