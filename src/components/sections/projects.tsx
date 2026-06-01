@@ -115,7 +115,7 @@ function ProjectTechnologies({ technologies }: { technologies: Array<string> }) 
       {technologies.map((technology) => (
         <div
           key={technology}
-          className="font-pixel-square mx-1 mt-2 py-1 px-1.5 bg-mauve-200 rounded-sm text-muted-foreground text-xs ring-1 ring-inset ring-mauve-300/65"
+          className="font-pixel-square mx-1 mt-2 py-1 px-1.5 bg-mauve-200 rounded-sm text-muted-foreground text-xs shadow-[0_0_0_1px_color-mix(in_oklch,var(--color-mauve-300)_65%,transparent),0_1px_2px_-1px_color-mix(in_oklch,var(--color-mauve-300)_35%,transparent),0_2px_4px_0_color-mix(in_oklch,var(--color-mauve-400)_20%,transparent)]"
         >
           {technology}
         </div>

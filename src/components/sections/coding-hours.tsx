@@ -19,7 +19,7 @@ async function CodingHours() {
       <p>
         Yesterday worked for{" "}
         <span className="text-sm text-foreground">
-          {time?.hours ? `${time.hours}h` : null} {time?.minutes ?? 0}m
+          {time?.hours ? `${time.hours}h` : null} {time.minutes ? `${time?.minutes}m` : null}
         </span>
       </p>
     </div>

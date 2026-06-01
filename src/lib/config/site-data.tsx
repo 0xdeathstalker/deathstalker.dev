@@ -35,7 +35,10 @@ export const works: Array<Work> = [
         type: "freelancer",
         period: "09.2025 - present",
         description: [
-          "built a fullstack b2b saas platform for legal and tax compliance services, featuring multiple workflows.",
+          <span>
+            built a fullstack b2b saas platform, <InlineLink href="https://www.taxocity.com">taxocity</InlineLink>, for
+            legal and tax compliance services, featuring multiple workflows.
+          </span>,
           "implemented secure payment infrastructure with razorpay, one-time token system for post payment operations and automated payment confirmation emails via resend.",
           "built multi-channel lead management system with google sheets api and telecrm.",
           "developed a headless cms-driven blog using sanity with improved seo and performance.",
@@ -56,19 +59,19 @@ export const works: Array<Work> = [
         type: "full-time",
         period: "09.2023 - 09.2025",
         description: [
-          <span>
+          <p>
             built <InlineLink href="https://nitro-explorer.vercel.app">nitro explorer</InlineLink>, cross-chain
             blockchain explorer processing more than thousand daily transactions.
-          </span>,
-          <span>
+          </p>,
+          <p>
             integrated multiple blockchain ecosystems: (cosmos, bitcoin, tron, near, ton) into{" "}
             <InlineLink href="https://github.com/router-protocol/tangled">tangled</InlineLink>, a wallet sdk developed
             for handling multi-chain wallet flows.
-          </span>,
-          <span>
+          </p>,
+          <p>
             optimised transaction ux by reducing drop-offs, improving completion rates on{" "}
             <InlineLink href="https://routernitro.com/swap">nitro app</InlineLink>.
-          </span>,
+          </p>,
         ],
       },
       {
@@ -80,7 +83,7 @@ export const works: Array<Work> = [
         description: [
           "built a gamified nft application using the protocol's cross-chain architecture where users were able to mint an nft and then level it up by bridging across chains.",
           "implemented a lottery system with rewards distribution on polygon using ethers.js and custom wallet module for handling wallet connections.",
-          "went from intern to full-time based on shipping speed and code quality.",
+          "earned a full-time frontend engineer role by consistently shipping production-ready features with strong code quality.",
         ],
       },
     ],
