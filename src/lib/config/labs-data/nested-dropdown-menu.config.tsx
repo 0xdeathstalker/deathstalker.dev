@@ -21,8 +21,8 @@ const nestedDropdownMenuConfig = {
     <>
       <p>
         an exploration to recreate the dropdown interaction from{" "}
-        <InlineLink href="https://www.facebook.com">facebook</InlineLink> following the best practices preached by{" "}
-        <InlineLink href="https://x.com/emilkowalski">@emilkowalski</InlineLink>.
+        <InlineLink href="https://www.youtube.com">youtube</InlineLink> video settings by following the best practices
+        preached by <InlineLink href="https://x.com/emilkowalski">@emilkowalski</InlineLink>.
       </p>
       <p>
         this component renders a nested menu from a tree of menu items. the top level is shown by default and when there
