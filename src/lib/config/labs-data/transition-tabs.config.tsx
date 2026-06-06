@@ -48,7 +48,7 @@ const transitionTabsConfig: Lab = {
     </>
   ),
   tech: "css",
-  video: "https://cdn.deathstalker.dev/videos/transition-tabs.mp4",
+  video: "https://cdn.deathstalker.dev/videos/new/transition-tabs.mp4",
   component: TransitionTabs,
 };
 

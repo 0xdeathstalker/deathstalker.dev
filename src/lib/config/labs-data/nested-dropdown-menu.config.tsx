@@ -47,7 +47,7 @@ const nestedDropdownMenuConfig = {
     </>
   ),
   tech: "css",
-  video: "https://cdn.deathstalker.dev/videos/nested-dropdown-menu.mp4",
+  video: "https://cdn.deathstalker.dev/videos/new/dropdown-menu.mp4",
   component: NestedDropdownMenu,
 };
 

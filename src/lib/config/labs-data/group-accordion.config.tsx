@@ -72,7 +72,7 @@ const groupAccordionConfig = {
     </>
   ),
   tech: "css",
-  video: "https://cdn.deathstalker.dev/videos/group-accordion-css.mp4",
+  video: "https://cdn.deathstalker.dev/videos/new/group-accordion.mp4",
   component: GroupAccordionComponent,
 };
 

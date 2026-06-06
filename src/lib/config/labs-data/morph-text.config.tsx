@@ -29,7 +29,7 @@ const morphTextConfig = {
     </>
   ),
   tech: "motion",
-  video: "https://cdn.deathstalker.dev/videos/morphing-text.mp4",
+  video: "https://cdn.deathstalker.dev/videos/new/morph-text.mp4",
   component: MorphTextDemo,
 };
 
