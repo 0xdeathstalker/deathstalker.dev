@@ -121,7 +121,7 @@ const buttonStatesConfig = {
     </>
   ),
   tech: "css",
-  video: "https://cdn.deathstalker.dev/videos/submit-button-states.mp4",
+  video: "https://cdn.deathstalker.dev/videos/button-states.mp4",
   component: SubmitButtonStates,
 };
 

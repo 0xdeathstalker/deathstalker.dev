@@ -87,7 +87,7 @@ const chatInputConfig = {
     </>
   ),
   tech: "motion",
-  video: "https://cdn.deathstalker.dev/videos/new/chat-input.mp4",
+  video: "https://cdn.deathstalker.dev/videos/chat-input.mp4",
   component: ChatInput,
 };
 

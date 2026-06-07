@@ -122,7 +122,7 @@ const testimonialMarqueeConfig = {
     </>
   ),
   tech: "css",
-  video: "https://cdn.deathstalker.dev/videos/testimonial-marquee-animation.mp4",
+  video: "https://cdn.deathstalker.dev/videos/testimonial-marquee.mp4",
   component: TestimonialMarquee,
 };
 
