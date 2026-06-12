@@ -64,13 +64,14 @@ function AccordionContent({ children, className, ...props }: React.ComponentProp
     <div
       data-state={isOpen ? "open" : "closed"}
       className={cn(
-        "overflow-hidden transition-all duration-350 ease-in-out",
-        "data-[state=open]:max-h-screen data-[state=closed]:max-h-0",
+        "grid grid-rows-[0fr]",
+        "data-[state=open]:grid-rows-[1fr]",
+        "transition-[grid-template-rows] ease-out-cubic",
         className,
       )}
       {...props}
     >
-      {children}
+      <div className="min-h-0 overflow-hidden">{children}</div>
     </div>
   );
 }
