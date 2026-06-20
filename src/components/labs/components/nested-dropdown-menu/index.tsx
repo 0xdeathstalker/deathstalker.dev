@@ -197,7 +197,7 @@ function NestedMenuContent({ children, className, transition, ...props }: Conten
 }
 
 function NestedMenuViewport({ className, children, ...props }: React.ComponentProps<"div">) {
-  const { open, direction, setHeight } = useMenu();
+  const { open, setHeight } = useMenu();
   const ref = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -223,13 +223,7 @@ function NestedMenuViewport({ className, children, ...props }: React.ComponentPr
       className={className}
       {...props}
     >
-      <AnimatePresence
-        mode="popLayout"
-        initial={false}
-        custom={direction}
-      >
-        {children}
-      </AnimatePresence>
+      {children}
     </div>
   );
 }
@@ -244,20 +238,26 @@ function NestedMenuList({ renderItem, transition, className, children, ...props 
   const { activeItems, direction, history } = useMenu();
 
   return (
-    <motion.ul
-      key={history.length}
-      variants={slideVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
+    <AnimatePresence
+      mode="popLayout"
+      initial={false}
       custom={direction}
-      transition={transition ?? defaultTransition}
-      className={cn("will-change-transform", className)}
-      {...props}
     >
-      {children}
-      {activeItems.map((item) => renderItem(item))}
-    </motion.ul>
+      <motion.ul
+        key={history.length}
+        variants={slideVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        custom={direction}
+        transition={transition ?? defaultTransition}
+        className={cn("will-change-transform", className)}
+        {...props}
+      >
+        {children}
+        {activeItems.map((item) => renderItem(item))}
+      </motion.ul>
+    </AnimatePresence>
   );
 }
 

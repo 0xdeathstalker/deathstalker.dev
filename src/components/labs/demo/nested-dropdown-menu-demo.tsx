@@ -70,10 +70,10 @@ function NestedDropdownMenuDemo() {
           >
             <NestedMenuBackButton
               className={cn(
-                "h-8 w-full flex items-center gap-2 px-2 rounded-lg text-xs text-mauve-600",
+                "group h-8 w-full flex items-center gap-2 px-2 rounded-lg text-xs text-mauve-600",
                 "enabled:active:scale-[0.97] hover:bg-mauve-200 transition-[scale,background-color] ease-out",
               )}
-              iconClassName="text-mauve-700"
+              iconClassName="size-4 p-0.5 text-mauve-700 rounded-full group-hover:bg-mauve-300 transition-colors ease-out"
             />
           </NestedMenuList>
         </NestedMenuViewport>
