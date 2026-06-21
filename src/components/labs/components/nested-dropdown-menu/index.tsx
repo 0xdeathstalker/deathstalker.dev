@@ -185,6 +185,7 @@ function NestedMenuContent({ children, className, transition, ...props }: Conten
 
   return (
     <motion.div
+      data-open={open}
       initial={false}
       animate={height !== undefined ? { height: height + BORDER_HEIGHT } : undefined}
       transition={transition ?? defaultTransition}
