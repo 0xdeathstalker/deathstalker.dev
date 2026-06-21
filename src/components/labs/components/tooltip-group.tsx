@@ -28,7 +28,9 @@ function TooltipGroupComponent() {
                 <tool.icon className="size-4.5" />
               </button>
             </TooltipTrigger>
-            <TooltipContent className="bg-mauve-300/50 text-foreground">{tool.label}</TooltipContent>
+            <TooltipContent className="whitespace-nowrap px-2.5 py-1.25 rounded-md text-xs bg-mauve-300/50 text-foreground">
+              {tool.label}
+            </TooltipContent>
           </Tooltip>
         ))}
       </TooltipGroup>

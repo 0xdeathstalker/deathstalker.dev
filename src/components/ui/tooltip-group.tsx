@@ -61,10 +61,21 @@ type TooltipContext = {
 
 const TooltipContext = React.createContext<TooltipContext | null>(null);
 
-const tooltipVariants = {
-  exit: (skipExitAnimation: boolean) =>
-    skipExitAnimation ? { opacity: 0, y: 0, transition: { duration: 0 } } : { opacity: 0, y: 6 },
-} satisfies Variants;
+type Side = "top" | "bottom" | "left" | "right";
+
+const sideStyles: Record<string, string> = {
+  top: "absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2",
+  bottom: "absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2",
+  left: "absolute right-[calc(100%+8px)] top-1/2 -translate-y-1/2",
+  right: "absolute left-[calc(100%+8px)] top-1/2 -translate-y-1/2",
+};
+
+const sideOffset: Record<Side, object> = {
+  top: { y: 6 },
+  bottom: { y: -6 },
+  left: { x: 6 },
+  right: { x: -6 },
+};
 
 function useTooltipContext() {
   const context = React.useContext(TooltipContext);
@@ -121,7 +132,7 @@ function Tooltip({ id, children }: { id: string; children: React.ReactNode }) {
 
   return (
     <TooltipContext.Provider value={contextValue}>
-      <div className="relative inline-block">{children}</div>
+      <div className="relative">{children}</div>
     </TooltipContext.Provider>
   );
 }
@@ -148,13 +159,27 @@ function TooltipTrigger({
       onPointerLeave={composeEventHandlers(onPointerLeave, handleLeave)}
       onFocus={composeEventHandlers(onFocus, handleEnter)}
       onBlur={composeEventHandlers(onBlur, handleLeave)}
-      className={cn(className)}
+      className={className}
     />
   );
 }
 
-function TooltipContent({ className, id: _id, ...props }: React.ComponentProps<"div"> & MotionProps) {
+function TooltipContent({
+  side = "top",
+  className,
+  id: _id,
+  ...props
+}: React.ComponentProps<"div"> & MotionProps & { side?: Side }) {
   const { contentId, open, skipEnterAnimation, skipExitAnimation } = useTooltipContext();
+  const custom = { skipExitAnimation, side };
+
+  const variants = React.useMemo(
+    () => ({
+      exit: (skip: boolean) =>
+        skip ? { opacity: 0, y: 0, x: 0, transition: { duration: 0 } } : { opacity: 0, ...sideOffset[side] },
+    }),
+    [side],
+  );
 
   return (
     <AnimatePresence custom={skipExitAnimation}>
@@ -163,16 +188,13 @@ function TooltipContent({ className, id: _id, ...props }: React.ComponentProps<"
           {...props}
           id={contentId}
           role="tooltip"
-          custom={skipExitAnimation}
-          variants={tooltipVariants}
-          initial={skipEnterAnimation.current ? false : { opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
+          custom={custom}
+          variants={variants}
+          initial={skipEnterAnimation.current ? false : { opacity: 0, ...sideOffset[side] }}
+          animate={{ opacity: 1, y: 0, x: 0 }}
           exit="exit"
           transition={{ duration: 0.15 }}
-          className={cn(
-            "absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none px-2.5 py-1.25 rounded-md text-xs",
-            className,
-          )}
+          className={cn(sideStyles[side], "pointer-events-none", className)}
         />
       )}
     </AnimatePresence>
