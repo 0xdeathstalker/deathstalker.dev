@@ -7,7 +7,27 @@ import {
   SharedLayoutCardModalContent,
   SharedLayoutCardModalOverlay,
   SharedLayoutContent,
+  useSharedLayoutContext,
 } from "@/components/ui/shared-layout";
+
+function ActiveCardModal() {
+  const { activeCard } = useSharedLayoutContext<TCard>();
+
+  if (!activeCard) return null;
+
+  return (
+    <SharedLayoutCardModalContent
+      layoutId={`card-${activeCard.title}`}
+      style={{ borderRadius: 24 }}
+    >
+      <img
+        src={activeCard.image}
+        alt={activeCard.title}
+        className="max-h-[350px] object-cover"
+      />
+    </SharedLayoutCardModalContent>
+  );
+}
 
 function MotionSharedLayout() {
   return (
@@ -32,19 +52,8 @@ function MotionSharedLayout() {
         </SharedLayoutContent>
 
         <SharedLayoutCardModalOverlay />
-        <SharedLayoutCardModal<TCard>>
-          {(activeCard) => (
-            <SharedLayoutCardModalContent
-              layoutId={`card-${activeCard.title}`}
-              style={{ borderRadius: 24 }}
-            >
-              <img
-                src={activeCard.image}
-                alt={activeCard.title}
-                className="max-h-[350px] object-cover"
-              />
-            </SharedLayoutCardModalContent>
-          )}
+        <SharedLayoutCardModal>
+          <ActiveCardModal />
         </SharedLayoutCardModal>
       </SharedLayout>
     </div>
