@@ -36,12 +36,13 @@ export const works: Array<Work> = [
         period: "09.2025 - present",
         description: [
           <span>
-            built a fullstack b2b saas platform, <InlineLink href="https://www.taxocity.com">taxocity</InlineLink>, for
-            legal and tax compliance services, featuring multiple workflows.
+            built a b2b saas platform, <InlineLink href="https://www.taxocity.com">taxocity</InlineLink>, serving indian
+            startups and businesses with end-to-end legal and tax compliance workflows - covering company registration,
+            gst, itr filing, trademark and corporate modifications.
           </span>,
-          "implemented secure payment infrastructure with razorpay, one-time token system for post payment operations and automated payment confirmation emails via resend.",
-          "built multi-channel lead management system with google sheets api and telecrm.",
-          "developed a headless cms-driven blog using sanity with improved seo and performance.",
+          "implemented secure payment infrastructure with razorpay, including a one-time token system for post payment feature access and automated order confirmation emails via resend.",
+          "built multi-channel lead management system integrating google sheets api and telecrm for real-time lead capture and crm syncing across service inquiry flows.",
+          "developed a headless cms-driven blog using git workflows with improved seo and performance.",
         ],
       },
     ],
