@@ -52,7 +52,6 @@ function MarqueeContent({
   repeat = 4,
   pauseOnHover = false,
   reverse = false,
-  ...props
 }: MarqueeContentProps) {
   const { vertical } = React.useContext(MarqueeContext);
 
@@ -69,7 +68,6 @@ function MarqueeContent({
               "group-hover:paused": pauseOnHover,
               "direction-reverse": reverse,
             })}
-            {...props}
           >
             {children}
           </div>
@@ -89,6 +87,7 @@ function MarqueeItem({ className, ...props }: React.ComponentProps<"div">) {
 
 type MarqueeFadeProps = {
   align: "left" | "right" | "top" | "bottom";
+  color?: string;
 } & React.ComponentProps<"div">;
 
 const sideClasses = {
@@ -98,10 +97,18 @@ const sideClasses = {
   bottom: "bg-linear-to-t inset-x-0 bottom-0 h-1/6",
 };
 
-function MarqueeFade({ align, className, ...props }: MarqueeFadeProps) {
+function MarqueeFade({ color, align, style, className, ...props }: MarqueeFadeProps) {
   return (
     <div
-      className={cn("absolute z-10 from-background to-transparent pointer-events-none", sideClasses[align], className)}
+      style={{
+        ...(color && ({ "--fade-from": color } as React.CSSProperties)),
+        ...style,
+      }}
+      className={cn(
+        "absolute z-10 [--fade-from:var(--background)] from-(--fade-from) to-transparent pointer-events-none",
+        sideClasses[align],
+        className,
+      )}
       {...props}
     />
   );
