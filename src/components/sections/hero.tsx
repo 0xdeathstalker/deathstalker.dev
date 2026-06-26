@@ -73,7 +73,7 @@ function Bio() {
         {portfolio.bio.map((b, i) => (
           <p
             key={`${i + 1}`}
-            className="text-sm text-taupe-700 leading-relaxed"
+            className="text-sm text-taupe-700 leading-normal"
           >
             {b}
           </p>

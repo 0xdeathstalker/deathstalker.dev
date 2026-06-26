@@ -6,8 +6,12 @@ import type * as React from "react";
 export const portfolio = {
   author: "soumya mukherjee",
   bio: [
-    "hey, i'm a frontend focused developer with fullstack knowledge with 3 years of experience in building polished interfaces with react, next.js and typescript.",
-    "i focus on performance and user experience with pixel-perfect execution and strong attention to small details. i prioritize resilient code and thoughtful interactions that make interfaces feel effortless and alive.",
+    <p>
+      an engineer building web experiences at the intersection of design and engineering, turning complex systems into
+      interfaces that feel clear, fast and intentional. currently, i'm part of the team at{" "}
+      <InlineLink href="https://flipkart.com">flipkart</InlineLink>.
+    </p>,
+    "i focus on writing resilient code, thoughtful interaction details and the small decisions that make products feel effortless and alive.",
   ],
   resume: "/resume.pdf",
   socials: {
@@ -42,7 +46,7 @@ export const works: Array<Work> = [
             description: [
               <span>
                 built a b2b saas platform, <InlineLink href="https://www.taxocity.com">taxocity</InlineLink>, serving
-                indian startups and businesses with end-to-end legal and tax compliance workflows - covering company
+                indian startups and businesses with end-to-end legal and tax compliance workflows covering company
                 registration, gst, itr filing, trademark and corporate modifications.
               </span>,
               "implemented secure payment infrastructure with razorpay, including a one-time token system for post payment feature access and automated order confirmation emails via resend.",
