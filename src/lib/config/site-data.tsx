@@ -33,16 +33,23 @@ export const works: Array<Work> = [
         role: "fullstack engineer",
         roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
         type: "freelancer",
-        period: "09.2025 - present",
-        description: [
-          <span>
-            built a b2b saas platform, <InlineLink href="https://www.taxocity.com">taxocity</InlineLink>, serving indian
-            startups and businesses with end-to-end legal and tax compliance workflows - covering company registration,
-            gst, itr filing, trademark and corporate modifications.
-          </span>,
-          "implemented secure payment infrastructure with razorpay, including a one-time token system for post payment feature access and automated order confirmation emails via resend.",
-          "built multi-channel lead management system integrating google sheets api and telecrm for real-time lead capture and crm syncing across service inquiry flows.",
-          "developed a headless cms-driven blog using git workflows with improved seo and performance.",
+        projects: [
+          {
+            id: "project-taxocity",
+            name: "taxocity",
+            logo: "taxocity-logo.png",
+            period: "12.2025-04.2026",
+            description: [
+              <span>
+                built a b2b saas platform, <InlineLink href="https://www.taxocity.com">taxocity</InlineLink>, serving
+                indian startups and businesses with end-to-end legal and tax compliance workflows - covering company
+                registration, gst, itr filing, trademark and corporate modifications.
+              </span>,
+              "implemented secure payment infrastructure with razorpay, including a one-time token system for post payment feature access and automated order confirmation emails via resend.",
+              "built multi-channel lead management system integrating google sheets api and telecrm for real-time lead capture and crm syncing across service inquiry flows.",
+              "developed a headless cms-driven blog using git workflows with improved seo and performance.",
+            ],
+          },
         ],
       },
     ],

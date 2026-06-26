@@ -7,7 +7,7 @@ function InlineLink({ href, target = "_blank", className, ...props }: React.Comp
       href={href}
       target={target}
       className={cn(
-        "font-semibold underline underline-offset-3 decoration-mauve-300 hover:decoration-mauve-800 transition-colors ease-in-out",
+        "font-semibold underline underline-offset-3 decoration-mauve-300 hover:text-mauve-800 hover:decoration-mauve-800 transition-colors ease-in-out",
         className,
       )}
       {...props}
