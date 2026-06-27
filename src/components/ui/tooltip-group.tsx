@@ -1,203 +1,137 @@
 "use client";
 
-import { Slot } from "@radix-ui/react-slot";
-import type { MotionProps, Variants } from "motion/react";
-import { AnimatePresence, motion } from "motion/react";
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 type TGroupContext = {
   activeId: string | null;
   setActiveId: (id: string | null) => void;
   clearCloseTimer: () => void;
   scheduleClose: () => void;
+
+  getActiveId: () => string | null;
+  getPrevActiveId: () => string | null;
 };
 
 const GroupContext = React.createContext<TGroupContext | null>(null);
 
 function TooltipGroup({ children }: { children: React.ReactNode }) {
-  const [activeId, setActiveId] = React.useState<string | null>(null);
+  const [activeId, setActiveIdState] = React.useState<string | null>(null);
+  const prevActiveId = React.useRef<string | null>(null);
+  const activeIdRef = React.useRef<string | null>(null);
   const closeTimer = React.useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
-  const clearCloseTimer = React.useCallback(() => {
-    clearTimeout(closeTimer.current);
+  const clearCloseTimer = React.useCallback(() => clearTimeout(closeTimer.current), []);
+
+  const setActiveId = React.useCallback((id: string | null) => {
+    prevActiveId.current = activeIdRef.current;
+    activeIdRef.current = id;
+    setActiveIdState(id);
   }, []);
 
   const scheduleClose = React.useCallback(() => {
     clearTimeout(closeTimer.current);
     closeTimer.current = setTimeout(() => setActiveId(null), 100);
-  }, []);
+  }, [setActiveId]);
 
-  React.useEffect(() => {
-    return () => clearTimeout(closeTimer.current);
-  }, []);
+  const getActiveId = React.useCallback(() => activeIdRef.current, []);
+  const getPrevActiveId = React.useCallback(() => prevActiveId.current, []);
+
+  React.useEffect(() => clearTimeout(closeTimer.current), []);
 
   const contextValue = React.useMemo(
-    () => ({ activeId, setActiveId, clearCloseTimer, scheduleClose }),
-    [activeId, clearCloseTimer, scheduleClose],
+    () => ({ activeId, setActiveId, clearCloseTimer, scheduleClose, getActiveId, getPrevActiveId }),
+    [activeId, setActiveId, clearCloseTimer, scheduleClose, getActiveId, getPrevActiveId],
   );
 
-  return <GroupContext.Provider value={contextValue}>{children}</GroupContext.Provider>;
+  return (
+    <TooltipProvider>
+      <GroupContext.Provider value={contextValue}>{children}</GroupContext.Provider>
+    </TooltipProvider>
+  );
 }
 
 function useGroupContext() {
   const context = React.useContext(GroupContext);
-
-  if (!context) {
-    throw new Error("useGroupContext must be used within a TooltipGroup provider");
-  }
-
+  if (!context) throw new Error("useGroupContext must be used within a TooltipGroup provider");
   return context;
 }
 
-type TooltipContext = {
-  contentId: string;
-  open: boolean;
-  skipEnterAnimation: React.RefObject<boolean>;
-  skipExitAnimation: boolean;
-  handleEnter: () => void;
-  handleLeave: () => void;
+type TTooltipItemContext = {
+  skipEnter: boolean;
+  skipExit: boolean;
 };
 
-const TooltipContext = React.createContext<TooltipContext | null>(null);
+const TooltipItemContext = React.createContext<TTooltipItemContext | null>(null);
 
-type Side = "top" | "bottom" | "left" | "right";
-
-const sideStyles: Record<string, string> = {
-  top: "absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2",
-  bottom: "absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2",
-  left: "absolute right-[calc(100%+8px)] top-1/2 -translate-y-1/2",
-  right: "absolute left-[calc(100%+8px)] top-1/2 -translate-y-1/2",
-};
-
-const sideOffset: Record<Side, object> = {
-  top: { y: 6 },
-  bottom: { y: -6 },
-  left: { x: 6 },
-  right: { x: -6 },
-};
-
-function useTooltipContext() {
-  const context = React.useContext(TooltipContext);
-
-  if (!context) {
-    throw new Error("useTooltipContext must be used within a Tooltip provider");
-  }
-
+function useTooltipItemContext() {
+  const context = React.useContext(TooltipItemContext);
+  if (!context) throw new Error("useTooltipItemContext must be used within a TooltipItemContext provider");
   return context;
-}
-
-function composeEventHandlers<Event extends React.SyntheticEvent>(
-  userHandler: ((event: Event) => void) | undefined,
-  internalHandler: (event: Event) => void,
-) {
-  return (event: Event) => {
-    userHandler?.(event);
-
-    if (!event.defaultPrevented) {
-      internalHandler(event);
-    }
-  };
 }
 
 function Tooltip({ id, children }: { id: string; children: React.ReactNode }) {
-  const skipEnterAnimation = React.useRef(false);
+  const { activeId, setActiveId, clearCloseTimer, scheduleClose, getActiveId, getPrevActiveId } = useGroupContext();
 
-  const { activeId, setActiveId, clearCloseTimer, scheduleClose } = useGroupContext();
-  const contentId = React.useId();
   const open = activeId === id;
-  const skipExitAnimation = activeId !== null && activeId !== id;
 
-  const handleEnter = React.useCallback(() => {
-    clearCloseTimer();
-    skipEnterAnimation.current = activeId !== null && activeId !== id;
-    setActiveId(id);
-  }, [activeId, clearCloseTimer, id, setActiveId]);
+  const prevId = getPrevActiveId();
+  const skipEnter = open && prevId !== null && prevId !== id;
+  const skipExit = !open && prevId === id && activeId !== null;
 
-  const handleLeave = React.useCallback(() => {
-    scheduleClose();
-  }, [scheduleClose]);
-
-  const contextValue = React.useMemo(
-    () => ({
-      contentId,
-      open,
-      skipEnterAnimation,
-      skipExitAnimation,
-      handleEnter,
-      handleLeave,
-    }),
-    [contentId, open, skipExitAnimation, handleEnter, handleLeave],
+  const handleOpenChange = React.useCallback(
+    (nextOpen: boolean) => {
+      if (nextOpen) {
+        clearCloseTimer();
+        setActiveId(id);
+      } else if (getActiveId() === id) {
+        scheduleClose();
+      }
+    },
+    [id, clearCloseTimer, setActiveId, scheduleClose, getActiveId],
   );
 
   return (
-    <TooltipContext.Provider value={contextValue}>
-      <div className="relative">{children}</div>
-    </TooltipContext.Provider>
+    <TooltipItemContext.Provider value={{ skipEnter, skipExit }}>
+      <TooltipPrimitive.Root
+        open={open}
+        onOpenChange={handleOpenChange}
+      >
+        {children}
+      </TooltipPrimitive.Root>
+    </TooltipItemContext.Provider>
   );
 }
 
-function TooltipTrigger({
-  asChild = false,
-  className,
-  onPointerEnter,
-  onPointerLeave,
-  onFocus,
-  onBlur,
-  ...props
-}: React.ComponentProps<"button"> & {
-  asChild?: boolean;
-}) {
-  const { handleEnter, handleLeave } = useTooltipContext();
-  const Component = asChild ? Slot : "button";
+type TooltipContentProps = React.ComponentProps<typeof TooltipPrimitive.Content> & { showArrow?: boolean };
+
+function TooltipContent({ className, sideOffset = 0, showArrow = false, children, ...props }: TooltipContentProps) {
+  const { skipEnter, skipExit } = useTooltipItemContext();
 
   return (
-    <Component
-      {...props}
-      type={asChild ? undefined : (props.type ?? "button")}
-      onPointerEnter={composeEventHandlers(onPointerEnter, handleEnter)}
-      onPointerLeave={composeEventHandlers(onPointerLeave, handleLeave)}
-      onFocus={composeEventHandlers(onFocus, handleEnter)}
-      onBlur={composeEventHandlers(onBlur, handleLeave)}
-      className={className}
-    />
-  );
-}
-
-function TooltipContent({
-  side = "top",
-  className,
-  id: _id,
-  ...props
-}: React.ComponentProps<"div"> & MotionProps & { side?: Side }) {
-  const { contentId, open, skipEnterAnimation, skipExitAnimation } = useTooltipContext();
-  const custom = { skipExitAnimation, side };
-
-  const variants = React.useMemo(
-    () => ({
-      exit: (skip: boolean) =>
-        skip ? { opacity: 0, y: 0, x: 0, transition: { duration: 0 } } : { opacity: 0, ...sideOffset[side] },
-    }),
-    [side],
-  );
-
-  return (
-    <AnimatePresence custom={skipExitAnimation}>
-      {open && (
-        <motion.div
-          {...props}
-          id={contentId}
-          role="tooltip"
-          custom={custom}
-          variants={variants}
-          initial={skipEnterAnimation.current ? false : { opacity: 0, ...sideOffset[side] }}
-          animate={{ opacity: 1, y: 0, x: 0 }}
-          exit="exit"
-          transition={{ duration: 0.15 }}
-          className={cn(sideStyles[side], "pointer-events-none", className)}
-        />
-      )}
-    </AnimatePresence>
+    <TooltipPrimitive.Portal>
+      <TooltipPrimitive.Content
+        data-slot="tooltip-content"
+        sideOffset={sideOffset}
+        className={cn(
+          "bg-primary text-primary-foreground z-50 w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance",
+          !skipEnter && !skipExit && "animate-in fade-in-0 zoom-in-95",
+          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+          "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          skipExit && "data-[state=closed]:invisible",
+          !showArrow && "mb-1",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+        {showArrow && (
+          <TooltipPrimitive.Arrow className="bg-primary fill-primary z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-[2px]" />
+        )}
+      </TooltipPrimitive.Content>
+    </TooltipPrimitive.Portal>
   );
 }
 
