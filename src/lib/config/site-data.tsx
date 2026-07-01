@@ -6,11 +6,7 @@ import type * as React from "react";
 export const portfolio = {
   author: "soumya mukherjee",
   bio: [
-    <p>
-      an engineer building web experiences at the intersection of design and engineering, turning complex systems into
-      interfaces that feel clear, fast and intentional. currently, i'm part of the team at{" "}
-      <InlineLink href="https://flipkart.com">flipkart</InlineLink>.
-    </p>,
+    "an engineer building web experiences at the intersection of design and engineering, turning complex systems into interfaces that feel clear, fast and intentional.",
     "i focus on writing resilient code, thoughtful interaction details and the small decisions that make products feel effortless and alive.",
   ],
   resume: "/resume.pdf",
