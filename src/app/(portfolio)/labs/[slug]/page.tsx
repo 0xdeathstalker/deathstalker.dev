@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${lab.title}`;
   const description = lab.subHeading;
   const url = `${siteConfig.url}/labs/${slug}`;
+  const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
   return {
     title,
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: siteConfig.name,
       images: [
         {
-          url: siteConfig.ogImage,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: title,
@@ -53,7 +54,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title,
       description,
-      images: [siteConfig.ogImage],
+      images: [ogImage],
       creator: siteConfig.author.twitter,
     },
   };
@@ -68,6 +69,11 @@ export default async function LabPage({ params }: PageProps) {
     notFound();
   }
 
+  const title = `${component?.title}`;
+  const description = component?.subHeading;
+
+  const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+
   const prevSlug = labs[currentIndex + 1]?.slug ?? null;
   const nextSlug = labs[currentIndex - 1]?.slug ?? null;
   const jsonLd = {
@@ -76,7 +82,7 @@ export default async function LabPage({ params }: PageProps) {
     name: component.title,
     description: component.subHeading,
     url: `${siteConfig.url}/labs/${slug}`,
-    image: siteConfig.ogImage,
+    image: ogImage,
     creator: {
       "@type": "Person",
       name: siteConfig.author.name,

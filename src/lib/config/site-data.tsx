@@ -6,8 +6,8 @@ import type * as React from "react";
 export const portfolio = {
   author: "soumya mukherjee",
   bio: [
-    "hey, i'm a frontend focused developer with fullstack knowledge with 3 years of experience in building polished interfaces with react, next.js and typescript.",
-    "i focus on performance and user experience with pixel-perfect execution and strong attention to small details. i prioritize resilient code and thoughtful interactions that make interfaces feel effortless and alive.",
+    "an engineer building web experiences at the intersection of design and engineering, turning complex systems into interfaces that feel clear, fast and intentional.",
+    "i focus on writing resilient code, thoughtful interaction details and the small decisions that make products feel effortless and alive.",
   ],
   resume: "/resume.pdf",
   socials: {
@@ -33,15 +33,23 @@ export const works: Array<Work> = [
         role: "fullstack engineer",
         roleIcon: <Code className="size-3.5 text-muted-foreground/70" />,
         type: "freelancer",
-        period: "09.2025 - present",
-        description: [
-          <span>
-            built a fullstack b2b saas platform, <InlineLink href="https://www.taxocity.com">taxocity</InlineLink>, for
-            legal and tax compliance services, featuring multiple workflows.
-          </span>,
-          "implemented secure payment infrastructure with razorpay, one-time token system for post payment operations and automated payment confirmation emails via resend.",
-          "built multi-channel lead management system with google sheets api and telecrm.",
-          "developed a headless cms-driven blog using sanity with improved seo and performance.",
+        projects: [
+          {
+            id: "project-taxocity",
+            name: "taxocity",
+            logo: "taxocity-logo.png",
+            period: "12.2025-04.2026",
+            description: [
+              <span>
+                built a b2b saas platform, <InlineLink href="https://www.taxocity.com">taxocity</InlineLink>, serving
+                indian startups and businesses with end-to-end legal and tax compliance workflows covering company
+                registration, gst, itr filing, trademark and corporate modifications.
+              </span>,
+              "implemented secure payment infrastructure with razorpay, including a one-time token system for post payment feature access and automated order confirmation emails via resend.",
+              "built multi-channel lead management system integrating google sheets api and telecrm for real-time lead capture and crm syncing across service inquiry flows.",
+              "developed a headless cms-driven blog using git workflows with improved seo and performance.",
+            ],
+          },
         ],
       },
     ],

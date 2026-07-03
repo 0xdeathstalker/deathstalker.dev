@@ -59,7 +59,7 @@ function ColorTransitionTabs() {
 
         <div
           aria-hidden="true"
-          className="absolute top-0 h-10 rounded-[16px] bg-[#F76F53] transition-[left,width] ease"
+          className="absolute top-0 h-10 rounded-[16px] bg-mauve-500 transition-[left,width] ease"
           style={{
             transitionDuration: `${speed}s`,
             ...indicatorStyle,

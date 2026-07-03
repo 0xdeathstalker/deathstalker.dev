@@ -5,11 +5,10 @@ export const siteConfig = {
   description:
     "Frontend engineer crafting polished interfaces with React, Next.js and TypeScript. Focused on clean code, smooth animations and interactions that feel effortless.",
   url: "https://deathstalker.dev",
-  ogImage: "https://deathstalker.dev/og.png",
   author: {
     name: "Soumya Mukherjee",
     email: "soumyamukherjee.work@gmail.com",
-    twitter: "@0xdeathstalker",
+    twitter: "@xdeathstalker",
     github: "0xdeathstalker",
     linkedin: "soumya-mukherjee-88a551248",
   },
@@ -38,3 +37,5 @@ export const siteConfig = {
     "Framer Motion",
   ],
 } as const;
+
+const X_HANDLE = "xdeathstalker";

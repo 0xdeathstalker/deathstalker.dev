@@ -1,4 +1,4 @@
-import { NestedDropdownMenu } from "@/components/labs/components/nested-dropdown-menu";
+import { NestedDropdownMenuDemo } from "@/components/labs/demo/nested-dropdown-menu-demo";
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";
 import { InlineLink } from "@/components/ui/inline-link";
@@ -48,7 +48,7 @@ const nestedDropdownMenuConfig = {
   ),
   tech: "css",
   video: "https://cdn.deathstalker.dev/videos/dropdown-menu.mp4",
-  component: NestedDropdownMenu,
+  component: NestedDropdownMenuDemo,
 };
 
 export { nestedDropdownMenuConfig };

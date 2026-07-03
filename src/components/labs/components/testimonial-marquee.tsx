@@ -33,7 +33,7 @@ function TestimonialMarquee() {
               >
                 <Testimonial
                   showSpotlight
-                  className="h-full bg-neutral-800 text-neutral-100 rounded-sm"
+                  className="h-full bg-neutral-800 text-neutral-100 rounded-sm ring-1 ring-inset ring-foreground/40"
                 >
                   <TestimonialQuote className="text-sm">{t.quote}</TestimonialQuote>
 
@@ -74,7 +74,7 @@ function TestimonialMarquee() {
                 <Testimonial
                   showSpotlight
                   spotlightColor="rgba(0, 201, 81, 0.25)"
-                  className="h-full bg-card rounded-sm ring-border"
+                  className="h-full bg-card rounded-sm ring-1 ring-inset ring-border"
                 >
                   <TestimonialQuote className="text-sm">{t.quote}</TestimonialQuote>
 

@@ -11,7 +11,6 @@ import { maskScrollAreaConfig } from "./scroll-fade-effect.config";
 import { spritesConfig } from "./sprites.config";
 import { testimonialMarqueeConfig } from "./testimonial-marquee.config";
 import { transitionTabsConfig } from "./transition-tabs.config";
-import { tooltipGroupConfig } from "./tooltip-group.config";
 
 export const labs: Array<Lab> = [
   buttonStatesConfig,
@@ -22,7 +21,6 @@ export const labs: Array<Lab> = [
   iosInputMorphTextConfig,
   motionSharedLayoutConfig,
   transitionTabsConfig,
-  tooltipGroupConfig,
   morphTextConfig,
   groupAccordionConfig,
   nestedDropdownMenuConfig,

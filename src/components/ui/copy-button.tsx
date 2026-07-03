@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { type CopyState, useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 import { cn } from "@/lib/utils";
+import { Slot } from "@radix-ui/react-slot";
 import { CircleXIcon, CopyIcon } from "lucide-react";
 import { AnimatePresence, type HTMLMotionProps, motion, type Variants } from "motion/react";
 import type * as React from "react";
@@ -62,6 +63,7 @@ function CopyStateIcon({ state, copyIcon, successIcon, errorIcon }: CopyStateIco
 
 type CopyButtonProps = React.ComponentProps<typeof Button> & {
   text: string;
+  resetDelay?: number;
   onCopySuccess?: (text: string) => void;
   onCopyError?: (error: Error) => void;
 } & Pick<CopyStateIconProps, "copyIcon" | "successIcon" | "errorIcon">;
@@ -69,6 +71,8 @@ type CopyButtonProps = React.ComponentProps<typeof Button> & {
 function CopyButton({
   size = "icon",
   text,
+  asChild = false,
+  resetDelay,
   copyIcon,
   successIcon,
   errorIcon,
@@ -81,15 +85,18 @@ function CopyButton({
   const { state, copy } = useCopyToClipboard({
     onCopySuccess,
     onCopyError,
+    resetDelay,
   });
 
+  const Comp = asChild ? Slot : Button;
+
   return (
-    <Button
+    <Comp
       size={size}
       onClick={() => {
         copy(text);
       }}
-      className={cn("size-6 enabled:active:scale-[0.97]", className)}
+      className={cn(size === "icon" && "size-6", "enabled:active:scale-[0.97]", className)}
       {...props}
     >
       <CopyStateIcon
@@ -99,7 +106,7 @@ function CopyButton({
         errorIcon={errorIcon}
       />
       {children}
-    </Button>
+    </Comp>
   );
 }
 

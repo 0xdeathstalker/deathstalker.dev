@@ -48,7 +48,7 @@ export function LabNavigation({ prevSlug, nextSlug }: LabNavigationProps) {
             <ArrowLeft className="size-3.5" />
           </Button>
         </TooltipTrigger>
-        <TooltipContent className="font-sans inline-flex items-center gap-2 py-2 px-2">
+        <TooltipContent className="bg-mauve-600 font-sans inline-flex items-center gap-2 py-2 px-2">
           <Kbd>
             <ArrowLeft />
           </Kbd>
@@ -72,7 +72,7 @@ export function LabNavigation({ prevSlug, nextSlug }: LabNavigationProps) {
             <ArrowRight className="size-3.5" />
           </Button>
         </TooltipTrigger>
-        <TooltipContent className="font-sans inline-flex items-center gap-2 py-2 px-2">
+        <TooltipContent className="bg-mauve-600 font-sans inline-flex items-center gap-2 py-2 px-2">
           next component
           <Kbd>
             <ArrowRight />

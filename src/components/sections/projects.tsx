@@ -33,7 +33,7 @@ export function ProjectItem({ project, isLast }: { project: Project; isLast: boo
   return (
     <Accordion
       defaultOpen={project.id === 1}
-      className="relative py-6 px-4"
+      className="relative py-6 px-4 group/project"
     >
       <AccordionTrigger className="cursor-pointer">
         <ProjectItemInfo project={project} />
@@ -66,7 +66,7 @@ function ProjectItemInfo({ project }: { project: Project }) {
           <img
             src={`/images/projects/${project.logo}`}
             alt={`${project.title} logo`}
-            className="size-6"
+            className="size-6 grayscale group-hover/project:grayscale-0 transition-[filter] ease-in-out duration-300"
           />
         </div>
 

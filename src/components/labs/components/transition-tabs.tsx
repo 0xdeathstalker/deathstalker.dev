@@ -54,7 +54,7 @@ function TransitionTabs({ toggleClipPath, speed }: { toggleClipPath?: boolean; s
         className="absolute inset-0 transition-[clip-path] [clip-path:inset(0_91%_0_0_round_16px)] ease"
         style={{ transitionDuration: `${speed}s` }}
       >
-        <ul className="flex items-center gap-5 bg-[#F76F53]">
+        <ul className="flex items-center gap-5 bg-mauve-500">
           {TABS.map((tab, idx) => (
             <li
               key={`${tab}-${idx + 1}`}

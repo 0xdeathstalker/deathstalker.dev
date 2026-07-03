@@ -9,6 +9,11 @@ import { Work } from "@/components/sections/work";
 import { PatternSeparator } from "@/components/ui/pattern-separator";
 import { siteConfig } from "@/lib/config/site";
 
+const title = "soumya";
+const description = "software developer working at flipkart.";
+
+const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+
 export const metadata: Metadata = {
   title: {
     absolute: "deathstalker",
@@ -25,7 +30,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: ogImage,
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -36,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Soumya Mukherjee | Frontend Engineer",
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    images: [ogImage],
     creator: siteConfig.author.twitter,
   },
 };

@@ -10,7 +10,7 @@ type TSharedLayoutContext<T = unknown> = {
 
 const SharedLayoutContext = React.createContext<TSharedLayoutContext<unknown> | null>(null);
 
-function useSharedLayoutContext<T = unknown>() {
+export function useSharedLayoutContext<T = unknown>() {
   const context = React.useContext(SharedLayoutContext);
 
   if (!context) {
@@ -74,7 +74,8 @@ function SharedLayoutCard<T>({
 }
 
 function SharedLayoutCardModalOverlay({ className, ...props }: React.ComponentProps<"div"> & MotionProps) {
-  const { activeCard } = useSharedLayoutContext();
+  const { activeCard, setActiveCard } = useSharedLayoutContext();
+
   return (
     <AnimatePresence>
       {activeCard ? (
@@ -82,6 +83,7 @@ function SharedLayoutCardModalOverlay({ className, ...props }: React.ComponentPr
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          onClick={() => setActiveCard(null)}
           className={cn("absolute inset-0 bg-black/20 z-50", className)}
           {...props}
         />
@@ -90,16 +92,12 @@ function SharedLayoutCardModalOverlay({ className, ...props }: React.ComponentPr
   );
 }
 
-type SharedLayoutCardModalProps<T> = {
-  children: (activeCard: T) => React.ReactNode;
-};
-
-function SharedLayoutCardModal<T>({ children }: SharedLayoutCardModalProps<T>) {
+function SharedLayoutCardModal<T>({ children }: { children: React.ReactNode }) {
   const { activeCard } = useSharedLayoutContext<T>();
 
   return (
     <AnimatePresence>
-      {activeCard ? <div className="absolute inset-0 grid place-items-center z-50">{children(activeCard)}</div> : null}
+      {activeCard ? <div className="absolute inset-0 grid place-items-center z-50">{children}</div> : null}
     </AnimatePresence>
   );
 }

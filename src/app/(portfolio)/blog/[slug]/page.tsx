@@ -9,6 +9,11 @@ import { getBlogBySlug, getBlogs } from "@/lib/actions/blog";
 import { siteConfig } from "@/lib/config/site";
 import { formatDate } from "@/lib/utils";
 
+const title = "blogs";
+const description = "writing about code and everything.";
+
+const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
@@ -46,7 +51,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: [siteConfig.author.name],
       images: [
         {
-          url: siteConfig.ogImage,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: title,
@@ -57,7 +62,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title,
       description,
-      images: [siteConfig.ogImage],
+      images: [ogImage],
       creator: siteConfig.author.twitter,
     },
   };
@@ -88,7 +93,7 @@ export default async function Blog({ params }: PageProps) {
       name: siteConfig.author.name,
       url: siteConfig.url,
     },
-    image: siteConfig.ogImage,
+    image: ogImage,
     url: `${siteConfig.url}/blog/${slug}`,
   };
 

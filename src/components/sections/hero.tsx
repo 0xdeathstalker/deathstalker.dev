@@ -71,12 +71,12 @@ function Bio() {
     <div className="relative py-6 px-4">
       <div className="space-y-4">
         {portfolio.bio.map((b, i) => (
-          <p
+          <div
             key={`${i + 1}`}
-            className="text-sm text-taupe-700 leading-relaxed"
+            className="text-sm text-taupe-700 leading-normal"
           >
             {b}
-          </p>
+          </div>
         ))}
       </div>
 

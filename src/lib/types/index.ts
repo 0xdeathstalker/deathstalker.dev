@@ -17,9 +17,31 @@ export type WorkPosition = {
   role: string;
   roleIcon: ReactElement;
   type: "freelancer" | "intern" | "full-time" | "contract";
-  period: string;
+  period?: string;
   description?: Array<ReactElement | string>;
+  projects?: Array<WorkProject>;
 };
+
+export type WorkProject = {
+  id: string;
+  name: string;
+  logo: string;
+  period?: string;
+  description: Array<ReactElement | string>;
+};
+
+export type WorkListItem =
+  | {
+      id: string;
+      position: WorkPosition;
+      type: "position";
+    }
+  | {
+      id: string;
+      position: WorkPosition;
+      project: WorkProject;
+      type: "project";
+    };
 
 export type Work = {
   id: number;

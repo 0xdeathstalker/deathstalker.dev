@@ -33,6 +33,12 @@ function getAvatarColor(seed: string): string {
   return AVATAR_COLORS[sum % AVATAR_COLORS.length];
 }
 
+function getInitials(seed: string): string {
+  const parts = seed.trim().split(/\s+/);
+  if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  return (seed[0] ?? "").toUpperCase();
+}
+
 type TestimonialProps = {
   showSpotlight?: boolean;
   spotlightColor?: `rgba(${number},${number},${number},${number})`;
@@ -155,9 +161,15 @@ function TestimonialAvatarFallback({ seed, className, ...props }: { seed: string
   return (
     <div
       data-slot="avatar-fallback"
-      className={cn("size-8 md:size-10 shrink-0 rounded-full", getAvatarColor(seed), className)}
+      className={cn(
+        "size-8 md:size-10 shrink-0 rounded-full flex items-center justify-center text-white text-xs font-semibold select-none",
+        getAvatarColor(seed),
+        className,
+      )}
       {...props}
-    />
+    >
+      {getInitials(seed)}
+    </div>
   );
 }
 
@@ -213,7 +225,7 @@ function TestimonialVerifiedBadge({ className, ...props }: React.ComponentProps<
 type TestimonialSpotlightProps = {
   position: Position;
   opacity: 0 | 1;
-  spotlightColor: `rgba(${number},${number},${number},${number})`;
+  spotlightColor: string;
 };
 function TestimonialSpotlight({ position, opacity, spotlightColor }: TestimonialSpotlightProps) {
   return (
