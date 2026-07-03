@@ -8,6 +8,11 @@ import { Line } from "@/components/ui/line";
 import { labs } from "@/lib/config/labs-data";
 import { siteConfig } from "@/lib/config/site";
 
+const title = "labs";
+const description = "a creative space for ui experiments, component studies and exploration.";
+
+const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+
 export const metadata: Metadata = {
   title: "labs",
   description:
@@ -24,7 +29,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: ogImage,
         width: 1200,
         height: 630,
         alt: "Labs",
@@ -36,7 +41,7 @@ export const metadata: Metadata = {
     title: "Labs",
     description:
       "UI experiments, component studies and interaction explorations built with React, Next.js and TypeScript.",
-    images: [siteConfig.ogImage],
+    images: [ogImage],
     creator: siteConfig.author.twitter,
   },
 };

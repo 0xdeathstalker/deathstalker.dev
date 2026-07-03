@@ -6,6 +6,11 @@ import { fontVariables } from "@/lib/fonts";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 
+const title = "soumya";
+const description = "software developer working at flipkart.";
+
+const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -28,7 +33,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: ogImage,
         width: 1200,
         height: 630,
         alt: siteConfig.title,
@@ -39,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    images: [ogImage],
     creator: siteConfig.author.twitter,
   },
   robots: {
