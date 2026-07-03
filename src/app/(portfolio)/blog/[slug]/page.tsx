@@ -12,7 +12,7 @@ import { formatDate } from "@/lib/utils";
 const title = "blogs";
 const description = "writing about code and everything.";
 
-const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
 type PageProps = {
   params: Promise<{ slug: string }>;

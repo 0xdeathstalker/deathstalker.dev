@@ -11,7 +11,7 @@ import { siteConfig } from "@/lib/config/site";
 const title = "labs";
 const description = "a creative space for ui experiments, component studies and exploration.";
 
-const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
 export const metadata: Metadata = {
   title: "labs",

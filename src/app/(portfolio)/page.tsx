@@ -12,7 +12,7 @@ import { siteConfig } from "@/lib/config/site";
 const title = "soumya";
 const description = "software developer working at flipkart.";
 
-const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
 export const metadata: Metadata = {
   title: {

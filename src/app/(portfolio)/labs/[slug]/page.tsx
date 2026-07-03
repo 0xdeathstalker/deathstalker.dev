@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${lab.title}`;
   const description = lab.subHeading;
   const url = `${siteConfig.url}/labs/${slug}`;
-  const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+  const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
   return {
     title,
@@ -72,7 +72,7 @@ export default async function LabPage({ params }: PageProps) {
   const title = `${component?.title}`;
   const description = component?.subHeading;
 
-  const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+  const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
   const prevSlug = labs[currentIndex + 1]?.slug ?? null;
   const nextSlug = labs[currentIndex - 1]?.slug ?? null;
