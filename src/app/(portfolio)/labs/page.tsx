@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { BackButton } from "@/components/back-button";
-import { ScrollGradients } from "@/components/scroll-gradients";
+import { BackButton } from "@/components/ui/back-button";
+import { ScrollGradients } from "@/components/ui/scroll-gradients";
 import { LabItem } from "@/components/sections/lab-item";
 import { QuoteTime } from "@/components/sections/quote-time";
 import { CornerDiamondShapes } from "@/components/ui/corner-shapes";

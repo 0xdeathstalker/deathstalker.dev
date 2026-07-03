@@ -1,4 +1,4 @@
-import { NestedDropdownMenuDemo } from "@/components/labs/demo/nested-dropdown-menu-demo";
+import { NestedDropdownMenuDemo } from "@/components/labs/demo/nested-dropdown-menu";
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";
 import { InlineLink } from "@/components/ui/inline-link";

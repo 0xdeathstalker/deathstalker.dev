@@ -1,4 +1,4 @@
-import { MorphTextDemo } from "@/components/labs/components/morph-text-demo";
+import { MorphTextDemo } from "@/components/labs/demo/morph-text.demo";
 import { Code } from "@/components/ui/code";
 import { InlineLink } from "@/components/ui/inline-link";
 

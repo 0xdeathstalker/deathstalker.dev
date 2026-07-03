@@ -1,6 +1,6 @@
-import { ScrollToTop } from "@/components/scroll-to-top";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { Favicon } from "@/components/ui/favicon";
-import { UmamiAnalytics } from "@/components/umami-analytics";
+import { UmamiAnalytics } from "@/components/sections/umami-analytics";
 import { siteConfig } from "@/lib/config/site";
 import { fontVariables } from "@/lib/fonts";
 import "@/styles/globals.css";

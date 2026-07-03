@@ -1,4 +1,4 @@
-import { RandomQuotes } from "@/components/random-quotes";
+import { RandomQuotes } from "@/components/sections/random-quotes";
 import { CornerDiamondShapes } from "@/components/ui/corner-shapes";
 import { Line } from "@/components/ui/line";
 

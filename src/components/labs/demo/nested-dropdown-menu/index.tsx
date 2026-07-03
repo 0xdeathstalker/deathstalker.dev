@@ -10,8 +10,8 @@ import {
   NestedMenuListItem,
   NestedMenuTrigger,
   NestedMenuViewport,
-} from "@/components/labs/components/nested-dropdown-menu";
-import { type DemoMenuItem, nestedMenuItems } from "@/components/labs/components/nested-dropdown-menu/data";
+} from "@/components/ui/nested-dropdown-menu";
+import { type DemoMenuItem, nestedMenuItems } from "@/components/labs/demo/nested-dropdown-menu/data";
 import { cn } from "@/lib/utils";
 
 function NestedDropdownMenuDemo() {

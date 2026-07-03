@@ -1,4 +1,4 @@
-import { TextFlip } from "@/components/text-flip";
+import { TextFlip } from "@/components/ui/text-flip";
 import { CornerDiamondShapes } from "@/components/ui/corner-shapes";
 import { Line } from "@/components/ui/line";
 import { getGitHubContributions } from "@/lib/actions/github-contributions";

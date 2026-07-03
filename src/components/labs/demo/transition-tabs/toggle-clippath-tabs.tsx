@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { TransitionTabs } from "@/components/labs/components/transition-tabs";
+import { TransitionTabs } from "@/components/ui/transition-tabs";
 import { ToggleSpeed } from "@/components/labs/speed-toggle";
 
 function ToggleClippathDemo() {

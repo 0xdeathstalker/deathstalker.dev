@@ -4,7 +4,7 @@ import { Line } from "@/components/ui/line";
 import { projects } from "@/lib/config/site-data";
 import type { Project } from "@/lib/types";
 import { ChevronRight } from "lucide-react";
-import { LinkIcon } from "@/components/link-icon";
+import { LinkIcon } from "@/components/ui/link-icon";
 import React from "react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type { Url } from "next/dist/shared/lib/router/router";

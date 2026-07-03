@@ -1,4 +1,4 @@
-import { ChatInput } from "@/components/labs/components/chat-input";
+import { ChatInput } from "@/components/labs/demo/chat-input.demo";
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";
 import { InlineLink } from "@/components/ui/inline-link";

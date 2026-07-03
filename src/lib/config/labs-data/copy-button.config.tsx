@@ -1,4 +1,4 @@
-import { CopyButtonDemo } from "@/components/labs/components/copy-button-demo";
+import { CopyButtonDemo } from "@/components/labs/demo/copy-button.demo";
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";
 import { InlineLink } from "@/components/ui/inline-link";
