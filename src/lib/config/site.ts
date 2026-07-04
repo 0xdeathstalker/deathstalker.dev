@@ -1,3 +1,5 @@
+import type { SocialProfile } from "@/lib/types";
+
 export const siteConfig = {
   name: "Soumya Mukherjee",
   shortName: "deathstalker",
@@ -38,4 +40,22 @@ export const siteConfig = {
   ],
 } as const;
 
-const X_HANDLE = "xdeathstalker";
+export const SOCIALS: Record<string, SocialProfile> = {
+  twitter: {
+    title: "twitter",
+    handle: "@xdeathstalker",
+    href: "https://x.com/xdeathstalker",
+  },
+  github: {
+    title: "github",
+    handle: "0xdeathstalker",
+    href: "https://github.com/0xdeathstalker",
+  },
+  linkedin: {
+    title: "linkedin",
+    handle: "smukherjee15",
+    href: "https://linkedin.com/in/smukherjee15",
+  },
+};
+
+export type SocialNames = keyof typeof SOCIALS;

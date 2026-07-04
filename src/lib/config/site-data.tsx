@@ -10,11 +10,6 @@ export const portfolio = {
     "i focus on writing resilient code, thoughtful interaction details and the small decisions that make products feel effortless and alive.",
   ],
   resume: "/resume.pdf",
-  socials: {
-    github: "https://github.com/0xdeathstalker",
-    linkedin: "https://www.linkedin.com/in/soumya-mukherjee-88a551248/",
-    twitter: "https://x.com/0xdeathstalker",
-  },
   mail: "soumyamukherjee.work@gmail.com",
   github_username: "0xdeathstalker",
 } as const;
