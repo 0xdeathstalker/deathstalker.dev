@@ -96,4 +96,5 @@ export type SocialProfile = {
   title: string;
   handle: string;
   href: string;
+  color?: string;
 };
