@@ -42,6 +42,7 @@ export const metadata: Metadata = {
     description:
       "UI experiments, component studies and interaction explorations built with React, Next.js and TypeScript.",
     images: [ogImage],
+    site: siteConfig.author.twitter,
     creator: siteConfig.author.twitter,
   },
 };

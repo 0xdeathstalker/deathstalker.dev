@@ -55,6 +55,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       images: [ogImage],
+      site: siteConfig.author.twitter,
       creator: siteConfig.author.twitter,
     },
   };

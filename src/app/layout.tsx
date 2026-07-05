@@ -45,6 +45,7 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     images: [ogImage],
+    site: siteConfig.author.twitter,
     creator: siteConfig.author.twitter,
   },
   robots: {

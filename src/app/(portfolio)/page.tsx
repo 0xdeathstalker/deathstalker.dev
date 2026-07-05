@@ -42,6 +42,7 @@ export const metadata: Metadata = {
     title: "Soumya Mukherjee | Frontend Engineer",
     description: siteConfig.description,
     images: [ogImage],
+    site: siteConfig.author.twitter,
     creator: siteConfig.author.twitter,
   },
 };
