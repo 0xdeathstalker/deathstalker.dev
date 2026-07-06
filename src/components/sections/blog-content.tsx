@@ -1,3 +1,5 @@
+import { Code } from "@/components/ui/code";
+import { InlineLink } from "@/components/ui/inline-link";
 import { slugify } from "@/lib/utils";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
@@ -5,11 +7,11 @@ import * as React from "react";
 import { codeToHtml } from "shiki";
 
 function Table({ data }: { data: { headers: Array<string>; rows: Array<Array<string>> } }) {
-  let headers = data.headers.map((header, index) => <th key={index}>{header}</th>);
-  let rows = data.rows.map((row, index) => (
-    <tr key={index}>
+  const headers = data.headers.map((header, index) => <th key={`${index + 1}`}>{header}</th>);
+  const rows = data.rows.map((row, index) => (
+    <tr key={`${index + 1}`}>
       {row.map((cell, cellIndex) => (
-        <td key={cellIndex}>{cell}</td>
+        <td key={`${cellIndex + 1}`}>{cell}</td>
       ))}
     </tr>
   ));
@@ -119,6 +121,8 @@ const components = {
   h5: createHeading(5),
   h6: createHeading(6),
   pre: Pre,
+  Code,
+  InlineLink,
   Table,
 };
 

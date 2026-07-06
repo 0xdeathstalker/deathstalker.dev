@@ -279,11 +279,11 @@
 }
 
 .prose h2 {
-  @apply text-2xl;
+  @apply text-xl;
 }
 
 .prose h3 {
-  @apply text-xl;
+  @apply text-lg;
 }
 
 .prose h4 {
@@ -291,12 +291,12 @@
 }
 
 .prose p {
-  @apply mb-4 leading-relaxed dark:text-gray-300 text-taupe-800;
+  @apply mb-4 text-sm leading-relaxed dark:text-gray-300 text-taupe-700;
 }
 
 .prose ul,
 .prose ol {
-  @apply mb-4 pl-6 dark:text-gray-300 text-taupe-800;
+  @apply mb-4 pl-6 text-sm dark:text-gray-300 text-taupe-700;
 }
 
 .prose li {
