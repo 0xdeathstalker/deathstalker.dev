@@ -1,4 +1,4 @@
-import { SubmitButtonStates } from "@/components/labs/components/button-states";
+import { SubmitButtonStates } from "@/components/labs/demo/button-states.demo";
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";
 

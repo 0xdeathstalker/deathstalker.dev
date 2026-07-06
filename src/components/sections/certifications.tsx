@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LinkArrowIcon } from "@/components/link-arrow-icon";
+import { LinkArrowIcon } from "@/components/ui/link-arrow-icon";
 import { SectionHeading } from "@/components/ui/heading";
 import { type Certificate, certificates } from "@/lib/config/site-data";
 import { cn } from "@/lib/utils";

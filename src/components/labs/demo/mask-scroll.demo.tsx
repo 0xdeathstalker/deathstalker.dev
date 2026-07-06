@@ -1,4 +1,4 @@
-import { MaskScrollArea } from "@/components/ui/masked-scroll-area";
+import { MaskScrollArea } from "@/components/ui/mask-scroll-area";
 
 function MaskScroll() {
   return (

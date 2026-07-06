@@ -99,17 +99,29 @@ export async function GET(request: Request) {
         </svg>
       </div>
 
-      <div tw="absolute top-1/8.25 left-1/13.65 h-2 w-2 z-20 border border-[#796697]/65 bg-[#fbfaf9] flex" />
-      <div tw="absolute bottom-1/8.25 left-1/13.65 h-2 w-2 z-20 border border-[#796697]/65 bg-[#fbfaf9] flex" />
-      <div tw="absolute top-1/8.25 right-1/13.65 h-2 w-2 z-20 border border-[#796697]/65 bg-[#fbfaf9] flex" />
-      <div tw="absolute bottom-1/8.25 right-1/13.65 h-2 w-2 z-20 border border-[#796697]/65 bg-[#fbfaf9] flex" />
+      <div
+        tw="absolute top-1/8.35 left-1/13.65 h-2 w-2 z-20 border border-[#796697]/65 bg-[#fbfaf9] flex"
+        style={{ transform: "rotate(45deg)" }}
+      />
+      <div
+        tw="absolute bottom-1/8.2 left-1/13.4 h-2 w-2 z-20 border border-[#796697]/65 bg-[#fbfaf9] flex"
+        style={{ transform: "rotate(45deg)" }}
+      />
+      <div
+        tw="absolute top-1/8.6 right-1/13.15 h-2 w-2 z-20 border border-[#796697]/65 bg-[#fbfaf9] flex"
+        style={{ transform: "rotate(45deg)" }}
+      />
+      <div
+        tw="absolute bottom-1/8 right-1/13.35 h-2 w-2 z-20 border border-[#796697]/65 bg-[#fbfaf9] flex"
+        style={{ transform: "rotate(45deg)" }}
+      />
 
       <div tw="absolute inset-x-0 bottom-30 left-30 flex flex-col justify-end">
         <h1
           style={{
             fontFamily: "GeistPixelSquare",
             fontWeight: 800,
-            fontSize: 64,
+            fontSize: 80,
             lineHeight: 1,
             textWrap: "balance",
             letterSpacing: "-0.025em",
@@ -133,6 +145,13 @@ export async function GET(request: Request) {
         >
           {description}
         </p>
+      </div>
+
+      <div
+        tw="absolute flex items-center justify-center top-32 right-36 w-8 h-8 border border-[#a89ea9]"
+        style={{ transform: "rotate(45deg)" }}
+      >
+        <div tw="w-6 h-6 bg-[#79697b]" />
       </div>
     </div>,
     {

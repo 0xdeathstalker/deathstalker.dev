@@ -4,7 +4,7 @@ import {
   GroupAccordionContent,
   GroupAccordionItem,
   GroupAccordionTrigger,
-} from "@/components/labs/components/group-accordion";
+} from "@/components/ui/group-accordion";
 import { cn } from "@/lib/utils";
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { BackButton } from "@/components/back-button";
+import { BackButton } from "@/components/ui/back-button";
 import { BlogContent } from "@/components/sections/blog-content";
 import { QuoteTime } from "@/components/sections/quote-time";
 import { CornerDiamondShapes } from "@/components/ui/corner-shapes";
@@ -12,7 +12,7 @@ import { formatDate } from "@/lib/utils";
 const title = "blogs";
 const description = "writing about code and everything.";
 
-const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
 type PageProps = {
   params: Promise<{ slug: string }>;

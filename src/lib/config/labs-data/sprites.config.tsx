@@ -1,5 +1,5 @@
-import { ImageLightbox } from "@/components/image-lightbox";
-import { BatterySprite, FireEyeSprite, JonSnowSprite, RainSprite } from "@/components/labs/components/sprites";
+import { ImageLightbox } from "@/components/ui/image-lightbox";
+import { BatterySprite, FireEyeSprite, JonSnowSprite, RainSprite } from "@/components/labs/demo/sprites.demo";
 import { Code } from "@/components/ui/code";
 import { CodeBlock } from "@/components/ui/code-block";
 import { InlineLink } from "@/components/ui/inline-link";

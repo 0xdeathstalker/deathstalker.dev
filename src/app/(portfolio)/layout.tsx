@@ -1,4 +1,4 @@
-import { ScrollGradients } from "@/components/scroll-gradients";
+import { ScrollGradients } from "@/components/ui/scroll-gradients";
 import { Footer } from "@/components/sections/footer";
 import { Line } from "@/components/ui/line";
 

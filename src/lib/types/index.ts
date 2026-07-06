@@ -1,5 +1,4 @@
 import type { ReactElement } from "react";
-import type { portfolio } from "@/lib/config/site-data";
 
 export type Project = {
   id: number;
@@ -53,8 +52,6 @@ export type Work = {
   positions: Array<WorkPosition>;
 };
 
-export type SocialKeys = keyof typeof portfolio.socials;
-
 // blogs
 export type Metadata = {
   title: string;
@@ -93,4 +90,11 @@ export type Lab = {
   tech: string;
   video: string;
   component?: React.ComponentType;
+};
+
+export type SocialProfile = {
+  title: string;
+  handle: string;
+  href: string;
+  color?: string;
 };

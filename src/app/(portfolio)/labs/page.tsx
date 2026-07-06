@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { BackButton } from "@/components/back-button";
-import { ScrollGradients } from "@/components/scroll-gradients";
+import { BackButton } from "@/components/ui/back-button";
+import { ScrollGradients } from "@/components/ui/scroll-gradients";
 import { LabItem } from "@/components/sections/lab-item";
 import { QuoteTime } from "@/components/sections/quote-time";
 import { CornerDiamondShapes } from "@/components/ui/corner-shapes";
@@ -11,7 +11,7 @@ import { siteConfig } from "@/lib/config/site";
 const title = "labs";
 const description = "a creative space for ui experiments, component studies and exploration.";
 
-const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
 export const metadata: Metadata = {
   title: "labs",

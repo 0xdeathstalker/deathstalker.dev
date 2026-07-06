@@ -1,4 +1,3 @@
-import { BatterySprite, FireEyeSprite, JonSnowSprite, RainSprite } from "@/components/labs/components/sprites";
 import { labs } from "@/lib/config/labs-data";
 
 export default async function Playground({ params }: { params: Promise<{ slug: string }> }) {
