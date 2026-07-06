@@ -1,26 +1,25 @@
 import type { SocialProfile } from "@/lib/types";
 
 export const siteConfig = {
-  name: "Soumya Mukherjee",
+  name: "soumya mukherjee",
   shortName: "deathstalker",
   title: "deathstalker",
-  description:
-    "Frontend engineer crafting polished interfaces with React, Next.js and TypeScript. Focused on clean code, smooth animations and interactions that feel effortless.",
+  description: "design engineer building web experiences at the intersection of design and engineering.",
   url: "https://deathstalker.dev",
   author: {
-    name: "Soumya Mukherjee",
+    name: "soumya mukherjee",
     email: "soumyamukherjee.work@gmail.com",
     twitter: "@xdeathstalker",
     github: "0xdeathstalker",
-    linkedin: "soumya-mukherjee-88a551248",
+    linkedin: "smukherjee15",
   },
   links: {
     twitter: "https://x.com/0xdeathstalker",
     github: "https://github.com/0xdeathstalker",
-    linkedin: "https://www.linkedin.com/in/soumya-mukherjee-88a551248/",
+    linkedin: "https://www.linkedin.com/in/smukherjee15",
   },
   keywords: [
-    "Soumya Mukherjee",
+    "soumya mukherjee",
     "Deathstalker",
     "Design Engineer",
     "Frontend Developer",

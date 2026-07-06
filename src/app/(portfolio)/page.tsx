@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Soumya Mukherjee | Frontend Engineer",
+    title: "soumya mukherjee | design engineer",
     description: siteConfig.description,
     url: siteConfig.url,
     type: "website",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Soumya Mukherjee | Frontend Engineer",
+    title: "soumya mukherjee | design engineer",
     description: siteConfig.description,
     images: [ogImage],
     creator: siteConfig.author.twitter,
@@ -58,7 +58,7 @@ export default function Home() {
       },
       {
         "@type": "WebPage",
-        name: "Soumya Mukherjee | Frontend Engineer",
+        name: "soumya mukherjee | design engineer",
         url: siteConfig.url,
         description: siteConfig.description,
         isPartOf: {

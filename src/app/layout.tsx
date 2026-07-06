@@ -66,7 +66,7 @@ const jsonLd = {
   name: siteConfig.author.name,
   url: siteConfig.url,
   email: siteConfig.author.email,
-  jobTitle: "Frontend Engineer",
+  jobTitle: "design engineer",
   sameAs: [siteConfig.links.github, siteConfig.links.twitter, siteConfig.links.linkedin],
   knowsAbout: [
     "React",
