@@ -9,11 +9,6 @@ import { getBlogBySlug, getBlogs } from "@/lib/actions/blog";
 import { siteConfig } from "@/lib/config/site";
 import { formatDate } from "@/lib/utils";
 
-const title = "blogs";
-const description = "writing about code and everything.";
-
-const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
-
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
@@ -35,6 +30,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const { title, description, date } = blog.metadata;
   const url = `${siteConfig.url}/blog/${slug}`;
+
+  const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
   return {
     title,
@@ -75,6 +72,10 @@ export default async function Blog({ params }: PageProps) {
   if (!blog) {
     notFound();
   }
+
+  const { title, description } = blog.metadata;
+
+  const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
   const jsonLd = {
     "@context": "https://schema.org",

@@ -16,14 +16,13 @@ const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIC
 export const metadata: Metadata = {
   title: "labs",
   description:
-    "UI experiments, component studies and interaction explorations built with React, Next.js and TypeScript.",
+    "ui experiments, component studies and interaction explorations built with React, Next.js and TypeScript.",
   alternates: {
     canonical: "/labs",
   },
   openGraph: {
-    title: "Labs",
-    description:
-      "UI experiments, component studies and interaction explorations built with React, Next.js and TypeScript.",
+    title: "labs",
+    description: "a creative space for ui experiments, component studies and exploration.",
     url: `${siteConfig.url}/labs`,
     type: "website",
     siteName: siteConfig.name,
@@ -38,9 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Labs",
-    description:
-      "UI experiments, component studies and interaction explorations built with React, Next.js and TypeScript.",
+    title: "labs",
+    description: "a creative space for ui experiments, component studies and exploration.",
     images: [ogImage],
     creator: siteConfig.author.twitter,
   },
@@ -52,10 +50,9 @@ export default function LabsPage() {
     "@graph": [
       {
         "@type": "CollectionPage",
-        name: "Labs",
+        name: "labs",
         url: `${siteConfig.url}/labs`,
-        description:
-          "UI experiments, component studies and interaction explorations built with React, Next.js and TypeScript.",
+        description: "a creative space for ui experiments, component studies and exploration.",
       },
       {
         "@type": "ItemList",

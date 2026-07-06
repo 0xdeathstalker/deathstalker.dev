@@ -1,7 +1,7 @@
 import { ImageLightbox } from "@/components/ui/image-lightbox";
 import { TransitionTabs } from "@/components/ui/transition-tabs";
-import { ColorTransitionTabs } from "@/components/labs/demo/transition-tabs/color-transition-tabs";
-import { ToggleClippathDemo } from "@/components/labs/demo/transition-tabs/toggle-clippath-tabs";
+import { ColorTransitionTabs } from "@/components/labs/demo/transition-tabs-demo/color-transition-tabs";
+import { ToggleClippathDemo } from "@/components/labs/demo/transition-tabs-demo/toggle-clippath-tabs";
 import { Code } from "@/components/ui/code";
 import { InlineLink } from "@/components/ui/inline-link";
 import type { Lab } from "@/lib/types";
