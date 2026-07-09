@@ -1,6 +1,13 @@
 "use client";
 
 import { buttonVariants } from "@/components/ui/button";
+import {
+  DialogForm,
+  DialogFormContent,
+  DialogFormTitle,
+  DialogFormTitleLabel,
+  DialogFormTrigger,
+} from "@/components/ui/dialog-form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
@@ -92,10 +99,10 @@ function DialogFormDemo() {
               aria-modal="true"
               aria-labelledby={titleId}
               layoutId="dialog-form-wrapper"
-              exit={{ transition: { type: "spring", bounce: 0.1, duration: 0.5 } }}
+              exit={{ opacity: 0 }}
               className={cn(
-                "absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[calc(100vw-2rem)] sm:w-lg bg-mauve-100",
-                "border border-mauve-200 overflow-hidden",
+                "absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[calc(100vw-2rem)] sm:w-lg",
+                "bg-mauve-100 border border-mauve-200 overflow-hidden",
               )}
               style={{ borderRadius: 16 }}
             >
@@ -199,4 +206,122 @@ function DialogFormDemo() {
   );
 }
 
-export { DialogFormDemo };
+function DialogFormComposedDemo() {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  return (
+    <div ref={containerRef}>
+      <DialogForm>
+        <DialogFormTrigger
+          className={cn(
+            "bg-mauve-100 h-9 px-4 enabled:active:scale-95 transition-[scale] ease-in-out",
+            "border border-mauve-200",
+          )}
+          style={{ borderRadius: 12 }}
+        >
+          <DialogFormTitleLabel className="inline-flex items-center gap-2 leading-loose">
+            <MessageCircle className="size-4" />
+            Contact us
+          </DialogFormTitleLabel>
+        </DialogFormTrigger>
+
+        <DialogFormContent
+          container={containerRef}
+          className={cn(
+            // inset-0 + m-auto + h-fit centers without translate classes, which
+            // would fight Motion for the inline transform during the morph
+            "absolute inset-0 m-auto h-fit w-[calc(100vw-2rem)] sm:w-lg",
+            "bg-mauve-100 border border-mauve-200 overflow-hidden",
+          )}
+          style={{ borderRadius: 16 }}
+        >
+          {/* next steps: DialogFormBody (formId from context), DialogFormFooter, DialogFormSubmit */}
+          <DialogFormTitle className="px-4 py-2.5">
+            <DialogFormTitleLabel className="inline-flex items-center gap-2 leading-loose">
+              <MessageCircle className="size-4" />
+              Contact us
+            </DialogFormTitleLabel>
+          </DialogFormTitle>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.5 }}
+            className="px-4"
+          >
+            <form
+              id="contact-form-composed"
+              className="space-y-2"
+              onSubmit={(event) => event.preventDefault()}
+            >
+              <div className="flex items-center gap-4">
+                <div>
+                  <label
+                    htmlFor="name-composed"
+                    className="ml-0.5 text-xs text-muted-foreground"
+                  >
+                    Name
+                  </label>
+                  <Input
+                    id="name-composed"
+                    name="name"
+                    type="text"
+                    className="bg-mauve-50 border border-mauve-300"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="email-composed"
+                    className="ml-0.5 text-xs text-muted-foreground"
+                  >
+                    Email
+                  </label>
+                  <Input
+                    id="email-composed"
+                    name="email"
+                    type="email"
+                    className="bg-mauve-50 border border-mauve-300"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="message-composed"
+                  className="ml-0.5 text-xs text-muted-foreground"
+                >
+                  Message
+                </label>
+                <Textarea
+                  id="message-composed"
+                  name="message"
+                  rows={5}
+                  className="bg-mauve-50 border border-mauve-300"
+                />
+              </div>
+            </form>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.15 }}
+            className="px-4 pt-2.5 pb-3.5 flex items-center justify-between"
+          >
+            <p className="text-sm text-red-500">error</p>
+            <motion.button
+              type="submit"
+              form="contact-form-composed"
+              className={cn(buttonVariants({ variant: "default" }), "h-9 rounded-lg")}
+            >
+              Submit
+            </motion.button>
+          </motion.div>
+        </DialogFormContent>
+      </DialogForm>
+    </div>
+  );
+}
+
+export { DialogFormComposedDemo, DialogFormDemo };

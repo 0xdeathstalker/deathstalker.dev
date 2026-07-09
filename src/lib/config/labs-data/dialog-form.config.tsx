@@ -1,4 +1,4 @@
-import { DialogFormDemo } from "@/components/labs/demo/dialog-form.demo";
+import { DialogFormComposedDemo } from "@/components/labs/demo/dialog-form.demo";
 
 const dialogFormConfig = {
   slug: "dialog-form-demo",
@@ -7,7 +7,7 @@ const dialogFormConfig = {
   description: <></>,
   tech: "motion",
   video: "",
-  component: DialogFormDemo,
+  component: DialogFormComposedDemo,
 };
 
 export { dialogFormConfig };

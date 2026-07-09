@@ -1,91 +1,42 @@
-# dialog-form.demo.tsx — points to improve
+# dialog-form — remaining work
 
-## Bugs
+## Open points on the original demo (`dialog-form.demo.tsx`)
 
-1. ~~**Broken label association on the message field**~~ ✅ Fixed — added `id="message"` to the `Textarea` so the `htmlFor="message"` label is properly associated.
+1. **Remove the `as` cast on the ref** (`~L22`)
+   `dialogRef as React.RefObject<HTMLDivElement>` lies to the compiler about nullability — `useRef<HTMLDivElement>(null)` is `RefObject<HTMLDivElement | null>`. Upgrade `usehooks-ts` (v3+ accepts nullable refs) to delete the cast — or moot the point by retiring the original demo once the composed version reaches parity (the composed version has no `useOnClickOutside` at all).
 
-2. ~~**Submit button triggers a native form submit / page reload**~~ ✅ Fixed — the `<form>` now has `id="contact-form"` with an `onSubmit` that calls `preventDefault()`, and the footer button is explicitly `type="submit" form="contact-form"`. The `form` attribute links the button to the form even though it sits outside the `<form>` element in the DOM (works across portals too). Replace the `preventDefault()` stub with real submit logic when the form does something.
+2. **Hardcoded error message** — the `<p>error</p>` in the footer always renders. Fixed by the `DialogFormError` slot in the migration (step 4 below), not patched in place.
 
-## Type safety
-
-3. **Remove the `as` cast on the ref** (`~L16`)
-   `dialogRef as React.RefObject<HTMLDivElement>` lies to the compiler about nullability — `useRef<HTMLDivElement>(null)` is `RefObject<HTMLDivElement | null>`. Upgrade `usehooks-ts` (v3+ accepts nullable refs) so the cast can be deleted instead of papering over the version mismatch.
-
-## Accessibility / dialog semantics
-
-4. ~~**It's a dialog visually but not behaviorally.**~~ ✅ Fixed (hand-rolled, per the Radix-vs-hand-rolled decision in future scope) — the panel now has `role="dialog"`, `aria-modal="true"`, and `aria-labelledby={titleId}` (`React.useId()`); a single `open`-gated effect focuses the first focusable element on open, traps Tab/Shift+Tab inside the panel, handles Escape, and returns focus to the trigger on close via `triggerRef`.
-
-5. ~~**`h1` for the dialog title**~~ ✅ Fixed — demoted to `h2` with `id={titleId}` referenced by `aria-labelledby`.
-
-6. ~~**Email input has the wrong type**~~ ✅ Fixed — now `type="email"`.
-
-## Form fundamentals
-
-7. ~~**Inputs have no `name` attributes**~~ ✅ Fixed — added `name="name"`, `name="email"`, `name="message"`.
-
-8. **Hardcoded error message** (`~L176`) — ⏸ deferred to the composition-pattern refactor: the error will arrive as a prop/slot (`DialogFormError` with `aria-live="polite"`), so it gets fixed there rather than patched here.
-
-## Motion / effects
-
-9. ~~**Inner `AnimatePresence` is dead code**~~ ✅ Fixed
-   Its two children mount and unmount together with the parent dialog, so their `exit` animations never run — when the dialog closes, the outer `AnimatePresence` unmounts the whole subtree, inner presence included. Either remove it (keep the `initial`/`animate` fade-in on plain `motion.div`s) or add the multi-step content-swapping state that `mode="popLayout"` is actually for.
-
-10. ~~**Escape listener runs unconditionally**~~ ✅ Fixed as part of point 4 — Escape now lives in the focus-management effect, which is gated on `open` and cleans up when the dialog closes.
-
-## Layout
-
-11. **Fixed width overflows small viewports** (`~L60`)
-    `w-lg` with absolute centering will overflow on mobile. Use something like `w-[32rem] max-w-[calc(100vw-2rem)]`.
-
-## Optional polish
-
-12. **Repeated label + input blocks** could be extracted into a small `Field` component once the form grows — not urgent for a demo (avoid hasty abstraction), but the name/email/message blocks are already triplicated boilerplate.
+3. **Optional polish: repeated label + input blocks** could be extracted into a small `Field` component once the form grows — not urgent for a demo (avoid hasty abstraction), but the name/email/message blocks are triplicated in both demos now.
 
 ---
 
-# Future scope: composable pattern (shadcn Dialog-style API)
+# Base UI migration (`src/components/ui/dialog-form.tsx`)
 
-Not the current goal — pain points to cover when converting this into reusable
-`DialogForm` / `DialogFormTrigger` / `DialogFormContent` / `DialogFormTitle` /
-`DialogFormBody` / `DialogFormFooter` / `DialogFormSubmit` parts sharing state via context.
+## Done
 
-1. **`AnimatePresence` doesn't compose across component boundaries** — the hard one.
-   `AnimatePresence` only tracks its *direct* children; once Trigger and Content are separate
-   user-placed components, a child that internally returns `null` never registers as an exit.
-   Fix: each part owns its own `AnimatePresence` (`{!open && <motion.button/>}` inside Trigger,
-   `{open && <motion.div/>}` inside Content) with the root wrapping everything in a `LayoutGroup`
-   so the shared `layoutId` morph still connects them. Prototype this first — it constrains
-   everything else.
+- **`DialogForm` (root)** — controlled Base UI `Root` (AnimatePresence owns unmount timing), controlled + uncontrolled `open` support, rest props forwarded to `Root` (`modal`, `actionsRef`, …), `MotionConfig` with default spring overridable via `transition` prop, context provides `open`/`setOpen`, instance-scoped `getLayoutId` (`useId` prefix — multi-instance safe), and `formId` (reserved, not yet consumed).
+- **`DialogFormTrigger`** — `HTMLMotionProps<"button">` merged onto Base UI `Trigger` via `render`; default `"wrapper"` layoutId.
+- **`DialogFormContent`** — `AnimatePresence` + `{open && <Portal keepMounted>}` + `Popup render={<motion.div/>}`; default `exit={{ opacity: 0 }}`; `container` prop for in-place portaling.
+- **`DialogFormTitle` / `DialogFormTitleLabel`** — Base UI `Title` (auto `aria-labelledby`) + shared-element `"title"` layoutId span used in both trigger and title.
+- **Morph verified (Plan A)** — trigger stays mounted; Motion's layoutId lead/follower stack hides it while the popup is lead and transfers back on exit. No Plan B needed. Rationale documented in file comments.
+- **Transform-free centering** — composed demo panel uses `absolute inset-0 m-auto h-fit` instead of translate classes, so Motion has exclusive ownership of inline `transform` during the morph.
+- **Free from Base UI** — focus trap, initial focus, focus return, Escape, outside-click dismiss, background `inert`, aria wiring. All hand-rolled equivalents from the original are absent from the composed version by design.
 
-2. **Hardcoded `layoutId`s break with multiple instances.** `"dialog-form-wrapper"` and
-   `"form-title"` are global — two dialogs on one page would morph into each other. Prefix every
-   `layoutId` with the instance's `React.useId()` shared via context.
+## Remaining steps
 
-3. **Radix vs hand-rolled.** Radix Dialog gives the a11y contract free (focus trap, `aria-modal`,
-   focus return, Escape) but its Trigger stays mounted while open, which fights the layoutId morph
-   (needs `forceMount` + visibility hacks). Decision: stay hand-rolled to keep the morph clean,
-   which means owning the a11y checklist ourselves — `role="dialog"`, `aria-modal="true"`,
-   `aria-labelledby={titleId}`, focus into the panel on open, focus restored to trigger on close,
-   focus trap.
+1. **`DialogFormBody`** — renders `<form id={formId}>` (formId from context) around consumer fields; accepts `onSubmit` (call `preventDefault` internally or accept a React 19 `action`). Replaces the demo's hand-written `id="contact-form-composed"`.
 
-4. **Escape + outside-click move into Content, gated on `open`.** The window keydown effect and
-   `useOnClickOutside` belong inside `DialogFormContent`, active only while open — this also fixes
-   the always-attached listener and removes the `as` cast site.
+2. **`DialogFormFooter`** — plain layout `div` slot (`React.ComponentProps<"div">`), mirrors shadcn's `DialogFooter`.
 
-5. **Controlled + uncontrolled open state.** Support both `<DialogForm>` (internal state) and
-   `<DialogForm open={open} onOpenChange={setOpen}>` (shadcn/Radix convention). Cheap now,
-   painful to retrofit.
+3. **`DialogFormSubmit`** — `HTMLMotionProps<"button">` rendering `type="submit" form={formId}` from context; the platform `form` attribute links it to the body's form from outside the `<form>` element (portal-safe). Replaces the demo's hand-written `form="contact-form-composed"`.
 
-6. **Form ↔ submit-button linkage via context.** Root generates `formId` with `useId()`;
-   `DialogFormBody` renders `<form id={formId} onSubmit={...}>`; `DialogFormSubmit` renders
-   `type="submit" form={formId}` — the platform `form` attribute works from anywhere in the
-   document, including portals. Decide submission semantics: does success auto-close, or does the
-   caller control it (via `onOpenChange` / a `useDialogForm()` hook)? Hardcoded error becomes a
-   `DialogFormError` slot with `aria-live="polite"`.
+4. **`DialogFormError`** — conditional error slot with `aria-live="polite"`; renders nothing when there's no error. Closes open point 2 above.
 
-7. **Portal or in-place positioning.** Real dialogs portal to `<body>` to escape stacking
-   contexts; `form` attribute and `layoutId` (under one `LayoutGroup`) both survive portaling,
-   but the current `absolute` centering assumes a positioned ancestor. Keep in-place for the labs
-   demo card; switch to portal + `fixed` for the reusable component.
+5. **Decide submission semantics** — does a successful submit auto-close, or does the caller drive it via `onOpenChange` / `useDialogForm()`? Lean caller-controlled (matches the controlled-root design); document the chosen contract in the file comments.
 
-**Suggested order:** 1 (morph prototype) → 2, 5 (context + ids) → 6 (form linkage) → 3, 4 (a11y) → error slot and polish.
+6. **Fixed-positioning variant** — the demo portals in-place via `container`; for the distributable component decide the default when `container` is omitted: portal to `<body>` needs `fixed` centering classes and probably an optional backdrop part (`DialogFormBackdrop`, skippable like the demo does).
+
+7. **Parity sign-off + retirement** — once body/footer/submit land, compare both demos one last time, then swap the lab to render `DialogFormComposedDemo`, delete the original `DialogFormDemo` (removes `usehooks-ts` usage, `FOCUSABLE_SELECTOR`, the focus-trap effect, and the commented-out inner `AnimatePresence`), and drop the `-composed` id suffixes.
+
+8. **Registry packaging** — when distributing shadcn-registry style: declare `motion` and `@base-ui/react` in the registry item's `dependencies`, keep `className` passthrough + `data-slot` attributes on every part, and consider `inert`/`modal` notes in the component docs.
