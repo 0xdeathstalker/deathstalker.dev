@@ -9,22 +9,55 @@ import { AnimatePresence, motion, MotionConfig } from "motion/react";
 import * as React from "react";
 import { useOnClickOutside } from "usehooks-ts";
 
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 function DialogFormDemo() {
   const [open, setOpen] = React.useState(false);
+  const titleId = React.useId();
 
   const dialogRef = React.useRef<HTMLDivElement>(null);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
   useOnClickOutside(dialogRef as React.RefObject<HTMLDivElement>, () => setOpen(false));
 
   React.useEffect(() => {
+    if (!open) return;
+
+    function getFocusables() {
+      return Array.from(dialogRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR) ?? []);
+    }
+
+    getFocusables()[0]?.focus();
+
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setOpen(false);
+        return;
+      }
+
+      if (event.key === "Tab") {
+        const focusables = getFocusables();
+        if (focusables.length === 0) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     }
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      triggerRef.current?.focus();
+    };
+  }, [open]);
 
   return (
     <MotionConfig transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}>
@@ -33,6 +66,7 @@ function DialogFormDemo() {
           {!open ? (
             <motion.button
               key="dialog-form-trigger"
+              ref={triggerRef}
               type="button"
               layoutId="dialog-form-wrapper"
               onClick={() => setOpen(true)}
@@ -54,6 +88,9 @@ function DialogFormDemo() {
             <motion.div
               key="dialog-form"
               ref={dialogRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={titleId}
               layoutId="dialog-form-wrapper"
               exit={{ transition: { type: "spring", bounce: 0.1, duration: 0.5 } }}
               className={cn(
@@ -62,7 +99,10 @@ function DialogFormDemo() {
               )}
               style={{ borderRadius: 16 }}
             >
-              <h1 className="px-4 py-2.5">
+              <h2
+                id={titleId}
+                className="px-4 py-2.5"
+              >
                 <motion.span
                   layoutId="form-title"
                   className="inline-flex items-center gap-2 leading-loose"
@@ -70,84 +110,87 @@ function DialogFormDemo() {
                   <MessageCircle className="size-4" />
                   Contact us
                 </motion.span>
-              </h1>
+              </h2>
 
-              <AnimatePresence mode="popLayout">
-                <motion.div
-                  key="child-component"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ type: "spring", bounce: 0, duration: 0.5 }}
-                  className="px-4"
+              {/* <AnimatePresence mode="popLayout"> */}
+              <motion.div
+                key="child-component"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.5 }}
+                className="px-4"
+              >
+                <form
+                  id="contact-form"
+                  className="space-y-2"
+                  onSubmit={(event) => event.preventDefault()}
                 >
-                  <form
-                    id="contact-form"
-                    className="space-y-2"
-                    onSubmit={(event) => event.preventDefault()}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div>
-                        <label
-                          htmlFor="name"
-                          className="ml-0.5 text-xs text-muted-foreground"
-                        >
-                          Name
-                        </label>
-                        <Input
-                          id="name"
-                          type="text"
-                          className="bg-mauve-50 border border-mauve-300"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="email"
-                          className="ml-0.5 text-xs text-muted-foreground"
-                        >
-                          Email
-                        </label>
-                        <Input
-                          id="email"
-                          type="text"
-                          className="bg-mauve-50 border border-mauve-300"
-                        />
-                      </div>
-                    </div>
+                  <div className="flex items-center gap-4">
                     <div>
                       <label
-                        htmlFor="message"
+                        htmlFor="name"
                         className="ml-0.5 text-xs text-muted-foreground"
                       >
-                        Message
+                        Name
                       </label>
-                      <Textarea
-                        id="message"
-                        rows={5}
+                      <Input
+                        id="name"
+                        name="name"
+                        type="text"
                         className="bg-mauve-50 border border-mauve-300"
                       />
                     </div>
-                  </form>
-                </motion.div>
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="ml-0.5 text-xs text-muted-foreground"
+                      >
+                        Email
+                      </label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        className="bg-mauve-50 border border-mauve-300"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="ml-0.5 text-xs text-muted-foreground"
+                    >
+                      Message
+                    </label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      rows={5}
+                      className="bg-mauve-50 border border-mauve-300"
+                    />
+                  </div>
+                </form>
+              </motion.div>
 
-                <motion.div
-                  key="dialog-footer"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ type: "spring", bounce: 0, duration: 0.15 }}
-                  className="px-4 pt-2.5 pb-3.5 flex items-center justify-between"
+              <motion.div
+                key="dialog-footer"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.15 }}
+                className="px-4 pt-2.5 pb-3.5 flex items-center justify-between"
+              >
+                <p className="text-sm text-red-500">error</p>
+                <motion.button
+                  type="submit"
+                  form="contact-form"
+                  className={cn(buttonVariants({ variant: "default" }), "h-9 rounded-lg")}
                 >
-                  <p className="text-sm text-red-500">error</p>
-                  <motion.button
-                    type="submit"
-                    form="contact-form"
-                    className={cn(buttonVariants({ variant: "default" }), "h-9 rounded-lg")}
-                  >
-                    Submit
-                  </motion.button>
-                </motion.div>
-              </AnimatePresence>
+                  Submit
+                </motion.button>
+              </motion.div>
+              {/* </AnimatePresence> */}
             </motion.div>
           )}
         </AnimatePresence>

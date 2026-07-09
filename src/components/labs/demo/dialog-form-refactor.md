@@ -13,33 +13,24 @@
 
 ## Accessibility / dialog semantics
 
-4. **It's a dialog visually but not behaviorally.** Missing:
-   - `role="dialog"` and `aria-modal="true"` on the container
-   - Focus trap — keyboard users can tab behind the dialog
-   - Focus moved into the dialog on open, and returned to the trigger on close
-   - `aria-labelledby` pointing at the title
-   Preferred fix: get the semantics from a primitive (Radix/shadcn `Dialog` or native `<dialog>`) and layer the Motion animation on top, instead of hand-rolling Escape + outside-click and skipping the rest.
+4. ~~**It's a dialog visually but not behaviorally.**~~ ✅ Fixed (hand-rolled, per the Radix-vs-hand-rolled decision in future scope) — the panel now has `role="dialog"`, `aria-modal="true"`, and `aria-labelledby={titleId}` (`React.useId()`); a single `open`-gated effect focuses the first focusable element on open, traps Tab/Shift+Tab inside the panel, handles Escape, and returns focus to the trigger on close via `triggerRef`.
 
-5. **`h1` for the dialog title** (`~L65`)
-   A widget embedded in a page shouldn't own an `h1` — it breaks the document outline. Use a lower heading (or a `p`/`div`) referenced via `aria-labelledby`.
+5. ~~**`h1` for the dialog title**~~ ✅ Fixed — demoted to `h2` with `id={titleId}` referenced by `aria-labelledby`.
 
-6. **Email input has the wrong type** (`~L108`)
-   `type="text"` should be `type="email"` for validation and mobile keyboards.
+6. ~~**Email input has the wrong type**~~ ✅ Fixed — now `type="email"`.
 
 ## Form fundamentals
 
-7. **Inputs have no `name` attributes** — a real submit would send nothing. Add `name="name"`, `name="email"`, `name="message"`.
+7. ~~**Inputs have no `name` attributes**~~ ✅ Fixed — added `name="name"`, `name="email"`, `name="message"`.
 
-8. **Hardcoded error message** (`~L136`)
-   `<p>error</p>` always renders. Make it conditional on actual error state and add `aria-live="polite"` so screen readers announce it.
+8. **Hardcoded error message** (`~L176`) — ⏸ deferred to the composition-pattern refactor: the error will arrive as a prop/slot (`DialogFormError` with `aria-live="polite"`), so it gets fixed there rather than patched here.
 
 ## Motion / effects
 
-9. **Inner `AnimatePresence` is dead code** (`~L75`)
+9. ~~**Inner `AnimatePresence` is dead code**~~ ✅ Fixed
    Its two children mount and unmount together with the parent dialog, so their `exit` animations never run — when the dialog closes, the outer `AnimatePresence` unmounts the whole subtree, inner presence included. Either remove it (keep the `initial`/`animate` fade-in on plain `motion.div`s) or add the multi-step content-swapping state that `mode="popLayout"` is actually for.
 
-10. **Escape listener runs unconditionally** (`~L18-27`)
-    The `window` keydown listener is attached for the component's entire lifetime and fires `setOpen(false)` even when the dialog is closed. Gate the effect on `open` (add it to deps, early-return when closed) — or it disappears entirely with a dialog primitive (see point 4).
+10. ~~**Escape listener runs unconditionally**~~ ✅ Fixed as part of point 4 — Escape now lives in the focus-management effect, which is gated on `open` and cleans up when the dialog closes.
 
 ## Layout
 
