@@ -94,7 +94,7 @@ function DialogFormDemo() {
               layoutId="dialog-form-wrapper"
               exit={{ transition: { type: "spring", bounce: 0.1, duration: 0.5 } }}
               className={cn(
-                "absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-lg bg-mauve-100",
+                "absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[calc(100vw-2rem)] sm:w-lg bg-mauve-100",
                 "border border-mauve-200 overflow-hidden",
               )}
               style={{ borderRadius: 16 }}
