@@ -81,7 +81,11 @@ function DialogFormDemo() {
                   transition={{ type: "spring", bounce: 0, duration: 0.5 }}
                   className="px-4"
                 >
-                  <form className="space-y-2">
+                  <form
+                    id="contact-form"
+                    className="space-y-2"
+                    onSubmit={(event) => event.preventDefault()}
+                  >
                     <div className="flex items-center gap-4">
                       <div>
                         <label
@@ -118,6 +122,7 @@ function DialogFormDemo() {
                         Message
                       </label>
                       <Textarea
+                        id="message"
                         rows={5}
                         className="bg-mauve-50 border border-mauve-300"
                       />
@@ -134,7 +139,11 @@ function DialogFormDemo() {
                   className="px-4 pt-2.5 pb-3.5 flex items-center justify-between"
                 >
                   <p className="text-sm text-red-500">error</p>
-                  <motion.button className={cn(buttonVariants({ variant: "default" }), "h-9 rounded-lg")}>
+                  <motion.button
+                    type="submit"
+                    form="contact-form"
+                    className={cn(buttonVariants({ variant: "default" }), "h-9 rounded-lg")}
+                  >
                     Submit
                   </motion.button>
                 </motion.div>
