@@ -125,13 +125,7 @@ type DialogFormContentProps = HTMLMotionProps<"div"> & {
   container?: DialogPrimitive.Portal.Props["container"];
 };
 
-function DialogFormContent({
-  container,
-  layoutId,
-  exit = { opacity: 0 },
-  children,
-  ...props
-}: DialogFormContentProps) {
+function DialogFormContent({ container, layoutId, exit = { opacity: 0 }, children, ...props }: DialogFormContentProps) {
   const { open, getLayoutId } = useDialogForm();
 
   // Exit animations need all three pieces below: the controlled root keeps
@@ -195,9 +189,72 @@ function DialogFormTitleLabel({ layoutId, ...props }: DialogFormTitleLabelProps)
   );
 }
 
+type DialogFormBodyProps = HTMLMotionProps<"form">;
+
+// The body IS the <form> — the form/submit linkage is what this family adds
+// over a plain Dialog. `id` defaults to the context formId so DialogFormSubmit
+// can target it via the platform `form` attribute from outside the form
+// element (the footer sits outside <form> for layout). Overriding `id` means
+// also overriding `form` on DialogFormSubmit — they must move together.
+function DialogFormBody({ id, ...props }: DialogFormBodyProps) {
+  const { formId } = useDialogForm();
+
+  return (
+    <motion.form
+      data-slot="dialog-form-body"
+      id={id ?? formId}
+      {...props}
+    />
+  );
+}
+
+type DialogFormFooterProps = HTMLMotionProps<"div">;
+
+function DialogFormFooter({ ...props }: DialogFormFooterProps) {
+  return (
+    <motion.div
+      data-slot="dialog-form-footer"
+      {...props}
+    />
+  );
+}
+
+type DialogFormErrorProps = React.ComponentProps<"p">;
+
+// Rendered even when empty: a live region only announces content *changes*,
+// so the element must already be in the DOM before an error appears.
+function DialogFormError({ ...props }: DialogFormErrorProps) {
+  return (
+    <p
+      data-slot="dialog-form-error"
+      aria-live="polite"
+      {...props}
+    />
+  );
+}
+
+type DialogFormSubmitProps = HTMLMotionProps<"button">;
+
+function DialogFormSubmit({ ...props }: DialogFormSubmitProps) {
+  const { formId } = useDialogForm();
+
+  return (
+    <motion.button
+      data-slot="dialog-form-submit"
+      type="submit"
+      form={formId}
+      {...props}
+    />
+  );
+}
+
 export {
   DialogForm,
+  DialogFormBody,
   DialogFormContent,
+  DialogFormError,
+  DialogFormFooter,
+  DialogFormSubmit,
   DialogFormTitle,
   DialogFormTitleLabel,
   DialogFormTrigger,

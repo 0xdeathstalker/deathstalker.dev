@@ -3,7 +3,11 @@
 import { buttonVariants } from "@/components/ui/button";
 import {
   DialogForm,
+  DialogFormBody,
   DialogFormContent,
+  DialogFormError,
+  DialogFormFooter,
+  DialogFormSubmit,
   DialogFormTitle,
   DialogFormTitleLabel,
   DialogFormTrigger,
@@ -235,7 +239,6 @@ function DialogFormComposedDemo() {
           )}
           style={{ borderRadius: 16 }}
         >
-          {/* next steps: DialogFormBody (formId from context), DialogFormFooter, DialogFormSubmit */}
           <DialogFormTitle className="px-4 py-2.5">
             <DialogFormTitleLabel className="inline-flex items-center gap-2 leading-loose">
               <MessageCircle className="size-4" />
@@ -243,81 +246,70 @@ function DialogFormComposedDemo() {
             </DialogFormTitleLabel>
           </DialogFormTitle>
 
-          <motion.div
+          <DialogFormBody
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             transition={{ type: "spring", bounce: 0, duration: 0.5 }}
-            className="px-4"
+            className="px-4 space-y-2"
+            onSubmit={(event) => event.preventDefault()}
           >
-            <form
-              id="contact-form-composed"
-              className="space-y-2"
-              onSubmit={(event) => event.preventDefault()}
-            >
-              <div className="flex items-center gap-4">
-                <div>
-                  <label
-                    htmlFor="name-composed"
-                    className="ml-0.5 text-xs text-muted-foreground"
-                  >
-                    Name
-                  </label>
-                  <Input
-                    id="name-composed"
-                    name="name"
-                    type="text"
-                    className="bg-mauve-50 border border-mauve-300"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email-composed"
-                    className="ml-0.5 text-xs text-muted-foreground"
-                  >
-                    Email
-                  </label>
-                  <Input
-                    id="email-composed"
-                    name="email"
-                    type="email"
-                    className="bg-mauve-50 border border-mauve-300"
-                  />
-                </div>
-              </div>
+            <div className="flex items-center gap-4">
               <div>
                 <label
-                  htmlFor="message-composed"
+                  htmlFor="name-composed"
                   className="ml-0.5 text-xs text-muted-foreground"
                 >
-                  Message
+                  Name
                 </label>
-                <Textarea
-                  id="message-composed"
-                  name="message"
-                  rows={5}
+                <Input
+                  id="name-composed"
+                  name="name"
+                  type="text"
                   className="bg-mauve-50 border border-mauve-300"
                 />
               </div>
-            </form>
-          </motion.div>
+              <div>
+                <label
+                  htmlFor="email-composed"
+                  className="ml-0.5 text-xs text-muted-foreground"
+                >
+                  Email
+                </label>
+                <Input
+                  id="email-composed"
+                  name="email"
+                  type="email"
+                  className="bg-mauve-50 border border-mauve-300"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="message-composed"
+                className="ml-0.5 text-xs text-muted-foreground"
+              >
+                Message
+              </label>
+              <Textarea
+                id="message-composed"
+                name="message"
+                rows={5}
+                className="bg-mauve-50 border border-mauve-300"
+              />
+            </div>
+          </DialogFormBody>
 
-          <motion.div
+          <DialogFormFooter
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             transition={{ type: "spring", bounce: 0, duration: 0.15 }}
             className="px-4 pt-2.5 pb-3.5 flex items-center justify-between"
           >
-            <p className="text-sm text-red-500">error</p>
-            <motion.button
-              type="submit"
-              form="contact-form-composed"
-              className={cn(buttonVariants({ variant: "default" }), "h-9 rounded-lg")}
-            >
+            <DialogFormError className="text-sm text-red-500">error</DialogFormError>
+            <DialogFormSubmit className={cn(buttonVariants({ variant: "default" }), "h-9 rounded-lg")}>
               Submit
-            </motion.button>
-          </motion.div>
+            </DialogFormSubmit>
+          </DialogFormFooter>
         </DialogFormContent>
       </DialogForm>
     </div>
