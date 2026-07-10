@@ -26,13 +26,12 @@
 - **`DialogFormFooter`** — `motion.div` layout slot, mirrors shadcn's `DialogFooter` but accepts motion props.
 - **`DialogFormSubmit`** — `motion.button` with `type="submit" form={formId}` from context; the platform `form` attribute links it from outside the `<form>` element (portal-safe).
 - **`DialogFormError`** — `aria-live="polite"` slot; stays mounted even when empty because live regions only announce content *changes*.
+- **Anchored-widget positioning** (replaces the old "fixed-positioning variant" idea) — the root renders a `relative w-fit` anchor wrapper around the trigger which doubles as the default portal container; consumers pin the panel's corner to the trigger's corner (`absolute bottom-0 right-0` for a bottom-right widget). No backdrop part, `modal={false}` by default (no scroll lock / background inert — Escape and outside-click still dismiss), collision handling deliberately out of scope: whoever places the trigger picks the corner with room. Popover primitive evaluated and rejected: its required Positioner writes transforms and re-measures mid-animation, fighting the layoutId morph; corner-pinning needs no engine.
 
 ## Remaining steps
 
 1. **Decide submission semantics** — does a successful submit auto-close, or does the caller drive it via `onOpenChange` / `useDialogForm()`? Lean caller-controlled (matches the controlled-root design); document the chosen contract in the file comments.
 
-2. **Fixed-positioning variant** — the demo portals in-place via `container`; for the distributable component decide the default when `container` is omitted: portal to `<body>` needs `fixed` centering classes and probably an optional backdrop part (`DialogFormBackdrop`, skippable like the demo does).
+2. **Parity sign-off + retirement** — compare both demos one last time, then swap the lab to render `DialogFormComposedDemo`, delete the original `DialogFormDemo` (removes `usehooks-ts` usage, `FOCUSABLE_SELECTOR`, the focus-trap effect, and the commented-out inner `AnimatePresence`), and drop the `-composed` id suffixes.
 
-3. **Parity sign-off + retirement** — compare both demos one last time, then swap the lab to render `DialogFormComposedDemo`, delete the original `DialogFormDemo` (removes `usehooks-ts` usage, `FOCUSABLE_SELECTOR`, the focus-trap effect, and the commented-out inner `AnimatePresence`), and drop the `-composed` id suffixes.
-
-4. **Registry packaging** — when distributing shadcn-registry style: declare `motion` and `@base-ui/react` in the registry item's `dependencies`, keep `className` passthrough + `data-slot` attributes on every part, and consider `inert`/`modal` notes in the component docs.
+3. **Registry packaging** — when distributing shadcn-registry style: declare `motion` and `@base-ui/react` in the registry item's `dependencies`, keep `className` passthrough + `data-slot` attributes on every part, and consider `inert`/`modal` notes in the component docs.

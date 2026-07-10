@@ -4,6 +4,7 @@ import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import type { HTMLMotionProps, Transition } from "motion/react";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import * as React from "react";
+import { cn } from "@/lib/utils";
 
 /**
  * A dialog that morphs open from its trigger via Motion's shared `layoutId`
@@ -19,6 +20,18 @@ import * as React from "react";
  *
  * All `layoutId`s are prefixed with a `React.useId()` instance id so multiple
  * dialogs on one page can't morph into each other.
+ *
+ * Positioning model: this is an anchored widget, not a centered modal. The
+ * root renders a `relative w-fit` anchor wrapper around the trigger, which is
+ * also the default portal container — so the panel positions against the
+ * trigger's box wherever it sits in the UI. Consumers pin the panel's corner
+ * to the trigger's corner on DialogFormContent (e.g. `absolute bottom-0
+ * right-0` for a bottom-right widget expands up-and-left), and the morph
+ * grows the panel out of the pill from that shared corner. No backdrop, and
+ * non-modal by default (`modal={false}`: no scroll lock, no background inert)
+ * because the widget is meant to coexist with the page, not interrupt it.
+ * Collision handling is deliberately out of scope — whoever places the
+ * trigger picks the corner that has room.
  */
 const DEFAULT_TRANSITION: Transition = { type: "spring", bounce: 0.15, duration: 0.6 };
 
@@ -27,6 +40,7 @@ type DialogFormContextValue = {
   setOpen: (open: boolean) => void;
   getLayoutId: (part: "wrapper" | "title") => string;
   formId: string;
+  anchorRef: React.RefObject<HTMLDivElement | null>;
 };
 
 const DialogFormContext = React.createContext<DialogFormContextValue | null>(null);
@@ -44,17 +58,27 @@ type DialogFormProps = {
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
   transition?: Transition;
-} & React.ComponentProps<typeof DialogPrimitive.Root>;
+  /** Classes for the `relative w-fit` anchor wrapper the root renders. */
+  className?: string;
+  // Narrowed from Base UI's `ReactNode | render function`: children live
+  // inside the anchor wrapper div, so a render function can't be forwarded.
+  children?: React.ReactNode;
+} & Omit<React.ComponentProps<typeof DialogPrimitive.Root>, "children">;
 
 function DialogForm({
   open: openProp,
   defaultOpen = false,
   onOpenChange,
   transition = DEFAULT_TRANSITION,
+  // Non-modal by default: the widget coexists with the page (no scroll lock,
+  // no background inert). Escape + outside-click dismissal still work.
+  modal = false,
+  className,
   children,
   ...props
 }: DialogFormProps) {
   const instanceId = React.useId();
+  const anchorRef = React.useRef<HTMLDivElement>(null);
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(defaultOpen);
 
   // The root must run controlled even for uncontrolled consumers: exit
@@ -76,6 +100,7 @@ function DialogForm({
       setOpen,
       getLayoutId: (part) => `dialog-form-${instanceId}-${part}`,
       formId: `dialog-form-${instanceId}-form`,
+      anchorRef,
     }),
     [open, setOpen, instanceId],
   );
@@ -85,10 +110,20 @@ function DialogForm({
       <MotionConfig transition={transition}>
         <DialogPrimitive.Root
           {...props}
+          modal={modal}
           open={open}
           onOpenChange={setOpen}
         >
-          {children}
+          {/* The anchor: shrink-wraps the trigger and doubles as the default
+              portal container, so the panel positions against the trigger's
+              box wherever the component is placed. */}
+          <div
+            ref={anchorRef}
+            data-slot="dialog-form"
+            className={cn("relative w-fit", className)}
+          >
+            {children}
+          </div>
         </DialogPrimitive.Root>
       </MotionConfig>
     </DialogFormContext.Provider>
@@ -126,7 +161,7 @@ type DialogFormContentProps = HTMLMotionProps<"div"> & {
 };
 
 function DialogFormContent({ container, layoutId, exit = { opacity: 0 }, children, ...props }: DialogFormContentProps) {
-  const { open, getLayoutId } = useDialogForm();
+  const { open, getLayoutId, anchorRef } = useDialogForm();
 
   // Exit animations need all three pieces below: the controlled root keeps
   // `open` ours, `{open && ...}` gives AnimatePresence a conditional child it
@@ -134,14 +169,17 @@ function DialogFormContent({ container, layoutId, exit = { opacity: 0 }, childre
   // from ripping out the popup DOM on the first closed frame — without it the
   // panel disappears instantly instead of fading/morphing back.
   //
-  // `container` portals in-place (e.g. a demo card) instead of <body>; the
-  // layoutId morph survives portaling because Motion measures viewport boxes.
+  // The portal defaults to the root's anchor wrapper, so `absolute` classes
+  // on the panel pin it to the trigger's box (`bottom-0 right-0` = expand
+  // up-and-left from a bottom-right trigger). Pass `container` to portal
+  // elsewhere; the layoutId morph survives portaling because Motion measures
+  // viewport boxes.
   return (
     <AnimatePresence>
       {open && (
         <DialogPrimitive.Portal
           keepMounted
-          container={container}
+          container={container ?? anchorRef}
         >
           <DialogPrimitive.Popup
             data-slot="dialog-form-content"

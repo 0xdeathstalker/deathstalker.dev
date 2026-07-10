@@ -1,5 +1,9 @@
 "use client";
 
+import { MessageCircle } from "lucide-react";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import * as React from "react";
+import { useOnClickOutside } from "usehooks-ts";
 import { buttonVariants } from "@/components/ui/button";
 import {
   DialogForm,
@@ -15,10 +19,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { MessageCircle } from "lucide-react";
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
-import * as React from "react";
-import { useOnClickOutside } from "usehooks-ts";
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -211,10 +211,12 @@ function DialogFormDemo() {
 }
 
 function DialogFormComposedDemo() {
-  const containerRef = React.useRef<HTMLDivElement>(null);
-
+  // The demo card (relative, in labs/[slug]/page.tsx) is the "screen": the
+  // widget pins to its bottom-right corner and the panel expands up-and-left
+  // out of the trigger — in a real app this wrapper would be
+  // `fixed bottom-4 right-4` against the viewport instead.
   return (
-    <div ref={containerRef}>
+    <div className="absolute bottom-2 right-2">
       <DialogForm>
         <DialogFormTrigger
           className={cn(
@@ -230,11 +232,11 @@ function DialogFormComposedDemo() {
         </DialogFormTrigger>
 
         <DialogFormContent
-          container={containerRef}
           className={cn(
-            // inset-0 + m-auto + h-fit centers without translate classes, which
-            // would fight Motion for the inline transform during the morph
-            "absolute inset-0 m-auto h-fit w-[calc(100vw-2rem)] sm:w-lg",
+            // corner-pinned to the trigger's box (the anchor wrapper): the
+            // panel's bottom-right corner sits on the trigger's, expanding
+            // up-and-left. No translate classes — Motion owns the transform.
+            "absolute bottom-0 right-0 w-[calc(100vw-2rem)] sm:w-lg",
             "bg-mauve-100 border border-mauve-200 overflow-hidden",
           )}
           style={{ borderRadius: 16 }}
