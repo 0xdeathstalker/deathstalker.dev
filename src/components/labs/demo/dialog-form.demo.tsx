@@ -220,7 +220,7 @@ function DialogFormComposedDemo() {
       <DialogForm>
         <DialogFormTrigger
           className={cn(
-            "bg-mauve-100 h-9 px-4 enabled:active:scale-95 transition-[scale] ease-in-out",
+            "bg-mauve-100 h-9 px-4 enabled:active:translate-y-0.5 enabled:focus-visible:translate-y-0.5 transition-[translate] ease-in-out",
             "border border-mauve-200",
           )}
           style={{ borderRadius: 12 }}
