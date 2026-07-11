@@ -35,12 +35,20 @@ import { cn } from "@/lib/utils";
  */
 const DEFAULT_TRANSITION: Transition = { type: "spring", bounce: 0.15, duration: 0.6 };
 
+type DialogFormStatus = "idle" | "submitting" | "success" | "error";
+
 type DialogFormContextValue = {
   open: boolean;
   setOpen: (open: boolean) => void;
   getLayoutId: (part: "wrapper" | "title") => string;
   formId: string;
   anchorRef: React.RefObject<HTMLDivElement | null>;
+  /** Submission lifecycle. Driven by DialogFormBody's `action`, or manually via setStatus. */
+  status: DialogFormStatus;
+  /** Message shown by DialogFormError while status is "error". */
+  error: React.ReactNode;
+  setStatus: (status: DialogFormStatus, error?: React.ReactNode) => void;
+  reset: () => void;
 };
 
 const DialogFormContext = React.createContext<DialogFormContextValue | null>(null);
@@ -80,6 +88,10 @@ function DialogForm({
   const instanceId = React.useId();
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(defaultOpen);
+  const [submission, setSubmission] = React.useState<{
+    status: DialogFormStatus;
+    error: React.ReactNode;
+  }>({ status: "idle", error: null });
 
   // The root must run controlled even for uncontrolled consumers: exit
   // animations require AnimatePresence (not Base UI) to decide when the
@@ -88,6 +100,9 @@ function DialogForm({
 
   const setOpen = React.useCallback(
     (next: boolean) => {
+      // Reset on reopen, not on close: resetting at close would swap the
+      // success view back to the form mid-exit-fade.
+      if (next) setSubmission({ status: "idle", error: null });
       setUncontrolledOpen(next);
       onOpenChange?.(next);
     },
@@ -101,8 +116,12 @@ function DialogForm({
       getLayoutId: (part) => `dialog-form-${instanceId}-${part}`,
       formId: `dialog-form-${instanceId}-form`,
       anchorRef,
+      status: submission.status,
+      error: submission.error,
+      setStatus: (status, error = null) => setSubmission({ status, error }),
+      reset: () => setSubmission({ status: "idle", error: null }),
     }),
-    [open, setOpen, instanceId],
+    [open, setOpen, instanceId, submission],
   );
 
   return (
@@ -202,6 +221,18 @@ function DialogFormContent({ container, layoutId, exit = { opacity: 0 }, childre
 type DialogFormTitleProps = DialogPrimitive.Title.Props;
 
 function DialogFormTitle({ ...props }: DialogFormTitleProps) {
+  const { status } = useDialogForm();
+
+  // The title leaves in the success state — the success view owns the whole
+  // panel. This is a plain unmount, not an animated exit: the title can't
+  // live inside the swap region or any nested AnimatePresence without
+  // breaking the label's close morph (see DialogFormView), so it removes
+  // itself instead. Nothing visible pops: the label's layout leadership
+  // returns to the trigger's label, which is inside the Motion-hidden
+  // trigger, and the disappearance is absorbed by the view crossfade and
+  // panel-height morph running in the same frame.
+  if (status === "success") return null;
+
   return (
     <DialogPrimitive.Title
       data-slot="dialog-form-title"
@@ -227,20 +258,104 @@ function DialogFormTitleLabel({ layoutId, ...props }: DialogFormTitleLabelProps)
   );
 }
 
-type DialogFormBodyProps = HTMLMotionProps<"form">;
+type DialogFormViewProps = HTMLMotionProps<"div"> & {
+  /**
+   * Shown in place of this view's children once submission succeeds. The
+   * swap is animated internally — the node needs no presence handling of its
+   * own, and the panel's height morphs to fit via the layoutId wrapper.
+   */
+  success?: React.ReactNode;
+};
+
+// The swappable region: wrap the parts that should be replaced by `success`
+// (typically Body + Footer) and keep DialogFormTitle OUTSIDE it. This part
+// deliberately lives below the title rather than inside DialogFormContent:
+// a nested AnimatePresence masks the outer presence state (isPresent) from
+// its subtree, so anything with a layoutId inside it — like the title label —
+// loses its reverse morph on dialog close. (`propagate` was tried and
+// destabilized the border-radius/exit animations.) Body and Footer carry no
+// layoutIds, so they're safe inside.
+function DialogFormView({ success, children, ...props }: DialogFormViewProps) {
+  const { status } = useDialogForm();
+
+  // popLayout pops the exiting view out of flow so the entering one drives
+  // the panel's height; initial={false} keeps the form view from replaying
+  // an entrance on every open. Side effect worth knowing: initial={false}
+  // propagates through PresenceContext to EVERY motion component in this
+  // subtree on the presence's first render — so `initial`/`animate` entrance
+  // props on Body/Footer (or anything else in here) are silently skipped at
+  // dialog open. Entrance animation for panel content, if ever wanted, must
+  // live outside this boundary.
+  return (
+    <AnimatePresence
+      mode="popLayout"
+      initial={false}
+    >
+      {status === "success" && success ? (
+        <motion.div
+          key="dialog-form-success"
+          data-slot="dialog-form-success"
+          initial={{ y: -32, opacity: 0, filter: "blur(4px)" }}
+          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+          transition={{ type: "spring", duration: 0.4, bounce: 0 }}
+          {...props}
+        >
+          {success}
+        </motion.div>
+      ) : (
+        <motion.div
+          key="dialog-form-view"
+          data-slot="dialog-form-view"
+          exit={{ y: -8, opacity: 0, filter: "blur(4px)" }}
+          transition={{ type: "spring", duration: 0.4, bounce: 0 }}
+          {...props}
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+type DialogFormBodyProps = Omit<HTMLMotionProps<"form">, "action"> & {
+  /**
+   * Submission handler: resolve → success view swaps in; throw/reject → the
+   * error's message lands in DialogFormError. The component owns
+   * preventDefault, status flags, and all animation — consumers own only
+   * what happens with the data.
+   */
+  action?: (formData: FormData) => void | Promise<void>;
+};
 
 // The body IS the <form> — the form/submit linkage is what this family adds
 // over a plain Dialog. `id` defaults to the context formId so DialogFormSubmit
 // can target it via the platform `form` attribute from outside the form
 // element (the footer sits outside <form> for layout). Overriding `id` means
 // also overriding `form` on DialogFormSubmit — they must move together.
-function DialogFormBody({ id, ...props }: DialogFormBodyProps) {
-  const { formId } = useDialogForm();
+function DialogFormBody({ id, action, onSubmit, ...props }: DialogFormBodyProps) {
+  const { formId, setStatus } = useDialogForm();
+
+  async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+    // A consumer onSubmit may still veto (e.g. custom validation).
+    onSubmit?.(event);
+    if (event.defaultPrevented) return;
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    setStatus("submitting");
+    try {
+      await action?.(formData);
+      setStatus("success");
+    } catch (error) {
+      setStatus("error", error instanceof Error ? error.message : "Something went wrong.");
+    }
+  }
 
   return (
     <motion.form
       data-slot="dialog-form-body"
       id={id ?? formId}
+      onSubmit={action ? handleSubmit : onSubmit}
       {...props}
     />
   );
@@ -261,26 +376,37 @@ type DialogFormErrorProps = React.ComponentProps<"p">;
 
 // Rendered even when empty: a live region only announces content *changes*,
 // so the element must already be in the DOM before an error appears.
-function DialogFormError({ ...props }: DialogFormErrorProps) {
+// Defaults to the context error set by a rejected DialogFormBody `action`;
+// pass children to display something else.
+function DialogFormError({ children, ...props }: DialogFormErrorProps) {
+  const { error } = useDialogForm();
+
   return (
     <p
       data-slot="dialog-form-error"
       aria-live="polite"
       {...props}
-    />
+    >
+      {children ?? error}
+    </p>
   );
 }
 
 type DialogFormSubmitProps = HTMLMotionProps<"button">;
 
-function DialogFormSubmit({ ...props }: DialogFormSubmitProps) {
-  const { formId } = useDialogForm();
+function DialogFormSubmit({ disabled, ...props }: DialogFormSubmitProps) {
+  const { formId, status } = useDialogForm();
 
   return (
     <motion.button
       data-slot="dialog-form-submit"
       type="submit"
       form={formId}
+      // Guards against double-submission; style pending state via
+      // data-[status=submitting]: variants or render a spinner from
+      // useDialogForm().status.
+      disabled={disabled ?? status === "submitting"}
+      data-status={status}
       {...props}
     />
   );
@@ -296,5 +422,6 @@ export {
   DialogFormTitle,
   DialogFormTitleLabel,
   DialogFormTrigger,
+  DialogFormView,
   useDialogForm,
 };
