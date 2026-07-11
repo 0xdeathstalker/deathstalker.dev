@@ -265,14 +265,7 @@ function DialogFormComposedDemo() {
 
             <DialogFormFooter className="px-4 pt-2.5 pb-3.5 flex items-center justify-between">
               <DialogFormError className="text-sm text-red-500" />
-              <DialogFormSubmit
-                className={cn(
-                  buttonVariants({ variant: "default" }),
-                  "h-9 rounded-lg data-[status=submitting]:opacity-60",
-                )}
-              >
-                Submit
-              </DialogFormSubmit>
+              <DialogFormSubmit className="w-20 h-9 rounded-lg">Submit</DialogFormSubmit>
             </DialogFormFooter>
           </DialogFormView>
         </DialogFormContent>

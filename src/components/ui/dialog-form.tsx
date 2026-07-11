@@ -1,9 +1,12 @@
 "use client";
 
 import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
+import type { VariantProps } from "class-variance-authority";
+import { Loader } from "lucide-react";
 import type { HTMLMotionProps, Transition } from "motion/react";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import * as React from "react";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 /**
@@ -392,23 +395,65 @@ function DialogFormError({ children, ...props }: DialogFormErrorProps) {
   );
 }
 
-type DialogFormSubmitProps = HTMLMotionProps<"button">;
+type DialogFormSubmitProps = HTMLMotionProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    /** Shown while status is "submitting". Defaults to a spinning lucide Loader. */
+    spinner?: React.ReactNode;
+  };
 
-function DialogFormSubmit({ disabled, ...props }: DialogFormSubmitProps) {
+// Deliberately NO `layout` prop set here: a layout-animated node inside the
+// panel gets its own entry animation during the open morph, visibly detaching
+// the button from the rest of the content (observed, not theoretical). The
+// label/spinner swap therefore relies on the button's width staying fixed —
+// buttonVariants sizing + consumer width classes, not layout animation.
+function DialogFormSubmit({
+  disabled,
+  className,
+  variant,
+  size,
+  spinner = <Loader className="size-4 animate-spin" />,
+  children,
+  ...props
+}: DialogFormSubmitProps) {
   const { formId, status } = useDialogForm();
+  const submitting = status === "submitting";
 
   return (
     <motion.button
       data-slot="dialog-form-submit"
       type="submit"
       form={formId}
-      // Guards against double-submission; style pending state via
-      // data-[status=submitting]: variants or render a spinner from
-      // useDialogForm().status.
-      disabled={disabled ?? status === "submitting"}
+      // Guards against double-submission while the spinner shows.
+      disabled={disabled ?? submitting}
       data-status={status}
+      // relative: popLayout positions the exiting span absolutely — without a
+      // positioned ancestor it would fly to the panel's corner mid-swap.
+      // overflow-hidden: clips the ±25px label/spinner slide at the button's
+      // bounds instead of spilling into the footer.
+      className={cn(buttonVariants({ variant, size }), "relative overflow-hidden", className)}
       {...props}
-    />
+    >
+      {/* A nested AnimatePresence is safe here for the same reason as
+          DialogFormView: the spans carry no layoutId, so they don't need the
+          presence signal the nesting masks. Keying by rendered content (not
+          raw status) means the swap only plays when spinner visibility
+          actually changes — error → idle keeps the label still. */}
+      <AnimatePresence
+        mode="popLayout"
+        initial={false}
+      >
+        <motion.span
+          key={submitting ? "spinner" : "label"}
+          initial={{ opacity: 0, y: -25 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 25 }}
+          transition={{ type: "spring", duration: 0.3, bounce: 0 }}
+          className="inline-flex items-center justify-center"
+        >
+          {submitting ? spinner : children}
+        </motion.span>
+      </AnimatePresence>
+    </motion.button>
   );
 }
 
