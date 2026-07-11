@@ -46,7 +46,7 @@ type DialogFormContextValue = {
   getLayoutId: (part: "wrapper" | "title") => string;
   formId: string;
   anchorRef: React.RefObject<HTMLDivElement | null>;
-  /** Submission lifecycle. Driven by DialogFormBody's `action`, or manually via setStatus. */
+  /** Submission lifecycle. Driven by DialogForm's `action`, or manually via setStatus. */
   status: DialogFormStatus;
   /** Message shown by DialogFormError while status is "error". */
   error: React.ReactNode;
@@ -76,7 +76,7 @@ type DialogFormProps = {
   children?: React.ReactNode;
 } & Omit<React.ComponentProps<typeof DialogPrimitive.Root>, "children">;
 
-function DialogForm({
+function DialogFormModal({
   open: openProp,
   defaultOpen = false,
   onOpenChange,
@@ -335,7 +335,7 @@ type DialogFormBodyProps = Omit<HTMLMotionProps<"form">, "action"> & {
 // can target it via the platform `form` attribute from outside the form
 // element (the footer sits outside <form> for layout). Overriding `id` means
 // also overriding `form` on DialogFormSubmit — they must move together.
-function DialogFormBody({ id, action, onSubmit, ...props }: DialogFormBodyProps) {
+function DialogForm({ id, action, onSubmit, ...props }: DialogFormBodyProps) {
   const { formId, setStatus } = useDialogForm();
 
   async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
@@ -379,7 +379,7 @@ type DialogFormErrorProps = React.ComponentProps<"p">;
 
 // Rendered even when empty: a live region only announces content *changes*,
 // so the element must already be in the DOM before an error appears.
-// Defaults to the context error set by a rejected DialogFormBody `action`;
+// Defaults to the context error set by a rejected DialogForm `action`;
 // pass children to display something else.
 function DialogFormError({ children, ...props }: DialogFormErrorProps) {
   const { error } = useDialogForm();
@@ -458,8 +458,8 @@ function DialogFormSubmit({
 }
 
 export {
+  DialogFormModal,
   DialogForm,
-  DialogFormBody,
   DialogFormContent,
   DialogFormError,
   DialogFormFooter,

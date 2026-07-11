@@ -6,8 +6,8 @@ import * as React from "react";
 import { useOnClickOutside } from "usehooks-ts";
 import { buttonVariants } from "@/components/ui/button";
 import {
+  DialogFormModal,
   DialogForm,
-  DialogFormBody,
   DialogFormContent,
   DialogFormError,
   DialogFormFooter,
@@ -218,7 +218,7 @@ function DialogFormComposedDemo() {
   // `fixed bottom-4 right-4` against the viewport instead.
   return (
     <div className="absolute bottom-2 right-2">
-      <DialogForm>
+      <DialogFormModal>
         <DialogFormTrigger
           className={cn(
             "bg-mauve-100 h-9 px-4 border border-mauve-200",
@@ -250,7 +250,7 @@ function DialogFormComposedDemo() {
           </DialogFormTitle>
 
           <DialogFormView success={<SuccessComponent />}>
-            <DialogFormBody
+            <DialogForm
               className="px-4 space-y-2"
               action={async (formData) => {
                 // demo stub: pretend to send, fail when the message is empty
@@ -261,7 +261,7 @@ function DialogFormComposedDemo() {
               }}
             >
               <FormInputs />
-            </DialogFormBody>
+            </DialogForm>
 
             <DialogFormFooter className="px-4 pt-2.5 pb-3.5 flex items-center justify-between">
               <DialogFormError className="text-sm text-red-500" />
@@ -269,7 +269,7 @@ function DialogFormComposedDemo() {
             </DialogFormFooter>
           </DialogFormView>
         </DialogFormContent>
-      </DialogForm>
+      </DialogFormModal>
     </div>
   );
 }
