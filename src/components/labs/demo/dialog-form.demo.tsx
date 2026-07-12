@@ -6,11 +6,11 @@ import * as React from "react";
 import { useOnClickOutside } from "usehooks-ts";
 import { buttonVariants } from "@/components/ui/button";
 import {
-  DialogFormModal,
   DialogForm,
   DialogFormContent,
   DialogFormError,
   DialogFormFooter,
+  DialogFormModal,
   DialogFormSubmit,
   DialogFormTitle,
   DialogFormTitleLabel,
@@ -254,7 +254,7 @@ function DialogFormComposedDemo() {
               className="px-4 space-y-2"
               action={async (formData) => {
                 // demo stub: pretend to send, fail when the message is empty
-                await new Promise((resolve) => setTimeout(resolve, 800));
+                await new Promise((resolve) => setTimeout(resolve, 3000));
                 if (!formData.get("message")) {
                   throw new Error("Message cannot be empty.");
                 }
@@ -265,7 +265,17 @@ function DialogFormComposedDemo() {
 
             <DialogFormFooter className="px-4 pt-2.5 pb-3.5 flex items-center justify-between">
               <DialogFormError className="text-sm text-red-500" />
-              <DialogFormSubmit className="w-20 h-9 rounded-lg">Submit</DialogFormSubmit>
+              <DialogFormSubmit
+                className="w-20 h-9 rounded-lg"
+                spinner={
+                  <Spinner
+                    size={14}
+                    color="rgba(255, 255, 255, 0.65)"
+                  />
+                }
+              >
+                Submit
+              </DialogFormSubmit>
             </DialogFormFooter>
           </DialogFormView>
         </DialogFormContent>
@@ -350,6 +360,30 @@ function SuccessComponent() {
       </svg>
       <h3>Feedback received!</h3>
       <p>Thanks for helping me improve Sonner.</p>
+    </div>
+  );
+}
+
+const bars = Array(12).fill(0);
+
+function Spinner({ color, size = 20 }: { color?: string; size?: number }) {
+  return (
+    <div
+      className="relative"
+      style={{ width: size, height: size, color }}
+    >
+      <div className="relative top-1/2 left-1/2 size-full">
+        {bars.map((_, i) => (
+          <div
+            key={`spinner-bar-${`${i + 1}`}`}
+            className="absolute -left-[10%] -top-[3.9%] h-[8%] w-[24%] rounded-md bg-current animate-[spinner-fade_1.2s_linear_infinite]"
+            style={{
+              animationDelay: `${-1.2 + i * 0.1}s`,
+              transform: `rotate(${i * 30}deg) translate(146%)`,
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 }

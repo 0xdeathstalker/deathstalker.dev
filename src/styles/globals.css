@@ -230,6 +230,16 @@
   }
 }
 
+/* 12-bar spinner fade (Sonner-style); bars reference via animate-[spinner-fade_1.2s_linear_infinite] */
+@keyframes spinner-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.15;
+  }
+}
+
 /* selection colours based on theme */
 ::-moz-selection {
   color: var(--color-taupe-50);
