@@ -68,6 +68,7 @@ type DialogFormProps = {
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
   transition?: Transition;
+  successDuration?: number;
   className?: string;
   // Narrowed from Base UI's `ReactNode | render function`: children live
   // inside the anchor wrapper div, so a render function can't be forwarded.
@@ -80,6 +81,7 @@ function DialogFormModal({
   onOpenChange,
   transition = DEFAULT_TRANSITION,
   modal = false, // non-modal by default
+  successDuration = 2000,
   className,
   children,
   ...props
@@ -105,6 +107,13 @@ function DialogFormModal({
     },
     [onOpenChange],
   );
+
+  React.useEffect(() => {
+    if (!open || submission.status !== "success" || successDuration == null) return;
+
+    const timer = setTimeout(() => setOpen(false), successDuration);
+    return () => clearTimeout(timer);
+  }, [open, submission.status, successDuration, setOpen]);
 
   const contextValue = React.useMemo<DialogFormContextValue>(
     () => ({
