@@ -11,12 +11,11 @@ import { cn } from "@/lib/utils";
 
 /**
  * A dialog that morphs open from its trigger via Motion's shared `layoutId`
- * projection, built on Base UI Dialog for the accessibility contract (focus
- * trap, focus return, Escape, outside-click, aria wiring, background inert).
+ * projection, built on Base UI Dialog.
  *
  * The morph works WITHOUT unmounting the trigger: Base UI keeps the trigger
- * mounted while open (it needs the element to restore focus on close), and
- * when the popup mounts with the same `layoutId`, Motion's projection stack
+ * mounted while open (since it needs the element to restore focus on close),
+ * and when the popup mounts with the same `layoutId`, Motion's projection stack
  * promotes it to "lead" and automatically hides the still-mounted trigger
  * (the "follower"). On exit, leadership transfers back and the trigger
  * reappears — so no conditional rendering of the trigger is ever needed.
@@ -26,16 +25,18 @@ import { cn } from "@/lib/utils";
  *
  * Positioning model: this is an anchored widget, not a centered modal. The
  * root renders a `relative w-fit` anchor wrapper around the trigger, which is
- * also the default portal container — so the panel positions against the
+ * also the default portal container, so the panel positions against the
  * trigger's box wherever it sits in the UI. Consumers pin the panel's corner
  * to the trigger's corner on DialogFormContent (e.g. `absolute bottom-0
- * right-0` for a bottom-right widget expands up-and-left), and the morph
- * grows the panel out of the pill from that shared corner. No backdrop, and
+ * right-0` for a bottom-right widget expands up-and-left) and the morph
+ * grows the panel out of the pill from that shared corner. No backdrop and
  * non-modal by default (`modal={false}`: no scroll lock, no background inert)
  * because the widget is meant to coexist with the page, not interrupt it.
- * Collision handling is deliberately out of scope — whoever places the
+ *
+ * Collision handling is deliberately out of scope, whoever places the
  * trigger picks the corner that has room.
  */
+
 const DEFAULT_TRANSITION: Transition = { type: "spring", bounce: 0.15, duration: 0.6 };
 
 type DialogFormStatus = "idle" | "submitting" | "success" | "error";
@@ -46,9 +47,7 @@ type DialogFormContextValue = {
   getLayoutId: (part: "wrapper" | "title") => string;
   formId: string;
   anchorRef: React.RefObject<HTMLDivElement | null>;
-  /** Submission lifecycle. Driven by DialogForm's `action`, or manually via setStatus. */
   status: DialogFormStatus;
-  /** Message shown by DialogFormError while status is "error". */
   error: React.ReactNode;
   setStatus: (status: DialogFormStatus, error?: React.ReactNode) => void;
   reset: () => void;
@@ -69,7 +68,6 @@ type DialogFormProps = {
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
   transition?: Transition;
-  /** Classes for the `relative w-fit` anchor wrapper the root renders. */
   className?: string;
   // Narrowed from Base UI's `ReactNode | render function`: children live
   // inside the anchor wrapper div, so a render function can't be forwarded.
@@ -81,9 +79,7 @@ function DialogFormModal({
   defaultOpen = false,
   onOpenChange,
   transition = DEFAULT_TRANSITION,
-  // Non-modal by default: the widget coexists with the page (no scroll lock,
-  // no background inert). Escape + outside-click dismissal still work.
-  modal = false,
+  modal = false, // non-modal by default
   className,
   children,
   ...props
@@ -97,14 +93,12 @@ function DialogFormModal({
   }>({ status: "idle", error: null });
 
   // The root must run controlled even for uncontrolled consumers: exit
-  // animations require AnimatePresence (not Base UI) to decide when the
-  // popup leaves the React tree, and that only works if open state lives here.
+  // animations require AnimatePresence to decide when the popup leaves
+  // the React tree and that only works if open state lives here.
   const open = openProp ?? uncontrolledOpen;
 
   const setOpen = React.useCallback(
     (next: boolean) => {
-      // Reset on reopen, not on close: resetting at close would swap the
-      // success view back to the form mid-exit-fade.
       if (next) setSubmission({ status: "idle", error: null });
       setUncontrolledOpen(next);
       onOpenChange?.(next);
@@ -136,9 +130,6 @@ function DialogFormModal({
           open={open}
           onOpenChange={setOpen}
         >
-          {/* The anchor: shrink-wraps the trigger and doubles as the default
-              portal container, so the panel positions against the trigger's
-              box wherever the component is placed. */}
           <div
             ref={anchorRef}
             data-slot="dialog-form"
@@ -160,11 +151,11 @@ function DialogFormTrigger({ layoutId, children, ...props }: DialogFormTriggerPr
   return (
     <DialogPrimitive.Trigger
       data-slot="dialog-form-trigger"
-      // `render` merges Base UI's props (open/close handler, ref, aria state)
-      // onto the motion element, so motion props and a11y wiring coexist on
-      // one DOM node. Sharing the "wrapper" layoutId with DialogFormContent
-      // is what produces the morph; Motion hides this button while the popup
-      // is lead (see file header).
+      // `render` merges Base UI's props onto the motion element,
+      // so motion props and a11y wiring coexist on one DOM node.
+      // Sharing the "wrapper" layoutId with DialogFormContent is
+      // what produces the morph; Motion hides this button while
+      // the popup is lead.
       render={
         <motion.button
           type="button"
@@ -187,15 +178,12 @@ function DialogFormContent({ container, layoutId, exit = { opacity: 0 }, childre
 
   // Exit animations need all three pieces below: the controlled root keeps
   // `open` ours, `{open && ...}` gives AnimatePresence a conditional child it
-  // can hold in the tree while the exit plays, and `keepMounted` stops Base UI
-  // from ripping out the popup DOM on the first closed frame — without it the
+  // can hold in the tree while the exit plays and `keepMounted` stops Base UI
+  // from ripping out the popup DOM on the first closed frame. Without it the
   // panel disappears instantly instead of fading/morphing back.
   //
-  // The portal defaults to the root's anchor wrapper, so `absolute` classes
-  // on the panel pin it to the trigger's box (`bottom-0 right-0` = expand
-  // up-and-left from a bottom-right trigger). Pass `container` to portal
-  // elsewhere; the layoutId morph survives portaling because Motion measures
-  // viewport boxes.
+  // Pass `container` to portal elsewhere; the layoutId morph survives
+  // portaling because Motion measures viewport boxes.
   return (
     <AnimatePresence>
       {open && (
@@ -226,14 +214,11 @@ type DialogFormTitleProps = DialogPrimitive.Title.Props;
 function DialogFormTitle({ ...props }: DialogFormTitleProps) {
   const { status } = useDialogForm();
 
-  // The title leaves in the success state — the success view owns the whole
+  // The title leaves in the success state. The success view owns the whole
   // panel. This is a plain unmount, not an animated exit: the title can't
   // live inside the swap region or any nested AnimatePresence without
   // breaking the label's close morph (see DialogFormView), so it removes
-  // itself instead. Nothing visible pops: the label's layout leadership
-  // returns to the trigger's label, which is inside the Motion-hidden
-  // trigger, and the disappearance is absorbed by the view crossfade and
-  // panel-height morph running in the same frame.
+  // itself instead.
   if (status === "success") return null;
 
   return (
@@ -262,33 +247,13 @@ function DialogFormTitleLabel({ layoutId, ...props }: DialogFormTitleLabelProps)
 }
 
 type DialogFormViewProps = HTMLMotionProps<"div"> & {
-  /**
-   * Shown in place of this view's children once submission succeeds. The
-   * swap is animated internally — the node needs no presence handling of its
-   * own, and the panel's height morphs to fit via the layoutId wrapper.
-   */
+  // Shown in place of this view's children once submission succeeds.
   success?: React.ReactNode;
 };
 
-// The swappable region: wrap the parts that should be replaced by `success`
-// (typically Body + Footer) and keep DialogFormTitle OUTSIDE it. This part
-// deliberately lives below the title rather than inside DialogFormContent:
-// a nested AnimatePresence masks the outer presence state (isPresent) from
-// its subtree, so anything with a layoutId inside it — like the title label —
-// loses its reverse morph on dialog close. (`propagate` was tried and
-// destabilized the border-radius/exit animations.) Body and Footer carry no
-// layoutIds, so they're safe inside.
 function DialogFormView({ success, children, ...props }: DialogFormViewProps) {
   const { status } = useDialogForm();
 
-  // popLayout pops the exiting view out of flow so the entering one drives
-  // the panel's height; initial={false} keeps the form view from replaying
-  // an entrance on every open. Side effect worth knowing: initial={false}
-  // propagates through PresenceContext to EVERY motion component in this
-  // subtree on the presence's first render — so `initial`/`animate` entrance
-  // props on Body/Footer (or anything else in here) are silently skipped at
-  // dialog open. Entrance animation for panel content, if ever wanted, must
-  // live outside this boundary.
   return (
     <AnimatePresence
       mode="popLayout"
@@ -324,17 +289,12 @@ type DialogFormBodyProps = Omit<HTMLMotionProps<"form">, "action"> & {
   /**
    * Submission handler: resolve → success view swaps in; throw/reject → the
    * error's message lands in DialogFormError. The component owns
-   * preventDefault, status flags, and all animation — consumers own only
+   * preventDefault, status flags and all animation. Consumers own only
    * what happens with the data.
    */
   action?: (formData: FormData) => void | Promise<void>;
 };
 
-// The body IS the <form> — the form/submit linkage is what this family adds
-// over a plain Dialog. `id` defaults to the context formId so DialogFormSubmit
-// can target it via the platform `form` attribute from outside the form
-// element (the footer sits outside <form> for layout). Overriding `id` means
-// also overriding `form` on DialogFormSubmit — they must move together.
 function DialogForm({ id, action, onSubmit, ...props }: DialogFormBodyProps) {
   const { formId, setStatus } = useDialogForm();
 
@@ -396,16 +356,11 @@ function DialogFormError({ children, ...props }: DialogFormErrorProps) {
 }
 
 type DialogFormSubmitProps = HTMLMotionProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    /** Shown while status is "submitting". Defaults to a spinning lucide Loader. */
-    spinner?: React.ReactNode;
-  };
+  VariantProps<typeof buttonVariants> & { spinner?: React.ReactNode };
 
-// Deliberately NO `layout` prop set here: a layout-animated node inside the
-// panel gets its own entry animation during the open morph, visibly detaching
-// the button from the rest of the content (observed, not theoretical). The
-// label/spinner swap therefore relies on the button's width staying fixed —
-// buttonVariants sizing + consumer width classes, not layout animation.
+// NO `layout` prop is set here because a layout-animated node inside
+// the panel gets its own entry animation during the open morph,
+// visibly detaching the button from the rest of the content.
 function DialogFormSubmit({
   disabled,
   className,
@@ -426,18 +381,9 @@ function DialogFormSubmit({
       // Guards against double-submission while the spinner shows.
       disabled={disabled ?? submitting}
       data-status={status}
-      // relative: popLayout positions the exiting span absolutely — without a
-      // positioned ancestor it would fly to the panel's corner mid-swap.
-      // overflow-hidden: clips the ±25px label/spinner slide at the button's
-      // bounds instead of spilling into the footer.
       className={cn(buttonVariants({ variant, size }), "relative overflow-hidden", className)}
       {...props}
     >
-      {/* A nested AnimatePresence is safe here for the same reason as
-          DialogFormView: the spans carry no layoutId, so they don't need the
-          presence signal the nesting masks. Keying by rendered content (not
-          raw status) means the swap only plays when spinner visibility
-          actually changes — error → idle keeps the label still. */}
       <AnimatePresence
         mode="popLayout"
         initial={false}
