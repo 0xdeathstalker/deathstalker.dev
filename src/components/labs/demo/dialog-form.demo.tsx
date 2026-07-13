@@ -162,9 +162,9 @@ function SuccessComponent() {
           strokeLinejoin="round"
         />
       </svg>
-      <div className="flex flex-col items-center justify-center gap-1">
-        <h3 className="text-lg">Thank you for contacting us!</h3>
-        <p className="text-sm">We'll respond to you soon.</p>
+      <div className="flex flex-col items-center justify-center gap-1 text-center">
+        <h3 className="text-lg font-medium">Message Sent</h3>
+        <p className="text-sm text-muted-foreground">Thanks for reaching out. We'll be in touch soon.</p>
       </div>
     </div>
   );
