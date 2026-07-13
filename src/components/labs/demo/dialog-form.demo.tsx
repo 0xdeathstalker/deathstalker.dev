@@ -37,12 +37,12 @@ function DialogFormModalDemo() {
 
         <DialogFormContent
           className={cn(
-            "absolute bottom-0 right-0 h-[270px] w-[calc(100vw-2rem)] sm:w-lg",
+            "absolute bottom-0 right-0 h-[250px] sm:h-[270px] w-[calc(100vw-5.7rem)] sm:w-lg",
             "bg-mauve-100 border border-mauve-200 overflow-hidden",
           )}
           style={{ borderRadius: 16 }}
         >
-          <DialogFormTitle className="px-4 py-2.5">
+          <DialogFormTitle className="px-3 sm:px-4 py-1 sm:py-2.5">
             <DialogFormTitleLabel className="inline-flex items-center gap-2 leading-loose">
               <MessageCircle className="size-4" />
               Contact us
@@ -51,7 +51,7 @@ function DialogFormModalDemo() {
 
           <DialogFormView success={<SuccessComponent />}>
             <DialogForm
-              className="px-4 space-y-2"
+              className="px-2.5 sm:px-4 space-y-1"
               action={async (formData) => {
                 // demo stub: pretend to send, fail when the message is empty
                 await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -63,7 +63,7 @@ function DialogFormModalDemo() {
               <FormInputs />
             </DialogForm>
 
-            <DialogFormFooter className="px-4 pt-2.5 pb-3.5 flex items-center justify-between">
+            <DialogFormFooter className="px-2.5 sm:px-4 pt-2.5 pb-1 sm:b-3.5 flex items-center justify-between">
               <DialogFormError className="text-sm text-red-500" />
               <DialogFormSubmit
                 className="w-24 h-9 rounded-lg"
@@ -87,7 +87,7 @@ function DialogFormModalDemo() {
 function FormInputs() {
   return (
     <>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <div>
           <label
             htmlFor="name-composed"
