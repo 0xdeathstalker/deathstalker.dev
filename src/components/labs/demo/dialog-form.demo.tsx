@@ -23,7 +23,7 @@ function DialogFormModalDemo() {
       <DialogFormModal>
         <DialogFormTrigger
           className={cn(
-            "bg-mauve-100 h-9 px-4 border border-mauve-200",
+            "bg-mauve-100 h-9 px-4 border border-mauve-300",
             "enabled:active:translate-y-0.5 enabled:focus-visible:translate-y-0.5",
             "transition-[translate] ease-in-out",
           )}
@@ -38,7 +38,7 @@ function DialogFormModalDemo() {
         <DialogFormContent
           className={cn(
             "absolute bottom-0 right-0 h-[250px] sm:h-[270px] w-[calc(100vw-5.7rem)] sm:w-lg",
-            "bg-mauve-100 border border-mauve-200 overflow-hidden",
+            "bg-mauve-100 border border-mauve-300 overflow-hidden",
           )}
           style={{ borderRadius: 16 }}
         >
