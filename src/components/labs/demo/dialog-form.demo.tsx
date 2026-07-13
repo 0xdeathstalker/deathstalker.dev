@@ -99,6 +99,7 @@ function FormInputs() {
             id="name-composed"
             name="name"
             type="text"
+            autoComplete="off"
             className="bg-mauve-50 border border-mauve-300"
           />
         </div>
@@ -113,6 +114,7 @@ function FormInputs() {
             id="email-composed"
             name="email"
             type="email"
+            autoComplete="off"
             className="bg-mauve-50 border border-mauve-300"
           />
         </div>
@@ -128,6 +130,7 @@ function FormInputs() {
           id="message-composed"
           name="message"
           rows={5}
+          autoComplete="off"
           className="bg-mauve-50 border border-mauve-300"
         />
       </div>
