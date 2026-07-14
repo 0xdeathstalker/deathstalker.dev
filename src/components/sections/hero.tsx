@@ -46,15 +46,15 @@ function Title() {
       />
 
       <div className="flex flex-col items-start">
-        <h1 className="font-pixel-square leading-tight tracking-tight sm:tracking-normal text-4xl font-semibold text-mauve-700">
+        <h1 className="font-pixel-square tracking-tight sm:tracking-normal text-4xl font-semibold text-mauve-700">
           {portfolio.author}
         </h1>
 
-        <TextFlip>
-          <span className="text-mauve-500">frontend engineer</span>
+        {/* <TextFlip>
+          <span className="text-mauve-500">fullstack engineer</span>
           <span className="text-mauve-500">design engineer</span>
           <span className="text-mauve-500">web3 developer</span>
-        </TextFlip>
+        </TextFlip> */}
       </div>
 
       <Line

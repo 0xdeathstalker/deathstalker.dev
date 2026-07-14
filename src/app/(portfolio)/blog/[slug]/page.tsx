@@ -9,11 +9,6 @@ import { getBlogBySlug, getBlogs } from "@/lib/actions/blog";
 import { siteConfig } from "@/lib/config/site";
 import { formatDate } from "@/lib/utils";
 
-const title = "blogs";
-const description = "writing about code and everything.";
-
-const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
-
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
@@ -35,6 +30,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const { title, description, date } = blog.metadata;
   const url = `${siteConfig.url}/blog/${slug}`;
+
+  const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
   return {
     title,
@@ -76,6 +73,10 @@ export default async function Blog({ params }: PageProps) {
     notFound();
   }
 
+  const { title, description } = blog.metadata;
+
+  const ogImage = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -112,7 +113,7 @@ export default async function Blog({ params }: PageProps) {
 
       <div className="py-6 px-4">
         <span className="mb-8 inline-block font-mono tracking-tight text-sm text-mauve-400">
-          {formatDate(blog.metadata.date)}
+          {formatDate(blog.metadata.date).toLowerCase()}
         </span>
 
         <article className="prose prose-invert prose-headings:text-white prose-a:text-white hover:prose-a:underline">

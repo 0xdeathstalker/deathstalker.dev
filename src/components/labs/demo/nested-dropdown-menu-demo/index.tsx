@@ -11,7 +11,7 @@ import {
   NestedMenuTrigger,
   NestedMenuViewport,
 } from "@/components/ui/nested-dropdown-menu";
-import { type DemoMenuItem, nestedMenuItems } from "@/components/labs/demo/nested-dropdown-menu/data";
+import { type DemoMenuItem, nestedMenuItems } from "@/components/labs/demo/nested-dropdown-menu-demo/data";
 import { cn } from "@/lib/utils";
 
 function NestedDropdownMenuDemo() {

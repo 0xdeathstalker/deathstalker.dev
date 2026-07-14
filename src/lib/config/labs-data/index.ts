@@ -11,6 +11,7 @@ import { maskScrollAreaConfig } from "./scroll-fade-effect.config";
 import { spritesConfig } from "./sprites.config";
 import { testimonialMarqueeConfig } from "./testimonial-marquee.config";
 import { transitionTabsConfig } from "./transition-tabs.config";
+import { dialogFormConfig } from "./dialog-form.config";
 
 export const labs: Array<Lab> = [
   buttonStatesConfig,
@@ -25,4 +26,5 @@ export const labs: Array<Lab> = [
   groupAccordionConfig,
   nestedDropdownMenuConfig,
   chatInputConfig,
+  dialogFormConfig,
 ];
