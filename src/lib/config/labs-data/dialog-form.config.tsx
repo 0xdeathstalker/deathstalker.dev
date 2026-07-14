@@ -76,14 +76,42 @@ const dialogFormConfig = {
         component.
       </p>
       <CodeBlock
-        language="tsx"
+        language="ts"
         code={getActionSnippet()}
       />
     </>
   ),
   tech: "motion",
-  video: "",
-  component: DialogFormModalDemo,
+  video: "https://cdn.deathstalker.dev/videos/dialog-form-modal.mp4",
+  component: DialogFormDemo,
 };
+
+function DialogFormDemo() {
+  return (
+    <div className="relative w-full p-4 bg-mauve-100 rounded-lg">
+      <div className="flex flex-col gap-4">
+        {/* navbar */}
+        <div className="h-14 shrink-0 rounded-xl border border-mauve-200/70 bg-white" />
+
+        <div className="flex min-h-0 flex-1 gap-4">
+          {/* content */}
+          <div className="flex min-w-0 flex-1 flex-col gap-4">
+            <div className="grid shrink-0 grid-cols-3 gap-4">
+              <div className="h-35 rounded-xl border border-mauve-200/70 bg-white" />
+              <div className="col-span-2 h-35 rounded-xl border border-mauve-200/70 bg-white" />
+            </div>
+            <div className="grid shrink-0 grid-cols-3 gap-4">
+              <div className="h-35 rounded-xl border border-mauve-200/70 bg-white" />
+              <div className="h-35 rounded-xl border border-mauve-200/70 bg-white" />
+              <div className="h-35 rounded-xl border border-mauve-200/70 bg-white" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <DialogFormModalDemo />
+    </div>
+  );
+}
 
 export { dialogFormConfig };
