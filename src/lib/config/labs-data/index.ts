@@ -12,6 +12,7 @@ import { spritesConfig } from "./sprites.config";
 import { testimonialMarqueeConfig } from "./testimonial-marquee.config";
 import { transitionTabsConfig } from "./transition-tabs.config";
 import { dialogFormConfig } from "./dialog-form.config";
+import { inlineCopyToastConfig } from "./inline-copy-toast.config";
 
 export const labs: Array<Lab> = [
   buttonStatesConfig,
@@ -27,4 +28,5 @@ export const labs: Array<Lab> = [
   nestedDropdownMenuConfig,
   chatInputConfig,
   dialogFormConfig,
+  inlineCopyToastConfig,
 ];
