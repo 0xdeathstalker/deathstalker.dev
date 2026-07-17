@@ -19,6 +19,12 @@ function InlineCopyToast() {
 
   return (
     <div className="relative w-fit overflow-hidden rounded-full">
+      <span
+        role="status"
+        className="sr-only"
+      >
+        {isCopied ? "Code copied to clipboard" : ""}
+      </span>
       <div className="w-[190px] h-14 bg-mauve-100 rounded-full ring ring-inset ring-mauve-200/50">
         <AnimatePresence
           mode="popLayout"
