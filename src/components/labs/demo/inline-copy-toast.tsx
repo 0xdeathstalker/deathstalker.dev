@@ -5,7 +5,7 @@ import * as React from "react";
 import { useCopyToClipboard } from "usehooks-ts";
 import { cn } from "@/lib/utils";
 
-const CODE = "492817";
+const CODE = "492837";
 
 function InlineCopyToast() {
   const [isCopied, setIsCopied] = React.useState(false);
@@ -37,10 +37,10 @@ function InlineCopyToast() {
           {isCopied ? (
             <motion.div
               key="success-view"
-              initial={{ opacity: 0, scale: 1.25, filter: "blur(8px)" }}
+              initial={{ opacity: 0, scale: 1.25, filter: "blur(12px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 1.25, filter: "blur(8px)" }}
-              transition={{ type: "spring", bounce: 0.1, duration: 0.3 }}
+              exit={{ opacity: 0, scale: 1.25, filter: "blur(12px)" }}
+              transition={{ type: "spring", bounce: 0.1, duration: 0.5 }}
               className="size-full flex items-center justify-center gap-2 py-2"
             >
               <motion.div
