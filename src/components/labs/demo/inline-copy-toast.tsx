@@ -2,20 +2,30 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import * as React from "react";
+import { useCopyToClipboard } from "usehooks-ts";
 import { cn } from "@/lib/utils";
 
+const CODE = "492817";
+
 function InlineCopyToast() {
-  const [copied, setCopied] = React.useState(false);
+  const [isCopied, setIsCopied] = React.useState(false);
+  const [, copyToClipboard] = useCopyToClipboard();
+
+  const handleCopy = () => {
+    copyToClipboard(CODE).then((success) => {
+      if (success) setIsCopied(true);
+    });
+  };
 
   React.useEffect(() => {
-    if (!copied) return;
+    if (!isCopied) return;
 
     const timerId = setTimeout(() => {
-      setCopied(false);
+      setIsCopied(false);
     }, 1800);
 
     return () => clearTimeout(timerId);
-  }, [copied]);
+  }, [isCopied]);
 
   return (
     <div className="relative w-fit overflow-hidden rounded-full">
@@ -24,7 +34,7 @@ function InlineCopyToast() {
           mode="popLayout"
           initial={false}
         >
-          {copied ? (
+          {isCopied ? (
             <motion.div
               key="success-view"
               initial={{ opacity: 0, scale: 1.25, filter: "blur(8px)" }}
@@ -52,10 +62,10 @@ function InlineCopyToast() {
               transition={{ type: "tween", duration: 0.15 }}
               className="w-full flex items-center justify-between gap-8 pl-5 pr-2 py-2"
             >
-              <span className="font-semibold text-mauve-400 select-none tracking-widest tabular-nums">492817</span>
+              <span className="font-semibold text-mauve-400 select-none tracking-widest tabular-nums">{CODE}</span>
               <motion.button
                 type="button"
-                onClick={() => setCopied(true)}
+                onClick={handleCopy}
                 className={cn(
                   "h-10 inline-flex items-center px-5 rounded-full bg-white font-medium shadow-lg cursor-pointer",
                   "hover:bg-mauve-50 enabled:focus:scale-95 focus-visible:outline-1 focus-visible:outline-offset-1",
