@@ -19,7 +19,7 @@ function InlineCopyToast() {
 
   return (
     <div className="relative w-fit overflow-hidden rounded-full">
-      <div className="w-[230px] h-14.5 bg-mauve-100 rounded-full ring ring-inset ring-mauve-200/50 overflow-hidden">
+      <div className="w-[210px] h-14 bg-mauve-100 rounded-full ring ring-inset ring-mauve-200/50">
         <AnimatePresence
           mode="popLayout"
           initial={false}
@@ -27,11 +27,11 @@ function InlineCopyToast() {
           {copied ? (
             <motion.div
               key="success-view"
-              initial={{ opacity: 0, scale: 1.1, filter: "blur(8px)" }}
+              initial={{ opacity: 0, scale: 1.25, filter: "blur(8px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 1.1, filter: "blur(8px)" }}
-              transition={{ type: "spring", bounce: 0.1, duration: 0.35 }}
-              className="size-full flex items-center justify-center gap-2 py-2 overflow-hidden"
+              exit={{ opacity: 0, scale: 1.25, filter: "blur(8px)" }}
+              transition={{ type: "spring", bounce: 0.1, duration: 0.3 }}
+              className="size-full flex items-center justify-center gap-2 py-2"
             >
               <motion.div
                 initial={{ clipPath: "inset(0 100% 0 0)" }}
@@ -46,20 +46,20 @@ function InlineCopyToast() {
           ) : (
             <motion.div
               key="idle-view"
-              initial={{ opacity: 0, filter: "blur(8px)" }}
-              animate={{ opacity: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, filter: "blur(8px)" }}
-              transition={{ type: "tween", duration: 0.35 }}
-              className="flex items-center justify-center gap-8 pl-4 pr-2 py-2"
+              initial={{ opacity: 0, scale: 0.85, filter: "blur(8px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, scale: 0.85, filter: "blur(8px)" }}
+              transition={{ type: "tween", duration: 0.15 }}
+              className="w-full flex items-center justify-between gap-8 pl-5 pr-2 py-2"
             >
-              <span className="font-semibold text-mauve-400 select-none">ABC123XYZ</span>
+              <span className="font-semibold text-mauve-400 select-none tracking-widest tabular-nums">492817</span>
               <motion.button
                 type="button"
-                whileTap={{ scale: "0.95" }}
                 onClick={() => setCopied(true)}
                 className={cn(
                   "h-10 inline-flex items-center px-5 rounded-full bg-white font-medium shadow-lg cursor-pointer",
-                  "hover:bg-mauve-50 transition-colors ease-out-cubic",
+                  "hover:bg-mauve-50 enabled:focus:scale-95 focus-visible:outline-1 focus-visible:outline-offset-1",
+                  "transition-[background-color,scale] ease-out-cubic will-change-transform",
                 )}
               >
                 <span className="mb-0.5 text-mauve-600">Copy</span>
