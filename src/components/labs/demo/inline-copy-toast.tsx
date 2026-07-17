@@ -79,17 +79,17 @@ function InlineCopyToast() {
               className="w-full flex items-center justify-between pl-5 pr-2 py-2"
             >
               <span className="font-semibold text-mauve-400 select-none tracking-widest tabular-nums">{CODE}</span>
-              <motion.button
+              <button
                 type="button"
                 onClick={handleCopy}
                 className={cn(
                   "h-10 inline-flex items-center px-5 rounded-full bg-white font-medium shadow-lg cursor-pointer",
-                  "hover:bg-mauve-50 enabled:focus:scale-95 focus-visible:outline-1 focus-visible:outline-offset-1",
+                  "hover:bg-mauve-50 focus:scale-95 focus-visible:outline-1 focus-visible:outline-offset-1",
                   "transition-[background-color,scale] ease-out-cubic will-change-transform",
                 )}
               >
                 <span className="mb-0.5 text-mauve-600">Copy</span>
-              </motion.button>
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
