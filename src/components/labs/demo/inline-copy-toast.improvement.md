@@ -2,9 +2,9 @@
 
 ## Functionality
 
-1. **No actual clipboard write.** Button only flips state. Add `navigator.clipboard.writeText(code)` in the click handler (with a fallback/`catch` since it can reject).
-2. **Code is a hardcoded inline literal.** Extract `const CODE = "492817"` (or accept a `code` prop) so display and clipboard share one source.
-3. **Timer and progress bar are separately timed magic numbers.** `setTimeout(1800)` vs progress wipe `duration: 1.5` — wipe finishes 300ms before the view reverts. Either sync via one shared constant or drop the `setTimeout` entirely and reset in the progress bar's `onAnimationComplete`.
+1. ~~**No actual clipboard write.**~~ ✅ Done — `useCopyToClipboard` from usehooks-ts, toast gated on copy success.
+2. ~~**Code is a hardcoded inline literal.**~~ ✅ Done — `const CODE` shared by display and clipboard.
+3. ~~**Timer and progress bar are separately timed magic numbers.**~~ ✅ Done — `useEffect` timer removed, progress bar's `onAnimationComplete` resets state; wipe duration is the single source of truth.
 
 ## Accessibility
 

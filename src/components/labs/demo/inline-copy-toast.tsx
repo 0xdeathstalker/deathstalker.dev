@@ -17,19 +17,9 @@ function InlineCopyToast() {
     });
   };
 
-  React.useEffect(() => {
-    if (!isCopied) return;
-
-    const timerId = setTimeout(() => {
-      setIsCopied(false);
-    }, 1800);
-
-    return () => clearTimeout(timerId);
-  }, [isCopied]);
-
   return (
     <div className="relative w-fit overflow-hidden rounded-full">
-      <div className="w-[210px] h-14 bg-mauve-100 rounded-full ring ring-inset ring-mauve-200/50">
+      <div className="w-[190px] h-14 bg-mauve-100 rounded-full ring ring-inset ring-mauve-200/50">
         <AnimatePresence
           mode="popLayout"
           initial={false}
@@ -47,6 +37,7 @@ function InlineCopyToast() {
                 initial={{ clipPath: "inset(0 100% 0 0)" }}
                 animate={{ clipPath: "inset(0 0% 0 0)" }}
                 transition={{ type: "tween", ease: "linear", duration: 1.5 }}
+                onAnimationComplete={() => setIsCopied(false)}
                 className="absolute -z-10 inset-0 bg-mauve-300 rounded-full"
               />
 
@@ -56,11 +47,11 @@ function InlineCopyToast() {
           ) : (
             <motion.div
               key="idle-view"
-              initial={{ opacity: 0, scale: 0.85, filter: "blur(8px)" }}
+              initial={{ opacity: 0, scale: 0.85, filter: "blur(12px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 0.85, filter: "blur(8px)" }}
+              exit={{ opacity: 0, scale: 0.85, filter: "blur(12px)" }}
               transition={{ type: "tween", duration: 0.15 }}
-              className="w-full flex items-center justify-between gap-8 pl-5 pr-2 py-2"
+              className="w-full flex items-center justify-between pl-5 pr-2 py-2"
             >
               <span className="font-semibold text-mauve-400 select-none tracking-widest tabular-nums">{CODE}</span>
               <motion.button
