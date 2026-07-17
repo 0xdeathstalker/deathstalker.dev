@@ -10,7 +10,7 @@
 
 4. ~~**Success message isn't announced.**~~ ✅ Done — persistent sr-only `role="status"` node (implicit `aria-live="polite"`); text swaps in on copy, empty when idle.
 5. **Focus is lost on copy.** The button is unmounted while focused (keyboard flow), dropping focus to `<body>`. Keep the button mounted (visually swapped) or restore focus when idle view returns.
-6. **No `prefers-reduced-motion` handling.** Blur/scale animations should collapse to simple fades via `useReducedMotion()` or a `MotionConfig reducedMotion="user"` at app level.
+6. ~~**No `prefers-reduced-motion` handling.**~~ ✅ Done — `useReducedMotion()`; blur/scale collapse to opacity-only fades. Progress wipe kept: it drives the state reset (`onAnimationComplete`) and is low vestibular risk.
 7. **`select-none` on the code** blocks manual text selection — a copy UI should not prevent copying by hand.
 
 ## Code quality

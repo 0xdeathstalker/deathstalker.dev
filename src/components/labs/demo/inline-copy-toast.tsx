@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import * as React from "react";
 import { useCopyToClipboard } from "usehooks-ts";
 import { cn } from "@/lib/utils";
@@ -10,6 +10,29 @@ const CODE = "492837";
 function InlineCopyToast() {
   const [isCopied, setIsCopied] = React.useState(false);
   const [, copyToClipboard] = useCopyToClipboard();
+  const shouldReduceMotion = useReducedMotion();
+
+  const fadeOnly = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
+
+  const successMotion = shouldReduceMotion
+    ? fadeOnly
+    : {
+        initial: { opacity: 0, scale: 1.25, filter: "blur(12px)" },
+        animate: { opacity: 1, scale: 1, filter: "blur(0px)" },
+        exit: { opacity: 0, scale: 1.25, filter: "blur(12px)" },
+      };
+
+  const idleMotion = shouldReduceMotion
+    ? fadeOnly
+    : {
+        initial: { opacity: 0, scale: 0.85, filter: "blur(12px)" },
+        animate: { opacity: 1, scale: 1, filter: "blur(0px)" },
+        exit: { opacity: 0, scale: 0.85, filter: "blur(12px)" },
+      };
 
   const handleCopy = () => {
     copyToClipboard(CODE).then((success) => {
@@ -33,9 +56,7 @@ function InlineCopyToast() {
           {isCopied ? (
             <motion.div
               key="success-view"
-              initial={{ opacity: 0, scale: 1.25, filter: "blur(12px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 1.25, filter: "blur(12px)" }}
+              {...successMotion}
               transition={{ type: "spring", bounce: 0.1, duration: 0.5 }}
               className="size-full flex items-center justify-center gap-2 py-2"
             >
@@ -53,9 +74,7 @@ function InlineCopyToast() {
           ) : (
             <motion.div
               key="idle-view"
-              initial={{ opacity: 0, scale: 0.85, filter: "blur(12px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 0.85, filter: "blur(12px)" }}
+              {...idleMotion}
               transition={{ type: "tween", duration: 0.15 }}
               className="w-full flex items-center justify-between pl-5 pr-2 py-2"
             >
