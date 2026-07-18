@@ -1,4 +1,9 @@
-import { InlineCopyToast } from "@/components/labs/demo/inline-copy-toast";
+import {
+  ApiKeyInlineCopy,
+  CouponCodeInlineCopy,
+  InlineCopyToast,
+  WalletAddressInlineCopy,
+} from "@/components/labs/demo/inline-copy-toast";
 import { Code } from "@/components/ui/code";
 import { InlineLink } from "@/components/ui/inline-link";
 
@@ -9,10 +14,11 @@ const inlineCopyToastConfig = {
   description: (
     <>
       <p>
-        a copy-to-clipboard pill built with <InlineLink href="https://motion.dev">motion</InlineLink>. instead of firing
-        a toast to the corner of the screen, the confirmation takes over the pill itself: the idle view crossfades into
-        a success view with a blur-and-scale transition and a <Code>clipPath</Code> wipe fills the pill to show how long
-        the confirmation sticks around.
+        a copy-to-clipboard pill built with <InlineLink href="https://motion.dev">motion</InlineLink>, heavily inspired
+        by an interaction from <InlineLink href="https://x.com/nitishkmrk">nitish khagwal</InlineLink> and recreated
+        from scratch. instead of firing a toast to the corner of the screen, the confirmation takes over the pill
+        itself: the idle view crossfades into a success view with a blur-and-scale transition and a{" "}
+        <Code>clipPath</Code> wipe fills the pill to show how long the confirmation sticks around.
       </p>
       <p>
         the wipe doubles as the timer. when its animation completes, the component flips back to idle, so the visual
@@ -20,6 +26,14 @@ const inlineCopyToastConfig = {
         succeeds, copy status is announced to screen readers via a <Code>role="status"</Code> region and the blur/scale
         motion collapses to plain fades when the user prefers reduced motion.
       </p>
+      <p>here are some more examples for the component's usage:</p>
+      <div className="py-12 px-6 border border-mauve-200 rounded-lg flex flex-col items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4">
+          <WalletAddressInlineCopy />
+          <ApiKeyInlineCopy />
+        </div>
+        <CouponCodeInlineCopy />
+      </div>
     </>
   ),
   tech: "motion",
