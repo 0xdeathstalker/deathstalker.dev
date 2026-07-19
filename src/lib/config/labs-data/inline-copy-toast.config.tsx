@@ -1,7 +1,8 @@
 import {
   ApiKeyInlineCopy,
   CouponCodeInlineCopy,
-  InlineCopyToast,
+  InlineCopyToastAnotherDemo,
+  TwitterInlineCopyToast,
   WalletAddressInlineCopy,
 } from "@/components/labs/demo/inline-copy-toast";
 import { Code } from "@/components/ui/code";
@@ -26,19 +27,15 @@ const inlineCopyToastConfig = {
         succeeds, copy status is announced to screen readers via a <Code>role="status"</Code> region and the blur/scale
         motion collapses to plain fades when the user prefers reduced motion.
       </p>
-      <p>here are some more examples for the component's usage:</p>
-      <div className="py-12 px-6 border border-mauve-200 rounded-lg flex flex-col items-center justify-center gap-4">
-        <div className="flex items-center justify-center gap-4">
-          <WalletAddressInlineCopy />
-          <ApiKeyInlineCopy />
-        </div>
-        <CouponCodeInlineCopy />
+      <p>here is another example:</p>
+      <div className="py-18 px-6 border border-mauve-200 rounded-lg flex flex-col items-center justify-center gap-4">
+        <WalletAddressInlineCopy />
       </div>
     </>
   ),
   tech: "motion",
   video: "https://cdn.deathstalker.dev/videos/dialog-form-modal.mp4",
-  component: InlineCopyToast,
+  component: TwitterInlineCopyToast,
 };
 
 export { inlineCopyToastConfig };
