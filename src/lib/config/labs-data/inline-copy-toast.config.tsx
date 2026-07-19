@@ -1,10 +1,4 @@
-import {
-  ApiKeyInlineCopy,
-  CouponCodeInlineCopy,
-  InlineCopyToastAnotherDemo,
-  TwitterInlineCopyToast,
-  WalletAddressInlineCopy,
-} from "@/components/labs/demo/inline-copy-toast";
+import { TwitterInlineCopy, WalletAddressInlineCopy } from "@/components/labs/demo/inline-copy-toast";
 import { Code } from "@/components/ui/code";
 import { InlineLink } from "@/components/ui/inline-link";
 
@@ -35,7 +29,7 @@ const inlineCopyToastConfig = {
   ),
   tech: "motion",
   video: "https://cdn.deathstalker.dev/videos/dialog-form-modal.mp4",
-  component: TwitterInlineCopyToast,
+  component: TwitterInlineCopy,
 };
 
 export { inlineCopyToastConfig };

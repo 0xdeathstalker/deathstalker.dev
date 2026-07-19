@@ -75,7 +75,7 @@ function InlineCopyToast({ value, duration = 1.2, className, children, ...props 
       <div
         data-slot="inline-copy-toast"
         className={cn(
-          "relative w-fit h-10 overflow-hidden rounded-xl bg-mauve-100 ring ring-inset ring-mauve-200/50",
+          "relative w-fit h-10 overflow-hidden rounded-xl bg-accent ring-[0.5px] ring-inset ring-border",
           className,
         )}
         {...props}
@@ -97,7 +97,7 @@ function InlineCopyToastContent({ className, ...props }: HTMLMotionProps<"div">)
           data-slot="inline-copy-toast-content"
           {...(shouldReduceMotion ? FADE_ONLY : IDLE_MOTION)}
           transition={IDLE_TRANSITION}
-          className={cn("absolute inset-0 flex items-center justify-between pl-3 pr-1.5", className)}
+          className={cn("absolute inset-0 flex items-center justify-between px-2 text-primary", className)}
           {...props}
         />
       )}
@@ -126,7 +126,7 @@ function InlineCopyToastSuccess({ className, children, transition, ...props }: H
               animate={{ clipPath: "inset(0 0% 0 0)" }}
               transition={{ type: "tween", ease: "linear", duration }}
               onAnimationComplete={reset}
-              className="absolute -z-10 inset-0 bg-mauve-300"
+              className="absolute -z-10 inset-0 bg-border"
             />
 
             {children}
@@ -150,7 +150,7 @@ function InlineCopyToastTrigger({ className, onClick, children, ...props }: Reac
       }}
       className={cn(
         "size-7 inline-flex items-center justify-center rounded-lg bg-white font-medium shadow-lg cursor-pointer",
-        "hover:bg-mauve-50 active:scale-95 focus-visible:outline-1 focus-visible:outline-offset-1",
+        "hover:bg-background active:scale-95 focus-visible:outline-1 focus-visible:outline-offset-1",
         "transition-[background-color,scale] ease-out-cubic",
         className,
       )}
