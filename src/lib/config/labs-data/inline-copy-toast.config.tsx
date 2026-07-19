@@ -21,7 +21,7 @@ const inlineCopyToastConfig = {
         succeeds, copy status is announced to screen readers via a <Code>role="status"</Code> region and the blur/scale
         motion collapses to plain fades when the user prefers reduced motion.
       </p>
-      <p>here is another example:</p>
+      <p>here is another example with default styling:</p>
       <div className="py-18 px-6 border border-mauve-200 rounded-lg flex flex-col items-center justify-center gap-4">
         <WalletAddressInlineCopy />
       </div>

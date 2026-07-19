@@ -34,14 +34,14 @@ function WalletAddressInlineCopy() {
       className="w-[170px]"
     >
       <InlineCopyToastContent>
-        <span className="font-semibold  select-none tracking-wide">0x884...0dAdF</span>
+        <span className="font-semibold select-none tracking-wide">0x884...0dAdF</span>
         <InlineCopyToastTrigger className="focus:scale-95 will-change-transform">
-          <CopyIcon className="size-4 " />
+          <CopyIcon className="size-4" />
         </InlineCopyToastTrigger>
       </InlineCopyToastContent>
       <InlineCopyToastSuccess>
-        <CheckCircle className="size-5 " />
-        <span className="font-semibold ">Address Copied!</span>
+        <CheckCircle className="size-5" />
+        <span className="font-semibold">Address Copied!</span>
       </InlineCopyToastSuccess>
     </InlineCopyToast>
   );
