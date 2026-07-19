@@ -28,7 +28,7 @@ const inlineCopyToastConfig = {
     </>
   ),
   tech: "motion",
-  video: "https://cdn.deathstalker.dev/videos/dialog-form-modal.mp4",
+  video: "https://cdn.deathstalker.dev/videos/inline-toast.mp4",
   component: TwitterInlineCopy,
 };
 
