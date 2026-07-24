@@ -113,7 +113,7 @@ function NestedMenu({
       setHistory([]);
       setDirection(1);
     }
-  }, [open]);
+  }, [open, items]);
 
   return (
     <NestedMenuContext.Provider

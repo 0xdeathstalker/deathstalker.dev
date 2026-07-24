@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { Link as LucideLinkIcon } from "lucide-react";
+import Link from "next/link";
 
 function LinkIcon({ href, className, ...props }: React.ComponentProps<typeof Link>) {
   return (

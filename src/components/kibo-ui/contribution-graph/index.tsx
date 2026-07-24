@@ -354,7 +354,9 @@ export const ContributionGraphCalendar = ({
               return null;
             }
 
-            return <Fragment key={`${weekIndex}-${dayIndex}`}>{children({ activity, dayIndex, weekIndex })}</Fragment>;
+            return (
+              <Fragment key={`${weekIndex}-${dayIndex + 1}`}>{children({ activity, dayIndex, weekIndex })}</Fragment>
+            );
           }),
         )}
       </svg>
@@ -403,17 +405,17 @@ export const ContributionGraphLegend = ({ className, children, ...props }: Contr
 
   return (
     <div
-      className={cn("ml-auto flex items-center gap-[3px]", className)}
+      className={cn("ml-auto flex items-center gap-0.75", className)}
       {...props}
     >
       <span className="mr-1 text-muted-foreground">{labels.legend?.less || "Less"}</span>
       {new Array(maxLevel + 1).fill(undefined).map((_, level) =>
         children ? (
-          <Fragment key={level}>{children({ level })}</Fragment>
+          <Fragment key={`${level + 1}`}>{children({ level })}</Fragment>
         ) : (
           <svg
             height={blockSize}
-            key={level}
+            key={`${level + 1}`}
             width={blockSize}
           >
             <title>{`${level} contributions`}</title>
